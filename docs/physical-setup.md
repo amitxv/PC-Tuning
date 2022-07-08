@@ -26,7 +26,7 @@
 
 - Set a static all-core frequency & voltage for the CPU. Variation in hardware clocks can introduce jitter due to the frequency transitions of cores [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)].
 
-    - Configure load-line calibration to minimize voltage fluctuation under load
+    - Configure load-line calibration to minimize voltage fluctuation under load.
 
 - Disable [Virtualization](https://en.wikipedia.org/wiki/Desktop_virtualization) & [IOMMU](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable, it can cause differences in latency for memory access [[1](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)][[2](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html)].
 
@@ -42,13 +42,13 @@
 
 - Keep HPET/ High Precision Event Timer enabled.
 
-    - On AMD systems with newer AGESA firmware, disabling this setting will have no effect
+    - On AMD systems with newer AGESA firmware, disabling this setting will have no effect.
 
 - Disable integrated graphics if not in use.
 
 - Windows 7 requires Compatibility Support Module (CSM) to be enabled.
 
-- Disable Secure Boot
+- Disable Secure Boot.
 
 ## Minimizing Interference
 
