@@ -201,10 +201,10 @@ Windows 10 stores installed applications both in the legacy & immersive control 
 
 As previously mentioned, you should have linked a key to your motherboard but if you have not now would be a good time to enter it. Open CMD & enter the command below.
 
-    ```bat
-    slmgr /ipk [YOUR 25 DIGIT KEY]
-    slmgr /ato
-    ```
+```bat
+slmgr /ipk [YOUR 25 DIGIT KEY]
+slmgr /ato
+```
 
 ## Installing Recommended Packages
 
