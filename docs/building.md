@@ -80,7 +80,7 @@ Use the [download links spreadsheet](https://docs.google.com/spreadsheets/d/1zTF
 
 - Download the updates from the [microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the kb identifier. Place the updates somewhere easily accessible such as ``C:\updates``.
 
-- Integrate the updates into the install wim with the command below.
+- Integrate the updates into the install.wim with the command below.
 
     - The servicing stack must be installed before installing the Cumulative Update, this generally only applies to Windows 8+
 
@@ -102,9 +102,9 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 
  ## Integrating & Obtaining Drivers
 
- - This is generally required for users installing windows 7 to integrate USB/ NVME drivers so that setup can proceed.
+ - This is generally required for users installing Windows 7 to integrate USB/ NVME drivers so that setup can proceed.
 
- - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install wim.
+ - Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` & use the command below to integrate them into the install.wim.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
@@ -148,7 +148,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not yet touched the boot.wim (installer). We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
+As you are aware, windows 7 lacks driver support for modern hardware & you should have already integrated drivers into the install.wim however we have not touched the boot.wim (installer) yet. We *could* integrate the same drivers into the boot.wim as we did before but in my experience this still leads to a problematic installation. Instead, we can use the windows 10 boot.wim which already has modern hardware support to install our windows 7 install.wim.
 
 - The process is quite simple:
 
