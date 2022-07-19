@@ -14,7 +14,7 @@ Once you have begun the OOBE process, follow the steps in the video.
 
 ## Merge the Registry Files
 
-- Open CMD as Administrator & enter the command below to merge the registry files. Use the ``--win7``, ``--win8`` or ``--win10`` arguments depending on the windows version you are configuring.
+- Open CMD as Administrator & enter the command below to merge the registry files.
 
     ```bat
     C:\prerequisites\scripts\registry\apply-registry.exe
