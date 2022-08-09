@@ -12,10 +12,6 @@ I no longer have or use a AMD GPU so this page may be outdated as time passes.
 
 - In the folder of the driver directory (mine is ``B381690`` in the example above), move ``ccc2_install.exe`` to the desktop. This will be used in a later step.
 
-- Open notepad file & save it as ``ccc2_install.exe`` to the driver folder as shown below.
-
-    - See [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
-
 - Open device manager & install the driver by right clicking the display adapter, browse my computer for driver software & select the driver folder.
 
 - Once the driver has installed, extract ``ccc2_install.exe`` with 7-Zip & run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the radeon software control panel.
