@@ -48,7 +48,7 @@ The recommended links & methods below will ensure that we can work with a base i
 <summary>Windows 10+</summary>
 <br>
 
-Since it is quite tedious to obtain a Windows 10+ image with no updates, we can build our own using [UUP dump](https://uupdump.net).
+Since it is quite tedious to obtain a Windows 10+ image with updates, we can build our own using [UUP dump](https://uupdump.net).
 
 - Search for the Windows version you desire & download the latest instance.
    
