@@ -2,6 +2,7 @@
 # https://ameliorated.info/
 
 cd "$(dirname "$0")"
+shopt -s extglob
 
 if [[ -d "Program Files" ]] && [[ -d "Windows/System32" ]]
 then
@@ -60,6 +61,11 @@ wildcard_names=(
     "securitycenter"
 )
 
+rm -rf "Program Files/WindowsApps"
+rm -rf "ProgramData/Packages"
+rm -rf Users/*/AppData/Local/Microsoft/WindowsApps
+rm -rf Users/*/AppData/Local/Packages/!("Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy"|"windows.immersivecontrolpanel_cw5n1h2txyewy")
+rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy")
 rm -rf "Program Files/Windows Defender"
 rm -rf "Program Files (x86)/Microsoft"
 rm -rf "Program Files (x86)/Windows Defender"
@@ -77,7 +83,16 @@ rm -rf Windows/WinSxS/Temp/PendingDeletes/*
 for i in "${wildcard_names[@]}"
 do
     echo info: removing $i
-    find . -iname *$i* -exec rm -rf "{}" \;
+    find . -ipath "*$i*" -delete
+done
+
+echo info: searching for files that are supposed to be removed...
+echo info: if any file paths appear below any searching message, it is likely that the process failed
+
+for i in "${wildcard_names[@]}"
+do
+    echo info: searching for $i
+    find . -iname *$i*
 done
 
 echo info: done

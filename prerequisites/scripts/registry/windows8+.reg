@@ -5,3 +5,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 "DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
 "DisableOSUpgrade"=dword:00000001
+
+; disable defender
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableBehaviorMonitoring"=dword:00000001
+"DisableScanOnRealtimeEnable"=dword:00000001
+"DisableBehaviorMonitoring"=dword:00000001

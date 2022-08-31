@@ -30,8 +30,8 @@ if defined install_dir (
 			if not !errorlevel! == 0 (
 				set "err=1"
 			) else (
-				if exist "!install_dir!:\Windows\System32\Sysprep\unattend.xml" (
-					copy /y "autounattend.xml" "!install_dir!:\Windows\System32\Sysprep\unattend.xml" > nul 2>&1
+				if exist "!install_dir!:\Windows\System32\Sysprep" (
+					copy /y "autounattend.xml" "!install_dir!:\Windows\System32\Sysprep" > nul 2>&1
 				) else (
 					echo error: sysprep folder does not exist
 					set "err=1"
@@ -49,13 +49,13 @@ if defined install_dir (
 			echo info: restart pc
 			echo info: press any key to continue
 			pause > nul 2>&1
-			exit /b 0
 		) else (
 			echo error: dism apply-image unsuccessful
 			echo info: press any key to continue
 			pause > nul 2>&1
-			exit /b 1
 		)
+
+		exit /b !err!
 	)
 )
 

@@ -7,7 +7,7 @@ set "sha1=2e750bb589f3952061de989efe8ebca56bd6fd4c"
 set "file_name=librewolf-103.0-3.en-US.win64-setup.exe"
 set "working_dir=!temp!\librewolf"
 
-ping archlinux.org
+ping archlinux.org > nul 2>&1
 if not !errorlevel! == 0 (
     echo error: no internet connection
 	echo info: press any key to continue
