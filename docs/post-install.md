@@ -49,7 +49,7 @@ slmgr /ato
 
     - Uninstall bloatware in **Settings > Apps > Apps & Features**
 
-        - In the **Optional features** section, uninstall everything apart from Microsoft Paint, Notepad & Wordpad
+        - In the **Optional features** section, uninstall everything apart from Microsoft Paint, Notepad & WordPad
 
         - Restart your PC once before following the next steps (important)
 
