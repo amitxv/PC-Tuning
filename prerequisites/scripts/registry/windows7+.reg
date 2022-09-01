@@ -6,11 +6,11 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
 
-[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Device Metadata]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
 
 [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense]
 
-; remove pin to start from context menu as we will be using open shell
+; remove 'pin to start' from context menu, as we will be using open shell
 
 [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
 
@@ -20,13 +20,13 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CLASSES_ROOT\mscfile\shellex\ContextMenuHandlers\PintoStartScreen]
 
-; remove 3d objects from explorer pane
+; remove '3d objects' from Explorer pane
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
 
-; remove pin to quick quick access in context menu
+; remove 'pin to quick access' in context menu
 
 [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
 
@@ -61,7 +61,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
 "IncludeRecommendedUpdates"=dword:00000000
 "AUOptions"=dword:00000001
 "SetupWizardLaunchTime"=-
@@ -117,7 +117,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
 "DisableFileSyncNGSC"=dword:00000001
 
-; do not send additional error data to microsoft
+; do not send additional error data to Microsoft
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "DontSendAdditionalData"=dword:00000001
@@ -134,7 +134,7 @@ Windows Registry Editor Version 5.00
 "MenuShowDelay"="0"
 "AutoEndTasks"="1"
 
-; turn off display of recent search entries in the file explorer search box
+; turn off display of recent search entries in the File Explorer search box
 ; remove notifications and action center
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
@@ -142,11 +142,11 @@ Windows Registry Editor Version 5.00
 "DisableNotificationCenter"=dword:00000001
 
 ; disable shake To minimize
-; disable tooltips in file explorer
-; hide status bar in file explorer
+; disable tooltips in File Explorer
+; hide status bar in File Explorer
 ; disable sync provider notifications
-; hide preview handlers in preview pane of file explorer
-; disable the sharing wizard in file explorer
+; hide preview handlers in preview pane of File Explorer
+; disable the sharing wizard in File Explorer
 ; show file extensions
 ; never combine taskbar icons
 ; launch file explorer to this pc
@@ -155,7 +155,7 @@ Windows Registry Editor Version 5.00
 ; disable display compressed and encrypted NTFS files in color
 ; configure snap settings
 ; disable show windows store apps on the taskbar
-; remove favorites from explorer pane
+; remove favorites from Explorer pane
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisallowShaking"=dword:00000001
@@ -176,7 +176,7 @@ Windows Registry Editor Version 5.00
 "StoreAppsOnTaskbar"=dword:00000000
 "NavPaneShowFavorites"=dword:00000000
 
-; disable lmhosts
+; disable LMHosts
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
 "EnableLMHOSTS"=dword:00000000
@@ -186,7 +186,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
 "AutoShareWks"=dword:00000000
 
-; enable firewall, disable file sharing
+; enable Firewall, disable file sharing
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
 "DisableNotifications"=dword:00000001
@@ -220,12 +220,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W32Time\Parameters]
 "Type"="NTP"
 
-; disable windows error reporting
+; disable windows error reporting (WER)
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "Disabled"=dword:00000001
 
-; disable program compatibility assistant
+; disable program compatibility assistant (PCA)
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
@@ -403,7 +403,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\WSFFile\Shell\Print]
 "ProgrammaticAccessOnly"=""
 
-; remove network tab in explorer
+; remove network tab in Explorer
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder]
 "Attributes"=dword:b0940064
@@ -418,7 +418,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Multimedia\Audio]
 "UserDuckingPreference"=dword:00000003
 
-; disable customer experience improvement program
+; disable customer experience improvement program (CEIP)
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\Windows]
 "CEIPEnable"=dword:00000000
@@ -439,7 +439,7 @@ Windows Registry Editor Version 5.00
 
 ; apply the default account picture to all users
 ; remove the security and maintenance icon
-; disables retrieval of online tips and help in the immersive control panel
+; disables retrieval of online tips and help in the immersive control panel (Settings app)
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
@@ -449,18 +449,18 @@ Windows Registry Editor Version 5.00
 ; do not allow themes to change desktop icons
 ; do not allow themes to change mouse pointers
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes]
 "ThemeChangesDesktopIcons"=dword:00000000
 "ThemeChangesMousePointers"=dword:00000000
 
 ; disable the reboot prompt in msconfig
 
-[HKEY_CURRENT_USER\Software\Microsoft\Shared Tools\MsConfig]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Shared Tools\MsConfig]
 "NoRebootUI"=dword:00000001
 
 ; disable the save prompt in snipping tool
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\TabletPC\Snipping Tool]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\TabletPC\Snipping Tool]
 "PromptToSave"=dword:00000000
 
 ; clear history of recently opened documents on exit
@@ -480,7 +480,7 @@ Windows Registry Editor Version 5.00
 
 ; disable your pc is out of support message
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\EOSNotify]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify]
 "DiscontinueEOS"=dword:00000001
 
 ; enable the legacy photo viewer
@@ -563,7 +563,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\System\GameConfigStore] 
 "GameDVR_Enabled"=dword:00000000
 
-; disable smartscreen for microsoft store apps
+; disable smartscreen for Microsoft Store apps
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
 "EnableWebContentEvaluation"=dword:00000000
@@ -649,12 +649,12 @@ Windows Registry Editor Version 5.00
 
 ; restore old volume flyout
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\MTCUVC]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\MTCUVC]
 "EnableMtcUvc"=dword:00000000
 
 ; prevent auto updating store apps
 
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsStore]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "AutoDownload"=dword:00000002
 
 ; disable automatic update of speech data on windows
@@ -699,7 +699,7 @@ Windows Registry Editor Version 5.00
 
 ; disable recommended troubleshooting
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsMitigation]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
 "UserPreference"=dword:00000001
 
 ; disable notification of usb issues
@@ -725,7 +725,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps]
@@ -736,31 +736,31 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
@@ -772,13 +772,13 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync]
@@ -796,16 +796,16 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
 "Value"="Deny"
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
 "Value"="Deny"
 
 ; disable game bar
@@ -830,7 +830,7 @@ Windows Registry Editor Version 5.00
 
 ; disable hotspot
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\WlanSvc\AnqpCache]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
 "OsuRegistrationStatus"=dword:00000000
 
 ; disable windows default printer management
@@ -897,10 +897,10 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 
 ; disable play windows startup sound
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation]
 "DisableStartupSound"=dword:00000001
 
-; disable remote assistance and remote desktop
+; disable remote assistance & remote desktop
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Remote Assistance]
 "fAllowToGetHelp"=dword:00000000
