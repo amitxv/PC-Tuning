@@ -23,7 +23,7 @@ def main() -> int:
     """cli entrypoint"""
 
     if not is_admin():
-        print("error: administrator privileges required")
+        print("error: administrator privileges are required")
         return 1
 
     registry_dir = "C:\\prerequisites\\scripts\\registry"
@@ -54,7 +54,7 @@ def main() -> int:
         print("error: registry files not found")
         return 1
 
-    print(f"info: applying registry file for windows {args.winver}")
+    print(f"info: applying registry file for Windows {args.winver}")
 
     if args.winver == 7:
         apply_registry(f"{registry_dir}\\windows7+.reg")
