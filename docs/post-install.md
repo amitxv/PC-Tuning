@@ -29,7 +29,9 @@ slmgr /ato
 
 ## Removing Bloatware Natively
 
-- Open CMD as administrator & enter the command below. Note that this script only removes the chromium version of edge, the legacy version (if present) will be stripped in Linux shortly
+- Open CMD as administrator & enter the command below. 
+
+    - Note that this script only removes the chromium version of Edge, the legacy version (if present) will be stripped in Linux shortly
 
     ```bat
     C:\prerequisites\scripts\remove-edge-onedrive.bat
@@ -57,7 +59,7 @@ slmgr /ato
 
 - Boot into Ventoy on your USB in BIOS & select the Linux Mint image. Select **Start Linux Mint** when promted
 
-- Open the file explorer which is pinned to the taskbar & navigate to the volume Windows is installed on. You can identify this by finding the volume that has the **win-debloat.sh** bash script in
+- Open the File Explorer, which is pinned to the taskbar & navigate to the volume Windows is installed on. You can identify this by finding the volume that has the **win-debloat.sh** bash script in
 
 - Right click an empty space & select **Open in Terminal**. This will open the bash terminal in the directory of the script for us, so we do not need to CD to it manually. Use the command below to run the script
 
@@ -240,7 +242,7 @@ Although, Start Menu will still work, if configuring Windows 10 lower than 1903
 
                 - privacy.resistFingerprinting = false
 
-        - Alternatively, the following lines can be added to ``"%userprofile%\AppData\Roaming\librewolf\Profiles\<profile>\prefs.js"``, ensure librewolf is closed before editing prefs.js
+        - Alternatively, the following lines can be added to ``"%userprofile%\AppData\Roaming\librewolf\Profiles\<profile>\prefs.js"``, ensure Librewolf is closed before editing prefs.js
 
             ```
             user_pref("browser.uidensity", 1);
@@ -292,7 +294,7 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
     set "profile=1"
 
     if not exist "!afterburner_path!" (
-        echo error: afterburner path invalid
+        echo error: Afterburner's path is invalid
         pause
         exit /b 1
     )
@@ -313,7 +315,7 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 
 - Try to delete every resolution & the other bloatware (audio blocks) apart from your native resolution, this may be a work around for the 1 second black screen when alt-tabbing in FSE, feel free to skip this step if you are not comfortable risking a black screen
 
-- Restart your PC instead of using **restart64.exe** as it may result in a black screen
+- Restart your PC instead of using **restart64.exe**, as it may result in a black screen
 
 - Ensure your resolution is configured properly in Display Adapter Settings
 
@@ -407,7 +409,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 ## Memory Cleaner & Timer Resolution (Windows 10 1909 & Under)
 
-Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering this "trick" useless
+Feel free to skip this step as it is not required, Microsoft fixed the standby list memory management issues in a later version of Windows. [Memory Cleaner](https://github.com/danskee/MemoryCleaner) ([alternative link](https://git.zusier.xyz/Zusier/MemoryCleaner)) also allows us to set the kernel timer-resolution globally however the behaviour of timer-resolution changed in 2004+ as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/), rendering this 'trick' useless
 
 - Place ``C:\prerequisites\Memory-Cleaner.exe`` in win + r, **shell:startup** & open it
 
@@ -465,7 +467,7 @@ The service list configuration is not intended for Wi-Fi & WebCam functionality.
     service-list-builder.exe --config C:\prerequisites\bare-services.ini
     ```
 
-- Move the scripts somewhere safe such as in the ``C:\`` drive & do not share it with other people as it is specific to your system
+- Move the scripts somewhere safe such as in the ``C:\`` drive & do not share it with other people, as it is specific to your system
 
 - To prepare us for the next steps, run **Services-Disable.bat** with NSudo, ensure **Enable All Privileges** is enabled as mentioned
 
@@ -513,7 +515,7 @@ Many devices in the Device Manager will appear with a yellow icon, as we ran the
 
 - Set the power plan to **High performance** in **Control Panel > Hardware & Sound > Power Options**
 
-- Open CMD & enter the command below to remove every power plan except the active power scheme, ignore errors
+- Open CMD & enter the command below to remove every power plan except the active one
 
     ```bat
 	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
@@ -539,7 +541,7 @@ Many devices in the Device Manager will appear with a yellow icon, as we ran the
 
 ## Disable Hidden Power Saving
 
-All hidden means is not visible to the user, many drivers contain these registry entries that are clearly labeled power saving, however I have not been able to prove the benifit of this script so feel free to skip this step
+All hidden means is not visible to the user, many drivers contain these registry entries that are clearly labeled power saving. However I have not been able to prove the benifit of this script so feel free to skip this step
 
 - Run the ``C:\prerequisites\scripts\disable-hidden-powersaving.bat`` script
 
@@ -552,9 +554,9 @@ issues [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitatio
 
     - Enable Message Signaled Interrupts on all devices that support it
 
-        - You will BSOD if you enable MSIs for the **stock** Windows 7 sata driver which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
+        - You will BSOD if you enable MSIs for the **stock** Windows 7 Sata driver, which you should have updated as mentioned in the [Installing Drivers](#installing-drivers) section
         
-    - Be careful as to what you choose to prioritize. As an example, you will likely stutter in a open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority
+    - Be careful as to what you choose to prioritize. As an example, you will likely stutter in a open-world game that utilizes texture streaming, if the GPU IRQ priority is set higher than the storage controller priority
 
 - Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSIUtil
 
@@ -604,17 +606,17 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
 - Some locations you may want to review for leftover bloat & unwanted shortcuts
 
-    - ``"C:\"``
-    - ``"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"``
-    - ``"C:\Program Files"``
-    - ``"C:\ProgramData"``
-    - ``"C:\Windows\Prefetch"``
-    - ``"C:\Windows\SoftwareDistribution\download"``
-    - ``"C:\Windows\Temp"``
-    - ``"%userprofile%\AppData"``
-    - ``"%userprofile%\AppData\Local\Temp"``
-    - ``"%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"``
-    - ``"%userprofile%\Downloads"``
+    - ``'C:\'``
+    - ``'C:\ProgramData\Microsoft\Windows\Start Menu\Programs'``
+    - ``'C:\Program Files'``
+    - ``'C:\ProgramData'``
+    - ``'C:\Windows\Prefetch'``
+    - ``'C:\Windows\SoftwareDistribution\download'``
+    - ``'C:\Windows\Temp'``
+    - ``'%userprofile%\AppData'``
+    - ``'%userprofile%\AppData\Local\Temp'``
+    - ``'%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs'``
+    - ``'%userprofile%\Downloads'``
 
 - Reset Firewall rules
 
@@ -650,11 +652,11 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
         - Use **Ctrl + Shift + Esc** to open process explorer then use **File > Run** to start the **explorer.exe** shell again
 
-    - Disabling idle states which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)]
+    - Disabling idle states which will force C-State 0 & eliminate jitter due to the process of state transition. After all, C1 is still a power saving [[1](https://www.dell.com/support/kbdoc/en-uk/000060621/what-is-the-c-state)]
 
-        - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the Desktop for easy access. This way you can disable idle before launching a game & re-enable it after you close your game
+        - Drag & drop the scripts in ``C:\prerequisites\scripts\idle-scripts`` to the Desktop for ease of access. This way you can disable idle before launching a game & re-enable it after you close it
 
-    - Kill other processes that waste CPU time such as game clients
+    - Kill other processes that waste CPU time, such as game clients
 
 - Don't run random tweaks, tweaking programs or fall for the 'fps boost' marketing nonsense. If you have questions about a specific option or setting, just ask
 
