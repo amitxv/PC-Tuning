@@ -267,7 +267,7 @@ Although, Start Menu will still work, if configuring Windows 10 lower than 1903
 - Media Player
 
     - [mpv](https://mpv.io) / [mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://github.com/clsid2/mpc-hc) recommended
-q
+
 ## Configure the Graphics Driver
 
 - See [docs/configure-nvidia.md](../docs/configure-nvidia.md)
