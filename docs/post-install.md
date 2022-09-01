@@ -610,13 +610,13 @@ Now is a good time to install whatever programs & game launchers you commonly us
     - ``'C:\ProgramData\Microsoft\Windows\Start Menu\Programs'``
     - ``'C:\Program Files'``
     - ``'C:\ProgramData'``
-    - ``'C:\Windows\Prefetch'``
-    - ``'C:\Windows\SoftwareDistribution\download'``
-    - ``'C:\Windows\Temp'``
-    - ``'%userprofile%\AppData'``
-    - ``'%userprofile%\AppData\Local\Temp'``
-    - ``'%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs'``
-    - ``'%userprofile%\Downloads'``
+    - ``'%WinDir%\Prefetch'``
+    - ``'%WinDir%\SoftwareDistribution\download'``
+    - ``'%WinDir%\Temp'``
+    - ``'%UserProfile%\AppData'``
+    - ``'%UserProfile%\AppData\Local\Temp'``
+    - ``'%UserProfile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs'``
+    - ``'%UserProfile%\Downloads'``
 
 - Reset Firewall rules
 
