@@ -2,7 +2,7 @@
 
 ## OOBE Setup
 
-Do not connect to the Internet until the [Merge Registry Files](#merge-registry files) section is not done, after starting the OOBE process, follow the steps described in the video
+Do not connect to the Internet until the [Merge the Registry Files](#merge-the-registry-files) section is not done, after starting the OOBE process, follow the steps described in the video
 
 - Do not enter a password by simply pressing enter, the service list recommended will break user password functionality & you will not be able to login again
 
