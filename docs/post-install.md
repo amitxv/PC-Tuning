@@ -2,7 +2,7 @@
 
 ## OOBE Setup
 
-Do not connect to the internet until after the [Merge the Registry Files](#merge-the-registry-files) section, once you have begun the OOBE process, follow the steps in the video
+Do not connect to the Internet until the [Merge Registry Files](#merge-registry files) section is not done, after starting the OOBE process, follow the steps described in the video
 
 - Do not enter a password by simply pressing enter, the service list recommended will break user password functionality & you will not be able to login again
 
@@ -21,7 +21,7 @@ slmgr /ato
 
 ## Visual Cleanup
 
-- Disable features on the taskbar, unpin shortcuts & tiles from the taskbar & start menu
+- Disable features on the taskbar, unpin shortcuts, tiles from the taskbar & start menu
 
     - See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows7-example.mp4)
     - See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/EVA/main/media/visual-cleanup-windows8-example.mp4)
@@ -49,7 +49,7 @@ slmgr /ato
 
     - Uninstall bloatware in **Settings > Apps > Apps & Features**
 
-        - In the **Optional features** section, uninstall everything apart from Microsoft Paint, Notepad & WordPad
+        - In the **Optional features** section, uninstall everything apart from Microsoft Paint, Notepad & Wordpad
 
         - Restart your PC once before following the next steps (important)
 
@@ -57,9 +57,9 @@ slmgr /ato
 
 - Boot into Ventoy on your USB in BIOS & select the Linux Mint image. Select **Start Linux Mint** when promted
 
-- Open the file explorer which is pinned to the taskbar & navigate to the volume Windows is installed on. You can identify this by finding the volume that has the **win-debloat.sh** script in
+- Open the file explorer which is pinned to the taskbar & navigate to the volume Windows is installed on. You can identify this by finding the volume that has the **win-debloat.sh** bash script in
 
-- Right click an empty space & select **Open in Terminal**. This will open the bash terminal in the directory of the script for us so we do not need to CD to it manually. Use the command below to run the script
+- Right click an empty space & select **Open in Terminal**. This will open the bash terminal in the directory of the script for us, so we do not need to CD to it manually. Use the command below to run the script
 
     ```
     sudo bash win-debloat.sh
@@ -91,15 +91,15 @@ slmgr /ato
     C:\prerequisites\scripts\registry\apply-registry.exe --winver <winver>
     ```
 
-- Please ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges & the registry files were not successfully merged
+- Please ensure that the program prints a "done" message to the console, if it has not, then command prompt was probably not opened with administrator privileges & the registry files were not successfully merged
 
 - Restart your PC (important)
 
 - You may establish an internet connection after you have restarted as the Windows update policies will take effect
 
-## Spectre & Meltdown
+## Spectre & Meltdown (Intel CPUs)
 
-Open CMD & enter the command below. Ensure **System is Spectre/Meltdown protected** is **NO**. AMD is unaffected by Meltdown
+Open CMD & enter the command below. Ensure **System is Spectre/Meltdown protected** is **NO**.
 
 ```bat
 C:\prerequisites\inspectre.exe
@@ -107,10 +107,12 @@ C:\prerequisites\inspectre.exe
 
 - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
 
-
 ## Install [OpenShell](https://github.com/Open-Shell/Open-Shell-Menu) (Windows 8+)
 
 This step is required as we removed the spyware stock start menu
+
+
+Although, Start Menu will still work, if configuring Windows 10 lower than 1903
 
 - Run **OpenShellSetup.exe** in ``C:\prerequisites\open-shell``
 
@@ -170,7 +172,7 @@ This step is required as we removed the spyware stock start menu
 
 ## Installing Drivers
 
-- Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating & installing ethernet, USB, sata (required on Windows 7 as enabling MSI on the stock sata driver will result in a BSOD) & NVME
+- Install any drivers your system requires, avoid installing chipset drivers. I would recommend updating & installing Ethernet, USB, Sata (required on Windows 7 as enabling MSI on the stock Sata driver will result in a BSOD) & NVME
 
 - Try to obtain the bare driver so it can be installed in device manager as executable installers usually come with extra unnecessary bloatware. Most of the time, you can extract the installer's executable to obtain the driver
 
@@ -186,7 +188,11 @@ This step is required as we removed the spyware stock start menu
 
     - Run ``C:\prerequisites\7-Zip\7z2200-x64.exe``
 
-    - Open ``C:\Program Files\7-Zip\7zFM.exe``, to go **Tools > Options** & associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
+    - Open ``C:\Program Files\7-Zip\7zFM.exe``
+
+    - Go to **Tools > Options** & associate 7-Zip with all file extensions by clicking the **+** button. You may need to click it twice to override existing associated extensions
+
+    - Go to **Tools > Options > 7-Zip** & set up prefences on your own
 
 - Web Browser
 
@@ -260,8 +266,8 @@ This step is required as we removed the spyware stock start menu
 
 - Media Player
 
-    - [mpv](https://mpv.io) / [mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended
-
+    - [mpv](https://mpv.io) / [mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://github.com/clsid2/mpc-hc) recommended
+q
 ## Configure the Graphics Driver
 
 - See [docs/configure-nvidia.md](../docs/configure-nvidia.md)
@@ -272,7 +278,7 @@ This step is required as we removed the spyware stock start menu
 
 If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock speed, fan speed & other settings, download & install it
 
-- Disable update checks & the low-level IO driver in settings
+- Disable update checks & the low-level IO driver in Settings
 
 - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
 
@@ -344,7 +350,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
     - Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs & services only**
 
         ```bat
-        bcdedit /set nx optin
+        bcdedit /set nx OptIn
         ```
 
     - Configure the operating system name, I usually name it to whatever Windows version I am using e.g **W10 1803**
@@ -415,7 +421,7 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
 
         - Check **Start minimized** & **Start timer resolution automatically**
 
-- Avoid using auto cleaning apps like ISLC/Memreduct, they consume alot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory
+- Avoid using auto cleaning apps like ISLC/MemReduct, as they consume a lot of resources due to a frequent polling timer interval & cause stuttering due to autoclearing memory
 
 ## Configure the Network Adapter
 
@@ -441,11 +447,11 @@ Feel free to skip this step as it is not required, Microsoft fixed the standby l
     
 - Disable **Exclusive Mode** in the Advanced section
 
-- I also like to set the sound scheme to no sounds in the Sounds tab
+- I also like to set the sound scheme to 'No sounds' in the Sounds tab
 
 ## Configure Services & Drivers
 
-The service list configuration is not intended for Wi-Fi & webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else
+The service list configuration is not intended for Wi-Fi & WebCam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming & use default services for everything else
 
 - Download [Service-List-Builder](https://github.com/amitxv/Service-List-Builder/releases)
 
@@ -465,9 +471,9 @@ The service list configuration is not intended for Wi-Fi & webcam functionality.
 
 ## Configure Device Manager
 
-Many devices in device manager will appear with a yellow icon as we ran the disable services script, **DO NOT** disable any device with a yellow icon however tempting it may be as as this will completely defeat the purpose of building toggle scripts. I would **highly** advise against asking other people for help with this step without context as they are almost guaranteed to tell you to "disable devices with a yellow icon" but as previously mentioned & i can not exaggerate this enough, this will completely defeat the purpose of building toggle scripts. I have reasons & specific methods for everything within this guide
+Many devices in the Device Manager will appear with a yellow icon, as we ran the disable services script, **DO NOT** disable any devices with a yellow icon. Although tempting, perhaps it will go completely against the purpose of building toggle scripts. I would **highly** advise against asking other people for help with this step without context, as they are almost guaranteed to tell you to 'disable devices with a yellow icon' but as previously mentioned this will completely defeat the purpose of building toggle scripts. I have reasons & specific methods for everything within this guide
 
-- Open device manager, **View > Devices by connection**
+- Open Device Manager, **View > Devices by connection**
 
     - Disable write-cache buffer flushing on all drives in the **Properties > Policies** section
 
@@ -501,7 +507,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
 ## Configure Control Panel
 
-- It is not a bad idea to skim through both the legacy control panel & immersive control panel to ensure nothing is misconfigured (only takes a few minutes)
+- It is not a bad idea to skim through both the legacy control panel & immersive control panel (Settings app) to ensure nothing is misconfigured (only takes a few minutes)
 
 ## Configure Power Options
 
@@ -511,18 +517,19 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     ```bat
 	powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
-	powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 	powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
 	powercfg -delete e9a42b02-d5df-448d-aa00-03f14749eb61
 	```
 
 - Open ``C:\prerequisites\PowerSettingsExplorer.exe`` & configure the following:
 
-    - Primary/Secondary NVMe Idle Timeout - Maximum
+    - Primary/Secondary NVMe Idle Timeout - Maximum (usually 60000)
 
     - NVMe NOPPME - Off
 
     - Allow Throttle States - Off
+    
+    - Allow Standby States - Off
 
     - USB 3 Link Powermanagement - Off
 
@@ -581,7 +588,7 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
 ## Configure FSE & QoS for Games
 
-- Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-gb/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors), however other users have claimed otherwise, my suggestion would be to test both & use whatever feels acceptable
+- Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-gb/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors). However other users have claimed otherwise, my suggestion would be to test both & use whatever feels acceptable
 
 - Configuring a QoS Policy will allow Windows to prioritize packets of an application over other devices on your network & PC
 
@@ -609,7 +616,7 @@ Now is a good time to install whatever programs & game launchers you commonly us
     - ``"%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"``
     - ``"%userprofile%\Downloads"``
 
-- Reset Firewall rules.
+- Reset Firewall rules
 
     - Open CMD & enter the command below
 
@@ -618,14 +625,14 @@ Now is a good time to install whatever programs & game launchers you commonly us
         Reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
 
-- Configure Disk Cleanup.
+- Configure Disk Cleanup
 
     - Open CMD & enter the command below, tick all of the boxes, press **OK**
 
         ```bat
         cleanmgr /sageset:50
         ```
-    - Run Disk Cleanup:
+    - Run Disk Cleanup
 
         ```bat
         cleanmgr /sagerun:50
@@ -649,7 +656,7 @@ Now is a good time to install whatever programs & game launchers you commonly us
 
     - Kill other processes that waste CPU time such as game clients
 
-- Don't run random tweaks, tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
+- Don't run random tweaks, tweaking programs or fall for the 'fps boost' marketing nonsense. If you have questions about a specific option or setting, just ask
 
 - Try to favour FOSS (free & open source software). Stay away from proprietary software where you can
 
