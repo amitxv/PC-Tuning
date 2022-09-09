@@ -114,9 +114,11 @@ C:\prerequisites\inspectre.exe
 
 This step is required as we removed the spyware stock start menu
 
-- Run **OpenShellSetup.exe** in ``C:\prerequisites\open-shell``
+Open CMD & enter the command below. It will install only OpenShell start menu
 
-    - Only install the **Open-Shell Menu**. Disable everything else to prevent installing bloatware
+```bat
+C:\prerequisites\open-shell\OpenShellSetup.exe /qn ADDLOCAL=StartMenu
+```
 
 - I have included a registry file that will apply a basic OpenShell skin along with a few other settings, feel free to use your own
 
