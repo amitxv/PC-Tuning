@@ -53,7 +53,7 @@ Generally, Windows 7 is superior for real-time tasks compared to its successors 
 
 Since it is quite tedious to obtain a Windows 10+ ISO with minimal updates, we can build our own using [UUP dump](https://uupdump.net)
 
-- Search for the Windows version you desire & download the latest instance
+- Search for the Windows version you desire & download the latest instance. Update should be non-security.
    
     <img src="../media/uupdump-search-image.png" width="750">
 
