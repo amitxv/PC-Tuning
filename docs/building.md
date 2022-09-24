@@ -83,7 +83,8 @@ Since it is quite tedious to obtain a Windows 10+ ISO with minimal updates, we c
     set "EXTRACTED_ISO=C:\Win10_21H2_English_x64"
     set "MOUNT_DIR=C:\temp"
     set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
-    if exist "%MOUNT_DIR%" (rd /s /q "%MOUNT_DIR%") & mkdir "%MOUNT_DIR%"
+    if exist "%MOUNT_DIR%" (rd /s /q "%MOUNT_DIR%")
+    mkdir "%MOUNT_DIR%"
     ```
 
 - If the environment was configured correctly, the commands below should return **true**
