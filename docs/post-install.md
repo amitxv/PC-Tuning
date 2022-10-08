@@ -61,13 +61,11 @@ slmgr /ato
 
 - Open the file explorer which is pinned to the taskbar & navigate to the volume Windows is installed on. You can identify this by finding the volume that has the **win-debloat.sh** script in
 
-- Right click an empty space & select **Open in Terminal**. This will open the bash terminal in the directory of the script for us so we do not need to CD to it manually. Use the command below to run the script
+- Right click an empty space & select **Open in Terminal**. This will open the bash terminal in the directory of the script for us so we do not need to CD to it manually. Use the command below to run the script. Script will automatically reboot the PC
 
     ```
     sudo bash win-debloat.sh
     ```
-
-- Once finished, restart to boot back into Windows
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist/releases)
 
