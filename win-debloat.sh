@@ -77,4 +77,5 @@ do
 done
 
 echo info: done
+reboot
 exit 0
