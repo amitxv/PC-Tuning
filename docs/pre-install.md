@@ -1,45 +1,36 @@
-# Pre-Installation Instructions
-
-## Activation
-
-Consider activating before configuring the image as the key will be permanently linked to your motherboard. This can be done with a legitimate key
+# Pre-Install Instructions
 
 ## Configure Partitions
 
-It is recommended to configure at least a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate work & gaming environments. This way you will not be forced to install bloatware on your gaming partition & full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management
+Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate work/bloatware and gaming environments. This way you will not be forced to install bloatware on your gaming partition (such as mouse software as previously mentioned) and full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management.
 
-## Obtaining a Base Image
+## Create the Base ISO
 
-The post-installation instructions are based on configuring a stock Windows image along a few modifications made to the image beforehand
+Generally, Windows 7 is superior for real-time tasks compared to its successors but lacks driver support for modern hardware so drivers must be integrated manually. In some cases, you may not be able to find USB drivers at all on newer platforms (it is recommended to check if you can get hold of them 
+in advance of building the ISO, see the [Integrate and Obtain Drivers](./building.md#integrate-and-obtain-drivers) section for details on finding drivers). Earlier versions of Windows lack GPU driver and anticheat support so some users are forced on newer builds. Microsoft implemented a fixed 10mHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier but many users reported worse performance. Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png) (which you should sell). Microsoft changed how timer resolution functions as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change/) on Windows 10 2004+ and was [further developed in Windows 11](../media/windows11-timeapi-changes.png) which is an attempt to improve power efficiency.
 
-- See [docs/building.md](../docs/building.md) to create the base image
+- See [docs/building.md](../docs/building.md)
 
-## Preparing the USB
+## Prepare the USB
 
-- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) & [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php) if you have not already
+- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 
-- Insert your USB stick into a USB port & extract Ventoy
-
-- Open **Ventoy2Disk.exe**,  go to **Option > Partition Style** & select GPT (UEFI) or MBR (Legacy)
+- Plug in your USB storage and launch **Ventoy2Disk.exe**. Go to **Option > Partition Style** and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install
 
     - See [media/identify-bios-mode.png](../media/identify-bios-mode.png)
 
-- Select your USB storage & press install
+- Move the Linux Mint ISO file into the USB storage in file explorer
 
-- Once Ventoy has installed on your USB storage device, simply drag & drop the Linux Mint ISO file into the USB in file explorer
+## Boot Into the ISO
 
-## Booting Into the Image
+For the next steps, it is imperative that you unplug your Ethernet cable and are not connected to the Internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates. Moving onward, you will need to open [docs/post-install.md](./post-install.md) on another device (phone) to follow up until a web browser is installed. After that you can open the guide on the same operating system you are configuring.
 
-For the next steps, it is **vital** that you unplug your ethernet cable & are not connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE & will prevent Windows from fetching updates
+- Install using a USB storage device:
 
-You can either:
-
-- Use a USB:
-
-    - Drag & drop the ISO into the same location where Linux Mint is & select the USB storage device in the boot options in BIOS
-
+    - Place the ISO into the same location where the Linux Mint ISO is and select the USB storage device in the boot options in BIOS
     - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step
+    - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press **Shift + F10** to open CMD then type **regedit**. Go to **File -> Import...** and import the **bypass-windows11-checks.reg** registry file
 
-- Use DISM Apply-Image:
+- Install using DISM Apply-Image (without a USB storage device):
 
-    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) & assign it a drive letter. Extract the image & run **install.bat**
+    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign it a drive letter. Extract the ISO if required and launch **install.bat**

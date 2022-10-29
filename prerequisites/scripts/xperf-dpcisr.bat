@@ -6,8 +6,8 @@ dism > nul 2>&1 || echo error: administrator privileges required && pause && exi
 where xperf.exe
 if not !errorlevel! == 0 (
     echo error: xperf not found in path
-	echo info: press any key to continue
-	pause > nul 2>&1
+    echo info: press any key to continue
+    pause > nul 2>&1
     exit /b 1
 )
 

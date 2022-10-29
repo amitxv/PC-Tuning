@@ -40,14 +40,14 @@ pip install pyinstaller==5.1
 copy /y "!CURRENT_DIR!\disable-tasks.py" "!PROJECT_DIR!"
 cd "!PROJECT_DIR!"
 
-pyinstaller "disable-tasks.py" --onefile
+pyinstaller ".\disable-tasks.py" --onefile
 
 call "!BUILD_ENV!\Scripts\deactivate.bat"
 
 cd "!CURRENT_DIR!"
 
-if exist "disable-tasks.exe" (
-    del /f /q "disable-tasks.exe"
+if exist ".\disable-tasks.exe" (
+    del /f /q ".\disable-tasks.exe"
 )
 
 move "!PROJECT_DIR!\dist\disable-tasks.exe" "!CURRENT_DIR!"

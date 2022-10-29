@@ -1,26 +1,34 @@
 # EVA
 
-A highly structured & technical hardware, BIOS & Windows optimization guide.
+Windows oriented performance, privacy and latency tuning guide.
 
-[![Discord](https://discord.com/api/guilds/994887453599076422/widget.png?style=shield)](https://discord.gg/yrAnChXXZw) [![Twitter Follow](https://img.shields.io/twitter/follow/amitxv?label=Follow%20me%20for%20updates%21&style=social)](https://twitter.com/amitxv)
+Contact: https://twitter.com/amitxv
+
+## Introduction
+
+The custom ISO from the previous project is discontinued so please do not ask for it as it has been recreated with malware. Although I have chosen to keep the old project's name for the new project, nothing is branded such as the resources included in the repository.
+
+I have tried my best to provide technical references, my own research and a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with settings in the future.
+
+The guidance is currently updated and has been tested on Windows 7 through to Windows 11. See a full list of [issues](https://github.com/amitxv/EVA/issues).
 
 ## Requirements
 
-- USB Storage Device (8gb minimum)
+- USB Storage Device (8GB minimum)
 - [Ventoy](https://github.com/ventoy/Ventoy/releases)
 - [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 - Familiarity with the command-line interface
-- Ethernet & at least one SSD/NVME
+- Ethernet and at least one SSD/NVME
 
 ## Physical Setup
 
 - See [docs/physical-setup.md](./docs/physical-setup.md)
 
-## Pre-Installation Instructions
+## Pre-Install Instructions
 
 - See [docs/pre-install.md](./docs/pre-install.md)
 
-## Post-Installation Instructions
+## Post-Install Instructions
 
 - See [docs/post-install.md](./docs/post-install.md)
 
@@ -28,13 +36,10 @@ A highly structured & technical hardware, BIOS & Windows optimization guide.
 
 - See [docs/research.md](./docs/research.md)
 
-## Credits
+## Further Reading
 
-The following projects & people deserve recognition for their research, knowledge & overall contribution to the community. Please note that this guide may contain information similar to those of the projects listed below however it is not my intention to directly copy from them, in some circumstances it is unavoidable
+- [BoringBoredom/PC-Optimization-Hub](https://github.com/BoringBoredom/PC-Optimization-Hub)
 
-- [AME](https://ameliorated.info/)
-- [Bored](https://github.com/BoringBoredom/PC-Optimization-Hub)
-- [Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
-- [Phlegm](https://twitter.com/getggos)
-- [Revision](https://sites.google.com/view/meetrevision)
-- [Timecard](https://github.com/djdallmann/GamingPCSetup/)
+- [Calypto's Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
+
+- [djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)

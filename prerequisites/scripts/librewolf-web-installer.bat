@@ -2,23 +2,23 @@
 setlocal EnableDelayedExpansion
 
 set "aria2c=C:\prerequisites\aria2c.exe"
-set "link=https://gitlab.com/librewolf-community/browser/windows/uploads/d96a60d617eb1c8ddd5fb91c665eaab5/librewolf-103.0-3.en-US.win64-setup.exe"
-set "sha1=2e750bb589f3952061de989efe8ebca56bd6fd4c"
-set "file_name=librewolf-103.0-3.en-US.win64-setup.exe"
+set "link=https://gitlab.com/librewolf-community/browser/windows/uploads/84cd64c0f5d248fa26a9715496b97c89/librewolf-106.0.1-1.en-US.win64-setup.exe"
+set "sha1=09516fafc361af6e3eb5ea041b43a7239bb53019"
+set "file_name=librewolf-106.0.1-1.en-US.win64-setup.exe"
 set "working_dir=!temp!\librewolf"
 
 ping archlinux.org > nul 2>&1
 if not !errorlevel! == 0 (
     echo error: no internet connection
-	echo info: press any key to continue
-	pause > nul 2>&1
+    echo info: press any key to continue
+    pause > nul 2>&1
     exit /b 1
 )
 
 if not exist "!aria2c!" (
     echo error: !aria2c! not exists
-	echo info: press any key to continue
-	pause > nul 2>&1
+    echo info: press any key to continue
+    pause > nul 2>&1
     exit /b 1
 )
 
@@ -32,8 +32,8 @@ echo info: downloading librewolf
 
 if not exist "!working_dir!\!file_name!" (
     echo error: download unsuccessful, please download librewolf manually
-	echo info: press any key to continue
-	pause > nul 2>&1
+    echo info: press any key to continue
+    pause > nul 2>&1
     exit /b 1
 )
 
