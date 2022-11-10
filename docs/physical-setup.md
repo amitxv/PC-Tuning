@@ -4,7 +4,7 @@
 
 - Ethernet and at least one SSD/NVME is a requirement
 
-- See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
+- See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4)
 
 - Avoid Ryzen as its architecture does not allow for low RAM latencies when compared to Intel as of 2022
 
@@ -25,7 +25,7 @@
 
 - Invest in non-RGB fans with a high static pressure
 
-    - See [PC Fans | Calypto](https://docs.google.com/spreadsheets/d/1AydYHI_M6ov9a3OgVuYXhLEGps0J55LniH9htAHy2wU/edit)
+    - See [PC Fans | Calypto](https://docs.google.com/spreadsheets/d/1AydYHI_M6ov9a3OgVuYXhLEGps0J55LniH9htAHy2wU)
 
 - Ensure not to overload the motherboard fan header if you are using splitters
 
