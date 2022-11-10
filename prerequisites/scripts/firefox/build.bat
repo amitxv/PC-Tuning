@@ -2,7 +2,6 @@
 setlocal EnableDelayedExpansion
 
 :: Requirements
-::
 :: - Python 3.8.6 preferred
 :: - 7-Zip
 
