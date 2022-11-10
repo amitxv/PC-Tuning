@@ -2,7 +2,7 @@
 
 ## Strip and Install the Driver
 
-I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/Download/driverResults.aspx/180606), [Windows 10+](https://www.nvidia.com/download/driverResults.aspx/180555/en-us)) as it is the latest non-DCH driver. The latest DCH driver now ships with the NVIDIA control panel, Windows Store is no longer required to install it so feel free to use it on Windows 10+.
+I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/Download/driverResults.aspx/180606/en-us), [Windows 10+](https://www.nvidia.com/download/driverResults.aspx/180555/en-us)) as it is the latest non-DCH driver. The latest DCH driver now ships with the NVIDIA control panel, Windows Store is no longer required to install it so feel free to use it on Windows 10+.
 
 - Extract the driver executable package with 7-Zip and remove all files and folders **except** the following:
 
@@ -32,7 +32,7 @@ I recommend using the 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/Downl
 
 - Run setup.exe to install the driver
 
-    - If setup fails however you followed the steps above correctly, try redownload the driver and follow the steps again. Some users have reported this is due to a corrupted download
+    - If setup fails however you followed the steps above correctly, try redownloading the driver and follow the steps again. Some users have reported this is due to a corrupted download
 
 - Open CMD and enter the commands below to disable telemetry
 
@@ -65,7 +65,7 @@ HDCP Can be disabled with the [following registry key](https://github.com/djdall
     - Low Latency Mode - On (limits prerendered frames to 1)
     - Power management mode - Prefer maximum performance
     - Texture filtering - Quality - High performance
-    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to benchmark it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
+    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to benchmark it yourself. You should also consider whether or not you are already CPU bottlenecked if you do, choose to enable this setting
 
 - In the **Display > Adjust Desktop size and position** section, set the scaling mode to **No Scaling** and set perform scaling on to **Display**. Configure your resolution and refresh rate
 
