@@ -546,6 +546,17 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
     - Run the ``C:\prerequisites\scripts\fse-qos-for-game-exes.bat`` script and follow the instructions in the console output
 
+## Configure Powershell and .NET Telemetry
+- Open CMD & enter the commands below to opt out of PowerShell & .NET data collection.
+
+    ```bat
+    setx POWERSHELL_TELEMETRY_OPTOUT "1"
+    ```
+    
+    ```bat
+    setx DOTNET_CLI_TELEMETRY_OPTOUT "1"
+    ```
+
 ## Configure Default Programs
 
 Configure default programs in **Settings -> Apps**.
