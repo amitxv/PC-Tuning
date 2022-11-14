@@ -84,6 +84,7 @@ def main() -> int:
     defaultPref("browser.search.suggest.enabled", false);
     defaultPref("reader.parse-on-load.enabled", false);
     defaultPref("beacon.enabled", false);
+    defaultPref("datareporting.policy.dataSubmissionEnabled", false);
     """
 
     try:
