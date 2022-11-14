@@ -83,6 +83,7 @@ def main() -> int:
     defaultPref("nglayout.enable_drag_images", false);
     defaultPref("browser.search.suggest.enabled", false);
     defaultPref("reader.parse-on-load.enabled", false);
+    defaultPref("beacon.enabled", false);
     """
 
     try:
