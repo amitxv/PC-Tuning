@@ -1,2 +1,5 @@
 # perform LF normalization
 win-debloat.sh text eol=lf
+
+# perform CRLF normalization on bat scripts
+*.bat eol=crlf
