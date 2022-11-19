@@ -10,32 +10,6 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense]
 
-; remove pin to start from context menu as we will be using open shell
-
-[-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
-
-[-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\PintoStartScreen]
-
-[-HKEY_CLASSES_ROOT\Microsoft.Website\ShellEx\ContextMenuHandlers\PintoStartScreen]
-
-[-HKEY_CLASSES_ROOT\mscfile\shellex\ContextMenuHandlers\PintoStartScreen]
-
-; remove 3d objects from explorer pane
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
-
-; remove pin to quick access in context menu
-
-[-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
-
-; remove share in context menu
-
-[-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ModernSharing]
-
 ; disable windows update
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
@@ -62,14 +36,9 @@ Windows Registry Editor Version 5.00
 "Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
-"IncludeRecommendedUpdates"=dword:00000000
 "AUOptions"=dword:00000001
 "SetupWizardLaunchTime"=-
 "AcceleratedInstallRequired"=-
-"ElevateNonAdmins"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
-"ExcludeWUDriversInQualityUpdate"=dword:00000001
 
 ; set user account control to never notify
 
@@ -81,11 +50,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
 "MaintenanceDisabled"=dword:00000001
 
-; disable fast startup
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
-"HiberbootEnabled"=dword:00000000
-
 ; allocate processor resources primarily to programs
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
@@ -96,16 +60,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
 "HibernateEnabled"=dword:00000000
 "HibernateEnabledDefault"=dword:00000000
-
-; disable telemetry
-; do not show feedback notifications
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
-"AllowTelemetry"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
-"AllowTelemetry"=dword:00000000
-"DoNotShowFeedbackNotifications"=dword:00000001
 
 ; do not configure encrypted drives
 
@@ -135,11 +89,9 @@ Windows Registry Editor Version 5.00
 "AutoEndTasks"="1"
 
 ; turn off display of recent search entries in the file explorer search box
-; remove notifications and action center
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
-"DisableNotificationCenter"=dword:00000001
 
 ; disable shake to minimize
 ; disable tooltips in file explorer
@@ -188,15 +140,15 @@ Windows Registry Editor Version 5.00
 
 ; enable firewall, disable file sharing
 
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
 "DisableNotifications"=dword:00000001
 "EnableFirewall"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
 "DisableNotifications"=dword:00000001
 "EnableFirewall"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile]
 "EnableFirewall"=dword:00000001
 
 ; disable search indexing
@@ -215,7 +167,7 @@ Windows Registry Editor Version 5.00
 
 ; allow windows to automatically sync time
 
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W32Time\Parameters]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters]
 "Type"="NTP"
 
 ; disable windows error reporting
@@ -227,15 +179,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
-
-; disable hibernate option
-; disable lock option
-; disable sleep option
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]
-"ShowHibernateOption"=dword:00000000
-"ShowLockOption"=dword:00000000
-"ShowSleepOption"=dword:00000000
 
 ; disable autoplay
 
@@ -326,17 +269,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "HubMode"=dword:00000001
 "SmartScreenEnabled"="Off"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
-"Enabledv9"=dword:00000000
-"PreventOverride"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\PhishingFilter]
-"Enabledv9"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
-"EnableWebContentEvaluation"=dword:00000000
-"PreventOverride"=dword:00000000
+"SmartScreenEnabled"="Off"
 
 ; disable automatic setup of network devices
 
@@ -361,12 +294,10 @@ Windows Registry Editor Version 5.00
 
 ; apply the default account picture to all users
 ; remove the security and maintenance icon
-; disables retrieval of online tips and help in the immersive control panel
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
 "HideSCAHealth"=dword:00000001
-"AllowOnlineTips"=dword:00000000
 
 ; do not allow themes to change desktop icons
 ; do not allow themes to change mouse pointers
@@ -439,129 +370,18 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Classes\.jxr]
 @="PhotoViewer.FileAssoc.Tiff"
 
-; do not sync
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
-"DisableSettingSync"=dword:00000002
-"DisableSettingSyncUserOverride"=dword:00000001
-
-; turn off the advertising id
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo]
-"DisabledByGroupPolicy"=dword:00000001
-
-; disable website access to language list
-
-[HKEY_CURRENT_USER\Control Panel\International\User Profile]
-"HttpAcceptLanguageOptOut"=dword:00000001
-
-; disable license telemetry
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
-"NoGenTicket"=dword:00000001
-
-; disable search the web or display web results in Search
-; disable cloud search
-; disable cortana
-; do not allow search and cortana to use location
 ; do not allow web search
 ; allow indexing of encrypted files
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"ConnectedSearchUseWeb"=dword:00000000
-"AllowCloudSearch"=dword:00000000
-"AllowCortana"=dword:00000000
-"AllowSearchToUseLocation"=dword:00000000
 "DisableWebSearch"=dword:00000001
 "AllowIndexingEncryptedStoresOrItems"=dword:00000000
 
-; disable inking and typing personalization
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
-"AcceptedPrivacyPolicy"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore]
-"HarvestContacts"=dword:00000000
+; turn off automatic learning
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
 "RestrictImplicitInkCollection"=dword:00000001
 "RestrictImplicitTextCollection"=dword:00000001
-
-; disable safe search
-; disable device search history
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
-"SafeSearchMode"=dword:00000000
-"IsDeviceSearchHistoryEnabled"=dword:00000000
-
-; disable bing search
-; disable cortana in search
-; disable cortana displays history
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
-"BingSearchEnabled"=dword:00000000
-"CortanaConsent"=dword:00000000
-"CortanaInAmbientMode"=dword:00000000
-"HistoryViewEnabled"=dword:00000000
-"HasAboveLockTips"=dword:00000000
-
-; disable activity feed
-; disable continue experiences on this device
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-"EnableActivityFeed"=dword:00000000
-"EnableCdp"=dword:00000000
-
-; disable microsoft consumer experiences
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsConsumerFeatures"=dword:00000001
-
-; do not let windows apps run in the background
-; do not let windows apps access notifications
-; do not let windows apps control radios
-; do not let windows apps access diagnostic information about other apps
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
-"LetAppsRunInBackground"=dword:00000002
-"LetAppsAccessNotifications"=dword:00000002
-"LetAppsAccessRadios"=dword:00000002
-"LetAppsGetDiagnosticInfo"=dword:00000002
-
-; disable notifications network usage
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
-"NoCloudApplicationNotification"=dword:00000001
-
-; prevent edge from installing automatically
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
-"DoNotUpdateToEdgeWithChromium"=dword:00000001
-
-; prevent auto updating store apps
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-"AutoDownload"=dword:00000002
-
-; disable automatic update of speech data on windows
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences]
-"ModelDownloadAllowed"=dword:00000000
-
-; disable archiving infrequently used apps
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
-"AllowAutomaticAppArchiving"=dword:00000000
-
-; disable windows spotlight features
-
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsSpotlightFeatures"=dword:00000001
-"ConfigureWindowsSpotlight"=dword:00000002
-"IncludeEnterpriseSpotlight"=dword:00000000
-"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
-"DisableWindowsSpotlightOnActionCenter"=dword:00000001
-"DisableWindowsSpotlightOnSettings"=dword:00000001
 
 ; disable automatic registry backup
 
@@ -585,111 +405,6 @@ Windows Registry Editor Version 5.00
 "NotifyOnUsbErrors"=dword:00000000
 "NotifyOnWeakCharger"=dword:00000000
 
-; disable access to the store
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-"NoUseStoreOpenWith"=dword:00000001
-
-; disable suggested content in the immersive control panel
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-"SubscribedContent-353694Enabled"=dword:00000001
-"SubscribedContent-353696Enabled"=dword:00000001
-"SubscribedContent-338393Enabled"=dword:00000001
-
-; configure privacy settings in the immersive control panel
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps]
-"AgentActivationOnLockScreenEnabled"=dword:00000000
-"AgentActivationEnabled"=dword:00000000
-"AgentActivationLastUsed"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
-"Value"="Deny"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
-"Value"="Deny"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
-"Value"="Deny"
-
-; disable automatic updates for offline maps
-
-[HKEY_LOCAL_MACHINE\System\Maps]
-"AutoUpdateEnabled"=dword:00000000
-
 ; disable transparency effects
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
@@ -700,19 +415,14 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
 "OsuRegistrationStatus"=dword:00000000
 
-; disable windows default printer management
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
-"LegacyDefaultPrinterMode"=dword:00000001
-
 ; disable spell checking features
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\TabletTip\1.7]
-"EnableSpellchecking"=dword:00000000
+"EnableSpellChecking"=dword:00000000
 "EnableTextPrediction"=dword:00000000
 "EnablePredictionSpaceInsertion"=dword:00000000
 "EnableDoubleTapSpace"=dword:00000000
-"EnableAutocorrection"=dword:00000000
+"EnableAutoCorrection"=dword:00000000
 
 ; disable notifications
 
@@ -739,13 +449,6 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 00,51,00,75,00,69,00,65,00,74,00,48,00,6F,00,75,00,72,00,73,00,50,00,72,00,\
 6F,00,66,00,69,00,6C,00,65,00,2E,00,41,00,6C,00,61,00,72,00,6D,00,73,00,4F,\
 00,6E,00,6C,00,79,00,C2,28,01,CA,50,00,00
-
-; disable ask before automatically switching to tablet mode
-; use dekstop mode after signing in
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell]
-"ConvertibleSlateModePromptPreference"=dword:00000000
-"SignInMode"=dword:00000001
 
 ; disable sticky keys
 
