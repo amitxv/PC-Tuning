@@ -20,7 +20,17 @@ def main() -> int:
     sch_tasks = []
 
     to_disable = [
-        "update",
+        "pcapatchdbtask",
+		"appuriverifierdaily",
+		"appuriverifierinstall",
+		"smartretry",
+		"usb-notifications",
+		"cellular",
+		"xblgamesave",
+		"cachetask",
+		"queuereporting",
+		"mui",
+		"update",
         "maps",
         "helloface",
         "customer experience improvement program",
@@ -49,7 +59,7 @@ def main() -> int:
         "diagnosis",
         "file history",
         "bgtaskregistrationmaintenancetask",
-        "autochk\\proxy",
+        "proxy",
         "siuf",
         "device information",
         "edp policy manager"
