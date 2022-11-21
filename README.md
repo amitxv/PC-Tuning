@@ -40,4 +40,4 @@ The guidance is currently updated and has been tested on Windows 7 through to Wi
 
 - [BoringBoredom/PC-Optimization-Hub](https://github.com/BoringBoredom/PC-Optimization-Hub)
 - [Calypto&#39;s Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4)
-- [djdallmann/GamingPCSetu](https://github.com/djdallmann/GamingPCSetup)p
+- [djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)
