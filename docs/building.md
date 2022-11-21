@@ -2,7 +2,7 @@
 
 ## Build Requirements
 
-- [7-Zip](https://www.7-zip.org)
+- [7-Zi](https://www.7-zip.org)p
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the program in ``C:\Windows``
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools only
 
