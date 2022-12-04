@@ -1,2 +1,7 @@
 # perform LF normalization
 win-debloat.sh text eol=lf
+
+# batch scripts only support clrf
+# prevents conversion from Git/GitHub
+*.bat text eol=crlf
+*.cmd text eol=crlf
