@@ -113,9 +113,6 @@ Windows Registry Editor Version 5.00
 "ShowSyncProviderNotifications"=dword:00000000
 "HideFileExt"=dword:00000000
 "LaunchTo"=dword:00000001
-"SnapAssist"=dword:00000000
-"SnapFill"=dword:00000000
-"JointResize"=dword:00000000
 "Start_TrackDocs"=dword:00000000
 "Start_TrackProgs"=dword:00000000
 
