@@ -50,7 +50,7 @@
 
     - Ryzen systems have a USB port that is directly connected to the CPU which can be identified through the motherboard manual
 
-- If you have more than one USB controller, you can isolate devices such as DACs, headsets and other devices onto another controller to prevent them interfering with polling consistency
+- If you have more than one USB controller, you can isolate devices such as DACs, headsets and other devices onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
 
 ## Configure Peripherals
 
