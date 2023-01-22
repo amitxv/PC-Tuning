@@ -482,7 +482,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
 - Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
 
-- Ensure that there is no IRQ sharing on your system by checking win + r, **msinfo32**, **Hardware Resources -> Conflicts/Sharing** section
+- Although this carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by checking win + r, **msinfo32**, **Hardware Resources -> Conflicts/Sharing** section
 
 ## Interrupt Affinity
 

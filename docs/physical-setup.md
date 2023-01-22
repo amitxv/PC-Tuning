@@ -14,6 +14,8 @@ Overall, the guide is centered around the software and operating system aspect o
 
     - See [media/gpuz-bus-interface.png](../media/gpuz-bus-interface.png)
 
+- IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by checking win + r, **msinfo32**, **Hardware Resources -> Conflicts/Sharing** section
+
 ## Cooling
 
 - Remove the side panels from your case or consider not using one entirely (open bench)
