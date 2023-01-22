@@ -554,23 +554,18 @@ Configure default programs in **Settings -> Apps**.
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
     - ``"C:\"``
-    - ``"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"``
-    - ``"C:\Program Files"``
-    - ``"C:\ProgramData"``
     - ``"C:\Windows\Prefetch"``
     - ``"C:\Windows\SoftwareDistribution\download"``
     - ``"C:\Windows\Temp"``
-    - ``"%userprofile%\AppData"``
     - ``"%userprofile%\AppData\Local\Temp"``
-    - ``"%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"``
     - ``"%userprofile%\Downloads"``
 
     OR
 
-    - Open CMD and the command below to open all folders listed above at once
+    - Open CMD and enter the command below to open all folders listed above at once
 
         ```bat
-        for %a in ("C:\", "C:\ProgramData\Microsoft\Windows\Start Menu\Programs", "C:\Program Files", "C:\ProgramData", "C:\Windows\Prefetch", "C:\Windows\SoftwareDistribution\download", "C:\Windows\Temp", "%userprofile%\AppData", "%userprofile%\AppData\Local\Temp", "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs", "%userprofile%\Downloads") do (explorer %a)
+        for %a in ("C:\", "C:\Windows\Prefetch", "C:\Windows\SoftwareDistribution\download", "C:\Windows\Temp", "%userprofile%\AppData\Local\Temp", "%userprofile%\Downloads") do (explorer %a)
         ```
 
 - Clear the PATH user environment variable of locations pointing to Windows bloatware folders
