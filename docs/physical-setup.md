@@ -1,5 +1,7 @@
 # Physical Setup
 
+Overall, the guide is centered around the software and operating system aspect of real-time optimization but this section contians a non-exhaustive list of steps you should carry out before doing so. See the resources in the [Further Reading](/README.md#further-reading) section to explore deeper into the topic.
+
 ## Hardware
 
 - Ethernet and at least one SSD/NVMe is a requirement
@@ -111,7 +113,7 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
 - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
 
-    - Residuals should match, otherwise it may be a sign of instability
+    - Residuals should match, otherwise it is a sign of instability
     - GFLOP variation should be minimal
     - Use a range of problem sizes while testing for stability
 
