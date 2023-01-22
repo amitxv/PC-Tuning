@@ -442,17 +442,6 @@ C:\bin\scripts\disable-pnp-powersaving.ps1
 C:\bin\scripts\disable-driver-powersaving.bat
 ```
 
-## Configure Event Trace Sessions
-
-Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be ran with NSudo. The sessions can be viewed in win + r, **perfmon -> Data Collector Sets -> Event Trace Sessions**.
-
-```bat
-reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
->> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00
->> "C:\ets-disable.reg" echo.
->> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
-```
-
 ## Optimize the File System
 
 Open CMD and enter the commands below.
