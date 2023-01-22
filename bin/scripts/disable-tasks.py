@@ -1,23 +1,20 @@
-import sys
 import os
 import subprocess
 import io
 import ctypes
 
 
-def main() -> int:
-    """program entrypoint"""
-
+def main():
     if not ctypes.windll.shell32.IsUserAnAdmin():
         print("error: administrator privileges required")
-        return 1
+        return
 
     nsudo_path = "C:\\bin\\NSudo.exe"
     if not os.path.exists(nsudo_path):
         print(f"error: {nsudo_path} not exists")
-        return 1
+        return
 
-    subprocess_null = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
+    stdnull = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
     sch_tasks = []
 
     to_disable = [
@@ -73,7 +70,7 @@ def main() -> int:
         for task in sch_tasks:
             if wildcard in task:
                 schtasks_args = ["schtasks", "/change", "/disable", "/tn", task]
-                subprocess.run(schtasks_args, check=False, **subprocess_null)
+                subprocess.run(schtasks_args, check=False, **stdnull)
                 subprocess.run(
                     [
                         nsudo_path,
@@ -83,13 +80,11 @@ def main() -> int:
                         *schtasks_args,
                     ],
                     check=False,
-                    **subprocess_null,
+                    **stdnull,
                 )
 
     print("info: done")
 
-    return 0
-
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

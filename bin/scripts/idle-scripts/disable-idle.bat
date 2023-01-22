@@ -6,4 +6,4 @@ powercfg /setactive scheme_current
 echo info: done
 echo info: press any key to continue
 pause > nul 2>&1
-exit /b 0
+exit /b

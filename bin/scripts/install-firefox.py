@@ -1,5 +1,4 @@
 from urllib import request, error
-import sys
 import ctypes
 import os
 import subprocess
@@ -9,12 +8,10 @@ import json
 import ssl
 
 
-def main() -> int:
-    """program entrypoint"""
-
+def main():
     if not ctypes.windll.shell32.IsUserAnAdmin():
         print("error: administrator privileges required")
-        return 1
+        return
 
     # https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
     ssl._create_default_https_context = ssl._create_unverified_context
@@ -24,24 +21,18 @@ def main() -> int:
         request.urlopen("https://archlinux.org")
     except error.URLError:
         print("error: no internet connection")
-        return 1
+        return
 
-    subprocess_null = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
+    stdnull = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
     setup = f"{os.environ['TEMP']}\\FirefoxSetup.exe"
-    download_link = (
-        "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
-    )
+    download_link = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
     install_dir = "C:\\Program Files\\Mozilla Firefox"
     policies = f"{install_dir}\\distribution\\policies.json"
     autoconfig = f"{install_dir}\\defaults\\pref\\autoconfig.js"
     firefox_cfg = f"{install_dir}\\firefox.cfg"
 
-    with request.urlopen(
-        "https://product-details.mozilla.org/1.0/firefox_versions.json"
-    ) as url:
-        latest_firefox_version = json.loads(url.read().decode())[
-            "LATEST_FIREFOX_VERSION"
-        ]
+    with request.urlopen("https://product-details.mozilla.org/1.0/firefox_versions.json") as url:
+        latest_firefox_version = json.loads(url.read().decode())["LATEST_FIREFOX_VERSION"]
 
     with request.urlopen(
         f"https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/{latest_firefox_version}/SHA256SUMS"
@@ -106,7 +97,7 @@ def main() -> int:
 
         if local_version == latest_firefox_version:
             print(f"info: latest version {latest_firefox_version} already installed")
-            return 0
+            return
 
     if os.path.exists(setup):
         os.remove(setup)
@@ -121,14 +112,12 @@ def main() -> int:
 
             if sha256 not in setup_sha256:
                 print("error: hash mismatch, corrupted download")
-                return 1
+                return
     except FileNotFoundError:
         print("error: download unsuccessful")
-        return 1
+        return
 
-    subprocess.run(
-        ["taskkill", "/F", "/IM", "firefox.exe"], **subprocess_null, check=False
-    )
+    subprocess.run(["taskkill", "/F", "/IM", "firefox.exe"], **stdnull, check=False)
 
     print("info: installing firefox")
     subprocess.run([setup, "/S", "/MaintenanceService=false"], check=False)
@@ -163,8 +152,6 @@ def main() -> int:
     )
     print("info: done")
 
-    return 0
-
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

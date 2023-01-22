@@ -6,7 +6,7 @@ if not !errorlevel! == 0 (
     echo error: WMI Service is disabled
     echo info: press any key to continue
     pause > nul 2>&1
-    exit /b 1
+    exit /b
 )
 
 for %%a in ("Win32_VideoController" "Win32_NetworkAdapter") do (
@@ -20,4 +20,4 @@ for %%a in ("Win32_VideoController" "Win32_NetworkAdapter") do (
 
 echo info: press any key to continue
 pause > nul 2>&1
-exit /b 0
+exit /b

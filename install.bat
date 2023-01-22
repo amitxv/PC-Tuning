@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
 
 pushd "%~dp0"
 
@@ -15,7 +15,7 @@ if exist "sources\install.wim" (
         echo error: directory does not appear to be a windows image
         echo info: press any key to continue
         pause > nul 2>&1
-        exit /b 1
+        exit /b
     )
 )
 

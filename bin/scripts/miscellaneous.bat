@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
 
 echo info: disabling fast startup
 powercfg /hibernate off
@@ -51,4 +51,4 @@ if exist "!windir!\SysWOW64\OneDriveSetup.exe" (
 echo info: done
 echo info: press any key to continue
 pause > nul 2>&1
-exit /b 0
+exit /b

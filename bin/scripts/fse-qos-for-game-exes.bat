@@ -2,7 +2,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b 1
+DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
 
 mode 300, 1000
 
@@ -47,7 +47,7 @@ if defined binary_path (
 
         echo info: press any key to continue
         pause > nul 2>&1
-        exit /b 0
+        exit /b
     )
 )
 

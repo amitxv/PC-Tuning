@@ -11,7 +11,7 @@ if not !errorlevel! == 0 (
     echo error: no internet connection
     echo info: press any key to continue
     pause > nul 2>&1
-    exit /b 1
+    exit /b
 )
 
 set "err=0"
@@ -25,7 +25,7 @@ for %%a in (
         echo error: %%~a not found in path
     )
 )
-if not !err! == 0 exit /b 1
+if not !err! == 0 exit /b
 
 set "current_dir=%~dp0"
 set "current_dir=!current_dir:~0,-1!"
@@ -46,7 +46,7 @@ for %%a in ("python-embed.zip" "get-pip.py") do (
         echo error: %%~a download failed
     )
 )
-if not !err! == 0 exit /b 1
+if not !err! == 0 exit /b
 
 for /f "delims=" %%a in ('certutil -hashfile "!temp!\python-embed.zip" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
     set "file_sha1=%%a"
@@ -56,7 +56,7 @@ set "file_sha1=!file_sha1: =!"
 if not "!file_sha1!" == "855de5c4049ee9469da03d0aac8d3b4ca3e29af5" (
     echo error: sha1 mismatch, binary may be corrupted
     pause > nul 2>&1
-    exit /b 1
+    exit /b
 )
 
 if exist "!current_dir!\python" (
@@ -79,4 +79,4 @@ for %%a in ("python-embed.zip" "get-pip.py") do (
 echo info: done
 echo info: press any key to continue
 pause > nul 2>&1
-exit /b 0
+exit /b
