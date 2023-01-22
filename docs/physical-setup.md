@@ -16,6 +16,10 @@ Overall, the guide is centered around the software and operating system aspect o
 
 - IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by checking win + r, **msinfo32**, **Hardware Resources -> Conflicts/Sharing** section
 
+- Bufferbloat is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets. [Measure](https://www.waveform.com/tools/bufferbloat) and minimize it
+
+    - See [What Can I Do About Bufferbloat?](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat)
+
 ## Cooling
 
 - Remove the side panels from your case or consider not using one entirely (open bench)
