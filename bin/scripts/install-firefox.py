@@ -128,23 +128,21 @@ def main():
         if os.path.exists(file):
             os.remove(file)
 
-    # remove files before creating them again
-    for file in [setup, policies, autoconfig, firefox_cfg]:
-        if os.path.exists(file):
-            os.remove(file)
+    if os.path.exists(setup):
+        os.remove(setup)
 
     print("info: importing policies.json")
     os.makedirs(f"{install_dir}\\distribution", exist_ok=True)
 
-    with open(policies, "a", encoding="utf-8") as file:
+    with open(policies, "w", encoding="utf-8") as file:
         json.dump(policies_content, file, indent=4)
 
     print("info: importing autoconfig.js")
-    with open(autoconfig, "a", encoding="utf-8", newline="\n") as file:
+    with open(autoconfig, "w", encoding="utf-8", newline="\n") as file:
         file.writelines(textwrap.dedent(autoconfig_content))
 
     print("info: importing firefox.cfg")
-    with open(firefox_cfg, "a", encoding="utf-8") as file:
+    with open(firefox_cfg, "w", encoding="utf-8") as file:
         file.writelines(textwrap.dedent(firefox_cfg_content))
 
     print(
