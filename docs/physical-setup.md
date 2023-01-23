@@ -1,10 +1,12 @@
 # Physical Setup
 
-Overall, the guide is centered around the software and operating system aspect of real-time optimization but this section contians a non-exhaustive list of steps you should carry out before doing so. See the resources in the [Further Reading](/README.md#further-reading) section to explore deeper into the topic.
+Overall, the guide is centered around the software and operating system aspect of real-time optimization but this section contians a non-exhaustive list of steps and references to point you in the right direction. See the resources in the [Further Reading](/README.md#further-reading) section to explore deeper into the topic.
 
 ## Hardware
 
 - Ethernet and at least one SSD/NVMe is a requirement
+
+- See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
