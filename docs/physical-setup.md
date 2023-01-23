@@ -110,14 +110,14 @@ Overall, the guide is centered around the software and operating system aspect o
 
 - Disable DRAM Power Down Mode
 
-- Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually (see MemTestHelper). While increasing frequency or changing timings, ensure that the changes are positive in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html). Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-and-hardware-clocking) section for more information
+- Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually (see MemTestHelper). While increasing frequency or changing timings, ensure that the changes are positive in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html). Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-hardware-clocking-and-thermal-throttling) section for more information
 
     - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
-## Stability and Hardware Clocking
+## Stability, Hardware Clocking and Thermal Throttling
 
-Ensure your CPU, RAM and GPU (with overclock applied) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and every tool may have a different algorithm which is why it is important to use a range of tools. There are countless factors that contribute to stability such as temperature (increases with time, avoid thermal throttling), power quality, quality of VRMs, silicon lottery... Remember, a single error is one too many. Non-exhaustive list of recommended tools are listed below.
+Ensure your CPU, RAM and GPU (with overclock applied) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and every tool may have a different algorithm which is why it is important to use a range of them (non-exhaustive list of recommended tools are listed below). There are countless factors that contribute to stability such as temperature (increases with time, avoid thermal throttling at all costs), power quality, quality of VRMs, silicon lottery... Remember, a single error is one too many. Consider reapplying high quality thermal paste and deliberately underclocking if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better than thermal throttling at a higher frequency *obviously*. Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors.
 
 - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
 
