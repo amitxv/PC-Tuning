@@ -494,6 +494,8 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
 - Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling variation between the USB controller on different cores
 
+    - Use the **Interval vs Time** graph (frequency (hz) = 1000 / interval (ms))
+
     - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and benchmark this later
 
 - Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs
