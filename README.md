@@ -18,19 +18,19 @@ The guidance is currently updated and has been tested on Windows 7 through to Wi
 
 ## Physical Setup
 
-- See [docs/physical-setup.md](./docs/physical-setup.md)
+- See [docs/physical-setup.md](/docs/physical-setup.md)
 
 ## Pre-Install Instructions
 
-- See [docs/pre-install.md](./docs/pre-install.md)
+- See [docs/pre-install.md](/docs/pre-install.md)
 
 ## Post-Install Instructions
 
-- See [docs/post-install.md](./docs/post-install.md)
+- See [docs/post-install.md](/docs/post-install.md)
 
 ## Research
 
-- See [docs/research.md](./docs/research.md)
+- See [docs/research.md](/docs/research.md)
 
 ## Further Reading
 
