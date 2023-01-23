@@ -586,6 +586,8 @@ Configure default programs in **Settings -> Apps**.
 
 ## Final Thoughts and Tips
 
+- Consider using [REAL](https://github.com/miniant-git/REAL) or [LowAudioLatency](https://github.com/spddl/LowAudioLatency) to minimize the size of the audio buffer. Beware of audio dropouts due to CPU not being able to keep up under load
+
 - Avoid applying random tweaks, using tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
