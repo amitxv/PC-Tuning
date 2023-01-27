@@ -284,7 +284,6 @@ Open CMD and enter the commands below.
 
 If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
 
-- Disable RivaTuner Statistics Server during installation
 - Disable update checks in settings
 - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
 - To automatically load profile 1 (as an example) and exit, create a shortcut in win + r, **shell:startup** with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
@@ -341,7 +340,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 ## Memory Cleaner and Timer Resolution (Windows 10 1909 and Under)
 
-Microsoft fixed the standby list memory management issues in a later version of Windows but some modern games still have memory leaks. Memory Cleaner ([official reference](https://github.com/danskee/MemoryCleaner), [source code](https://git.zusier.xyz/Zusier/MemoryCleaner), [download](https://www.majorgeeks.com/files/details/memory_cleaner_danskee.html)) also allows us to raise the clock interrupt frequency on a global level. However, the behavior of processes that are affected significantly changed in Windows 10 2004+ in a way that potentially breaks real-time applications as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) rendering this *trick* obsolete.
+Microsoft fixed the standby list memory management issues in a later version of Windows but some modern games still have memory leaks. Memory Cleaner ([official reference](https://github.com/danskee/MemoryCleaner), [source code](https://git.zusier.xyz/Zusier/MemoryCleaner), [download](https://www.majorgeeks.com/files/details/memory_cleaner_danskee.html)) also allows us to raise the clock interrupt frequency on a global level. However, the behavior of processes that are affected significantly changed in Windows 10 2004+ in a way that potentially breaks real-time applications as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) rendering this *trick* obsolete. However, the old implementation can be mimicked in Windows 11+ and Windows 10 Server (not applicable to client editions) with a registry entry.
 
 - Place **Memory-Cleaner.exe** in win + r, **shell:startup** and open it
 
