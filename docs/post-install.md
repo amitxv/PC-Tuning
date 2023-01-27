@@ -60,7 +60,7 @@ C:\bin\scripts\miscellaneous.bat
 
 - Windows 10+ Only:
 
-    - Disable everything in **Settings -> Notifications and actions**
+    - Disable everything in **Settings -> System -> Notifications and actions**
 
 ## Remove Bloatware Natively
 
@@ -405,7 +405,7 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - Disable write-cache buffer flushing on all drives in the **Properties -> Policies** section
 
-    - Go to your **Network adapter -> properties -> Advanced**, disable any power saving and wake features
+    - Go to your **Network adapter -> Properties -> Advanced**, disable any power saving and wake features
 
         - Related: [research.md - How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
