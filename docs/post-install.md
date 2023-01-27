@@ -594,6 +594,8 @@ Configure default programs in **Settings -> Apps**.
 
 - Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as [this improves frametime stability](../media/isolate-gpu-core.png). Your mileage may vary but it is definitely something worth mentioning
 
+- Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files  
+
 - Kill processes that waste CPU cycles such as game clients and **explorer.exe**
 
     - Use **Ctrl + Shift + Esc** to open process explorer then use **File -> Run** to start the **explorer.exe** shell again
