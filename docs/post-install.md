@@ -147,16 +147,7 @@ C:\bin\inspectre.exe
 
 ## User Preference
 
-Go through the ``C:\bin\preference`` folder to configure the following:
-
-- Desktop icon settings
-- Region and format
-- Taskbar settings
-
-- Windows 10+ Only:
-
-    - Colors and settings
-    - Country and language
+Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 ## Install Drivers
 
