@@ -207,7 +207,7 @@ This step is not required if you are [installing using DISM Apply-Image](/docs/p
 
 ## Integrating Required Files (2)
 
-Place the **install.bat** script and the **bypass-windows11-checks.reg** registry file in the extracted ISO directory. Open the directory with the command below.
+Place the **install.bat** script and the **windows11-setup.reg** registry file in the extracted ISO directory. Open the directory with the command below.
 
 ```bat
 explorer "%EXTRACTED_ISO%"

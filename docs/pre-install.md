@@ -27,7 +27,7 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
     - Move your Windows ISO into the USB storage in file explorer (where the Linux ISO is also located)
     - Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual
     - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to get past this step (this does not activate Windows)
-    - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press **Shift + F10** to open CMD then type **regedit**. Go to **File -> Import...** and import the **bypass-windows11-checks.reg** registry file
+    - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press **Shift + F10** to open CMD then type **regedit**. Go to **File -> Import...** and import the **windows11-setup.reg** registry file
 
 - Install using DISM Apply-Image (without a USB storage device):
 
