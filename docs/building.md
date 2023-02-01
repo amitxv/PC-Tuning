@@ -87,6 +87,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
     ```txt
     KB2919442 - Servicing Stack Update
+    KB2999226 - Universal C Runtime
     KB2919355 - Cumulative Update
     ```
 
