@@ -21,7 +21,29 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk)
     - [MVS Collection](https://isofiles.bd581e55.workers.dev)
     - [TechBench](https://tb.rg-adguard.net/public.php)
-    - [UUP dump](https://uupdump.net)
+    - [UUP dump](https://uupdump.net) (Windows 10 1709+)
+        <details>
+        <summary>Instructions</summary>
+
+        - Search for the Windows version you desire and download the latest **feature** update instance
+        
+            <img src="/media/uupdump-search-image.png" width="750">
+
+        - Choose the desired language and click next
+
+            <img src="/media/uupdump-choose-language.png" width="750">
+
+        - Uncheck all editions except the professional edition and click next
+
+            <img src="/media/uupdump-choose-edition.png" width="750">
+
+        - Copy the configuration below, ensure include updates is checked and click create download package
+
+            <img src="/media/uupdump-download-options.png" width="750">
+
+        - Extract the downloaded package and run **uup_download_windows.cmd**. The final ISO file will be created in the same directory as the script
+
+        </details>
 
 ## Prepare the Build Environment
 
@@ -92,6 +114,8 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
     ```
 
 - Windows 10+ recommended updates:
+
+    - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so this step (integrating updates) can be skipped
 
     - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether or not the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35))
 
