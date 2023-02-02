@@ -8,12 +8,12 @@ nsudo_path = "C:\\bin\\NSudo.exe"
 nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]
 
 
-def apply_registry(file_path):
+def apply_registry(file_path: str) -> None:
     subprocess.run(["regedit.exe", "/s", file_path], check=False)
     subprocess.run([*nsudo_args, "regedit.exe", "/s", file_path], check=False)
 
 
-def main():
+def main() -> None:
     if not ctypes.windll.shell32.IsUserAnAdmin():
         print("error: administrator privileges required")
         return

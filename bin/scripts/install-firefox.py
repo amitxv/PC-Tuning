@@ -8,7 +8,7 @@ import json
 import ssl
 
 
-def main():
+def main() -> None:
     if not ctypes.windll.shell32.IsUserAnAdmin():
         print("error: administrator privileges required")
         return

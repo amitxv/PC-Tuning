@@ -2,9 +2,10 @@ import os
 import subprocess
 import io
 import ctypes
+from typing import List
 
 
-def main():
+def main() -> None:
     if not ctypes.windll.shell32.IsUserAnAdmin():
         print("error: administrator privileges required")
         return
@@ -15,7 +16,7 @@ def main():
         return
 
     stdnull = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
-    sch_tasks = []
+    sch_tasks: List[str] = []
 
     to_disable = [
         "update",
