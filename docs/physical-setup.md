@@ -45,6 +45,8 @@ Overall, the guide is centered around the software and operating system aspect o
 
 - Configure fan curves or set a static, high, noise-acceptable RPM
 
+    - See [Ultimate fan speed curve (by KGTC, iteration 1)](https://imgur.com/a/2UDYXp0)
+
 ## Minimize Interference
 
 - Move devices that produce RF, EMF and EMI such as radios, cellphones and routers away from your setup as they have the potential to increase latency due to unconscious behavior of electrical components
