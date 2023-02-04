@@ -66,6 +66,8 @@ echo info: installing pip
 
 >> "!current_dir!\python\python38._pth" echo Lib\site-packages
 
+:: install modules with "!python!\python.exe" -m pip install <module>
+
 for %%a in ("python-embed.zip" "get-pip.py") do (
     if exist "!temp!\%%~a" (
         del /f /q "!temp!\%%~a"
