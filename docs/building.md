@@ -3,8 +3,9 @@
 ## Build Requirements
 
 - [7-Zip](https://www.7-zip.org)
-- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the program in ``C:\Windows``
+- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools only
+- [cURL](https://curl.se/windows) - place the binary in ``C:\Windows``
 
 ## Download Stock ISOs
 
@@ -181,6 +182,14 @@ Clone the repository and place the **bin** folder and **win-debloat.sh** script 
 
 ```bat
 explorer "%MOUNT_DIR%"
+```
+
+## Setup Python
+
+Python is used to run scripts provided in the ``bin\scripts`` directory since batch scripting has limited power. Run the command below to setup a portable version of python.
+
+```bat
+"%MOUNT_DIR%\bin\python-setup.bat"
 ```
 
 ## Unmount and Commit

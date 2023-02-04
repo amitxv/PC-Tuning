@@ -2,7 +2,6 @@
 setlocal EnableDelayedExpansion
 
 :: Requirements
-:: - 7-Zip
 :: - cURL
 
 echo info: checking for an internet connection
@@ -14,18 +13,10 @@ if not !errorlevel! == 0 (
     exit /b
 )
 
-set "err=0"
-for %%a in (
-    "curl.exe"
-    "7z.exe"
-) do (
-    where %%~a > nul 2>&1
-    if not !errorlevel! == 0 (
-        set "err=1"
-        echo error: %%~a not found in path
-    )
+where curl.exe > nul 2>&1 || (
+    error: curl.exe not found in path
+    exit /b
 )
-if not !err! == 0 exit /b
 
 set "current_dir=%~dp0"
 set "current_dir=!current_dir:~0,-1!"
@@ -36,7 +27,9 @@ for %%a in ("python-embed.zip" "get-pip.py") do (
     )
 )
 
+echo info: downloading python
 curl.exe -l "https://www.python.org/ftp/python/3.8.6/python-3.8.6-embed-amd64.zip" -o "!temp!\python-embed.zip"
+echo info: downloading get-pip.py
 curl.exe -l "https://bootstrap.pypa.io/get-pip.py" -o "!temp!\get-pip.py"
 
 set "err=0"
@@ -48,6 +41,7 @@ for %%a in ("python-embed.zip" "get-pip.py") do (
 )
 if not !err! == 0 exit /b
 
+echo info: verifying hash
 for /f "delims=" %%a in ('certutil -hashfile "!temp!\python-embed.zip" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
     set "file_sha1=%%a"
 )
@@ -64,8 +58,10 @@ if exist "!current_dir!\python" (
 )
 mkdir "!current_dir!\python"
 
-7z x "!temp!\python-embed.zip" -o"!current_dir!\python"
+echo info: extracting python
+PowerShell "Expand-Archive -Force '!temp!\python-embed.zip' '!current_dir!\python'"
 
+echo info: installing pip
 "!current_dir!\python\python.exe" "!temp!\get-pip.py"
 
 >> "!current_dir!\python\python38._pth" echo Lib\site-packages
