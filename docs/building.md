@@ -68,6 +68,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
     if exist "%OSCDIMG%" (echo true) else (echo false)
     where win-wallpaper.exe > nul 2>&1 && echo true || echo false
+    where curl.exe > nul 2>&1 && echo true || echo false
     ```
 
 ## Remove Non-Essential Editions

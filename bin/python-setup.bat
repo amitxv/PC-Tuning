@@ -13,11 +13,6 @@ if not !errorlevel! == 0 (
     exit /b
 )
 
-where curl.exe > nul 2>&1 || (
-    error: curl.exe not found in path
-    exit /b
-)
-
 set "current_dir=%~dp0"
 set "current_dir=!current_dir:~0,-1!"
 
