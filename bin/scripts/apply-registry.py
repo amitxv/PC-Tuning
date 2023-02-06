@@ -1,8 +1,7 @@
-import os
-import subprocess
 import argparse
 import ctypes
-
+import os
+import subprocess
 
 nsudo_path = "C:\\bin\\NSudo.exe"
 nsudo_args = [nsudo_path, "-U:T", "-P:E", "-Wait"]

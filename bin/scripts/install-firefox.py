@@ -1,11 +1,11 @@
-from urllib import request, error
 import ctypes
-import os
-import subprocess
-import textwrap
 import hashlib
 import json
+import os
 import ssl
+import subprocess
+import textwrap
+from urllib import error, request
 
 
 def main() -> None:

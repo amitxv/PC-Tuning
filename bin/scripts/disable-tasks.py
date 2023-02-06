@@ -1,7 +1,7 @@
+import ctypes
+import io
 import os
 import subprocess
-import io
-import ctypes
 from typing import List
 
 
