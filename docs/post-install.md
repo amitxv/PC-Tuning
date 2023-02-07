@@ -504,7 +504,7 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
     - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and benchmark this later
 
-- Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs
+- Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 2/3/4/5 if RssBaseProcNumber is set to 2 with 4 RSS queues configured
 
     - Run ``C:\bin\scripts\get-driver-keys.bat`` to get the driver keys on your system
 
