@@ -11,14 +11,17 @@ if not !errorlevel! == 0 (
     exit /b
 )
 
+set "output_dir=C:"
+
 echo info: starting in 5s
 timeout -t 5
 xperf -on base+interrupt+dpc
 echo info: recording for 5s
 timeout -t 5
-xperf -d "!userprofile!\Desktop\kernel.etl"
+xperf -stop
 echo info: recording stopped
-xperf -quiet -i "!userprofile!\Desktop\kernel.etl" -o "!userprofile!\Desktop\report.txt" -a dpcisr
+xperf -i "!output_dir!\kernel.etl" -o "!output_dir!\report.txt" -a dpcisr
+echo info: report saved in !output_dir!
 echo info: press any key to continue
 pause > nul 2>&1
 exit /b
