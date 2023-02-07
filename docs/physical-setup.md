@@ -45,7 +45,7 @@ Overall, the guide is centered around the software and operating system aspect o
 
 - Configure fan curves or set a static, high, noise-acceptable RPM
 
-    - See [Ultimate fan speed curve (by KGTC, iteration 1)](https://imgur.com/a/2UDYXp0)
+    - See [Ultimate fan speed curve (by KGCT, iteration 1)](https://imgur.com/a/2UDYXp0)
 
 ## Minimize Interference
 
