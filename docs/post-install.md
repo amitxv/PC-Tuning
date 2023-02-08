@@ -105,8 +105,6 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     sudo reboot
     ```
 
-- Open ``C:\bin\Autoruns.exe`` and remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
-
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
 
 Run the package below to install the redistributables.
@@ -546,7 +544,7 @@ Configure default programs in **Settings -> Apps**.
 
 ## Cleanup
 
-- Open ``C:\bin\Autoruns.exe`` and remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
+- Download and extract [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) then remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
