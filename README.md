@@ -6,7 +6,7 @@ Optimize Windows based systems for real-time tasks
 
 I have tried my best to provide technical references, my own research and a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with settings in the future.
 
-The guidance is currently updated and has been tested on Windows 7 through to Windows 11. See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues).
+The guidance is currently updated and has been tested on Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues).
 
 ## Requirements
 
