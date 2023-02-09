@@ -23,17 +23,17 @@ if defined binary_path (
         choice /c yn /n /m "set DSCP 46 QoS policy? [Y/N]"
         if !errorlevel! == 1 (
             > nul 2>&1 (
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Version" /t REG_SZ /d "1.0" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Application Name" /t REG_SZ /d "!binary_path!" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Protocol" /t REG_SZ /d "*" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Local Port" /t REG_SZ /d "*" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Local IP" /t REG_SZ /d "*" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Remote Port" /t REG_SZ /d "*" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Remote IP" /t REG_SZ /d "*" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "DSCP Value" /t REG_SZ /d "46" /f
-                reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Throttle Rate" /t REG_SZ /d "-1" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Version" /t REG_SZ /d "1.0" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Application Name" /t REG_SZ /d "!binary_path!" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Protocol" /t REG_SZ /d "*" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Local Port" /t REG_SZ /d "*" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Local IP" /t REG_SZ /d "*" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Remote Port" /t REG_SZ /d "*" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Remote IP" /t REG_SZ /d "*" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "DSCP Value" /t REG_SZ /d "46" /f
+                reg.exe add "HKCU\SOFTWARE\Policies\Microsoft\Windows\QoS\!program_name!" /v "Throttle Rate" /t REG_SZ /d "-1" /f
             )
             echo info: DSCP 46 QoS policy applied
 
