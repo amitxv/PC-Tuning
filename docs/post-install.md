@@ -179,8 +179,6 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 
 - ``C:\bin\openshell-settings-(reboot required).reg`` will apply a basic OpenShell skin along with a few other settings, feel free to use your own
 
-- Create a shortcut in win + r, **shell:startup** with a target of ``C:\Program Files\Open-Shell\StartMenu.exe``
-
 - Windows 8 Only:
 
     - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable **Show all settings** then go to the Windows 8 Settings section and set **Disable active corners** to **All**
