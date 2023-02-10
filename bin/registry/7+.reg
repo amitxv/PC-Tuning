@@ -278,17 +278,6 @@ Windows Registry Editor Version 5.00
 "HistoryViewEnabled"=dword:00000000
 "HasAboveLockTips"=dword:00000000
 
-; do not let windows apps run in the background
-; do not let windows apps access notifications
-; do not let windows apps control radios
-; do not let windows apps access diagnostic information about other apps
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
-"LetAppsRunInBackground"=dword:00000002
-"LetAppsAccessNotifications"=dword:00000002
-"LetAppsAccessRadios"=dword:00000002
-"LetAppsGetDiagnosticInfo"=dword:00000002
-
 ; disable automatic update of speech data on windows
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences]

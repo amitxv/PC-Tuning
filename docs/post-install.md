@@ -62,6 +62,8 @@ C:\bin\scripts\miscellaneous.bat
 
     - Disable everything in **Settings -> System -> Notifications and actions**
 
+    - Disable all permissions in **Settings -> Privacy**. Allow microphone access if desired
+
 ## Remove Bloatware Natively
 
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists in win + r, **appwiz.cpl**

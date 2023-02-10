@@ -10,26 +10,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CPSS\Store\UserLocationOverridePrivacySetting]
 "Value"=dword:00000000
 
-; prevent apps from accessing the downloads folder
-
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\downloadsFolder]
-"Value"="Deny"
-
-; disable allow access to music libraries on this device
-
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\musicLibrary]
-"Value"="Deny"
-
-; disable screenshot border settings access
-
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureWithoutBorder]
-"Value"="Deny"
-
-; disable screenshots access
-
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureProgrammatic]
-"Value"="Deny"
-
 ; disable narrator keyboard shortcut
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Narrator\NoRoam]
