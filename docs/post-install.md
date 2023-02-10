@@ -377,8 +377,6 @@ Microsoft fixed the standby list memory management issues in a later version of 
 
 The service list configuration is not intended for Wi-Fi and webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing  ``C:\bin\bare-services.ini`` in a text editor.
 
-- On Windows 7 and 8, remove **MMCSS** from the **DependOnService** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv``
-
 - On 1607 and 1703, delete the **ErrorControl** registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
 
 - Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
