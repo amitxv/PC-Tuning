@@ -80,7 +80,7 @@ Windows Registry Editor Version 5.00
 
 ; do not send additional error data to microsoft
 
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "DontSendAdditionalData"=dword:00000001
 
 ; prevent windows marking file attachments with information about their zone of origin
