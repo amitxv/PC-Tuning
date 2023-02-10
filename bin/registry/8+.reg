@@ -10,7 +10,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
 "DisableBehaviorMonitoring"=dword:00000001
-"DisableOnAccessProtection"=dword:00000001
 
 ; do not sync
 
