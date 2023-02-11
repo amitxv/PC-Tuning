@@ -5,7 +5,7 @@
 - [7-Zip](https://www.7-zip.org)
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools only
-- [cURL](https://curl.se/windows) - place the binary in ``C:\Windows``
+- [cURL](https://curl.se/windows) - place the binary in ``C:\Windows`` (ships with Windows 10)
 
 ## Download Stock ISOs
 
@@ -27,7 +27,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
         <summary>Instructions</summary>
 
         - Search for the Windows version you desire and download the latest **feature** update instance
-        
+
             <img src="/media/uupdump-search-image.png" width="750">
 
         - Choose the desired language and click next
