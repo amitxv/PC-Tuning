@@ -13,8 +13,7 @@ if exist "sources\install.wim" (
         set "install_wim=sources\install.esd"
     ) else (
         echo error: directory does not appear to be a windows image
-        echo info: press any key to continue
-        pause > nul 2>&1
+        pause
         exit /b
     )
 )
@@ -51,8 +50,7 @@ if defined install_dir (
             echo error: dism apply-image unsuccessful
         )
 
-        echo info: press any key to continue
-        pause > nul 2>&1
+        pause
         exit /b !err!
     )
 )

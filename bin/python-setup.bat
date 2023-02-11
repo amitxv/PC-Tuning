@@ -8,8 +8,6 @@ echo info: checking for an internet connection
 ping 1.1.1.1 > nul 2>&1
 if not !errorlevel! == 0 (
     echo error: no internet connection
-    echo info: press any key to continue
-    pause > nul 2>&1
     exit /b
 )
 
@@ -44,7 +42,6 @@ set "file_sha1=!file_sha1: =!"
 
 if not "!file_sha1!" == "855de5c4049ee9469da03d0aac8d3b4ca3e29af5" (
     echo error: sha1 mismatch, binary may be corrupted
-    pause > nul 2>&1
     exit /b
 )
 
@@ -70,6 +67,4 @@ for %%a in ("python-embed.zip" "get-pip.py") do (
 )
 
 echo info: done
-echo info: press any key to continue
-pause > nul 2>&1
 exit /b

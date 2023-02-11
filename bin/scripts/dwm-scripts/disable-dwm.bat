@@ -3,10 +3,6 @@ setlocal EnableDelayedExpansion
 
 DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
 
-echo info: windows 8+ only - nobody is responsible for damage caused to your system or computer, run at your own risk
-echo info: press any key to continue
-pause > nul 2>&1
-
 echo info: disabling dwm
 reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /t REG_SZ /d "\"C:\Windows\System32\rundll32.exe\"" /f > nul 2>&1
 

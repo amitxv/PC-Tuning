@@ -7,8 +7,7 @@ DISM > nul 2>&1 || echo error: administrator privileges required && pause && exi
 PowerShell Set-ProcessMitigation -System -Disable CFG
 if not !errorlevel! == 0 (
     echo error: unsupported windows version
-    echo info: press any key to continue
-    pause > nul 2>&1
+    pause
     exit /b
 )
 
@@ -31,6 +30,5 @@ reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "M
 reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "!mitigation_mask!" /f > nul 2>&1
 
 echo info: done
-echo info: press any key to continue
-pause > nul 2>&1
+pause
 exit /b

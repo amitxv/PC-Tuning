@@ -49,6 +49,5 @@ if exist "!windir!\SysWOW64\OneDriveSetup.exe" (
 )
 
 echo info: done
-echo info: press any key to continue
-pause > nul 2>&1
+pause
 exit /b
