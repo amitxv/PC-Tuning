@@ -502,7 +502,7 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
 - Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 2/3/4/5 if RssBaseProcNumber is set to 2 with 4 RSS queues configured
 
-    - Run ``C:\bin\scripts\get-driver-keys.bat`` to get the driver keys on your system
+    - Run ``C:\bin\scripts\query-driver-key.bat Win32_NetworkAdapter`` in CMD to get the NIC driver keys on your system
 
         ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f

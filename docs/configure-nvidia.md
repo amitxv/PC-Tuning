@@ -48,7 +48,7 @@ I recommend using 472.12 ([Windows 7/Windows 8](https://www.nvidia.com/Download/
 
 HDCP can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required), ensure to change the driver key to suit your needs.
 
-- Run ``C:\bin\scripts\get-driver-keys.bat`` to get the driver keys on your system
+- Run ``C:\bin\scripts\query-driver-key.bat Win32_VideoController`` in CMD to get the GPU driver keys on your system
 
     ```bat
     reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
@@ -75,7 +75,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) to reduce render time and jitter caused by frequency transitions (reboot required), ensure to change the driver key to suit your needs. To reduce power consumption while not in-game, consider using [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
 
-- Run ``C:\bin\scripts\get-driver-keys.bat`` to get the driver keys on your system
+- Run ``C:\bin\scripts\query-driver-key.bat Win32_VideoController`` in CMD to get the GPU driver keys on your system
 
     ```bat
     reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
