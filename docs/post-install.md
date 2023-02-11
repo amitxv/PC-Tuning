@@ -179,7 +179,22 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 
 - Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the **Open-Shell Menu**
 
-- ``C:\bin\openshell-settings-(reboot required).reg`` will apply a basic OpenShell skin along with a few other settings, feel free to use your own
+- Settings I personally use per section:
+
+    - Skin
+
+        - Midnight
+        - Show user picture - Disable
+        - Transparency level - Opaque
+
+    - Main Menu
+
+        - Show recent or frequent programs - Don't show
+        - Enable hybrid shutdown - Disable
+
+    - General Behavior
+
+        - Check for Windows updates on shutdown - Disable
 
 - Windows 8 Only:
 
