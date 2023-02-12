@@ -45,8 +45,7 @@ if defined binary_path (
             echo info: fullscreen optimizations disabled
         )
 
-        echo info: press any key to continue
-        pause > nul 2>&1
+        pause
         exit /b
     )
 )
