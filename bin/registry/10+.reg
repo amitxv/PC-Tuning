@@ -71,15 +71,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
 "NoGenTicket"=dword:00000001
 
-; disable cloud search
-; disable cortana
-; do not allow search and cortana to use location
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"AllowCloudSearch"=dword:00000000
-"AllowCortana"=dword:00000000
-"AllowSearchToUseLocation"=dword:00000000
-
 ; disable activity feed
 ; disable continue experiences on this device
 

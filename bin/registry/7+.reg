@@ -255,24 +255,6 @@ Windows Registry Editor Version 5.00
 "RestrictImplicitInkCollection"=dword:00000001
 "RestrictImplicitTextCollection"=dword:00000001
 
-; disable safe search
-; disable device search history
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
-"SafeSearchMode"=dword:00000000
-"IsDeviceSearchHistoryEnabled"=dword:00000000
-
-; disable bing search
-; disable cortana in search
-; disable cortana displays history
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
-"BingSearchEnabled"=dword:00000000
-"CortanaConsent"=dword:00000000
-"CortanaInAmbientMode"=dword:00000000
-"HistoryViewEnabled"=dword:00000000
-"HasAboveLockTips"=dword:00000000
-
 ; disable automatic update of speech data on windows
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences]
