@@ -424,6 +424,10 @@ Many devices in device manager will appear with a yellow icon as we ran the disa
 
     - Disable any PCI, SATA, NVMe and USB controllers with nothing connected to them
 
+    - Unnecessary HID devices can be disabled but mouse software will not work
+
+        - See [media/hid-devices-example.png](/media/hid-devices-example.png)
+
 - Go to **View -> Resources by connection**
 
     - Disable any **unneeded** devices that are using an IRQ or I/O resources, always ask if unsure, take your time on this step. Windows should not allow you to disable any required devices but ensure you do not accidentally disable another important device such as your main USB controller or similar. Once again, **DO NOT** disable any device with a yellow icon
