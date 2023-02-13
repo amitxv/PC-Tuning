@@ -265,11 +265,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
 "AllowAutomaticAppArchiving"=dword:00000000
 
-; disable automatic registry backup
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Configuration Manager]
-"EnablePeriodicBackup"=dword:00000000
-
 ; disable windows feedback frequency
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
