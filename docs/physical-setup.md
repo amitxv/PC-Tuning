@@ -52,7 +52,7 @@ Overall, the guide is centered around the software and operating system aspect o
 - Move devices that produce RF, EMF and EMI such as radios, cellphones and routers away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
 - Always favor wired over cordless
 - Ensure there is a moderate amount of space between all cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
-- Disconnect unnecessary devices from your motherboard/setup such as LEDs, RGB light strips, front panel connectors, unused drives and all HDDs
+- Disconnect unnecessary devices from your motherboard/setup such as LEDs, RGB light strips, front panel connectors, unused drives and all HDDs. Refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) for onboard devices (LED controllers, IR receivers)
 
 ## Configure USB Port Layout
 
@@ -92,7 +92,7 @@ Overall, the guide is centered around the software and operating system aspect o
 
 - Disable [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management) and any other power saving features you can locate
 
-- Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio Controller (if not using aux/line-in audio) and unused USB, PCIe, iGPU and DIMM slots
+- Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio Controller (if not using aux/line-in audio) and unused USB (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe, iGPU and DIMM slots
 
 - Disable Trusted Platform Module. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
 
