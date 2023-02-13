@@ -281,6 +281,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
 "UserPreference"=dword:00000001
 
+; disable device search history
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
+"IsDeviceSearchHistoryEnabled"=dword:00000000
+
 ; disable automatic updates for offline maps
 
 [HKEY_LOCAL_MACHINE\SYSTEM\Maps]
