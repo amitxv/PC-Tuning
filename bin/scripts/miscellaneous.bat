@@ -6,9 +6,6 @@ DISM > nul 2>&1 || echo error: administrator privileges required && pause && exi
 echo info: disabling fast startup
 powercfg /hibernate off
 
-echo info: setting PowerShell executionpolicy to unrestricted
-PowerShell Set-ExecutionPolicy Unrestricted -force
-
 echo info: setting the password to never expire
 net accounts /maxpwage:unlimited > nul 2>&1
 
