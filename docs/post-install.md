@@ -274,10 +274,10 @@ Open CMD and enter the commands below.
     bcdedit /timeout 0
     ```
 
-- Configure [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) for **essential Windows programs and services only**. DEP can be completely disabled with ``bcdedit /set nx AlwaysOff``. However, the former is preferred due to compatibility with a minority of anticheats
+- [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) is set to **Turn on for essential Windows programs and services only** by default. However, DEP can be completely disabled with the command below but a minority of anticheats require DEP to be left on the default setting. Do not change if unsure
 
     ```bat
-    bcdedit /set nx Optin
+    bcdedit /set nx AlwaysOff
     ```
 
 - Configure the operating system name, I usually name it to whatever Windows version I am using e.g **Windows 10 1803**
