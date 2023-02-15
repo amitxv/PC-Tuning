@@ -4,7 +4,7 @@ Overall, the guide is centered around the software and operating system aspect o
 
 ## Hardware
 
-- Ethernet and at least one SSD/NVMe is a requirement
+- At least one SSD/NVMe (512GB or higher preferred) is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
 
 - See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 

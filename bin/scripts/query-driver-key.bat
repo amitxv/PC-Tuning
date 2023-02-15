@@ -7,7 +7,7 @@ if not !errorlevel! == 0 (
     exit /b
 )
 
-if "%1"=="" (
+if "%1" == "" (
     echo error: class identifier required as argument
     exit /b
 )

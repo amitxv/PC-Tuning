@@ -13,8 +13,7 @@ The guidance is currently updated and has been tested on Windows 7 through to Wi
 - USB Storage Device (8GB minimum)
 - [Ventoy](https://github.com/ventoy/Ventoy/releases)
 - Any live Linux distribution
-- Familiarity with the command-line interface
-- Ethernet and at least one SSD/NVMe
+- Familiarity with navigating directories in CLI
 
 ## Physical Setup
 
