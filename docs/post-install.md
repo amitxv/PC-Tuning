@@ -66,6 +66,12 @@ C:\bin\scripts\miscellaneous.bat
 
 ## Remove Bloatware Natively
 
+- Open CMD as administrator and enter the command below to remove the chromium version of Microsoft Edge (if present) and OneDrive
+
+    ```bat
+    C:\bin\scripts\remove-edge-onedrive.bat
+    ```
+
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists in win + r, **appwiz.cpl**
 
 - In win + r, **OptionalFeatures**, disable everything except for the following:
