@@ -543,7 +543,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
 - Cap your framerate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). E.g possible framerate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
 
-    - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frametimes and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) but disabling **passive waiting** in the settings page marginally helps with that. Disabling the **Enable dedicated encoder server service** setting also prevents **EncoderServer.exe** running which wastes resources
+    - Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) but disabling **passive waiting** in the settings page marginally helps with that. Disabling the **Enable dedicated encoder server service** setting also prevents **EncoderServer.exe** running which wastes resources
 
 - Configure FSE and QoS
 
@@ -621,7 +621,7 @@ Configure default programs in **Settings -> Apps**.
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 
-- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as [this improves frametime stability](../media/isolate-gpu-core.png). Your mileage may vary but it is definitely something worth mentioning
+- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as [this improves frame pacing](../media/isolate-gpu-core.png). Your mileage may vary but it is definitely something worth mentioning
 
 - Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files  
 

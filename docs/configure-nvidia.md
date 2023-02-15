@@ -64,8 +64,9 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
     - Antialiasing - Gamma correction - Off
     - Low Latency Mode - On (limits prerendered frames to 1)
     - Power management mode - Prefer maximum performance
+    - Shader Cache Size - Unlimited
     - Texture filtering - Quality - High performance
-    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frametime consistency but feel free to benchmark it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
+    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frame pacing but feel free to benchmark it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
 
 - In the **Display > Adjust Desktop size and position** section, set the scaling mode to **No Scaling** and set perform scaling on to **Display**. Configure your resolution and refresh rate
 
