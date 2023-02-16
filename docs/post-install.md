@@ -326,7 +326,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 <summary>Reasons not to use Task Manager</summary>
 
 - It relies on a kernel mode driver to operate (additional overhead)
-- Does not provide performance metrics such as cycles/context switches delta and other useful details
+- No process tree
 - On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the disable idle power setting results in 100% CPU utilization on Windows 8+
 
 </details>
@@ -377,7 +377,7 @@ Microsoft fixed the standby list memory management issues in a later version of 
 - Open **Network and Sharing Center -> Change adapter settings**
 - Disable any unused network adapters then right click your main one and select properties
 - Disable all items except **QoS Packet Scheduler** and **Internet Protocol Version 4 (TCP/IPv4)**
-- [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). this is required as we will be disabling the network services that waste CPU cycles
+- [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). this is required as we will be disabling the network services that waste resources
 - Disable **NetBIOS over TCP/IP** in **General -> Advanced -> WINS** to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md)
 
 ## Configure Audio Devices
@@ -386,7 +386,7 @@ Microsoft fixed the standby list memory management issues in a later version of 
 
 - Disable unused Playback and Recording devices
 
-- Disable audio enhancements as they waste CPU cycles
+- Disable audio enhancements as they waste resources
 
     - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
 
@@ -625,13 +625,13 @@ Configure default programs in **Settings -> Apps**.
 
 - Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files  
 
-- Kill processes that waste CPU cycles such as game clients and **explorer.exe**
+- Kill processes that waste resources such as game clients and **explorer.exe**
 
     - Use **Ctrl + Shift + Esc** to open process explorer then use **File -> Run** to start the **explorer.exe** shell again
 
 - Consider using the scripts in ``C:\bin\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md)
 
-- If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you *can* disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes CPU cycles despite there being no composition. Beware as elements of the UI will be broken and somes games/programs will not be able to launch (you may need to disable hardware acceleration)
+- If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you *can* disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware as elements of the UI will be broken and somes games/programs will not be able to launch (you may need to disable hardware acceleration)
 
 - Carry out maintenance tasks yourself on a weekly basis. This includes:
 
