@@ -51,7 +51,7 @@ C:\bin\scripts\miscellaneous.bat
 - In win + r, **sysdm.cpl** configure the following:
 
     - **Computer Name -> Change** - configure the PC name
-    - **Advanced -> Performance -> Settings** - configure **Adjust for best performance** and preferably disable the paging file for all drives
+    - **Advanced -> Performance -> Settings** - configure **Adjust for best performance** and preferably disable the paging file for all drives to avoid unnecessary IO
     - **System Protection** - disable and delete system restore points. It has been proven to be very unreliable
 
 - Allow users full control of the ``C:\`` directory to resolve xperf etl processing
