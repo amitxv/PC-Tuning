@@ -11,14 +11,14 @@ if not !errorlevel! == 0 (
 )
 
 set "output_dir=C:"
+set "record_delay=5"
+set "record_duration=30"
 
-echo info: starting in 5s
-timeout -t 5
+echo info: starting in !record_delay!s then recording for !record_duration!s
+timeout -t !record_delay!
 xperf -on base+interrupt+dpc
-echo info: recording for 5s
-timeout -t 5
+timeout -t !record_duration!
 xperf -stop
-echo info: recording stopped
 xperf -i "!output_dir!\kernel.etl" -o "!output_dir!\report.txt" -a dpcisr
 echo info: report saved in !output_dir!
 pause
