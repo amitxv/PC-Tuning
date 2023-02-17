@@ -2,7 +2,7 @@
 
 ## OOBE Setup
 
-Do not connect to the Internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality.
+Do not connect to the Internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality after the **Services-Disable.bat** script is ran.
 
 If you are configuring Windows 11, press **Shift + F10** to open CMD and run the following command ``oobe\BypassNRO.cmd``. This will unlock the **I don't have internet** option demonstrated in the video examples below.
 
