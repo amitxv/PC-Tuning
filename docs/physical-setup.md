@@ -67,11 +67,19 @@ Overall, the guide is centered around the software and operating system aspect o
 ## Configure Peripherals
 
 - Most modern peripherals support onboard memory profiles. You should configure them now (before configuring the operating system) as you will not be required to install the bloatware to change the settings later. More details on separating work/bloatware and gaming environments with a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) in the next section
+
 - [Higher DPI reduces latency](https://www.youtube.com/watch?v=6AoRfv9W110). Most mice are able to handle 1600 DPI without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing). Optionally [reduce the pointer speed](https://boringboredom.github.io/tools/#/WinSens) in Windows. This will not intefere with in-game input as modern games use raw input
+
 - [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly
+
 - USB output is limited to roughly 7A and RGB requires unnecessary power. Turn off RGB where you can or strip the LEDs from the peripheral as [running a RGB effect/animation can take a great toll on the MCU and will delay other processes](https://blog.wooting.nl/what-influences-keyboard-speed)
+
+    - See [OpenRGB](https://openrgb.org)
+
 - Get a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from your mousepad once in a while
+
 - Get a [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens
+
 - Factory reset your monitor and reconfigure the settings. Avoid post-processing effects and set overdrive/AMA to an acceptably [high setting as it reduces latency](https://twitter.com/CaIypto/status/1464236780190851078) but comes with a penalty of overshoot
 
 ## BIOS
