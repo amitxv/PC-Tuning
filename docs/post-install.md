@@ -216,7 +216,7 @@ Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/down
 
 ## Install a Media Player
 
-[mpv](https://mpv.io)/[mpv.net](https://github.com/stax76/mpv.net) or [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) recommended.
+[mpv](https://mpv.io)/[mpv.net](https://github.com/stax76/mpv.net), [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) or [VLC](https://www.videolan.org) recommended.
 
 ## Configure Power Options
 
