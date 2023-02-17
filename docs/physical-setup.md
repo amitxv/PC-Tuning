@@ -100,6 +100,7 @@ Overall, the guide is centered around the software and operating system aspect o
 
 - Enable High Precision Event Timer
 
+    - If the setting is hidden, there is a good chance that it is enabled by default
     - On AMD systems with newer AGESA firmware, changing this setting will have no effect
 
 - MBR/Legacy requires Compatibility Support Module and typically, only the storage and PCI OpROMs are required but you can enable all of them if unsure. Disable CSM if using GPT/UEFI
