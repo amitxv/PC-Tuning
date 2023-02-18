@@ -151,7 +151,7 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
 - Avoid thermal throttling at all costs, ambient temperature will increase during the summer which can be replicated with a heater to create a worst-case scenario
 
-- Consider reapplying high quality thermal paste and deliberately underclocking if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better than thermal throttling at a higher frequency
+- Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better than thermal throttling at a higher frequency
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors, a higher polling interval can help to identify sudden spikes. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
