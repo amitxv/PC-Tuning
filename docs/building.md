@@ -5,11 +5,11 @@
 - [7-Zip](https://www.7-zip.org)
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
-- [cURL](https://curl.se/windows) - (included in Windows 10 1803+) place ``curl.exe`` and ``curl-ca-bundle.crt`` in ``C:\Windows``
+- [cURL](https://curl.se/windows) (included in Windows 10 1803+) - place ``curl.exe`` and ``curl-ca-bundle.crt`` in ``C:\Windows``
 
 ## Download Stock ISOs
 
-Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <path\to\file>`` to get the hash of the ISO.
+Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <file>`` to get the hash of the ISO.
 
 - Recommended ISOs:
 
