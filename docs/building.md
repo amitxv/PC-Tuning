@@ -5,7 +5,7 @@
 - [7-Zip](https://www.7-zip.org)
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools only
-- [cURL](https://curl.se/windows) - place the binary in ``C:\Windows`` (ships with Windows 10)
+- [cURL](https://curl.se/windows) - (included in Windows 10 1803+) place **curl.exe** and **curl-ca-bundle.crt** in ``C:\Windows``
 
 ## Download Stock ISOs
 
