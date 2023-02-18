@@ -4,7 +4,7 @@
 
 - Download and extract the latest recommended driver from the [AMD drivers and support page](https://www.amd.com/en/support)
 
-- Move ``.\Packages\Drivers\Display\XXXX_INF`` to the desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
+- Move ``Packages\Drivers\Display\XXXX_INF`` to the desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
 
     - See [media/amd-driver-example.png](../media/amd-driver-example.png)
 
@@ -16,7 +16,7 @@
 
 - Open device manager and install the driver by right-clicking on the display adapter, browse my computer for driver software and select the driver folder
 
-- Once the driver has installed, extract ``ccc2_install.exe`` with 7-Zip and run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
+- Once the driver has installed, extract ``ccc2_install.exe`` with 7-Zip and run ``CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
 - Ensure to disable the bloatware AMD services. They can be accessed by typing ``services.msc`` in ``Win+R``
 
@@ -30,7 +30,7 @@
 
     - Maximum Tessellation Level - Off
 
-- In the ``Settings > Display section`` configure the following:
+- Configure the following in the display section:
 
     - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
 
