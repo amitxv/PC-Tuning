@@ -14,9 +14,9 @@
 
     - See [media/gpuz-bus-interface.png](../media/gpuz-bus-interface.png)
 
-- IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the ``Conflicts/Sharing`` section
+- IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the Conflicts/Sharing section
 
-    - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software related causes but the purpose of checking this now is to resolve the hardware related causes
+    - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software related causes of IRQ sharing but the purpose of checking this now is to resolve the hardware related causes
 
 - Bufferbloat is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets. [Measure](https://www.waveform.com/tools/bufferbloat) and [minimize](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat) it
 
@@ -98,7 +98,7 @@
 
 - You can use BIOS and/or grub to change settings. I recommend configuring what you can in BIOS then use [this method](https://github.com/BoringBoredom/UEFI-Editor) to change hidden settings
 
-    - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` if it exists to unlock a vast amount of options in BIOS
+    - On some boards, you can enable Hidden OC Item or Hide Item if it exists to unlock a vast amount of options in BIOS
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading). This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core requires resource sharing and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Other drawbacks include limited overclocking potential due to increased temperatures
 
