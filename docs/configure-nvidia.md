@@ -15,7 +15,7 @@ Download the latest game ready (not security update) driver using the [advanced 
     setup.exe
     ```
 
-- Remove the following lines from ``setup.cfg`` (near the bottom):
+- Remove the following consecutive lines from ``setup.cfg`` (near the bottom):
 
     ```txt
     <file name="${{EulaHtmlFile}}"/>
@@ -23,16 +23,14 @@ Download the latest game ready (not security update) driver using the [advanced 
     <file name="${{PrivacyPolicyFile}}"/>
     ```
 
-- In ``.\NVI2\presentations.cfg`` set the value for ``ProgressPresentationUrl`` and ``ProgressPresentationSelectedPackageUrl`` to an empty string:
+- In ``NVI2\presentations.cfg`` set the value for ProgressPresentationUrl and ProgressPresentationSelectedPackageUrl to an empty string:
 
     ```txt
     <string name="ProgressPresentationUrl" value=""/>
     <string name="ProgressPresentationSelectedPackageUrl" value=""/>
     ```
 
-- Run setup.exe to install the driver
-
-    - If setup fails however you followed the steps above correctly, try to re-download the driver and follow the steps again. Some users have reported this is due to a corrupted download
+- Run ``setup.exe`` to install the driver
 
 - Open CMD and enter the commands below to disable telemetry
 
@@ -56,9 +54,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Configure NVIDIA Control Panel
 
-- Disable ``Desktop > Show Notification Tray Icon``
-
-- In the ``3D Settings > Manage 3D settings`` section, configure the following:
+- Configure the following in the manage 3D settings page
 
     - Anisotropic filtering - Off
 
@@ -74,7 +70,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frame pacing but feel free to benchmark it yourself. You should also consider whether you are already CPU bottlenecked if you do choose to enable the setting
 
-- In the ``Display > Adjust Desktop size and position`` section, set the scaling mode to ``No Scaling`` and set perform scaling on to ``Display`` Configure your resolution and refresh rate
+- Set the scaling mode to no scaling and set perform scaling on display. Configure your resolution and refresh rate
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
 
@@ -90,7 +86,7 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 
 ## Configure NVIDIA Inspector
 
-During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps. For this reason, you should set ``CUDA - Force P2 State`` to ``Off``. [``SILK Smoothness``](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) and ``Enable Ansel`` can also be set to ``Off``
+During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps. For this reason, you should disable CUDA - Force P2 State. [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) and Enable Ansel can also be disabled.
 
 - See [media/CUDA-force-p2-state-analysis](../media/cuda-force-p2-state-analysis.png)
 
