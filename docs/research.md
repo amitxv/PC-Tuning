@@ -16,7 +16,7 @@
 
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log
 
-- In the left-hand pane, click on the game executable name and click on a packet header. Expand the packet info under ``Frame Details`` and finally expand the subcategory ``Ipv4``. This will reveal the current DSCP value of each frame
+- In the left-hand pane, click on the game executable name and click on a packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame
 
     <img src="../media/network-monitor-dscp-value.png" width="400">
 
@@ -31,9 +31,9 @@
 <summary>Read More</summary>
 <br>
 
-After searching through the decompiled ``ntoskrnl.exe`` pseudocode in [Hex-Rays IDA](https://hex-rays.com/products/idahome), I noticed that ``HalpTscSyncPolicy`` is changed when ``TscSyncPolicy`` is configured by modifying the BCD store. Despite many claims of enhanced being the default value, there has not been evidence, so I decided to find out myself.
+After searching through the decompiled ``ntoskrnl.exe`` pseudocode in [Hex-Rays IDA](https://hex-rays.com/products/idahome), I noticed that HalpTscSyncPolicy is changed when TscSyncPolicy is configured by modifying the BCD store. Despite many claims of enhanced being the default value, there has not been evidence, so I decided to find out myself.
 
-We can read ``HalpTscSyncPolicy`` in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to find out the different values it returns with different bcd store configurations.
+We can read HalpTscSyncPolicy in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to find out the different values it returns with different bcd store configurations.
 
 ``bcdedit.exe /deletevalue tscsyncpolicy`` (Windows default)
 
@@ -63,7 +63,7 @@ lkd> dd HalpTscSyncPolicy l1
 fffff802`2864a3ac  00000002
 ```
 
-Conclusion: By default, Windows uses the default value, not enhanced or legacy. Although, the default value may correspond to another value which is not exposed by reading the output of ``HalpTscSyncPolicy``.
+Conclusion: By default, Windows uses the default value, not enhanced or legacy. Although, the default value may correspond to another value which is not exposed by reading the output of HalpTscSyncPolicy.
 
 </details>
 
@@ -115,7 +115,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     <img src="../media/w32ps-quantum-index.png" width="600">
 
-    Demonstration with the Windows default, ``0x2 (2 decimal)``
+    Demonstration with the Windows default, 0x2 (2 decimal)
 
     ```txt
     lkd> dd PsPrioritySeparation L1
@@ -246,11 +246,11 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
 On a stock Windows 10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers.
 
-#### Wdf01000.sys
+#### ``Wdf01000.sys``
 
 <img src="../media/wdf01000-usb-xperf-report.png" width="500">
 
-#### amdxhc31.sys (vendor USB drivers)
+#### ``amdxhc31.sys (vendor USB drivers)``
 
 <img src="../media/amdxhc31-usb-xperf-report.png" width="500">
 
