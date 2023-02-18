@@ -21,7 +21,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk)
     - [MVS Collection](https://isofiles.bd581e55.workers.dev)
-    - [TechBench](https://tb.rg-adguard.net/public.php)
+    - [Adguard File List](https://files.rg-adguard.net)
     - [UUP dump](https://uupdump.net) (Windows 10 1709+)
         <details>
         <summary>Instructions</summary>
