@@ -140,7 +140,7 @@ C:\bin\python\python.exe C:\bin\scripts\disable-tasks.py
 
 ## Merge the Registry Files
 
-Open CMD as administrator and enter the command below. Replace ``<winver\>`` with the Windows version you are configuring (e.g 7, 8, 10, 11).
+Open CMD as administrator and enter the command below. Replace ``<winver>`` with the Windows version you are configuring (e.g 7, 8, 10, 11).
 
 ```bat
 C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>

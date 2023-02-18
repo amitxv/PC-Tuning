@@ -12,7 +12,7 @@ Generally, Windows 7 is superior for real-time tasks compared to newer versions 
 
 ## Prepare the USB
 
-- Plug in your USB storage and backup any important files. Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to ``Option > Partition Style`` and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install. Disable ``Option > Secure Boot Support`` if you do not have it enabled in BIOS
+- Plug in your USB storage and backup any important files. Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to ``Option -> Partition Style`` and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install. Disable ``Option -> Secure Boot Support`` if you do not have it enabled in BIOS
 
     - See [media/identify-bios-mode.png](../media/identify-bios-mode.png)
 

@@ -1,7 +1,5 @@
 # Physical Setup
 
-Overall, the guide is centered around the software and operating system aspect of real-time optimization, but this section contains a non-exhaustive list of steps and references to point you in the right direction. See the resources in the [Further Reading](/README.md#further-reading) section to explore deeper into the topic.
-
 ## General
 
 - At least one SSD/NVMe (512 GB or higher preferred) is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
