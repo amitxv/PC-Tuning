@@ -4,7 +4,7 @@
 
 Download the latest game ready (not security update) driver using the [advanced driver search](https://www.nvidia.com/download/find.aspx) page.
 
-- Extract the driver executable package with 7-Zip and remove all files and folders **except** the following:
+- Extract the driver executable package with 7-Zip and remove all files and folders except the following:
 
     ```txt
     Display.Driver
@@ -15,7 +15,7 @@ Download the latest game ready (not security update) driver using the [advanced 
     setup.exe
     ```
 
-- Remove the following lines from **setup.cfg** (near the bottom):
+- Remove the following lines from ``setup.cfg`` (near the bottom):
 
     ```txt
     <file name="${{EulaHtmlFile}}"/>
@@ -23,7 +23,7 @@ Download the latest game ready (not security update) driver using the [advanced 
     <file name="${{PrivacyPolicyFile}}"/>
     ```
 
-- In ``.\NVI2\presentations.cfg`` set the value for **ProgressPresentationUrl** and **ProgressPresentationSelectedPackageUrl** to an empty string:
+- In ``.\NVI2\presentations.cfg`` set the value for ``ProgressPresentationUrl`` and ``ProgressPresentationSelectedPackageUrl`` to an empty string:
 
     ```txt
     <string name="ProgressPresentationUrl" value=""/>
@@ -56,19 +56,25 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Configure NVIDIA Control Panel
 
-- Disable **Desktop > Show Notification Tray Icon**
+- Disable ``Desktop > Show Notification Tray Icon``
 
-- In the **3D Settings > Manage 3D settings** section, configure the following:
+- In the ``3D Settings > Manage 3D settings`` section, configure the following:
 
     - Anisotropic filtering - Off
-    - Antialiasing - Gamma correction - Off
-    - Low Latency Mode - On (limits prerendered frames to 1)
-    - Power management mode - Prefer maximum performance
-    - Shader Cache Size - Unlimited
-    - Texture filtering - Quality - High performance
-    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frame pacing but feel free to benchmark it yourself. You should also consider whether or not you are already CPU bottlenecked if you do choose to enable the setting
 
-- In the **Display > Adjust Desktop size and position** section, set the scaling mode to **No Scaling** and set perform scaling on to **Display**. Configure your resolution and refresh rate
+    - Antialiasing - Gamma correction - Off
+
+    - Low Latency Mode - On (limits prerendered frames to 1)
+
+    - Power management mode - Prefer maximum performance
+
+    - Shader Cache Size - Unlimited
+
+    - Texture filtering - Quality - High performance
+
+    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frame pacing but feel free to benchmark it yourself. You should also consider whether you are already CPU bottlenecked if you do choose to enable the setting
+
+- In the ``Display > Adjust Desktop size and position`` section, set the scaling mode to ``No Scaling`` and set perform scaling on to ``Display`` Configure your resolution and refresh rate
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
 
@@ -84,7 +90,8 @@ Force P-State 0 with the [following registry key](https://github.com/djdallmann/
 
 ## Configure NVIDIA Inspector
 
-During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) step. For this reason, you should set **CUDA - Force P2 State** to **Off**. [**SILK Smoothness**](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) and **Enable Ansel** can also be set to **Off**.
+During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps. For this reason, you should set ``CUDA - Force P2 State`` to ``Off``. [``SILK Smoothness``](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) and ``Enable Ansel`` can also be set to ``Off``
 
 - See [media/CUDA-force-p2-state-analysis](../media/cuda-force-p2-state-analysis.png)
+
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)

@@ -8,30 +8,34 @@
 
     - See [media/amd-driver-example.png](../media/amd-driver-example.png)
 
-- In the folder of the driver directory (mine is **B381690** in the example above), move **ccc2_install.exe** to the desktop. This will be used in a later step
+- In the folder of the driver directory (mine is ``B381690`` in the example above), move ``ccc2_install.exe`` to the desktop. This will be used in a later step
 
-- Open notepad file and save it as **ccc2_install.exe** to the driver folder as shown below
+- Open notepad file and save it as ``ccc2_install.exe`` to the driver folder as shown below
 
     - See [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
 
-- Open device manager and install the driver by right clicking on the display adapter, browse my computer for driver software and select the driver folder
+- Open device manager and install the driver by right-clicking on the display adapter, browse my computer for driver software and select the driver folder
 
-- Once the driver has installed, extract **ccc2_install.exe** with 7-Zip and run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
+- Once the driver has installed, extract ``ccc2_install.exe`` with 7-Zip and run ``.\CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
-- Ensure to disable the bloatware AMD services in win + r, **services.msc**
+- Ensure to disable the bloatware AMD services. They can be accessed by typing ``services.msc`` in ``Win+R``
 
 ## Configure AMD Control Panel
 
-- In the **Settings > Graphics** section, configure the following:
+- In the ``Settings > Graphics`` section, configure the following:
 
     - Texture Filtering Quality - Performance
+
     - Tessellation Mode - Override application settings
+
     - Maximum Tessellation Level - Off
 
-- In the **Settings > Display section**, configure the following:
+- In the ``Settings > Display section`` configure the following:
 
     - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
+
     - GPU Scaling - Off
+
     - HDCP Support - Disable (required for DRM content)
 
 ## Lock GPU Clocks/P-State 0

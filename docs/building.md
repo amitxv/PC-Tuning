@@ -4,8 +4,8 @@
 
 - [7-Zip](https://www.7-zip.org)
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
-- [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools only
-- [cURL](https://curl.se/windows) - (included in Windows 10 1803+) place **curl.exe** and **curl-ca-bundle.crt** in ``C:\Windows``
+- [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
+- [cURL](https://curl.se/windows) - (included in Windows 10 1803+) place ``curl.exe`` and ``curl-ca-bundle.crt`` in ``C:\Windows``
 
 ## Download Stock ISOs
 
@@ -13,20 +13,25 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Recommended ISOs:
 
-    - Windows 7: **en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso** - [Adguard hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2?lang=en-us)
-    - Windows 8: **en_windows_8_1_x64_dvd_2707217.iso** - [Adguard hashes](https://files.rg-adguard.net/file/406e60db-4275-7bf8-616f-56e88d9e0a4a?lang=en-us)
+    - Windows 7: ``en_windows_7_professional_with_sp1_x64_dvd_u_676939.iso`` - [Adguard hashes](https://files.rg-adguard.net/file/11ad6502-c2aa-261c-8c3f-c81477b21dd2?lang=en-us)
+
+    - Windows 8: ``en_windows_8_1_x64_dvd_2707217.iso`` - [Adguard hashes](https://files.rg-adguard.net/file/406e60db-4275-7bf8-616f-56e88d9e0a4a?lang=en-us)
+
     - Windows 10+: Try to obtain an ISO with minimal updates
 
 - ISO Sources:
 
     - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk)
+
     - [MVS Collection](https://isofiles.bd581e55.workers.dev)
+
     - [Adguard File List](https://files.rg-adguard.net)
+
     - [UUP dump](https://uupdump.net) (Windows 10 1709+)
         <details>
         <summary>Instructions</summary>
 
-        - Search for the Windows version you desire and download the latest **feature** update instance
+        - Search for the Windows version you desire and download the latest feature update instance
 
             <img src="/media/uupdump-search-image.png" width="750">
 
@@ -42,7 +47,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
             <img src="/media/uupdump-download-options.png" width="750">
 
-        - Extract the downloaded package and run **uup_download_windows.cmd**. The final ISO file will be created in the same directory as the script
+        - Extract the downloaded package and run ``uup_download_windows.cmd``. The final ISO file will be created in the same directory as the script
 
         </details>
 
@@ -61,7 +66,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     mkdir "%MOUNT_DIR%"
     ```
 
-- If the environment variables are configured correctly, the commands below should return **true**
+- If the environment variables are configured correctly, the commands below should display ``true``
 
     ```bat
     if exist "%EXTRACTED_ISO%\sources\install.wim" (echo true) else (echo false)
@@ -119,7 +124,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
     - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so this step (integrating updates) can be skipped
 
-    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether or not the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35))
+    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35))
 
 - Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
 
@@ -163,7 +168,7 @@ As mentioned previously, this step is generally only required for users configur
 
 - [Win-Raid AHCI and NVMe driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310)
 
-- Place all of the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
+- Place all the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
 
     ```bat
     DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
@@ -171,7 +176,7 @@ As mentioned previously, this step is generally only required for users configur
 
 ## Replace Wallpapers
 
-Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the **--win7** argument if building Windows 7.
+Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if building Windows 7.
 
 ```bat
 win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
@@ -179,7 +184,7 @@ win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
 
 ## Integrating Required Files (1)
 
-Clone the repository and place the **bin** folder and **win-debloat.sh** script in the mounted directory. Open the directory with the command below.
+Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script in the mounted directory. Open the directory with the command below.
 
 ```bat
 explorer "%MOUNT_DIR%"
@@ -187,7 +192,7 @@ explorer "%MOUNT_DIR%"
 
 ## Setup Python
 
-Python is used to run scripts provided in the ``bin\scripts`` directory since batch scripting has limited power. Run the command below to setup a portable version of python.
+Python is used to run scripts provided in the ``bin\scripts`` directory since batch scripting has limited power. Run the command below to set up a portable version of python.
 
 ```bat
 "%MOUNT_DIR%\bin\python-setup.bat"
@@ -203,11 +208,11 @@ DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware and you should have already integrated drivers into the **install.wim**. However we have not yet touched the **boot.wim** (installer). We could integrate the same drivers into the **boot.wim** as we did before. However this may still lead to a problematic installation. Instead, we can use the Windows 10 **boot.wim** which already has modern hardware support to install our Windows 7 **install.wim**. For this to work properly, you should only have one edition of Windows 7 in your **install.wim** which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
+This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we have not yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim`` which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim`` which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
 
 - Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_ISO``
 
-- Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 ISO with the Windows 7 **install.wim**
+- Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 ISO with the Windows 7 ``install.wim``
 
 - We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_ISO``
 
@@ -217,7 +222,7 @@ This step is not required if you are [installing using DISM Apply-Image](/docs/p
 
 ## Integrating Required Files (2)
 
-Place the **install.bat** script and the **windows11-setup.reg** registry file in the extracted ISO directory. Open the directory with the command below.
+Place the ``install.bat`` script and the ``windows11-setup.reg`` registry file in the extracted ISO directory. Open the directory with the command below.
 
 ```bat
 explorer "%EXTRACTED_ISO%"
