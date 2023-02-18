@@ -12,7 +12,7 @@ Generally, Windows 7 is superior for real-time tasks compared to newer versions 
 
 ## Prepare the USB
 
-- Plug in your USB storage and backup any important files. Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to ``Option > Partition Style`` and select GPT (UEFI) or MBR (Legacy) then select your USB storage and click install. Disable ``Option > Secure Boot Support`` if you do not have it enabled in BIOS
+- Plug in your USB storage and backup any important files. Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it is not enabled in BIOS, then select your USB storage and click install
 
     - See [media/identify-bios-mode.png](../media/identify-bios-mode.png)
 
@@ -30,7 +30,7 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
 
     - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to bypass this step (this does not activate Windows)
 
-    - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit``. Navigate to ``File -> Import`` and import ``windows11-setup.reg``
+    - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and import ``windows11-setup.reg``
 
 - Install using DISM Apply-Image (without a USB storage device):
 
