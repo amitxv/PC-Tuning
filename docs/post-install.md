@@ -2,9 +2,9 @@
 
 ## OOBE Setup
 
-Do not connect to the Internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality after the ``Services-Disable.bat`` script is run.
+Do not connect to the internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality after the ``Services-Disable.bat`` script is run.
 
-If you are configuring Windows 11, press ``Shift+F10`` to open CMD and run the following command ``oobe\BypassNRO.cmd``. This will unlock the ``I don't have internet`` option demonstrated in the video examples below.
+If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute the following command ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection demonstrated in the video examples below.
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows7-example.mp4)
 
@@ -36,27 +36,23 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 ## Miscellaneous
 
-Open CMD as administrator and enter the command below. The commands are placed in a script instead of this document as it will be tedious to copy and paste each command without a web browser installed.
+Open CMD as administrator and enter the command below. The commands are placed in a script instead of this document as it will be tedious to copy and paste each command at this stage.
 
 ```bat
 C:\bin\scripts\miscellaneous.bat
 ```
 
-- Disable ``Enhance pointer precision`` by typing ``main.cpl`` in ``Win+R`` then navigate to ``Pointer Options``
+- Disable Enhance pointer precision by typing ``main.cpl`` in ``Win+R``
 
-- Disable all messages in ``Control Panel -> System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings``
+- Disable all messages in ``System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings`` by typing ``control`` in ``Win+R``
 
     - This section is named ``Security and Maintenance`` on Windows 10+
 
-- Enable ``Launching applications and unsafe files`` by typing ``inetcpl.cpl`` in ``Win+R`` then navigating to ``Security -> Custom level``. This prevents the [ridiculous warning when opening files](https://gearupwindows.com/how-to-disable-open-file-security-warning-in-windows-10)
+- Disable Scheduled optimization by typing ``dfrgui`` in ``Win+R`` More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts-and-tips)
 
-- Disable ``Run on a schedule`` by typing ``dfrgui`` in ``Win+R`` More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts-and-tips)
+- Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
-- Configure the following by typing ``sysdm.cpl`` in ``Win+R``
-
-    - ``Computer Name -> Change`` - configure the PC name
-
-    - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary IO
+    - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary I/O
 
     - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable
 
@@ -66,9 +62,11 @@ C:\bin\scripts\miscellaneous.bat
 
 - Windows 10+ Only:
 
-    - Disable everything in ``Settings -> System -> Notifications and actions``
+    - Disable the following by pressing ``Win+I``:
 
-    - Disable all permissions in ``Settings -> Privacy`` Allow microphone access if desired
+        - Everything in ``System -> Notifications and actions``
+
+        - All permissions in ``Privacy`` Allow microphone access if desired
 
 ## Remove Bloatware Natively
 
@@ -80,7 +78,7 @@ C:\bin\scripts\miscellaneous.bat
 
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
 
-- Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``
+- Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``:
 
     - See [media/windows7-features-example.png](../media/windows7-features-example.png)
 
@@ -90,15 +88,15 @@ C:\bin\scripts\miscellaneous.bat
 
     - Windows 10:
 
-        - Uninstall bloatware in ``Settings -> Apps -> Apps and Features``
+        - Uninstall bloatware in ``Apps -> Apps and Features`` by pressing ``Win+I``
 
         - In the ``Optional features`` section, uninstall everything apart from ``Microsoft Paint``, ``Notepad`` and ``WordPad`` if applicable (these do not exist in earlier Windows 10 versions)
 
     - Windows 11:
 
-        - Uninstall bloatware in ``Settings -> Apps -> Installed apps``
+        - Uninstall bloatware in ``Apps -> Installed apps`` by pressing ``Win+I``
 
-        - In the ``Settings -> Apps -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
+        - In the ``Apps -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
 
 - Restart your PC once to apply the changes above (do not boot into Linux without a full restart beforehand)
 
@@ -119,7 +117,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 - Once finished, use the command below to reboot
 
     ```bash
-    sudo reboot
+    reboot
     ```
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
@@ -140,19 +138,19 @@ C:\bin\python\python.exe C:\bin\scripts\disable-tasks.py
 
 ## Merge the Registry Files
 
-Open CMD as administrator and enter the command below. Replace ``<winver>`` with the Windows version you are configuring (e.g 7, 8, 10, 11).
+Open CMD as administrator and enter the command below. Replace ``<winver>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
 
 ```bat
 C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 ```
 
-- Ensure that the program prints a "done" message to the console, if it has not then command prompt was probably not opened with administrator privileges and the registry files were not successfully merged
+- Ensure that the program prints a "done" message to the console, if it has not then CMD was probably not opened with administrator privileges and the registry files were not successfully merged
 
-- Restart your PC through ``Ctrl+Alt+Delete``. After and only after a restart, you can establish an Internet connection as the Windows update policies will take effect
+- Restart your PC through ``Ctrl+Alt+Delete``. After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 
 ## [Spectre and Meltdown](https://www.grc.com/inspectre.htm)
 
-Ensure ``System is Spectre/Meltdown protected`` is ``NO`` with the program below. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2), feel free to benchmark it on your own system.
+Ensure Spectre and Meltdown protected is disabled with the program below. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2), feel free to benchmark it on your own system.
 
 ```txt
 C:\bin\inspectre.exe
@@ -186,15 +184,13 @@ A standard Firefox installation is recommended. I have created a script used to 
 C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 ```
 
-- [Dreammjow's filter list](https://raw.githubusercontent.com/dreammjow/MyFilters/main/src/filters.txt) can be imported (beware of sites breaking)
-
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Install Open-Shell (Windows 8+)
 
 - Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the ``Open-Shell Menu``
 
-- Settings I personally use per section:
+- Settings I personally use as per section:
 
     - Skin
 
@@ -228,7 +224,11 @@ Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/down
 
 ## Install a Media Player
 
-[Mpv](https://mpv.io)/[mpv.net](https://github.com/stax76/mpv.net), [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc)) or [VLC](https://www.videolan.org) recommended.
+- [mpv](https://mpv.io) or [mpv.net](https://github.com/stax76/mpv.net)
+
+- [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc))
+
+- [VLC](https://www.videolan.org)
 
 ## Configure Power Options
 
@@ -292,7 +292,7 @@ Open CMD and enter the commands below.
     bcdedit /set nx AlwaysOff
     ```
 
-- Configure the operating system name, I usually name it to whatever Windows version I am using e.g. ``Windows 10 1803``
+- Configure the operating system name, I usually name it to whatever Windows version I am using e.g. Windows 10 1803
 
     ```bat
     bcdedit /set {current} description "OSNAME"
@@ -339,7 +339,7 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 
 ## Replace Task Manager with Process Explorer
 
-This step is not optional, pcw.sys will be disabled which breaks the stock Task Manager functionality.
+This step is not optional as the performance counter driver will be disabled which breaks the stock Task Manager functionality.
 
 <details>
 
@@ -347,7 +347,7 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 - It relies on a kernel mode driver to operate (additional overhead)
 
-- No process tree
+- Does not display process tree
 
 - On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the disable idle power setting results in 100% CPU utilization on Windows 8+
 
@@ -357,7 +357,13 @@ This step is not optional, pcw.sys will be disabled which breaks the stock Task 
 
 - Copy ``procexp64.exe`` into ``C:\Windows`` and open it
 
-- Navigate to ``Options`` and select ``Replace Task Manager`` I also configure ``Confirm Kill``, ``Allow Only One Instance`` and ``Always On Top`` (helpful when games hang and system becomes unresponsive)
+- Navigate to ``Options`` and select ``Replace Task Manager`` I also configure the following:
+
+    - Confirm Kill
+
+    - Allow Only One Instance
+
+    - Always On Top (helpful for when applications crash and UI becomes unresponsive)
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
@@ -391,17 +397,19 @@ Microsoft fixed the standby list memory management issues in a later version of 
 
     - The hotkey to clean the standby list and working set
 
-    - The desired timer-resolution, 10000 (1ms) recommended
+    - Desired timer-resolution - 10000 (1ms) recommended
 
-    - Uncheck ``Enable timer``
+    - Enable timer - Disable
 
-    - Check ``Start minimized`` and ``Start timer resolution automatically``
+    - Start minimized - Enable
+
+    - Start timer resolution automatically - Enable
 
 - Avoid using auto cleaning apps like ISLC/MemReduct, they consume a lot of resources due to a frequent polling timer interval and cause stuttering due to autocleaning memory
 
 ## Configure the Network Adapter
 
-- Open ``Network and Sharing Center -> Change adapter settings``
+- Open ``Network and Sharing Center -> Change adapter settings`` by typing ``control`` in ``Win+R``
 
 - Disable any unused network adapters then right-click your main one and select properties
 
@@ -421,11 +429,15 @@ Microsoft fixed the standby list memory management issues in a later version of 
 
     - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
 
-- Disable ``Exclusive Mode`` in the Advanced section
+- Disable Exclusive Mode in the Advanced section
 
-- Set the option in the communications tab to ``Do nothing``
+- Set the option in the communications tab to Do nothing
 
 - I also like to set the sound scheme to no sounds in the sounds tab
+
+- Consider using [REAL](https://github.com/miniant-git/REAL) or [LowAudioLatency](https://github.com/spddl/LowAudioLatency) to minimize the size of the audio buffer. Beware of audio dropouts due to CPU not being able to keep up under load
+
+    - Be warned regarding CPU 0 being reserved/underutilized with the usage of the mentioned programs
 
 ## Configure Services and Drivers
 
@@ -449,7 +461,13 @@ The service list configuration is not intended for Wi-Fi and webcam functionalit
 
 Many devices in device manager will appear with a yellow icon as we ran the script to disable services, **DO NOT** disable any device with a yellow icon as this will completely defeat the purpose of building toggle scripts. My method for configuring services and device manager will ensure maximum compatibility while services are enabled.
 
-- Open device manager then navigate to ``View -> Devices by connection``
+- Open device manager by typing ``devmgmt.msc`` in ``Win+R`` then navigate to ``View -> Devices by connection``
+
+    - Disable any PCI, SATA, NVMe and USB controllers with nothing connected to them
+
+    - Unnecessary HID devices can be disabled, but mouse software will not work
+
+        - See [media/hid-devices-example.png](/media/hid-devices-example.png)
 
     - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
 
@@ -458,12 +476,6 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
         - Related: [research.md - How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
     - Disable ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU
-
-    - Disable any PCI, SATA, NVMe and USB controllers with nothing connected to them
-
-    - Unnecessary HID devices can be disabled, but mouse software will not work
-
-        - See [media/hid-devices-example.png](/media/hid-devices-example.png)
 
 - Navigate to ``View -> Resources by connection``
 
@@ -493,12 +505,19 @@ C:\bin\scripts\disable-driver-powersaving.bat
 
 Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in ``Win+R`` then navigating to ``Data Collector Sets -> Event Trace Sessions``.
 
-```bat
-reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
->> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00
->> "C:\ets-disable.reg" echo.
->> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
-```
+- ets-enable
+
+    ```bat
+    reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
+    ```
+
+- ets-disable
+
+    ```bat
+    >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00
+    >> "C:\ets-disable.reg" echo.
+    >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
+    ```
 
 ## Optimize the File System
 
@@ -534,7 +553,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
     - Enable Message Signaled Interrupts on all devices that support it
 
-        - You will BSOD if you enable MSIs for the stock Windows 7 SATA driver which you should have updated as mentioned in the [Install Drivers](#install-drivers) section
+        - You will BSOD if you enable MSIs for the stock Windows 7 SATA driver which you should have already updated as mentioned in the [Install Drivers](#install-drivers) section
 
     - Be careful as to what you choose to prioritize. As an example, you will likely stutter in an open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
 
@@ -544,27 +563,27 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
 ## Interrupt Affinity
 
-By default, CPU 0 handles the majority of DPCs and ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes and system activities are scheduled on the same core. We can set an interrupt affinity policy to the USB, GPU and NIC driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. The device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``Properties -> General`` section of a device in device manager. Restart your PC instead of the driver to avoid issues.
+By default, CPU 0 handles the majority of DPCs and ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes and system activities are scheduled on the same core competing for CPU time. We can set an interrupt affinity policy to the USB, GPU and NIC driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. The device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``Properties -> General`` section of a device in device manager. Restart your PC instead of the driver to avoid issues.
 
 - Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities
+
+- You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
 
 - Use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
 
 - Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling variation between the USB controller on different cores
 
-    - Use the ``Interval vs Time`` graph (frequency (Hz) = 1000 / interval (ms))
+    - Use the ``Interval vs Time`` graph (frequency = 1000 / interval)
 
-    - Ideally this should be done with some sort of realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and benchmark this later
+    - Ideally this should be benchmarked during realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and benchmark this later
 
-- Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 2/3/4/5 if RssBaseProcNumber is set to 2 with 4 RSS queues configured
+- Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 2/3/4/5 if RssBaseProcNumber is set to 2 with 4 RSS queues configured. In some cases, ndis.sys will not budge from being processed on CPU 0 which is why it is important to verify the expected behavior in a DPC/ISR trace
 
     - Run ``C:\bin\scripts\query-driver-key.bat Win32_NetworkAdapter`` in CMD to get the NIC driver keys on your system
 
         ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
         ```
-
-- You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
 
 ## Configuring Games and Applications
 
@@ -594,11 +613,11 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
 ## Configure Default Programs
 
-Configure default programs in ``Settings -> Apps``.
+Configure default programs in ``Apps`` by pressing ``Win+I``.
 
 ## Cleanup
 
-- Download and extract [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) then remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label, run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
+- Download and extract [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) then remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label and run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
@@ -613,14 +632,6 @@ Configure default programs in ``Settings -> Apps``.
     - ``"%userprofile%\AppData\Local\Temp"``
 
     - ``"%userprofile%\Downloads"``
-
-    OR
-
-    - Open CMD and enter the command below to open all folders listed above at once
-
-        ```bat
-        for %a in ("C:\", "C:\Windows\Prefetch", "C:\Windows\SoftwareDistribution\download", "C:\Windows\Temp", "%userprofile%\AppData\Local\Temp", "%userprofile%\Downloads") do (explorer %a)
-        ```
 
 - Clear the PATH user environment variable of locations pointing to Windows bloatware folders
 
@@ -649,10 +660,6 @@ Configure default programs in ``Settings -> Apps``.
 
 ## Final Thoughts and Tips
 
-- Consider using [REAL](https://github.com/miniant-git/REAL) or [LowAudioLatency](https://github.com/spddl/LowAudioLatency) to minimize the size of the audio buffer. Beware of audio dropouts due to CPU not being able to keep up under load
-
-    - Be warned regarding CPU 0 being reserved/underutilized with the usage of the mentioned programs
-
 - Avoid applying random tweaks, using tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
@@ -665,7 +672,7 @@ Configure default programs in ``Settings -> Apps``.
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider using the scripts in ``C:\bin\scripts\idle-scripts`` (place on desktop for easy access) to disable idle before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md)
+- Consider using the scripts in ``C:\bin\scripts\idle-scripts`` (place on desktop for easy access) to disable idle and force C-State 0 before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md)
 
 - If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you *can* disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration)
 
@@ -673,8 +680,8 @@ Configure default programs in ``Settings -> Apps``.
 
     - Trimming your SSD
 
-    - Using a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from the mouse pad once in a while
+    - Using a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from the mouse pad
 
-    - Using a small [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens often
+    - Using a small [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens
 
     - Removing dust from components often

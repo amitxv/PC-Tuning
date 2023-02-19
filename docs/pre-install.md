@@ -20,7 +20,7 @@ Generally, Windows 7 is superior for real-time tasks compared to newer versions 
 
 ## Boot Into the ISO
 
-For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the Internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates. Moving onward, you will need to open [docs/post-install.md](/docs/post-install.md) on another device to follow up until a web browser is installed. After that you can open the guide on the same operating system you are configuring.
+For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates. Moving onward, you will need to open [docs/post-install.md](/docs/post-install.md) on another device to follow up until a web browser is installed. After that you can open the guide on the same operating system you are configuring.
 
 - Install using a USB storage device:
 
