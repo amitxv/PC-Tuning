@@ -155,7 +155,9 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors, a higher polling interval can help to identify sudden spikes. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
-- [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
+- Disable the paging file and use safe mode for stress testing preferably on a throwaway operating system in case it becomes corrupted
+
+- [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended) /[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme/)
 
     - Use a range of problem sizes
 
