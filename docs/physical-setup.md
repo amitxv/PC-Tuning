@@ -132,7 +132,15 @@
 
 - Disable DRAM Power Down Mode
 
-- Disable BCLK Spread Spectrum and ensure BCLK frequency is close to 100.00 as possible in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
+- Disable Spread Spectrum and ensure BCLK frequency is close to 100.00 as possible in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
+
+- Set the primary graphics to dGPU instead of iGPU if applicable
+
+- Set PCIe link speed to the maximum supported (Gen 3.0, 4.0)
+
+- As we will be configuring a static frequency/voltage for the CPU, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost
+
+    - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring the frequency in BIOS. Adjust accordingly if this is encountered
 
 - Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually (see MemTestHelper). While increasing frequency or changing timings, ensure that the changes are positive in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) due to error correction. Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-hardware-clocking-and-thermal-performance) section for more information
 
