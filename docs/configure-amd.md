@@ -32,7 +32,7 @@
 
 - Configure the following in the display section:
 
-    - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
+    - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time, so feel free to benchmark it yourself, your mileage may vary
 
     - GPU Scaling - Off
 

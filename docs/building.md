@@ -7,6 +7,7 @@
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
 
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
+
 - [cURL](https://curl.se/windows) (included in Windows 10 1803+) - place ``curl.exe`` and ``curl-ca-bundle.crt`` in ``C:\Windows``
 
 ## Download Stock ISOs
@@ -55,7 +56,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 ## Prepare the Build Environment
 
-- Open CMD as administrator and follow the instructions below. Do not close CMD as we will be setting temporary environment variables which will be unbound when the current session is ended
+- Open CMD as administrator and follow the instructions below. Do not close CMD as we will be setting temporary environment variables, which will be unbound when the current session is ended
 
 - Extract the contents of the ISO to a directory of your choice with 7-Zip, In the examples below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
@@ -124,7 +125,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 - Windows 10+ recommended updates:
 
-    - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so this step (integrating updates) can be skipped
+    - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built), so this step (integrating updates) can be skipped
 
     - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35))
 
@@ -158,7 +159,7 @@ for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages
 
 ## Integrate and Obtain Drivers
 
-As mentioned previously, this step is generally only required for users configuring Windows 7 so that the ISO can be equipped with modern hardware support. Typically, only NVMe and USB drivers are required to boot into the desktop, other drivers can be installed later in the [post-installation instructions](/docs/post-install.md#install-drivers).
+As mentioned previously, this step is generally only required for users configuring Windows 7, so that the ISO can be equipped with modern hardware support. Typically, only NVMe and USB drivers are required to boot into the desktop, other drivers can be installed later in the [post-installation instructions](/docs/post-install.md#install-drivers).
 
 - You can usually find drivers by searching or asking others for drivers that are compatible with your device HWID
 
@@ -210,7 +211,7 @@ DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we have not yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim`` which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim`` which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
+This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we have not yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim``, which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim``, which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
 
 - Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_ISO``
 
@@ -232,7 +233,7 @@ explorer "%EXTRACTED_ISO%"
 
 ## ISO Compression (Optional)
 
-Compressing has no advantage other than reducing the size. Keep in mind that Windows setup must decompress the ISO upon installation which takes time. Use the command below to compress the ISO.
+Compressing has no advantage other than reducing the size. Keep in mind that Windows setup must decompress the ISO upon installation, which takes time. Use the command below to compress the ISO.
 
 ```bat
 DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /SourceIndex:1 /DestinationImageFile:"%EXTRACTED_ISO%\sources\install.esd" /Compress:recovery /CheckIntegrity && del /f /q "%EXTRACTED_ISO%\sources\install.wim"
@@ -240,7 +241,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Sourc
 
 ## Convert to ISO
 
-This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). Use the command below to pack the extracted contents back to a single ISO which will be created on the desktop.
+This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). Use the command below to pack the extracted contents back to a single ISO, which will be created on the desktop.
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"FINAL" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\FINAL.iso"

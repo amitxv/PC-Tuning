@@ -72,7 +72,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 - Set the scaling mode to no scaling and set perform scaling on display. Configure your resolution and refresh rate
 
-- Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
+- Consider disabling G-Sync. It has the potential to increase input latency due to extra processing. However, it has supposedly improved over time, so feel free to benchmark it yourself, your mileage may vary
 
 ## Lock GPU Clocks/P-State 0
 

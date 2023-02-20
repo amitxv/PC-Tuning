@@ -26,7 +26,10 @@ echo info: downloading get-pip.py
 curl.exe -l "https://bootstrap.pypa.io/get-pip.py" -o "!temp!\get-pip.py"
 
 set "err=0"
-for %%a in ("python-embed.zip" "get-pip.py") do (
+for %%a in (
+    "python-embed.zip" 
+    "get-pip.py"
+) do (
     if not exist "!temp!\%%~a" (
         set "err=1"
         echo error: %%~a download failed
@@ -35,7 +38,7 @@ for %%a in ("python-embed.zip" "get-pip.py") do (
 if not !err! == 0 exit /b
 
 echo info: verifying hash
-for /f "delims=" %%a in ('certutil -hashfile "!temp!\python-embed.zip" SHA1 ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
+for /f "delims=" %%a in ('certutil -hashfile "!temp!\python-embed.zip" ^| find /i /v "SHA1" ^| find /i /v "Certutil"') do (
     set "file_sha1=%%a"
 )
 set "file_sha1=!file_sha1: =!"
@@ -60,7 +63,10 @@ echo info: installing pip
 
 :: install modules with "!python!\python.exe" -m pip install <module>
 
-for %%a in ("python-embed.zip" "get-pip.py") do (
+for %%a in (
+    "python-embed.zip" 
+    "get-pip.py"
+) do (
     if exist "!temp!\%%~a" (
         del /f /q "!temp!\%%~a"
     )

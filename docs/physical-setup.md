@@ -2,7 +2,7 @@
 
 ## General
 
-- At least one SSD/NVMe (512 GB or higher preferred) is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
+- At least one SSD/NVMe drive (512GB or larger preferred) is mandatory these days due to the unreliability, degraded performance and excessive electromagnetic interference of hard drives.
 
 - See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
@@ -70,7 +70,7 @@
 
 - Plug your mouse and keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports and avoid companion ports (indicated in the right section of the program)
 
-    - Ryzen systems have a USB port that is directly connected to the CPU which can be identified through the motherboard manual
+    - Ryzen systems have a USB port that is directly connected to the CPU, which can be identified through the motherboard manual
 
 - If you have more than one USB controller, you can isolate devices such as DACs, headsets and other devices onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
 
@@ -80,7 +80,7 @@
 
 - [Higher DPI reduces latency](https://www.youtube.com/watch?v=6AoRfv9W110). Most mice are able to handle 1600 DPI without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing). Optionally [reduce the pointer speed](https://boringboredom.github.io/tools/#/WinSens) in Windows. This will not interfere with in-game input as modern games use raw input
 
-- [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly
+- [Higher polling rate reduces jitter](https://www.youtube.com/watch?v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware, so adjust it accordingly
 
 - USB output is limited to roughly 7A and RGB requires unnecessary power. Turn off RGB where you can or strip the LEDs from the peripheral as [running an RGB effect/animation can take a great toll on the MCU and will delay other processes](https://blog.wooting.nl/what-influences-keyboard-speed)
 
@@ -102,11 +102,11 @@
 
     - On some boards, you can enable Hidden OC Item or Hide Item if it exists to unlock a vast amount of options in BIOS
 
-- Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading). This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core requires resource sharing and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Other drawbacks include limited overclocking potential due to increased temperatures
+- Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading). This feature is beneficial for highly threaded operations such as encoding, compiling and rendering. However, using multiple execution threads per core requires resource sharing and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Other drawbacks include limited overclocking potential due to increased temperatures
 
-- Limit C-States, P-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
+- Limit C-States, P-States, T-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
 
-    - Verify S-State status with ``powercfg -a`` in CMD
+    - Verify S-States status with ``powercfg -a`` in CMD
 
 - Disable [Virtualization](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)
 
@@ -134,7 +134,7 @@
 
 - Disable BCLK Spread Spectrum and ensure BCLK frequency is close to 100.00 as possible in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
 
-- Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually (see MemTestHelper). While increasing frequency or changing timings, ensure that the changes are positive in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) due to error correction. Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-hardware-clocking-and-thermal-performance) section for more information
+- Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually. While increasing frequency or changing timings, ensure that the changes are positive in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) due to error correction. Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-hardware-clocking-and-thermal-performance) section for more information
 
     - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
@@ -143,13 +143,13 @@
 
 ## Stability, Hardware Clocking and Thermal Performance
 
-Ensure your CPU, RAM and GPU (with overclock applied) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and algorithms vary between tools which is why it is important to use a range of them (non-exhaustive list of recommended tools are listed below).
+Ensure your CPU, RAM and GPU (with overclock applied) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and algorithms vary between tools, which is why it is important to use a range of them (non-exhaustive list of recommended tools are listed below).
 
 - There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery...
 
 - A single error is one too many
 
-- Avoid thermal throttling at all costs, ambient temperature will increase during the summer which can be replicated with a heater to create a worst-case scenario
+- Avoid thermal throttling at all costs, ambient temperature will increase during the summer, which can be replicated with a heater to create a worst-case scenario
 
 - Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better than thermal throttling at a higher frequency
 
@@ -157,7 +157,7 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
 - Disable the paging file and use safe mode for stress testing preferably on a throwaway operating system in case it becomes corrupted
 
-- [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended) /[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme/)
+- [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended)/[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme/)
 
     - Use a range of problem sizes
 

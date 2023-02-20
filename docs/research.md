@@ -1,6 +1,6 @@
 # Research
 
-#### How can you verify if a DSCP QoS policy is working?
+#### How can you verify if the DSCP QoS policy is working?
 
 <details>
 
@@ -12,11 +12,11 @@
 
     <img src="../media/network-monitor-new-capture.png" width="450">
 
-- Open a game that you have applied a DSCP value for and enter a game mode in which the game will send and receive packets (e.g. an online match, not a local match)
+- Open the game that you have applied the DSCP value for and enter the game mode in which the game will send and receive packets (e.g. an online match, not a local match)
 
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log
 
-- In the left-hand pane, click on the game executable name and click on a packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame
+- In the left-hand pane, click on the game executable name and click on the packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame
 
     <img src="../media/network-monitor-dscp-value.png" width="400">
 
@@ -76,13 +76,13 @@ Conclusion: By default, Windows uses the default value, not enhanced or legacy. 
 <summary>Read More</summary>
 <br>
 
-[Receive side scaling (RSS) is a network driver technology that enables the efficient distribution of network receive processing across multiple CPUs in multiprocessor systems](https://docs.microsoft.com/en-us/windows-hardware/drivers/network/introduction-to-receive-side-scaling). The amount you should use or need depends on your typical network load. In server environments, a large amount of RSS queues is desirable as receive processing delays will be reduced and ensures that no CPU is heavily loaded. The same concept can be applied to games however the network load differs significantly making it an invalid comparison, so I decided to carry out some experiments myself.
+[Receive side scaling (RSS) is a network driver technology that enables the efficient distribution of network receive processing across multiple CPUs in multiprocessor systems](https://docs.microsoft.com/en-us/windows-hardware/drivers/network/introduction-to-receive-side-scaling). The amount you should use or need depends on your typical network load. In server environments, a large amount of RSS queues is desirable as receive processing delays will be reduced and ensures that no CPU is heavily loaded. The same concept can be applied to games, but the network load differs significantly making it an invalid comparison, so I decided to carry out some experiments myself.
 
 I simulated Valorant's network traffic in iperf using two machines (~300kb/s receive in deathmatch) and monitored the network driver's activity in xperf. Please note that RssBaseProcessor is set to 0, so theoretically, CPU 0 and CPU 1 should be handling DPCs/ISRs for ndis.sys.
 
 <img src="../media/300kbps-ndis-xperf-report.png" width="500">
 
-I noticed that despite having RSS queues set to 2, only CPU 1 was primarily handling interrupts for the driver which I assume was due to such little traffic. So I decided to re-test with the same configuration. However, this time I simulated 1Gbps network traffic to verify this.
+I noticed that despite having RSS queues set to 2, only CPU 1 was primarily handling interrupts for the driver, which I assume was due to such little traffic. So I decided to re-test with the same configuration. However, this time I simulated 1Gbps network traffic to verify this.
 
 <img src="../media/1gbps-ndis-xperf-report.png" width="500">
 
@@ -125,7 +125,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     fffff802`3a72e874  06 0c 12
     ```
 
-    PspForegroundQuantum returns the values in hexadecimal, so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by Microsoft, so now lets try an ambiguous value.
+    PspForegroundQuantum returns the values in hexadecimal, so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by Microsoft, so now let us try an ambiguous value.
 
     ``0xffff3f91 (4294918033 decimal)``
 
@@ -141,16 +141,16 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is that the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) and there are no restrictions in place to prevent users to entering an illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values, so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values. The table below consists of all possible values (consistent between client and server editions of Windows as ``00`` or ``11`` were not used in ``AABB`` of ``AABBCC`` in the bitmask which have different meanings on client/server). The time in milliseconds are based on the modern x86/x64 multiprocessor clock interrupt frequency.
 
-    | **Hexadecimal** | **Decimal** | **Binary** | **Interval** | **Length** | **Foreground QU** | **Background QU** | **Foreground Time (Ms)** | **Background Time(Ms)** |
-    |-----------------|-------------|------------|--------------|------------|-------------------|-------------------|--------------------------|-------------------------|
-    | 0x14            | 20          | 010100     | Long         | Variable   | 12                | 12                | 62.50                    | 62.50                   |
-    | 0x15            | 21          | 010101     | Long         | Variable   | 24                | 12                | 125.00                   | 62.50                   |
-    | 0x16            | 22          | 010110     | Long         | Variable   | 36                | 12                | 187.50                   | 62.50                   |
-    | 0x18            | 24          | 011000     | Long         | Fixed      | 36                | 36                | 187.50                   | 187.50                  |
-    | 0x24            | 36          | 100100     | Short        | Variable   | 6                 | 6                 | 31.25                    | 31.25                   |
-    | 0x25            | 37          | 100101     | Short        | Variable   | 12                | 6                 | 62.50                    | 31.25                   |
-    | 0x26            | 38          | 100110     | Short        | Variable   | 18                | 6                 | 93.75                    | 31.25                   |
-    | 0x28            | 40          | 101000     | Short        | Fixed      | 18                | 18                | 93.75                    | 93.75                   |
+    | **Hexadecimal** | **Decimal** | **Binary** | **Interval** | **Length** | **Foreground QU** | **Background QU** | **Foreground Time (Ms)** | **Background Time (Ms)** |
+    |-----------------|-------------|------------|--------------|------------|-------------------|-------------------|--------------------------|------------------------- |
+    | 0x14            | 20          | 010100     | Long         | Variable   | 12                | 12                | 62.50                    | 62.50                    |
+    | 0x15            | 21          | 010101     | Long         | Variable   | 24                | 12                | 125.00                   | 62.50                    |
+    | 0x16            | 22          | 010110     | Long         | Variable   | 36                | 12                | 187.50                   | 62.50                    |
+    | 0x18            | 24          | 011000     | Long         | Fixed      | 36                | 36                | 187.50                   | 187.50                   |
+    | 0x24            | 36          | 100100     | Short        | Variable   | 6                 | 6                 | 31.25                    | 31.25                    |
+    | 0x25            | 37          | 100101     | Short        | Variable   | 12                | 6                 | 62.50                    | 31.25                    |
+    | 0x26            | 38          | 100110     | Short        | Variable   | 18                | 6                 | 93.75                    | 31.25                    |
+    | 0x28            | 40          | 101000     | Short        | Fixed      | 18                | 18                | 93.75                    | 93.75                    |
 
     </details>
 
@@ -171,7 +171,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     structure is easier to look at 
     ```
 
-    A script must be used as a sleep delay is required so that the window can be brought to the front and be made the foreground process.
+    A script must be used as a sleep delay is required, so that the window can be brought to the front and be made the foreground process.
 
     Script.txt contents
 
@@ -254,7 +254,7 @@ On a stock Windows 10 installation, the Wdf01000.sys driver handles USB connecti
 
 <img src="../media/amdxhc31-usb-xperf-report.png" width="500">
 
-Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable, but your mileage may vary so feel free to benchmark it on your own system.
+Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable, but your mileage may vary, so feel free to benchmark it on your own system.
 
 </details>
 

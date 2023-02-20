@@ -4,14 +4,14 @@ Optimize Windows based systems for real-time tasks
 
 ## Introduction
 
-I have tried my best to provide technical references, my own research and a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with settings in the future. Please note that this repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however it is not my intention to directly copy from them. In some circumstances it is unavoidable.
+I have tried my best to provide technical references, my own research and a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with settings in the future. Please note that this repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section. However, it is not my intention to directly copy from them. In some circumstances it is unavoidable.
 
 The guidance is currently updated and has been tested on Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues).
 
 ## Requirements
 
 - USB Storage Device (8 GB minimum)
-- [Ventoy](https://github.com/ventoy/Ventoy/releases)
+- [Ventoy](https://github.com/ventoy/Ventoy)
 - Any live Linux distribution
 - Familiarity with navigating directories in CLI
 

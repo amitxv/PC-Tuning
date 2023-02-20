@@ -8,7 +8,7 @@ if [[ -d "Program Files" ]] && [[ -d "Windows/System32" ]]
 then
     echo info: valid windows installation detected, continuing
 else
-    echo error: directory does not appear to be the root directory of a windows installation
+    echo error: directory does not appear to be the root directory of the windows installation
     exit 1
 fi
 
@@ -49,7 +49,7 @@ do
 done
 
 # echo info: searching for files that are supposed to be removed...
-# echo info: if any file paths appear below any searching message, it is likely that the process failed
+# echo info: if any file paths appear below any search message, it is likely that the process has failed
 
 # for i in "${wildcard_names[@]}"
 # do
