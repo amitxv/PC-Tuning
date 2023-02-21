@@ -610,7 +610,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
         - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below in CMD and reboot
 
             ```bat
-            reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode " /t REG_DWORD /d "5" /f
+            reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
             ```
 
     - Configuring a QoS Policy will allow Windows to prioritize packets of an application over other devices on your network and PC
