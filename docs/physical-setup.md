@@ -2,7 +2,7 @@
 
 ## General
 
-- At least one SSD/NVMe (512 GB or higher preferred) is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
+- At least one SSD/NVMe (512 GB or larger preferred) is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
 
 - See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
@@ -165,20 +165,22 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
 - Disable the paging file and use safe mode for stress testing preferably on a throwaway operating system in case it becomes corrupted
 
-- [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended) /[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme/)
+- Tools
 
-    - Use a range of problem sizes
+    - [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended)/[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme/)
 
-    - Residuals should match, otherwise it is a sign of instability
+        - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
 
-    - GFLOP variation should be minimal
+        - Residuals should match, otherwise it is a sign of instability
 
-- [Prime95](https://www.mersenne.org/download) - Small/Large FFTs
+        - GFLOP variation should be minimal
 
-- [y-cruncher](http://www.numberworld.org/y-cruncher)
+    - [Prime95](https://www.mersenne.org/download) - Small/Large FFTs
 
-- [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
+    - [y-cruncher](http://www.numberworld.org/y-cruncher)
 
-- [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
+    - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
 
-- [OCCT](https://www.ocbase.com/) - VRAM
+    - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
+
+    - [OCCT](https://www.ocbase.com/) - VRAM

@@ -166,7 +166,7 @@ Windows Registry Editor Version 5.00
 
 ; set PowerShell executionpolicy to unrestricted
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell]
 "ExecutionPolicy"="Unrestricted"
 
 ; set .ps1 file types to open with PowerShell by default

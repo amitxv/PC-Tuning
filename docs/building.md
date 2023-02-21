@@ -7,6 +7,7 @@
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
 
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
+
 - [cURL](https://curl.se/windows) (included in Windows 10 1803+) - place ``curl.exe`` and ``curl-ca-bundle.crt`` in ``C:\Windows``
 
 ## Download Stock ISOs
