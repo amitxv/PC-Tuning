@@ -599,11 +599,19 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
     - Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-us/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors). However, other users have claimed otherwise.
 
-    - Always check if the game is using the desired presentmode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal. If you are having trouble with using legacy flip, try to run the command below in CMD and reboot
+    - Always check if the game is using the desired presentmode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal.
 
-        ```bat
-        reg.exe add "HKEY_CURRENT_USER\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible " /t REG_DWORD /d "1" /f
-        ```
+        - If you are having trouble with using legacy flip, try to run the command below in CMD and reboot
+
+            ```bat
+            reg.exe add "HKEY_CURRENT_USER\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible " /t REG_DWORD /d "1" /f
+            ```
+
+        - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below in CMD and reboot
+
+            ```bat
+            reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode " /t REG_DWORD /d "5" /f
+            ```
 
     - Configuring a QoS Policy will allow Windows to prioritize packets of an application over other devices on your network and PC
 
