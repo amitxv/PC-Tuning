@@ -164,7 +164,7 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 ## Install Drivers
 
-Avoid installing chipset drivers. I would recommend updating and installing Ethernet, USB, NVMe, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](/docs/building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC). GPU drivers will be installed in the [Configure the Graphics Driver](#configure-the-graphics-driver) step later on.
+Avoid installing chipset drivers. I would recommend updating and installing NIC, USB, NVMe, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](/docs/building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC). GPU drivers will be installed in the [Configure the Graphics Driver](#configure-the-graphics-driver) step later on.
 
 Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver.
 
@@ -441,7 +441,7 @@ Microsoft fixed the standby list memory management issues in a later version of 
 
 ## Configure Services and Drivers
 
-The service list configuration is not intended for Wi-Fi and webcam functionality. I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\bare-services.ini`` in a text editor.
+I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\bare-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
 - On 1607 and 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
 
