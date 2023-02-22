@@ -171,8 +171,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "DisablePagingExecutive"=dword:00000001
 "DisablePageCombining"=dword:00000001
-"FeatureSettingsOverride"=dword:00000003
-"FeatureSettingsOverrideMask"=dword:00000003
 
 ; disable prefetch and superfetch
 
