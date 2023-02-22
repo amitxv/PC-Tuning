@@ -213,14 +213,14 @@ DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
 
 This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we have not yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim`` which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim`` which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
 
-- Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\W10_ISO``
+- Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\Win10_ISO``
 
 - Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 ISO with the Windows 7 ``install.wim``
 
-- We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\W10_ISO``
+- We need to update a variable since our extracted directory has changed. Enter the path of your new extracted directory, mine is ``C:\Win10_ISO``
 
     ```bat
-    set "EXTRACTED_ISO=C:\W10_ISO"
+    set "EXTRACTED_ISO=C:\Win10_ISO"
     ```
 
 ## Integrating Required Files (2)
