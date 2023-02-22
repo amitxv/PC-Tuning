@@ -52,6 +52,8 @@
 
     - See [Ultimate fan speed curve (by KGCT, iteration 1)](https://imgur.com/a/2UDYXp0)
 
+- Replace stock thermal pads with higher quality ones
+
 - Repaste GPU due to factory application of thermal paste often being inadequate. Also consider replacing the stock fans with higher quality ones
 
 ## Minimize Interference
