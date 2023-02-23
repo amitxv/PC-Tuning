@@ -159,7 +159,7 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
 - A single error is one too many
 
-- Avoid thermal throttling at all costs, ambient temperature will increase during the summer which can be replicated with a heater to create a worst-case scenario
+- Avoid thermal throttling at all costs, ambient temperature will increase during the summer which can be replicated with a heater to create a worst-case scenario. An important note to make is that you can pass hours of stress tests (e.g. RAM) but as soon as another component (e.g. GPU) begins to warm up, you will encounter instability so ensure to cater for such scenario
 
 - Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better than thermal throttling at a higher frequency
 
