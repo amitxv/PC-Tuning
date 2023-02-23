@@ -150,7 +150,7 @@ C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 
 ## [Spectre and Meltdown](https://www.grc.com/inspectre.htm)
 
-Ensure Spectre and Meltdown protected is disabled with the program below. A minority of anticheats (FACEIT) require them to be enabled, so this step can be skipped. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2). Check the status after a reboot.
+Ensure Spectre and Meltdown protected is disabled with the program below. A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step can be skipped. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2). Check the status after a reboot.
 
 ```txt
 C:\bin\inspectre.exe
