@@ -60,6 +60,8 @@ echo info: installing pip
 
 :: install modules with "!python!\python.exe" -m pip install <module>
 
+"!python!\python.exe" -m pip install requests==2.28.2
+
 for %%a in ("python-embed.zip" "get-pip.py") do (
     if exist "!temp!\%%~a" (
         del /f /q "!temp!\%%~a"
