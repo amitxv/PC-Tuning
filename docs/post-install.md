@@ -186,6 +186,31 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
+## Install 7-Zip
+
+Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then navigate ``Tools -> Options`` and associate 7-Zip with all file extensions by clicking the ``+`` button. You may need to click it twice to override existing associated extensions.
+
+## Configure the Graphics Driver
+
+- See [docs/configure-nvidia.md](../docs/configure-nvidia.md)
+
+- See [docs/configure-amd.md](../docs/configure-amd.md)
+
+## Configure MSI Afterburner
+
+If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
+
+- Disable update checks in settings
+
+- I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
+
+- To automatically load profile 1 (as an example) and exit,
+type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
+
+## Install DirectX Runtimes
+
+Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=35). Ensure to uncheck the Bing bar option.
+
 ## Install Open-Shell (Windows 8+)
 
 - Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the ``Open-Shell Menu``
@@ -213,14 +238,6 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 - Windows 8 Only:
 
     - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then navigate to the Windows 8 Settings section and set ``Disable active corners`` to ``All``
-
-## Install 7-Zip
-
-Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then navigate ``Tools -> Options`` and associate 7-Zip with all file extensions by clicking the ``+`` button. You may need to click it twice to override existing associated extensions.
-
-## Install DirectX Runtimes
-
-Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=35). Ensure to uncheck the Bing bar option.
 
 ## Install a Media Player
 
@@ -305,23 +322,6 @@ Open CMD and enter the commands below.
         ```bat
         bcdedit /set disabledynamictick yes
         ```
-
-## Configure the Graphics Driver
-
-- See [docs/configure-nvidia.md](../docs/configure-nvidia.md)
-
-- See [docs/configure-amd.md](../docs/configure-amd.md)
-
-## Configure MSI Afterburner
-
-If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
-
-- Disable update checks in settings
-
-- I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
-
-- To automatically load profile 1 (as an example) and exit,
-type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
 
 ## Configure CRU
 
