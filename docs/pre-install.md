@@ -14,10 +14,10 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     |GPU|Minimum Windows Version|
     |---|---|
-    |NVIDIA 1000 series and lower|Supported by almost all Windows versions|
-    |NVIDIA 2000 series|Win7, Win8, Win10 1709+|
-    |NVIDIA 3000 series|Win7, Win10 1803+|
-    |NVIDIA 4000 series|Win10 1803+|
+    |NVIDIA 10 series and lower|Supported by almost all Windows versions|
+    |NVIDIA 16, 20 series|Win7, Win8, Win10 1709+|
+    |NVIDIA 30 series|Win7, Win10 1803+|
+    |NVIDIA 40 series|Win10 1803+|
     |AMD|Newer drivers supposedly require 1709?|
 
 - Microsoft implemented a fixed 10MHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier, but many users across the internet reported worse performance
