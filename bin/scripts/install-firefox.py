@@ -116,14 +116,16 @@ def main() -> None:
     with open(f"{install_dir}\\distribution\\policies.json", "w", encoding="utf-8") as file:
         json.dump(
             {
-                "DisableAppUpdate": True,
-                "OverrideFirstRunPage": "",
-                "Extensions": {
-                    "Install": [
-                        "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi",
-                        "https://addons.mozilla.org/firefox/downloads/latest/fastforwardteam/17032224-latest.xpi",
-                    ]
-                },
+                "policies": {
+                    "DisableAppUpdate": True,
+                    "OverrideFirstRunPage": "",
+                    "Extensions": {
+                        "Install": [
+                            "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi",
+                            "https://addons.mozilla.org/firefox/downloads/latest/fastforwardteam/17032224-latest.xpi",
+                        ]
+                    },
+                }
             },
             file,
             indent=4,
