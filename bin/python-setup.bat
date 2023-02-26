@@ -14,12 +14,6 @@ if not !errorlevel! == 0 (
 set "current_dir=%~dp0"
 set "current_dir=!current_dir:~0,-1!"
 
-for %%a in ("python-embed.zip" "get-pip.py") do (
-    if exist "!temp!\%%~a" (
-        del /f /q "!temp!\%%~a"
-    )
-)
-
 echo info: downloading python
 curl.exe -l "https://www.python.org/ftp/python/3.8.6/python-3.8.6-embed-amd64.zip" -o "!temp!\python-embed.zip"
 echo info: downloading get-pip.py
