@@ -56,19 +56,19 @@ def main() -> None:
         print("error: unable to get latest version number")
         return
 
-    # # if firefox is already installed, exit if it is already the latest
-    # if os.path.exists(f"{install_dir}\\firefox.exe"):
-    #     process = subprocess.run(
-    #         [f"{install_dir}\\firefox.exe", "--version", "|", "more"],
-    #         capture_output=True,
-    #         check=False,
-    #         universal_newlines=True,
-    #     )
-    #     local_version = process.stdout.split()[-1]
+    # if firefox is already installed, exit if it is already the latest
+    if os.path.exists(f"{install_dir}\\firefox.exe"):
+        process = subprocess.run(
+            [f"{install_dir}\\firefox.exe", "--version", "|", "more"],
+            capture_output=True,
+            check=False,
+            universal_newlines=True,
+        )
+        local_version = process.stdout.split()[-1]
 
-    #     if local_version == latest_version:
-    #         print(f"info: latest version ({latest_version}) already installed")
-    #         return
+        if local_version == latest_version:
+            print(f"info: latest version ({latest_version}) already installed")
+            return
 
     print(f"info: downloading firefox {latest_version} setup")
 
