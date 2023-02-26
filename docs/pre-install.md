@@ -10,7 +10,15 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - In some cases, you may not be able to find USB drivers at all on newer platforms, so it is recommended to check if you can get hold of them in advance of building the ISO. See the [Integrate and Obtain Drivers](/docs/building.md#integrate-and-obtain-drivers) section for details on finding drivers
 
-- Earlier versions of Windows lack GPU driver and anticheat support, so some users are forced on newer builds
+- Earlier versions of Windows lack anticheat (due to lack of security updates) and GPU driver support, so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of March 2023
+
+    |GPU|Minimum Windows Version|
+    |---|---|
+    |NVIDIA 1000 series and lower|Supported by almost all Windows versions|
+    |NVIDIA 2000 series|Win7, Win8, Win10 1709+|
+    |NVIDIA 3000 series|Win7, Win10 1803+|
+    |NVIDIA 4000 series|Win10 1803+|
+    |AMD|Newer drivers supposedly require 1709?|
 
 - Microsoft implemented a fixed 10MHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier, but many users across the internet reported worse performance
 
