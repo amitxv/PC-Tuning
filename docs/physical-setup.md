@@ -124,6 +124,8 @@
 
     - On AMD systems with newer AGESA firmware, changing this setting will have no effect
 
+- Resizable BAR requires GPT/UEFI
+
 - MBR/Legacy requires Compatibility Support Module and typically, only the storage and PCI OpROMs are required, but you can enable all of them if you are unsure. Disable CSM if you are using GPT/UEFI
 
     - Windows 7 UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
