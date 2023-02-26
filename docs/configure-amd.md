@@ -10,13 +10,9 @@
 
 - In the folder of the driver directory (mine is ``B381690`` in the example above), move ``ccc2_install.exe`` to the desktop. This will be used in a later step
 
-- Open notepad file and save it as ``ccc2_install.exe`` to the driver folder as shown below
-
-    - See [media/replace-ccc2_install-example.png](../media/replace-ccc2_install-example.png)
-
 - Open device manager and install the driver by right-clicking on the display adapter, browse my computer for driver software and select the driver folder
 
-- Once the driver has installed, extract ``ccc2_install.exe`` with 7-Zip and run ``CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
+- Navigate to the driver directory (mine is ``B381690``) and extract ``ccc2_install.exe`` with 7-Zip and run ``CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
 - Ensure to disable the bloatware AMD services. They can be accessed by typing ``services.msc`` in ``Win+R``
 
