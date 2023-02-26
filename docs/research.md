@@ -107,11 +107,11 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     We can read PsPrioritySeparation and PspForegroundQuantum in a local kernel debugger such as WinDbg in real-time and use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries.
 
-    | PsPrioritySeparation | Foreground boost |
-    |----------------------|------------------|
-    | 2                    | 3:1              |
-    | 1                    | 2:1              |
-    | 0                    | 1:1              |
+    |PsPrioritySeparation|Foreground boost|
+    |---|---|
+    |2|3:1|
+    |1|2:1|
+    |0|1:1|
 
     <img src="../media/w32ps-quantum-index.png" width="600">
 
@@ -141,16 +141,16 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is that the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) and there are no restrictions in place to prevent users to entering an illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values, so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values. The table below consists of all possible values (consistent between client and server editions of Windows as ``00`` or ``11`` were not used in ``AABB`` of ``AABBCC`` in the bitmask which have different meanings on client/server). The time in milliseconds are based on the modern x86/x64 multiprocessor clock interrupt frequency.
 
-    | **Hexadecimal** | **Decimal** | **Binary** | **Interval** | **Length** | **Foreground QU** | **Background QU** | **Foreground Time (Ms)** | **Background Time (Ms)** |
-    |-----------------|-------------|------------|--------------|------------|-------------------|-------------------|--------------------------|--------------------------|
-    | 0x14            | 20          | 010100     | Long         | Variable   | 12                | 12                | 62.50                    | 62.50                    |
-    | 0x15            | 21          | 010101     | Long         | Variable   | 24                | 12                | 125.00                   | 62.50                    |
-    | 0x16            | 22          | 010110     | Long         | Variable   | 36                | 12                | 187.50                   | 62.50                    |
-    | 0x18            | 24          | 011000     | Long         | Fixed      | 36                | 36                | 187.50                   | 187.50                   |
-    | 0x24            | 36          | 100100     | Short        | Variable   | 6                 | 6                 | 31.25                    | 31.25                    |
-    | 0x25            | 37          | 100101     | Short        | Variable   | 12                | 6                 | 62.50                    | 31.25                    |
-    | 0x26            | 38          | 100110     | Short        | Variable   | 18                | 6                 | 93.75                    | 31.25                    |
-    | 0x28            | 40          | 101000     | Short        | Fixed      | 18                | 18                | 93.75                    | 93.75                    |
+    |**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**ForegroundQU**|**BackgroundQU**|**ForegroundTime(Ms)**|**BackgroundTime(Ms)**|
+    |---|---|---|---|---|---|---|---|---|
+    |0x14|20|010100|Long|Variable|12|12|62.50|62.50|
+    |0x15|21|010101|Long|Variable|24|12|125.00|62.50|
+    |0x16|22|010110|Long|Variable|36|12|187.50|62.50|
+    |0x18|24|011000|Long|Fixed|36|36|187.50|187.50|
+    |0x24|36|100100|Short|Variable|6|6|31.25|31.25|
+    |0x25|37|100101|Short|Variable|12|6|62.50|31.25|
+    |0x26|38|100110|Short|Variable|18|6|93.75|31.25|
+    |0x28|40|101000|Short|Fixed|18|18|93.75|93.75|
 
     </details>
 
