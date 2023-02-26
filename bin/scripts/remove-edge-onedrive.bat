@@ -17,6 +17,7 @@ for %%a in (
     "System32"
 ) do (
     if exist "!windir!\%%~a\OneDriveSetup.exe" (
+        echo info: uninstalling onedrive
         "!windir!\%%~a\OneDriveSetup.exe" /uninstall
     )
 )
