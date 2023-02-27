@@ -244,7 +244,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 <summary>Read More</summary>
 <br>
 
-On a stock Windows 10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers.
+On a stock Win10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers.
 
 #### ``Wdf01000.sys``
 

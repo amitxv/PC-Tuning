@@ -164,9 +164,23 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 ## Install Drivers
 
-Avoid installing chipset drivers. I would recommend updating and installing NIC, USB, NVMe, SATA (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD). See the [Integrate and Obtain Drivers](/docs/building.md#integrate-and-obtain-drivers) section for details on finding drivers (download them on another operating system or PC). GPU drivers will be installed in the [Configure the Graphics Driver](#configure-the-graphics-driver) step later on.
+- Avoid installing chipset drivers
 
-Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver.
+- GPU drivers will be installed in a later step so do not install them at this stage
+
+- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](../media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+
+- Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
+
+- I would recommend updating and installing following:
+
+    - NIC
+
+    - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
+
+    - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
+
+- Since we do not have browser access at this stage, download them on another operating system or PC
 
 ## Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
 
@@ -443,7 +457,7 @@ Microsoft fixed the standby list memory management issues in a later version of 
 
 I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\bare-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
-- On Win10 1503-1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
+- On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
 
 - Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
 
@@ -456,6 +470,8 @@ I am not responsible if anything goes wrong or you BSOD. The idea is to disable 
 - Move the batch scripts and ``NSudo.exe`` somewhere safe such as in the ``C:\`` drive and do not share it with other people as it is specific to your system
 
 - To prepare us for the next steps, run ``Services-Disable.bat`` with NSudo, ensure ``Enable All Privileges`` is enabled as mentioned
+
+- If desired, you can use [ServiWin](https://www.nirsoft.net/utils/serviwin.html) to check for residual drivers and possibly create an issue on the repository to let me know that a given driver should be disabled
 
 ## Configure Device Manager
 
@@ -472,8 +488,6 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
     - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
 
     - Navigate to your ``Network adapter -> Properties -> Advanced``, disable any power saving and wake features
-
-        - Related: [research.md - How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
     - Disable ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU
 
@@ -563,7 +577,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
 ## Interrupt Affinity
 
-By default, CPU 0 handles the majority of DPCs and ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes and system activities are scheduled on the same core competing for CPU time. We can set an interrupt affinity policy to the USB, GPU and NIC driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. The device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``Properties -> General`` section of a device in device manager. Restart your PC instead of the driver to avoid issues.
+By default, CPU 0 handles the majority of DPCs and ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes and system activities are scheduled on the same core competing for CPU time. We can set an interrupt affinity policy to the USB, GPU, NIC, HD Audio and storage driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. The device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``Properties -> General`` section of a device in device manager. Restart your PC instead of the driver to avoid issues.
 
 - Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities
 
@@ -577,7 +591,9 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
     - Ideally this should be benchmarked during realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and benchmark this later
 
-- Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 2/3/4/5 if RssBaseProcNumber is set to 2 with 4 RSS queues configured. In some cases, ndis.sys will not budge from being processed on CPU 0 which is why it is important to verify the expected behavior in a DPC/ISR trace
+- Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 2/3/4/5 if RssBaseProcNumber is set to 2 with 4 RSS queues configured. The driver must support MSI-X for RSS to function
+
+    - Related: [research.md - How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
     - Run ``C:\bin\scripts\query-driver-key.bat Win32_NetworkAdapter`` in CMD to get the NIC driver keys on your system
 

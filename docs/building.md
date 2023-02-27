@@ -131,7 +131,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
     - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35))
 
-- Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates somewhere easily accessible such as ``C:\updates``
+- Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Place the updates in a folder such as ``C:\updates``
 
 - Integrate the updates into the mounted ISO with the command below. The servicing stack must be installed before installing the cumulative updates
 
@@ -159,25 +159,17 @@ This command removes the majority of Windows apps that nobody uses and potential
 for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%i)
 ```
 
-## Integrate and Obtain Drivers
+## Integrate and Obtain Drivers (Windows 7)
 
-As mentioned previously, this step is generally only required for users configuring Windows 7 so that the ISO can be equipped with modern hardware support. Typically, only NVMe and USB drivers are required to boot into the desktop, other drivers can be installed later in the [post-installation instructions](/docs/post-install.md#install-drivers).
+This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable ourselves to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try to integrate the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934).
 
-- You can usually find drivers by searching or asking others for drivers that are compatible with your device HWID
+You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](../media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
 
-    - See [media/device-hwid-example.png](../media/device-hwid-example.png)
+Once you have obtained the relevant drivers, place all the drivers to be integrated in a folder such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
 
-- [Win-Raid USB driver collection](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871)
-
-    - If you can not find a USB driver, try using the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934)
-
-- [Win-Raid AHCI and NVMe driver collection](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310)
-
-- Place all the drivers to be integrated somewhere easily accessible such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
-
-    ```bat
-    DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
-    ```
+```bat
+DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
+```
 
 ## Replace Wallpapers
 

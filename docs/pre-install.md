@@ -6,9 +6,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 ## What Version of Windows Should You Use?
 
-- Generally, older versions of Windows are superior for real-time tasks the concern for power efficiency and security is heightened after each edition release. For this reason, Windows 7 is the preferable choice but lacks driver support for modern hardware and developers are increasingly dropping support for legacy operating systems
-
-    - In some cases, you may not be able to find USB drivers at all on newer platforms, so it is recommended to check if you can get hold of them in advance of building the ISO. See the [Integrate and Obtain Drivers](/docs/building.md#integrate-and-obtain-drivers) section for details on finding drivers
+- Generally, older versions of Windows are superior for real-time tasks as the concern for power efficiency and security is heightened after each edition release. For this reason, Windows 7 is the preferable choice but lacks driver support for modern hardware and developers are increasingly dropping support for legacy operating systems
 
 - Earlier versions of Windows lack anticheat (due to lack of security updates) and GPU driver support, so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of March 2023
 
@@ -56,7 +54,7 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
 
     - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to bypass this step (this does not activate Windows)
 
-    - When installing Windows 11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and import ``windows11-setup.reg``
+    - When installing Win11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and import ``windows11-setup.reg``
 
 - Install using DISM Apply-Image (without a USB storage device):
 
