@@ -272,7 +272,7 @@ Starting with 2004, the calling process attempting to raise the clock interrupt 
 "GlobalTimerResolutionRequests"=dword:00000001
 ```
 
-I wrote two programs similar to Bruce Dawson's [measure_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/measure_interval.cpp) and [change_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/change_interval.cpp) program to benchmark how long the system sleeps for in reality when trying to sleep for 1ms by calling Sleep(1) and to raise the timer resolution. Compiled binaries and full source code can be found [here](/timer-resolution) As the minimum resolution is 15.625ms, Sleep(1) has the potential to sleep up to ~16ms depending on the current resolution. We can determine whether another process calling for a higher resolution increases the sleep precision of our measure program.
+I wrote two programs similar to Bruce Dawson's [measure_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/measure_interval.cpp) and [change_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/change_interval.cpp) program to benchmark how long the system sleeps for in reality when trying to sleep for 1ms by calling Sleep(1) and to raise the timer resolution. Compiled binaries and full source code can be found [here](/timer-resolution). As the minimum resolution is 15.625ms, Sleep(1) has the potential to sleep up to ~16ms depending on the current resolution. We can determine whether another process calling for a higher resolution increases the sleep precision of our measure program.
 
 **SleepBenchmark.c**:
 
