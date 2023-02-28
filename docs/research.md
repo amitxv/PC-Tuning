@@ -312,7 +312,7 @@ printf("Resolution set to: %lums", current_res);
 Sleep(INFINITE);
 ```
 
-**Results (Widows 10 21H2)**:
+**Results (Windows 10 21H2)**:
 
 ```txt
 Resolution: 0.499200ms, Sleep(1) slept 15.510000ms (delta: 14.510000)
@@ -347,7 +347,7 @@ fffff803`444fb5c6  00000000
 
 Now that we have established what the supported Windows versions are, let's re-test the registry key. I'll be using Windows 11 (for a particular reason which is explained later).
 
-**Results (Widows 11 22H2)**:
+**Results (Windows 11 22H2)**:
 
 ```txt
 Resolution: 0.500000ms, Sleep(1) slept 1.496800ms (delta: 0.496800)
