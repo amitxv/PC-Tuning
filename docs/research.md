@@ -383,8 +383,6 @@ SetProcessInformation(GetCurrentProcess(),
                         ProcessPowerThrottling,
                         &PowerThrottling,
                         sizeof(PowerThrottling));
-
-NtQueryTimerResolution(&max_res, &min_res, &current_res);
 ```
 
 Now we can confirm whether this works by minimizing the calling process as shown below to check if the resolution remains at ~0.5ms, and it indeed does.
