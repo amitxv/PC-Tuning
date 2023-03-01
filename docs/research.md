@@ -306,7 +306,7 @@ for (;;) {
 LONG min_res, max_res, current_res;
 NtQueryTimerResolution(&max_res, &min_res, &current_res);
 
-LONG err = NtSetTimerResolution(5000, 1, &current_res);
+NtSetTimerResolution(min_res, 1, &current_res);
 
 printf("Resolution set to: %lums", current_res);
 Sleep(INFINITE);

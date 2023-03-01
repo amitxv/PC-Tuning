@@ -14,7 +14,7 @@ typedef struct _PROCESS_POWER_THROTTLING_STATE {
 } PROCESS_POWER_THROTTLING_STATE, *PPROCESS_POWER_THROTTLING_STATE;
 
 int main() {
-    // uncomment to hide console
+    // hide console
 
     // HWND hWnd = GetConsoleWindow();
     // if (hWnd != NULL) {
@@ -35,16 +35,13 @@ int main() {
                           &PowerThrottling,
                           sizeof(PowerThrottling));
 
-    NtQueryTimerResolution(&max_res, &min_res, &current_res);
+    if (NtQueryTimerResolution(&max_res, &min_res, &current_res) != 0) {
+        printf("NtQueryTimerResolution failed");
+        return 1;
+    }
 
-    LONG err = NtSetTimerResolution(5000, 1, &current_res);
-
-    if (err != 0) {
-        MessageBox(
-            NULL,
-            "NtSetTimerResolution failed",
-            "SetTimerResolution",
-            MB_ICONWARNING);
+    if (NtSetTimerResolution(min_res, 1, &current_res) != 0) {
+        printf("NtSetTimerResolution failed");
         return 1;
     }
 

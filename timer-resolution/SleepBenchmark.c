@@ -7,11 +7,15 @@ LONG NtQueryTimerResolution(PULONG MinimumResolution, PULONG MaximumResolution, 
 int main() {
     LONG min_res, max_res, current_res;
     LARGE_INTEGER start, end, elapsed, freq;
+
     QueryPerformanceFrequency(&freq);
 
     for (;;) {
         // get current resolution
-        NtQueryTimerResolution(&max_res, &min_res, &current_res);
+        if (NtQueryTimerResolution(&max_res, &min_res, &current_res) != 0) {
+            printf("NtQueryTimerResolution failed");
+            return 1;
+        }
 
         // benchmark Sleep(1)
         QueryPerformanceCounter(&start);
