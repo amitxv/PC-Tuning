@@ -312,7 +312,7 @@ printf("Resolution set to: %lums", current_res);
 Sleep(INFINITE);
 ```
 
-**Results (Windows 10 21H2)**:
+**Results (Windows 10 21H2 Client)**:
 
 ```txt
 Resolution: 0.499200ms, Sleep(1) slept 15.510000ms (delta: 14.510000)
@@ -327,18 +327,18 @@ Resolution: 0.499200ms, Sleep(1) slept 15.480700ms (delta: 14.480700)
 Resolution: 0.499200ms, Sleep(1) slept 15.504500ms (delta: 14.504500)
 ```
 
-0.5ms resolution is requested, but it seems that it did not increase the precision of Sleep(1) which meant the registry key was not working so I decided to dig further. Upon searching for the entry in ``ntoskrnl.exe`` with [Hex-Rays IDA](https://hex-rays.com/products/idahome), it seems that the string ``GlobalTimerResolutionRequests`` was nowhere to be found. Subsequently, I grabbed the kernel from Windows 11 22H2 and the string along with the entry seemed to exist in there. For reference, it is ``KiGlobalTimerResolutionRequests`` which can be read in a local kernel debugger such as WinDbg.
+0.5ms resolution is requested, but it seems that it did not increase the precision of Sleep(1) which meant the registry key was not working, so I decided to dig further. Upon searching for the entry in ``ntoskrnl.exe`` with [Hex-Rays IDA](https://hex-rays.com/products/idahome), it seems that the string ``GlobalTimerResolutionRequests`` was nowhere to be found. Subsequently, I grabbed the kernel from Windows 11 22H2 and the string along with the entry seemed to exist in there. For reference, it is ``KiGlobalTimerResolutionRequests`` which can be read in a local kernel debugger such as WinDbg.
 
-After collecting all the kernels from Windows 10 2004 - 22H2, I can conclude that the entry only exists in Windows 10 Server (not client) editions and Windows 11+ and we can test this by checking if the entry can be successfully read, see below for an example.
+After collecting all the kernels from Windows 10 2004 - 22H2 client, LTSC and server editions, I can conclude that the entry only exists in Windows 10 Server 21H2 and Windows 11+ and we can test this by checking if the entry can be successfully read, see below for an example.
 
-**Win10 2004 - 22H2 Client Editions**:
+**Win10 2004 - 22H2 Client and Server 2004/20H2**:
 
 ```txt
 lkd> dd KiGlobalTimerResolutionRequests L1
 Couldn't resolve error at 'KiGlobalTimerResolutionRequests '
 ```
 
-**Windows Server/Windows 11**:
+**Windows Server 21H2 and Windows 11**:
 
 ```txt
 lkd> dd KiGlobalTimerResolutionRequests L1

@@ -22,11 +22,11 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png)
 
-- The implementation of ``Hardware: Independent Flip`` (fullscreen optimizations) improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
+- The implementation of ``Hardware: Independent Flip`` (full screen optimizations) improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
 
     - See the [Configuring Games and Applications](./post-install.md#configuring-games-and-applications) section for more information
 
-- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](../media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be mimicked in Windows 11+ and Windows 10 Server (not applicable to client editions) [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-the-great-rule-change). For this reason, it would be appropriate to avoid client editions of Windows 10 2004 - 22H2
+- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](../media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be mimicked in Windows 10 Server 21H2 (not applicable to any client edition) and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-the-great-rule-change). For this reason, it would be appropriate to avoid client editions of Windows 10 2004 - 22H2
 
 ## Create the Base ISO
 
