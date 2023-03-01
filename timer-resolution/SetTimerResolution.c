@@ -14,6 +14,13 @@ typedef struct _PROCESS_POWER_THROTTLING_STATE {
 } PROCESS_POWER_THROTTLING_STATE, *PPROCESS_POWER_THROTTLING_STATE;
 
 int main() {
+    // uncomment to hide console
+
+    // HWND hWnd = GetConsoleWindow();
+    // if (hWnd != NULL) {
+    //     ShowWindow(hWnd, SW_HIDE);
+    // }
+
     LONG min_res, max_res, current_res;
     PROCESS_POWER_THROTTLING_STATE PowerThrottling;
 
