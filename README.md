@@ -2,11 +2,13 @@
 
 Optimize Windows based systems for real-time tasks
 
-## Introduction
+## Rationale
 
-I have tried my best to provide technical references, my own research and a valid justification to the information provided to prevent making changes that would otherwise make your system perform worse than stock but simultaneously also provide a solid baseline for experimenting with settings in the future. Please note that this repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however it is not my intention to directly copy from them. In some circumstances it is unavoidable.
+Windows is notorious for its ever-growing bloatware and third party telemetry which makes it difficult to execute real-time tasks efficiently due to excessive context switching, interrupts and I/O which ultimately leads to a poor user experience. This repository was created in hope of standardizing systems for latency sensitive tasks and minimizing unwanted outgoing traffic.
 
-The guidance is currently updated and has been tested on Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues).
+This repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however it is not my intention to directly copy from them.
+
+The guidance is currently updated and has been tested on client editions of Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues).
 
 ## Requirements
 
