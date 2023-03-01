@@ -1,6 +1,6 @@
-#include <stdio.h>
 #include <time.h>
 #include <windows.h>
+#define printf __builtin_printf
 
 LONG NtQueryTimerResolution(PULONG MinimumResolution, PULONG MaximumResolution, PULONG CurrentResolution);
 
