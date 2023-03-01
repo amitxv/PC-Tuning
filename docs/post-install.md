@@ -401,26 +401,6 @@ C:\bin\scripts\disable-process-mitigations.bat
     Disable-MMAgent -MemoryCompression
     ```
 
-## Memory Cleaner and Timer Resolution (Windows 10 1909 and Under)
-
-Microsoft fixed the standby list memory management issues in a later version of Windows, but some modern games still have memory leaks. Memory Cleaner ([official reference](https://github.com/danskee/MemoryCleaner), [source code](https://git.zusier.xyz/Zusier/MemoryCleaner), [download](https://www.majorgeeks.com/files/details/memory_cleaner_danskee.html)) also allows us to raise the clock interrupt frequency on a global level. However, the behavior of processes that are affected significantly changed in Windows 10 2004+ in a way that potentially breaks real-time applications as explained in [this article](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) rendering this *trick* obsolete. The old implementation can be mimicked in Windows 11+ and Windows 10 Server (not applicable to client editions) with a registry entry.
-
-- Memory Cleaner can be started by default by typing ``shell:startup`` in ``Win+R`` and placing the binary in the opened folder
-
-- Navigate to ``File -> Settings`` and configure the following:
-
-    - The hotkey to clean the standby list and working set
-
-    - Desired timer-resolution - 10000 (1ms) recommended
-
-    - Enable timer - Disable
-
-    - Start minimized - Enable
-
-    - Start timer resolution automatically - Enable
-
-- Avoid using auto cleaning apps like ISLC/MemReduct, they consume a lot of resources due to a frequent polling timer interval and cause stuttering due to autocleaning memory
-
 ## Configure the Network Adapter
 
 - Open ``Network and Sharing Center -> Change adapter settings`` by typing ``control`` in ``Win+R``
