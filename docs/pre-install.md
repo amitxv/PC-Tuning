@@ -26,9 +26,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See the [Configuring Games and Applications](./post-install.md#configuring-games-and-applications) section for more information
 
-- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](../media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be mimicked in Windows 11+ and Windows 10 Server (not applicable to client editions) with a registry entry. For this reason, it would be appropriate to avoid client editions of Windows 10 2004 - 22H2
-
-    - See [Windows Timer Resolution: The Great Rule Change](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change)
+- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](../media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be mimicked in Windows 11+ and Windows 10 Server (not applicable to client editions) [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-the-great-rule-change). For this reason, it would be appropriate to avoid client editions of Windows 10 2004 - 22H2
 
 ## Create the Base ISO
 
