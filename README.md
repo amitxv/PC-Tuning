@@ -38,3 +38,5 @@ The guidance is currently updated and has been tested on Windows 7 through to Wi
 - [Calypto's Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4)
 
 - [djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)
+
+- [Windows Internals Sixth Edition Part 1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf)
