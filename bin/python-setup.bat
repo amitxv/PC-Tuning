@@ -52,7 +52,7 @@ echo info: installing pip
 
 >> "!current_dir!\python\python38._pth" echo Lib\site-packages
 
-:: install modules with "!python!\python.exe" -m pip install <module>
+:: install modules with "!current_dir!\python\python.exe" -m pip install <module>
 
 "!current_dir!\python\python.exe" -m pip install requests==2.28.2
 
