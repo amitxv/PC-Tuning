@@ -4,6 +4,8 @@
 
 Do not connect to the internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality after the ``Services-Disable.bat`` script is run.
 
+- Windows Server will force you to enter a complex password which we will remove in a few steps later
+
 If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute the following command ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection demonstrated in the video examples below.
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows7-example.mp4)
@@ -68,6 +70,16 @@ C:\bin\scripts\miscellaneous.bat
 
         - All permissions in ``Privacy`` Allow microphone access if desired
 
+- Windows Server Only:
+
+    - In Server Manager, navigate to ``Manage -> Server Manager Properties`` and enable the option to prevent Server Manager from starting automatically
+
+    - Set the ``Windows Audio`` and ``Windows Audio Endpoint Builder`` services startup type to automatic by typing ``services.msc`` in ``Win+R``
+
+    - Navigate to ``Computer Configuration -> Windows Settings -> Security Settings -> Account Policies -> Password Policy`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Password must meet complexity requirements``
+
+    - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank. As a reminder, this is required because the service list used will break user password functionality after the ``Services-Disable.bat`` script is run.
+
 ## Remove Bloatware Natively
 
 - Open CMD as administrator and enter the command below to remove the chromium version of Microsoft Edge (if present) and OneDrive
@@ -78,11 +90,13 @@ C:\bin\scripts\miscellaneous.bat
 
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
 
-- Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``:
+- Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this has to be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features`` (top right)
 
     - See [media/windows7-features-example.png](../media/windows7-features-example.png)
 
     - See [media/windows8+-features-example.png](../media/windows8+-features-example.png)
+
+    - See [media/windows-server-features-example.png](../media/windows-server-features-example.png)
 
 - Windows 10+ Only:
 

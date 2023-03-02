@@ -8,7 +8,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Generally, older versions of Windows are superior for real-time tasks as the concern for power efficiency and security is heightened after each edition release. For this reason, Windows 7 is the preferable choice but lacks driver support for modern hardware and developers are increasingly dropping support for legacy operating systems
 
-- Earlier versions of Windows lack anticheat (due to lack of security updates) and GPU driver support, so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of March 2023
+- Earlier versions of Windows lack anticheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of March 2023
 
     |GPU|Minimum Windows Version|
     |---|---|
