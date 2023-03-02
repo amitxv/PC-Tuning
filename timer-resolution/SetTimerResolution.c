@@ -1,4 +1,4 @@
-/* 
+/*
 Compile using GCC or your favorite compiler.
 GCC: gcc SetTimerResolution.c -lntdll -o SetTimerResolution.c
 */
@@ -15,10 +15,9 @@ LONG NtSetTimerResolution(ULONG DesiredResolution, BOOL SetResolution, PULONG Cu
 int main()
 {
     LONG min_res, max_res, current_res;
-    const struct
+    struct
     {
-        const ULONG
-            Version,
+        ULONG Version,
             ControlMask,
             StateMask;
     } PowerThrottling = {
