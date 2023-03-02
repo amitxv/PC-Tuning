@@ -371,18 +371,21 @@ As shown above, the registry key is working and Sleep(1) is sleeping around ~1.5
 Luckily, [SetProcessInformation](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessinformation) can be used so that the calling process's resolution request is respected regardless of it's state. This is done by adding the following lines to ``SetTimerResolution.c``:
 
 ```c
-PROCESS_POWER_THROTTLING_STATE PowerThrottling;
-
-RtlZeroMemory(&PowerThrottling, sizeof(PowerThrottling));
-PowerThrottling.Version = PROCESS_POWER_THROTTLING_CURRENT_VERSION;
-
-PowerThrottling.ControlMask = PROCESS_POWER_THROTTLING_IGNORE_TIMER_RESOLUTION;
-PowerThrottling.StateMask = 0;
+const struct
+    {
+        const ULONG
+            Version,
+            ControlMask,
+            StateMask;
+    } PowerThrottling = {
+        .Version = PROCESS_POWER_THROTTLING_CURRENT_VERSION,
+        .ControlMask = PROCESS_POWER_THROTTLING_IGNORE_TIMER_RESOLUTION,
+        .StateMask = 0};
 
 SetProcessInformation(GetCurrentProcess(),
-                        ProcessPowerThrottling,
-                        &PowerThrottling,
-                        sizeof(PowerThrottling));
+                          ProcessPowerThrottling,
+                          &PowerThrottling,
+                          sizeof(PowerThrottling));
 ```
 
 Now we can confirm whether this works by minimizing the calling process as shown below to check if the resolution remains at ~0.5ms, and it indeed does.
