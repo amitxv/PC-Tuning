@@ -37,28 +37,28 @@ We can read HalpTscSyncPolicy in a local kernel debugger such as [WinDbg](https:
 
 ``bcdedit.exe /deletevalue tscsyncpolicy`` (Windows default)
 
-```txt
+```
 lkd> dd HalpTscSyncPolicy l1
 fffff801`2de4a3ac  00000000
 ```
 
 ``bcdedit.exe /set tscsyncpolicy default``
 
-```txt
+```
 lkd> dd HalpTscSyncPolicy l1
 fffff803`1dc4a3ac  00000000
 ```
 
 ``bcdedit.exe /set tscsyncpolicy legacy``
 
-```txt
+```
 lkd> dd HalpTscSyncPolicy l1
 fffff805`1dc4a3ac  00000001
 ```
 
 ``bcdedit.exe /set tscsyncpolicy enhanced``
 
-```txt
+```
 lkd> dd HalpTscSyncPolicy l1
 fffff802`2864a3ac  00000002
 ```
@@ -117,7 +117,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     Demonstration with the Windows default, 0x2 (2 decimal)
 
-    ```txt
+    ```
     lkd> dd PsPrioritySeparation L1
     fffff802`3a6fc5c4  00000002
 
@@ -129,7 +129,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     ``0xffff3f91 (4294918033 decimal)``
 
-    ```txt
+    ```
     lkd> dd PsPrioritySeparation L1
     fffff802`3a6fc5c4  00000001
 
@@ -165,7 +165,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     We can view the QuantumReset value in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to check what a process's share of the total quantum is.
 
-    ```txt
+    ```
     QuantumReset is the default, full quantum of each thread on the system when it
     is replenished This value is cached into each thread of the process, but the KPROCESS
     structure is easier to look at 
@@ -175,7 +175,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     Script.txt contents
 
-    ```txt
+    ```
     .sleep 1000
     dt nt!_KPROCESS <address> QuantumReset
     ```
@@ -184,28 +184,28 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     ``Valorant`` (game)
 
-    ```txt
+    ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 18 ''
     ```
 
     ``Csrss`` (responsible for input)
 
-    ```txt
+    ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     ``System`` (Windows kernel)
 
-    ```txt
+    ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     ``Audiodg`` (Windows audio)
 
-    ```txt
+    ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
@@ -214,21 +214,21 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     ``Valorant`` (game)
 
-    ```txt
+    ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     ``Csrss`` (responsible for input)
 
-    ```txt
+    ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
 
     ``System`` (Windows kernel)
 
-    ```txt
+    ```
     lkd> $$>a< "script.txt"
         +0x281 QuantumReset : 6 ''
     ```
@@ -267,7 +267,7 @@ Excluding benchmark variation, ISR/DPC count and ISR latency is identical. Howev
 
 Starting with 2004, the calling process attempting to raise the clock interrupt frequency no longer functions on a global level and is independent of other processes running on the system. A recent comment on the [Great Rule Change](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) article suggested a registry key (see below) which claims to restore the old timer implementation, so I decided to investigate.
 
-```txt
+```
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
 "GlobalTimerResolutionRequests"=dword:00000001
 ```
@@ -314,7 +314,7 @@ Sleep(INFINITE);
 
 **Results (Windows 10 21H2 Client)**:
 
-```txt
+```
 Resolution: 0.499200ms, Sleep(1) slept 15.510000ms (delta: 14.510000)
 Resolution: 0.499200ms, Sleep(1) slept 15.540000ms (delta: 14.540000)
 Resolution: 0.499200ms, Sleep(1) slept 15.480000ms (delta: 14.480000)
@@ -333,14 +333,14 @@ After collecting all the kernels from Windows 10 2004 - 22H2 client, LTSC and se
 
 **Win10 2004 - 22H2 Client and Server 2004/20H2**:
 
-```txt
+```
 lkd> dd KiGlobalTimerResolutionRequests L1
 Couldn't resolve error at 'KiGlobalTimerResolutionRequests '
 ```
 
 **Windows Server 21H2 and Windows 11**:
 
-```txt
+```
 lkd> dd KiGlobalTimerResolutionRequests L1
 fffff803`444fb5c6  00000000
 ```
@@ -349,7 +349,7 @@ Now that we have established what the supported Windows versions are, let's re-t
 
 **Results (Windows 11 22H2)**:
 
-```txt
+```
 Resolution: 0.500000ms, Sleep(1) slept 1.496800ms (delta: 0.496800)
 Resolution: 0.500000ms, Sleep(1) slept 1.495600ms (delta: 0.495600)
 Resolution: 0.500000ms, Sleep(1) slept 1.495300ms (delta: 0.495300)
@@ -387,7 +387,7 @@ SetProcessInformation(GetCurrentProcess(),
 
 Now we can confirm whether this works by minimizing the calling process as shown below to check if the resolution remains at ~0.5ms, and it indeed does.
 
-```txt
+```
 Resolution: 0.500000ms, Sleep(1) slept 1.494400ms (delta: 0.494400)
 Resolution: 0.500000ms, Sleep(1) slept 1.494700ms (delta: 0.494700)
 Resolution: 0.500000ms, Sleep(1) slept 1.494900ms (delta: 0.494900)

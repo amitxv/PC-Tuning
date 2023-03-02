@@ -138,7 +138,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 Run the package below to install the redistributables.
 
-```txt
+```
 C:\bin\VisualCppRedist_AIO_x86_x64.exe
 ```
 
@@ -166,7 +166,7 @@ C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 
 Ensure Spectre and Meltdown protected is disabled with the program below. A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step can be skipped. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2). Check the status after a reboot.
 
-```txt
+```
 C:\bin\inspectre.exe
 ```
 
@@ -200,7 +200,7 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 Run the package below to install the runtimes.
 
-```txt
+```
 C:\bin\ndp48-web.exe
 ```
 

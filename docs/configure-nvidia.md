@@ -6,7 +6,7 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 - Extract the driver executable package with 7-Zip and remove all files and folders except the following:
 
-    ```txt
+    ```
     Display.Driver
     NVI2
     EULA.txt
@@ -17,7 +17,7 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 - Remove the following consecutive lines from ``setup.cfg`` (near the bottom):
 
-    ```txt
+    ```
     <file name="${{EulaHtmlFile}}"/>
     <file name="${{FunctionalConsentFile}}"/>
     <file name="${{PrivacyPolicyFile}}"/>
@@ -25,7 +25,7 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 - In ``NVI2\presentations.cfg`` set the value for ProgressPresentationUrl and ProgressPresentationSelectedPackageUrl to an empty string:
 
-    ```txt
+    ```
     <string name="ProgressPresentationUrl" value=""/>
     <string name="ProgressPresentationSelectedPackageUrl" value=""/>
     ```

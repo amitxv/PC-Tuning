@@ -113,7 +113,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 - Windows 7 recommended updates:
 
-    ```txt
+    ```
     KB4490628 - Servicing Stack Update
     KB4474419 - SHA-2 Code Signing Update
     KB2670838 - Platform Update and DirectX 11.1
@@ -125,7 +125,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 - Windows 8 recommended updates:
 
-    ```txt
+    ```
     KB2919442 - Servicing Stack Update
     KB2999226 - Universal C Runtime
     KB2919355 - Cumulative Update
