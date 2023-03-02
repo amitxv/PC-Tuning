@@ -157,6 +157,8 @@
 
 Ensure your CPU, RAM and GPU (with overclock applied) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and algorithms vary between tools which is why it is important to use a range of them (non-exhaustive list of recommended tools are listed below).
 
+- Ensure to disable CUDA - Force P2 State with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress testing
+
 - There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery...
 
 - A single error is one too many

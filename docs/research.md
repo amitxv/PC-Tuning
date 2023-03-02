@@ -258,7 +258,7 @@ Excluding benchmark variation, ISR/DPC count and ISR latency is identical. Howev
 
 </details>
 
-#### Fixing timing precision in Windows after the "The Great Rule Change"
+#### Fixing timing precision in Windows after "The Great Rule Change"
 
 <details>
 
@@ -272,18 +272,19 @@ Starting with 2004, the calling process attempting to raise the clock interrupt 
 "GlobalTimerResolutionRequests"=dword:00000001
 ```
 
-I wrote two programs similar to Bruce Dawson's [measure_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/measure_interval.cpp) and [change_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/change_interval.cpp) program to benchmark how long the system sleeps for in reality when trying to sleep for 1ms by calling Sleep(1) and to raise the timer resolution. Compiled binaries and full source code can be found [here](/timer-resolution). As the minimum resolution is 15.625ms, Sleep(1) has the potential to sleep up to ~16ms depending on the current resolution. We can determine whether another process calling for a higher resolution increases the sleep precision of our measure program.
+I wrote two programs similar to Bruce Dawson's [measure_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/measure_interval.cpp) and [change_interval.cpp](https://github.com/randomascii/blogstuff/blob/main/timer_interval/change_interval.cpp) program to benchmark how long the system sleeps for in reality when trying to sleep for 1ms by calling Sleep(1) and to raise the timer resolution. Compiled binaries and the source code can be found in the [TimerResolution repository](https://github.com/amitxv/TimerResolution). As the minimum resolution is 15.625ms, Sleep(1) has the potential to sleep up to ~16ms depending on the current resolution. We can determine whether another process calling for a higher resolution increases the sleep precision of our measure program.
 
-**SleepBenchmark.c**:
+**MeasureSleep.cpp**:
 
-```c
-LONG min_res, max_res, current_res;
-LARGE_INTEGER start, end, elapsed, freq;
+```cpp
+ULONG MinimumResolution, MaximumResolution, CurrentResolution;
+LARGE_INTEGER start, end, freq;
+
 QueryPerformanceFrequency(&freq);
 
 for (;;) {
     // get current resolution
-    NtQueryTimerResolution(&max_res, &min_res, &current_res);
+    NtQueryTimerResolution(&MinimumResolution, &MaximumResolution, &CurrentResolution)
 
     // benchmark Sleep(1)
     QueryPerformanceCounter(&start);
@@ -294,21 +295,21 @@ for (;;) {
     double delta_ms = delta_s * 1000;
 
     printf("Resolution: %lfms, Sleep(1) slept %lfms (delta: %lf)\n",
-            current / 10000.0, delta_ms, delta_ms - 1);
+        CurrentResolution / 10000.0, delta_ms, delta_ms - 1);
 
     Sleep(1000); // pause for a second between iterations
 }
 ```
 
-**SetTimerResolution.c**:
+**SetTimerResolution.cpp**:
 
-```c
-LONG min_res, max_res, current_res;
-NtQueryTimerResolution(&max_res, &min_res, &current_res);
+```cpp
+ULONG MinimumResolution, MaximumResolution, CurrentResolution;
 
-NtSetTimerResolution(min_res, 1, &current_res);
+NtQueryTimerResolution(&MinimumResolution, &MaximumResolution, &CurrentResolution)
+NtSetTimerResolution(MaximumResolution, true, &CurrentResolution)
 
-printf("Resolution set to: %lums", current_res);
+printf("Resolution set to: %lfms", (double)CurrentResolution / 10000);
 Sleep(INFINITE);
 ```
 
@@ -329,7 +330,7 @@ Resolution: 0.499200ms, Sleep(1) slept 15.504500ms (delta: 14.504500)
 
 0.5ms resolution is requested, but it seems that it did not increase the precision of Sleep(1) which meant the registry key was not working, so I decided to dig further. Upon searching for the entry in ``ntoskrnl.exe`` with [Hex-Rays IDA](https://hex-rays.com/products/idahome), it seems that the string ``GlobalTimerResolutionRequests`` was nowhere to be found. Subsequently, I grabbed the kernel from Windows 11 22H2 and the string along with the entry seemed to exist in there. For reference, it is ``KiGlobalTimerResolutionRequests`` which can be read in a local kernel debugger such as WinDbg.
 
-After collecting all the kernels from Windows 10 2004 - 22H2 client, LTSC and server editions, I can conclude that the entry only exists in Windows 10 Server 21H2 and Windows 11+ and we can test this by checking if the entry can be successfully read, see below for an example.
+After collecting all the kernels from Windows 10 2004 - 22H2 client, LTSC and server editions, I can conclude that the entry only exists in Windows 10 Server 21H2+ and Windows 11+ and we can test this by checking if the entry can be successfully read, see below for an example. Random observation; the registry key is present and already set to 1 on server 21H2
 
 **Win10 2004 - 22H2 Client and Server 2004/20H2**:
 
@@ -338,7 +339,7 @@ lkd> dd KiGlobalTimerResolutionRequests L1
 Couldn't resolve error at 'KiGlobalTimerResolutionRequests '
 ```
 
-**Windows Server 21H2 and Windows 11**:
+**Windows Server 21H2+ and Windows 11+**:
 
 ```
 lkd> dd KiGlobalTimerResolutionRequests L1
@@ -368,21 +369,17 @@ As shown above, the registry key is working and Sleep(1) is sleeping around ~1.5
 
 > Starting with Windows 11, if a window-owning process becomes fully occluded, minimized, or otherwise invisible or inaudible to the end user, Windows does not guarantee a higher resolution than the default system resolution. See SetProcessInformation for more information on this behavior.
 
-Luckily, [SetProcessInformation](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessinformation) can be used so that the calling process's resolution request is respected regardless of it's state. This is done by adding the following lines to ``SetTimerResolution.c``:
+Luckily, [SetProcessInformation](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessinformation) can be used so that the calling process's resolution request is respected regardless of it's state. This is done by adding the following lines:
 
-```c
+```cpp
 PROCESS_POWER_THROTTLING_STATE PowerThrottling;
-
 RtlZeroMemory(&PowerThrottling, sizeof(PowerThrottling));
-PowerThrottling.Version = PROCESS_POWER_THROTTLING_CURRENT_VERSION;
 
+PowerThrottling.Version = PROCESS_POWER_THROTTLING_CURRENT_VERSION;
 PowerThrottling.ControlMask = PROCESS_POWER_THROTTLING_IGNORE_TIMER_RESOLUTION;
 PowerThrottling.StateMask = 0;
 
-SetProcessInformation(GetCurrentProcess(),
-                        ProcessPowerThrottling,
-                        &PowerThrottling,
-                        sizeof(PowerThrottling));
+SetProcessInformation(GetCurrentProcess(), ProcessPowerThrottling, &PowerThrottling, sizeof(PowerThrottling));
 ```
 
 Now we can confirm whether this works by minimizing the calling process as shown below to check if the resolution remains at ~0.5ms, and it indeed does.

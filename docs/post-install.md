@@ -522,9 +522,7 @@ Create registry files to toggle event trace sessions. Programs that rely on even
 - ets-disable
 
     ```bat
-    >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00
-    >> "C:\ets-disable.reg" echo.
-    >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
+    >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00 && >> "C:\ets-disable.reg" echo. && >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
     ```
 
 ## Optimize the File System
@@ -672,8 +670,7 @@ Configure default programs in ``Apps`` by pressing ``Win+I``.
     - Open CMD and enter the commands below
 
         ```bat
-        reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
-        reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
+        reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
 
 ## Final Thoughts and Tips
