@@ -258,6 +258,8 @@ Excluding benchmark variation, ISR/DPC count and ISR latency is identical. Howev
 
 </details>
 
+---
+
 #### Fixing timing precision in Windows after "The Great Rule Change"
 
 <details>

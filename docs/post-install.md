@@ -232,8 +232,7 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 
 - I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
 
-- To automatically load profile 1 (as an example) and exit,
-type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
+- To automatically load profile 1 (as an example) and exit, type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
 
 ## Install DirectX Runtimes
 
