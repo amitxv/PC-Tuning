@@ -294,8 +294,7 @@ for (;;) {
     double delta_s = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart;
     double delta_ms = delta_s * 1000;
 
-    printf("Resolution: %lfms, Sleep(1) slept %lfms (delta: %lf)\n",
-        CurrentResolution / 10000.0, delta_ms, delta_ms - 1);
+    std::cout << "Resolution: " << (CurrentResolution / 10000.0) << "ms, Sleep(1) slept " << delta_ms << "ms (delta: " << delta_ms - 1 << ")\n";
 
     Sleep(1000); // pause for a second between iterations
 }
@@ -309,7 +308,7 @@ ULONG MinimumResolution, MaximumResolution, CurrentResolution;
 NtQueryTimerResolution(&MinimumResolution, &MaximumResolution, &CurrentResolution)
 NtSetTimerResolution(MaximumResolution, true, &CurrentResolution)
 
-printf("Resolution set to: %lfms", (double)CurrentResolution / 10000);
+std::cout << "Resolution set to: " << (CurrentResolution / 10000.0) << "ms\n";
 Sleep(INFINITE);
 ```
 
