@@ -171,7 +171,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     structure is easier to look at 
     ```
 
-    A script must be used as a sleep delay is required so that the window can be brought to the front and be made the foreground process.
+    A script must be used as a sleep delay is required so that the window can be brought to the front and be made the foreground process. ``!process 0 0`` can be used to list running processes on the system.
 
     Script.txt contents
 
