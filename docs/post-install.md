@@ -38,11 +38,31 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 ## Miscellaneous
 
-Open CMD as administrator and enter the command below. The commands are placed in a script instead of this document as it will be tedious to copy and paste each command at this stage.
+- Open CMD as administrator and enter the commands below
 
-```bat
-C:\bin\scripts\miscellaneous.bat
-```
+    - Disable fast startup. Must be disabled before booting into Linux to avoid file system errors
+
+        ```bat
+        powercfg /hibernate off
+        ```
+
+    - Set the maximum password age to never expire
+
+        ```bat
+        net accounts /maxpwage:unlimited
+        ```
+
+    - Clean the WinSxS folder
+
+        ```bat
+        DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+        ```
+
+    - Disable reserved storage (Windows 10 1903+)
+
+        ```bat
+        DISM /Online /Set-ReservedStorageState /State:Disabled
+        ```
 
 - Disable Enhance pointer precision by typing ``main.cpl`` in ``Win+R``
 
@@ -522,6 +542,12 @@ Create registry files to toggle event trace sessions. Programs that rely on even
 
     ```bat
     >> "C:\ets-disable.reg" echo Windows Registry Editor Version 5.00 && >> "C:\ets-disable.reg" echo. && >> "C:\ets-disable.reg" echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger]
+    ```
+
+- Disable SleepStudy (UserNotPresentSession)
+
+    ```bat
+    for %a in ("SleepStudy" "Kernel-Processor-Power" "UserModePowerService") do (wevtutil sl Microsoft-Windows-%~a/Diagnostic /e:false)
     ```
 
 ## Optimize the File System
