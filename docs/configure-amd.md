@@ -37,17 +37,3 @@
 ## Lock GPU Clocks/P-State 0
 
 - Force P-State 0 with [MorePowerTool](https://www.igorslab.de/en/red-bios-editor-and-morepowertool-adjust-and-optimize-your-vbios-and-even-more-stable-overclocking-navi-unlimited), [MoreClockTool](https://www.igorslab.de/en/the-moreclocktool-mct-for-free-download-the-practical-oc-attachment-to-the-morepowertool-replaces-the-wattman) or [OverdriveNTool](https://forums.guru3d.com/threads/overdriventool-tool-for-amd-gpus.416116)
-
-## Configure Flip Queue Size and ULPS
-
-The following commands disable ultra low power states and set the flip queue size to 1.
-
-- Run ``C:\bin\scripts\query-driver-key.bat Win32_VideoController`` in CMD to get the GPU driver keys on your system
-
-    ```bat
-    set "key=0000"
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\%key%" /v "EnableUlps" /t REG_DWORD /d "0" /f
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\%key%\UMD" /v "Main3D_DEF" /t REG_SZ /d "1" /f
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\%key%\UMD" /v "Main3D" /t REG_BINARY /d "3100" /f
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\%key%\UMD" /v "FlipQueueSize" /t REG_BINARY /d "3100" /f
-    ```
