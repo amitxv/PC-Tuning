@@ -1,6 +1,6 @@
 # PC-Tuning
 
-Optimize Windows based systems for real-time tasks
+Configure Windows based systems for real-time tasks
 
 ## Rationale
 
