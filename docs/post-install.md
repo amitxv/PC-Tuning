@@ -234,6 +234,12 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
+- Automatic updates are disabled by default. To check for updates when Windows starts, type ``shell:startup`` in ``Win+R`` then create a shortcut with the below target
+
+    ```bat
+    C:\bin\python\pythonw.exe C:\bin\scripts\install-firefox.py
+    ```
+
 ## Install 7-Zip
 
 Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then navigate ``Tools -> Options`` and associate 7-Zip with all file extensions by clicking the ``+`` button. You may need to click it twice to override existing associated extensions.
