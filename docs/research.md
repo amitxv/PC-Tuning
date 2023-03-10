@@ -141,16 +141,29 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is that the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) and there are no restrictions in place to prevent users to entering an illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values, so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values. The table below consists of all possible values (consistent between client and server editions of Windows as ``00`` or ``11`` were not used in ``AABB`` of ``AABBCC`` in the bitmask which have different meanings on client/server). The time in milliseconds are based on the modern x86/x64 multiprocessor clock interrupt frequency.
 
+    Although a foreground boost can not be used when using a fixed length interval in terms of the quantum, PsPrioritySeparation still changes, and another thread priority boosting mechanism just happens to use the value of it so in reality, a fixed 3:1 quantum should have a perceivable difference compared to a fixed 1:1 quantum. See the paragraph below from Windows Internals.
+
+    > As will be described shortly, whenever a thread in the foreground process completes a wait operation on
+    a kernel object, the kernel boosts its current (not base) priority by the current value of
+    PsPrioritySeparation. (The windowing system is responsible for determining which process is
+    considered to be in the foreground.) As described earlier in this chapter in the section “Controlling the
+    quantum,” PsPrioritySeparation reflects the quantum-table index used to select quantums for the
+    threads of foreground applications. However, in this case, it is being used as a priority boost value.
+
     |**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**ForegroundQU**|**BackgroundQU**|**ForegroundTime(Ms)**|**BackgroundTime(Ms)**|
     |---|---|---|---|---|---|---|---|---|
     |0x14|20|010100|Long|Variable|12|12|62.50|62.50|
     |0x15|21|010101|Long|Variable|24|12|125.00|62.50|
     |0x16|22|010110|Long|Variable|36|12|187.50|62.50|
     |0x18|24|011000|Long|Fixed|36|36|187.50|187.50|
+    |0x19|25|011001|Long|Fixed|36|36|187.50|187.50|
+    |0x1A|26|011010|Long|Fixed|36|36|187.50|187.50|
     |0x24|36|100100|Short|Variable|6|6|31.25|31.25|
     |0x25|37|100101|Short|Variable|12|6|62.50|31.25|
     |0x26|38|100110|Short|Variable|18|6|93.75|31.25|
     |0x28|40|101000|Short|Fixed|18|18|93.75|93.75|
+    |0x29|41|101001|Short|Fixed|18|18|93.75|93.75|
+    |0x2A|42|101010|Short|Fixed|18|18|93.75|93.75|
 
     </details>
 
