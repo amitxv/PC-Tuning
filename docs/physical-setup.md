@@ -18,6 +18,8 @@
 
     - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software related causes of IRQ sharing but the purpose of checking this now is to resolve the hardware related causes
 
+- Avoid daisy-chaining power cables
+
 - Bufferbloat is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets. [Measure](https://www.waveform.com/tools/bufferbloat) and [minimize](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat) it
 
 - Tape the end of loose power cables to reduce the risk of shorting components
@@ -30,7 +32,7 @@
 
 - Avoid tower/air coolers due to limited cooling potential and lack of space for fans to cool other components
 
-- Consider mounting a fan over VRMs, CPU backplate, storage devices, PCH and other hot spots
+- Consider mounting a fan over VRMs, CPU backplate, storage devices, PCH, NIC and other hot spots
 
 - Mount your AIO properly
 
