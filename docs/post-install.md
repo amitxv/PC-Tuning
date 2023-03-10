@@ -262,7 +262,7 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 
 ## Install DirectX Runtimes
 
-Download and install the [DirectX runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=35). Ensure to uncheck the Bing bar option.
+Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=8109).
 
 ## Install Open-Shell (Windows 8+)
 
