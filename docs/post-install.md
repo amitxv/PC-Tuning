@@ -118,6 +118,8 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - See [media/windows-server-features-example.png](../media/windows-server-features-example.png)
 
+        - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` (top right) and enable ``Wireless LAN Service``
+
 - Windows 10+ Only:
 
     - Windows 10:
