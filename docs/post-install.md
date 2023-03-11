@@ -98,7 +98,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - Navigate to ``Computer Configuration -> Windows Settings -> Security Settings -> Account Policies -> Password Policy`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Password must meet complexity requirements``
 
-    - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank. As a reminder, this is required because the service list used will break user password functionality after the ``Services-Disable.bat`` script is run.
+    - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank. As a reminder, this is required because the service list used will break user password functionality after the ``Services-Disable.bat`` script is run
 
 ## Remove Bloatware Natively
 
@@ -250,6 +250,10 @@ Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Z
 
 - See [docs/configure-amd.md](../docs/configure-amd.md)
 
+## Install DirectX Runtimes
+
+Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=8109).
+
 ## Configure MSI Afterburner
 
 If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
@@ -260,9 +264,19 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 
 - To automatically load profile 1 (as an example) and exit, type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
 
-## Install DirectX Runtimes
+## Configure CRU
 
-Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=8109).
+If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions, download and extract it.
+
+- See [How to set up Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
+
+- Use the exact timing for an integer refresh rate
+
+- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a workaround for the 1-second black screen when alt-tabbing in FSE, feel free to skip this step if you are not comfortable risking a black screen
+
+- Restart your PC instead of using ``restart64.exe`` as it may result in a black screen
+
+- Ensure your resolution is configured properly in Display Adapter Settings
 
 ## Install Open-Shell (Windows 8+)
 
@@ -375,20 +389,6 @@ Open CMD and enter the commands below.
         ```bat
         bcdedit /set disabledynamictick yes
         ```
-
-## Configure CRU
-
-If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions, download and extract it.
-
-- See [How to set up Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
-
-- Use the exact timing for an integer refresh rate
-
-- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a workaround for the 1-second black screen when alt-tabbing in FSE, feel free to skip this step if you are not comfortable risking a black screen
-
-- Restart your PC instead of using ``restart64.exe`` as it may result in a black screen
-
-- Ensure your resolution is configured properly in Display Adapter Settings
 
 ## Replace Task Manager with Process Explorer
 
@@ -578,10 +578,6 @@ Open CMD and enter the commands below.
     fsutil behavior set disabledeletenotify 0
     ```
 
-## Configure Control Panel
-
-It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
-
 ## Message Signaled Interrupts
 
 [Message signaled interrupts are faster than traditional line-based interrupts and may also resolve the issue of shared interrupts which are often the cause of high interrupt latency and stability](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf).
@@ -623,6 +619,10 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
         ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
         ```
+
+## Configure Control Panel
+
+It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
 
 ## Configuring Games and Applications
 
