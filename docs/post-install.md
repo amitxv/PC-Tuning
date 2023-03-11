@@ -182,16 +182,6 @@ C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 
 - Restart your PC through ``Ctrl+Alt+Delete``. After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 
-## [Spectre and Meltdown](https://www.grc.com/inspectre.htm)
-
-Ensure Spectre and Meltdown protected is disabled with the program below. A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step can be skipped. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2). Check the status after a reboot.
-
-```
-C:\bin\inspectre.exe
-```
-
-- See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
-
 ## User Preference
 
 Go through the ``C:\bin\preference`` folder to configure common user settings.
@@ -239,6 +229,24 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
     ```bat
     C:\bin\python\pythonw.exe C:\bin\scripts\install-firefox.py
     ```
+
+## Spectre and Meltdown
+
+A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step can be skipped. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2).
+
+- The commands below can be used to disable Spectre and Meltdown
+
+    ```bat
+    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f
+    ```
+
+    ```bat
+    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f
+    ```
+
+- Download the [InSpectre](https://www.grc.com/inspectre.htm) utility to check the status after a reboot
+
+    - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
 
 ## Install 7-Zip
 
@@ -541,7 +549,7 @@ Create registry files to toggle event trace sessions. Programs that rely on even
 - ets-enable
 
     ```bat
-    reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
+    reg.exe export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
     ```
 
 - ets-disable
