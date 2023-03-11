@@ -203,7 +203,7 @@ Python is used to run scripts provided in the ``bin\scripts`` directory since ba
 
 ## Unmount and Commit
 
-Run the command below twice to commit our changes to the ISO.
+Run the command below to commit our changes to the ISO. If you get an error, check if the directory is empty to ensure the image is unmounted by typing ``explorer "%MOUNT_DIR%"``. If it is empty, you can likely ignore the error, otherwise try close all open folders and run the command again.
 
 ```bat
 DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
