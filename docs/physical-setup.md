@@ -138,6 +138,8 @@
 
 - Disable DRAM Power Down Mode
 
+- Disable PCI Clock Gating
+
 - Disable Spread Spectrum and ensure BCLK frequency is close to 100.00 as possible in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
 
 - Set the primary graphics to dGPU instead of iGPU if applicable
