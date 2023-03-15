@@ -10,7 +10,7 @@
 
 - Avoid single-channel and mixing/matching DIMMs
 
-- Ensure that your GPU is installed in the top PCIe slot and that it is running at the rated bandwidth in [GPU-Z](https://www.techpowerup.com/gpuz) while running the built-in render test
+- Ensure that your GPU is running at the rated bandwidth in [GPU-Z](https://www.techpowerup.com/gpuz) while running the built-in render test
 
     - See [media/gpuz-bus-interface.png](../media/gpuz-bus-interface.png)
 
