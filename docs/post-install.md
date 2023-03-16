@@ -78,6 +78,8 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable
 
+    - ``Remote`` - disable remote assistance and remote desktop
+
 - Allow users full control of the ``C:\`` directory to resolve xperf etl processing
 
     - See [media/full-control-example.png](../media/full-control-example.png), continue and ignore errors
