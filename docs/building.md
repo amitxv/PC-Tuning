@@ -195,7 +195,7 @@ explorer "%MOUNT_DIR%"
 
 ## Setup Python
 
-Python is used to run scripts provided in the ``bin\scripts`` directory since batch scripting has limited power. Run the command below to set up a portable version of python.
+Python is used to run scripts provided in the ``bin\scripts`` directory since batch scripting has limited power. Run the command below to set up a portable version of Python.
 
 ```bat
 "%MOUNT_DIR%\bin\python-setup.bat"

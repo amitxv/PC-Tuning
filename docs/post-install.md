@@ -516,7 +516,7 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
 
     - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
 
-    - Navigate to your ``Network adapter -> Properties -> Advanced``, disable any power saving and wake features
+    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power saving features
 
     - Disable ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU
 
