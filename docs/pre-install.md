@@ -66,8 +66,8 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
         DISM /Apply-Image /ImageFile:<path\to\wim> /Index:1 /ApplyDir:<drive letter>
         ```
 
-    - Create the boot entry with the command below. Replace ``<drive letter>`` with the drive letter you assigned. For example ``D:``
+    - Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory. For example ``D:\Windows``
 
         ```bat
-        bcdboot <drive letter>
+        bcdboot <windir>
         ```
