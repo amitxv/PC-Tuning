@@ -58,4 +58,16 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
 
 - Install using DISM Apply-Image (without a USB storage device):
 
-    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign the newly created unallocated space a drive letter. Extract the ISO if required and launch ``install.bat``
+    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign the newly created unallocated space a drive letter
+
+    - Extract the ISO if required then run the command below to apply the image. Replace ``<path\to\wim>`` with the path to the ``install.wim`` or ``install.esd`` and replace ``<drive letter>`` with the drive letter you assigned in the previous step. For example, ``C:\en_windows_8_1_x64_dvd_2707217\sources\install.wim`` and ``D:``
+
+        ```bat
+        DISM /Apply-Image /ImageFile:<path\to\wim> /Index:1 /ApplyDir:<drive letter>
+        ```
+
+    - Create the boot entry with the command below. Replace ``<drive letter>`` with the drive letter you assigned. For example ``D:``
+
+        ```bat
+        bcdboot <drive letter>
+        ```
