@@ -58,7 +58,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 ## Prepare the Build Environment
 
-- Open CMD as administrator and follow the instructions below. Do not close CMD as we will be setting temporary environment variables which will be unbound when the current session is ended
+- Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
 - Extract the contents of the ISO to a directory of your choice with 7-Zip, In the examples below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
@@ -104,6 +104,8 @@ Remove every edition except the desired edition by retrieving the indexes of eve
     ```
 
 ## Mount the ISO
+
+Mount the image with the command below.
 
 ```bat
 DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDir:"%MOUNT_DIR%"
@@ -185,7 +187,7 @@ Run the command below to replace all backgrounds and user profile pictures with 
 win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
 ```
 
-## Integrating Required Files (1)
+## Integrating Required Files #1
 
 Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script in the mounted directory. Open the directory with the command below.
 
@@ -223,15 +225,15 @@ This step is not required if you are [installing using DISM Apply-Image](/docs/p
     set "EXTRACTED_ISO=C:\Win10_ISO"
     ```
 
-## Integrating Required Files (2)
+## Integrating Required Files #2 (Windows 11)
 
-Place the ``install.bat`` script and the ``windows11-setup.reg`` registry file in the extracted ISO directory. Open the directory with the command below.
+Place ``windows11-setup.reg`` in the extracted ISO directory. Open the directory with the command below.
 
 ```bat
 explorer "%EXTRACTED_ISO%"
 ```
 
-## ISO Compression (Optional)
+## ISO Compression
 
 Compressing has no advantage other than reducing the size. Keep in mind that Windows setup must decompress the ISO upon installation which takes time. Use the command below to compress the ISO.
 
