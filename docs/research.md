@@ -344,20 +344,20 @@ Resolution: 0.499200ms, Sleep(1) slept 15.504500ms (delta: 14.504500)
 
 0.5ms resolution is requested, but it seems that it did not increase the precision of Sleep(1) which meant the registry key was not working, so I decided to dig further. Upon searching for the entry in ``ntoskrnl.exe`` with [Hex-Rays IDA](https://hex-rays.com/products/idahome), it seems that the string ``GlobalTimerResolutionRequests`` was nowhere to be found. Subsequently, I grabbed the kernel from Windows 11 22H2 and the string along with the entry seemed to exist in there. For reference, it is ``KiGlobalTimerResolutionRequests`` which can be read in a local kernel debugger such as WinDbg.
 
-After collecting all the kernels from Windows 10 2004 - 22H2 client, LTSC and server editions, I can conclude that the entry only exists in Windows 10 Server 21H2+ and Windows 11+ and we can test this by checking if the entry can be successfully read, see below for an example. Random observation; the registry key is present and already set to 1 on server 21H2
+After collecting all the kernels from Windows 10 2004 - 22H2 client, LTSC and server editions, I can conclude that the entry only exists in server 2022+ and Windows 11+ and we can test this by checking if the entry can be successfully read, see below for an example. Random observation; the registry key is present and already set to 1 on server 2022
 
-**Win10 2004 - 22H2 Client and Server 2004/20H2**:
-
-```
-lkd> dd KiGlobalTimerResolutionRequests L1
-Couldn't resolve error at 'KiGlobalTimerResolutionRequests '
-```
-
-**Windows Server 21H2+ and Windows 11+**:
+**Server 2022+ and Windows 11+**:
 
 ```
 lkd> dd KiGlobalTimerResolutionRequests L1
 fffff803`444fb5c6  00000000
+```
+
+**Any other build**:
+
+```
+lkd> dd KiGlobalTimerResolutionRequests L1
+Couldn't resolve error at 'KiGlobalTimerResolutionRequests '
 ```
 
 Now that we have established what the supported Windows versions are, let's re-test the registry key. I'll be using Windows 11 (for a particular reason which is explained later).
