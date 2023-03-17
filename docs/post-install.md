@@ -740,7 +740,7 @@ Configure default programs in ``Apps`` by pressing ``Win+I``.
 
 - Carry out maintenance tasks yourself on a weekly basis. This includes:
 
-    - Trimming your SSD
+    - Trimming your SSD (as we disabled the scheduled task that does it automatically)
 
     - Using a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from the mouse pad
 
