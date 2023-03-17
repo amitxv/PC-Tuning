@@ -110,11 +110,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]
 "Start"=dword:00000004
 
-; default power saving mode for all network cards to disabled
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters]
-"DefaultPnPCapabilities"=dword:00000018
-
 ; disable program compatibility assistant
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]

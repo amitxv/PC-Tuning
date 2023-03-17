@@ -518,7 +518,7 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
 
     - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
 
-    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power saving features
+    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power saving features. Disable the power saving option in the ``Power Management`` section
 
     - Disable ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU
 
@@ -540,10 +540,6 @@ Open CMD and enter the commands below to disable power saving on various devices
 
 ```bat
 C:\bin\scripts\disable-pnp-powersaving.ps1
-```
-
-```bat
-C:\bin\scripts\disable-driver-powersaving.bat
 ```
 
 ## Configure Event Trace Sessions
