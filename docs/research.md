@@ -150,20 +150,20 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     quantum,” PsPrioritySeparation reflects the quantum-table index used to select quantums for the
     threads of foreground applications. However, in this case, it is being used as a priority boost value.
 
-    |**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**ForegroundQU**|**BackgroundQU**|**ForegroundTime(Ms)**|**BackgroundTime(Ms)**|
-    |---|---|---|---|---|---|---|---|---|
-    |0x14|20|010100|Long|Variable|12|12|62.50|62.50|
-    |0x15|21|010101|Long|Variable|24|12|125.00|62.50|
-    |0x16|22|010110|Long|Variable|36|12|187.50|62.50|
-    |0x18|24|011000|Long|Fixed|36|36|187.50|187.50|
-    |0x19|25|011001|Long|Fixed|36|36|187.50|187.50|
-    |0x1A|26|011010|Long|Fixed|36|36|187.50|187.50|
-    |0x24|36|100100|Short|Variable|6|6|31.25|31.25|
-    |0x25|37|100101|Short|Variable|12|6|62.50|31.25|
-    |0x26|38|100110|Short|Variable|18|6|93.75|31.25|
-    |0x28|40|101000|Short|Fixed|18|18|93.75|93.75|
-    |0x29|41|101001|Short|Fixed|18|18|93.75|93.75|
-    |0x2A|42|101010|Short|Fixed|18|18|93.75|93.75|
+    |**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**ForegroundQU**|**BackgroundQU**|**TotalQU**|
+    |---|---|---|---|---|---|---|---|
+    |0x14|20|010100|Long|Variable|12 (62.50ms)|12 (62.50ms)|24 (125.00ms)
+    |0x15|21|010101|Long|Variable|24 (125.00ms)|12 (62.50ms)|36 (187.50ms)
+    |0x16|22|010110|Long|Variable|36 (187.50ms)|12 (62.50ms)|48 (250.00ms)
+    |0x18|24|011000|Long|Fixed|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
+    |0x19|25|011001|Long|Fixed|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
+    |0x1A|26|011010|Long|Fixed|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
+    |0x24|36|100100|Short|Variable|6 (31.25ms)|6 (31.25ms)|12 (62.50ms)
+    |0x25|37|100101|Short|Variable|12 (62.50ms)|6 (31.25ms)|18 (93.75ms)
+    |0x26|38|100110|Short|Variable|18 (93.75ms)|6 (31.25ms)|24 (125.00ms)
+    |0x28|40|101000|Short|Fixed|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
+    |0x29|41|101001|Short|Fixed|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
+    |0x2A|42|101010|Short|Fixed|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
 
     </details>
 
