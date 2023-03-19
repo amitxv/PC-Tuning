@@ -70,6 +70,8 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frame pacing but feel free to benchmark it yourself. You should also consider whether you are already CPU bottlenecked if you do choose to enable the setting
 
+    - Ensure that settings are not being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
+
 - Set the scaling mode to no scaling and set perform scaling on display. Configure your resolution and refresh rate
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
