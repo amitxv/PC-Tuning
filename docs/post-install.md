@@ -622,7 +622,7 @@ By default, CPU 0 handles the majority of DPCs and ISRs for several devices whic
 
     - Related: [research.md - How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
-    - Run ``C:\bin\scripts\query-driver-key.bat Win32_NetworkAdapter`` in CMD to get the NIC driver keys on your system
+    - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
         ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
