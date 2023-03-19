@@ -28,19 +28,19 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See the [Configuring Games and Applications](./post-install.md#configuring-games-and-applications) section for more information
 
-- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](../media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which are not Windows 11 or server 2022
+- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which are not Windows 11 or server 2022
 
 - [AllowTelemetry](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DataCollection::AllowTelemetry) can *actually* be set to 0 on Windows Server editions
 
 ## Create the Base ISO
 
-- See [docs/building.md](../docs/building.md)
+- See [docs/building.md](/docs/building.md)
 
 ## Prepare the USB
 
 - Plug in your USB storage and backup any important files. Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it is not enabled in BIOS, then select your USB storage and click install
 
-    - See [media/identify-bios-mode.png](../media/identify-bios-mode.png)
+    - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
 
 - Download a live Linux distribution of your choice and move the ISO into the USB storage in file explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 

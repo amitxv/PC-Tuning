@@ -6,7 +6,7 @@
 
 - Move ``Packages\Drivers\Display\XXXX_INF`` to the desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
 
-    - See [media/amd-driver-example.png](../media/amd-driver-example.png)
+    - See [media/amd-driver-example.png](/media/amd-driver-example.png)
 
 - Open device manager and install the driver by right-clicking on the display adapter, browse my computer for driver software and select the driver folder
 
@@ -26,7 +26,7 @@
 
 - Configure the following in the display section:
 
-    - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
+    - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time, your mileage may vary
 
     - GPU Scaling - Off
 

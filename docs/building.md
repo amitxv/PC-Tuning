@@ -115,7 +115,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable ourselves to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try to integrate the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934). Ensure to integrate ``KB2864202`` into the ISO if you use this driver.
 
-You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](../media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
 
 Once you have obtained the relevant drivers, place all the drivers to be integrated in a folder such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
 

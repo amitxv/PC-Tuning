@@ -82,7 +82,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - Allow users full control of the ``C:\`` directory to resolve xperf etl processing
 
-    - See [media/full-control-example.png](../media/full-control-example.png), continue and ignore errors
+    - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
 
 - Windows 10+ Only:
 
@@ -114,11 +114,11 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this has to be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features`` (top right)
 
-    - See [media/windows7-features-example.png](../media/windows7-features-example.png)
+    - See [media/windows7-features-example.png](/media/windows7-features-example.png)
 
-    - See [media/windows8+-features-example.png](../media/windows8+-features-example.png)
+    - See [media/windows8+-features-example.png](/media/windows8+-features-example.png)
 
-    - See [media/windows-server-features-example.png](../media/windows-server-features-example.png)
+    - See [media/windows-server-features-example.png](/media/windows-server-features-example.png)
 
         - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` (top right) and enable ``Wireless LAN Service``
 
@@ -196,7 +196,7 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 - GPU drivers will be installed in a later step so do not install them at this stage
 
-- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](../media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
 
 - Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
 
@@ -236,7 +236,9 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 
 ## Spectre and Meltdown
 
-A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step can be skipped. AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2).
+- A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step can be skipped
+
+- AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
 
 - The commands below can be used to disable Spectre and Meltdown
 
@@ -248,9 +250,9 @@ A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step c
     reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f
     ```
 
-- Download the [InSpectre](https://www.grc.com/inspectre.htm) utility to check the status after a reboot
+- Use [InSpectre](https://www.grc.com/inspectre.htm) and [CPU-Z's](https://www.cpuid.com/softwares/cpu-z.html) validation feature to check the status after a reboot
 
-    - See [media/meltdown-spectre-example.png](../media/meltdown-spectre-example.png)
+    - See [media/meltdown-spectre-example.png](/media/meltdown-spectre-example.png)
 
 ## Install 7-Zip
 
@@ -258,9 +260,9 @@ Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Z
 
 ## Configure the Graphics Driver
 
-- See [docs/configure-nvidia.md](../docs/configure-nvidia.md)
+- See [docs/configure-nvidia.md](/docs/configure-nvidia.md)
 
-- See [docs/configure-amd.md](../docs/configure-amd.md)
+- See [docs/configure-amd.md](/docs/configure-amd.md)
 
 ## Install DirectX Runtimes
 
@@ -472,7 +474,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Disable audio enhancements as they waste resources
 
-    - See [media/audio enhancements-benchmark.png](../media/audio%20enhancements-benchmark.png)
+    - See [media/audio enhancements-benchmark.png](/media/audio%20enhancements-benchmark.png)
 
 - Disable Exclusive Mode in the Advanced section
 
@@ -718,7 +720,7 @@ Configure default programs in ``Apps`` by pressing ``Win+I``.
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 
-- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as [this improves frame pacing](../media/isolate-gpu-core.png). Your mileage may vary, but it is definitely something worth mentioning
+- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as [this improves frame pacing](/media/isolate-gpu-core.png). Your mileage may vary, but it is definitely something worth mentioning
 
 - Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files  
 

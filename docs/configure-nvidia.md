@@ -68,13 +68,13 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Texture filtering - Quality - High performance
 
-    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frame pacing but feel free to benchmark it yourself. You should also consider whether you are already CPU bottlenecked if you do choose to enable the setting
+    - [Threaded Optimization offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html), it usually hurts frame pacing. You should also consider whether you are already CPU bottlenecked if you do choose to enable the setting
 
     - Ensure that settings are not being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
 
 - Set the scaling mode to no scaling and set perform scaling on display. Configure your resolution and refresh rate
 
-- Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time so feel free to benchmark it yourself, your mileage may vary
+- Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time, your mileage may vary
 
 ## Lock GPU Clocks/P-State 0
 
@@ -90,6 +90,6 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
 During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps. For this reason, you should disable CUDA - Force P2 State. [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) and Enable Ansel can also be disabled.
 
-- See [media/CUDA-force-p2-state-analysis](../media/cuda-force-p2-state-analysis.png)
+- See [media/CUDA-force-p2-state-analysis](/media/cuda-force-p2-state-analysis.png)
 
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)

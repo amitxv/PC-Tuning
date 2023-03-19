@@ -10,7 +10,7 @@
 
 - Create a new capture
 
-    <img src="../media/network-monitor-new-capture.png" width="450">
+    <img src="/media/network-monitor-new-capture.png" width="450">
 
 - Open a game that you have applied a DSCP value for and enter a game mode in which the game will send and receive packets (e.g. an online match, not a local match)
 
@@ -18,7 +18,7 @@
 
 - In the left-hand pane, click on the game executable name and click on a packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame
 
-    <img src="../media/network-monitor-dscp-value.png" width="400">
+    <img src="/media/network-monitor-dscp-value.png" width="400">
 
 </details>
 
@@ -80,11 +80,11 @@ Conclusion: By default, Windows uses the default value, not enhanced or legacy. 
 
 I simulated Valorant's network traffic in iperf using two machines (~300kb/s receive in deathmatch) and monitored the network driver's activity in xperf. Please note that RssBaseProcessor is set to 0, so theoretically, CPU 0 and CPU 1 should be handling DPCs/ISRs for ndis.sys.
 
-<img src="../media/300kbps-ndis-xperf-report.png" width="500">
+<img src="/media/300kbps-ndis-xperf-report.png" width="500">
 
 I noticed that despite having RSS queues set to 2, only CPU 1 was primarily handling interrupts for the driver which I assume was due to such little traffic. So I decided to re-test with the same configuration. However, this time I simulated 1Gbps network traffic to verify this.
 
-<img src="../media/1gbps-ndis-xperf-report.png" width="500">
+<img src="/media/1gbps-ndis-xperf-report.png" width="500">
 
 As expected, this scenario demonstrates that both CPU 0 and CPU 1 are handling DPCs/ISRs for ndis.sys.
 
@@ -113,7 +113,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     |1|2:1|
     |0|1:1|
 
-    <img src="../media/w32ps-quantum-index.png" width="600">
+    <img src="/media/w32ps-quantum-index.png" width="600">
 
     Demonstration with the Windows default, 0x2 (2 decimal)
 
@@ -261,11 +261,11 @@ On a stock Win10 installation, the Wdf01000.sys driver handles USB connectivity 
 
 #### ``Wdf01000.sys``
 
-<img src="../media/wdf01000-usb-xperf-report.png" width="500">
+<img src="/media/wdf01000-usb-xperf-report.png" width="500">
 
 #### ``amdxhc31.sys (vendor USB drivers)``
 
-<img src="../media/amdxhc31-usb-xperf-report.png" width="500">
+<img src="/media/amdxhc31-usb-xperf-report.png" width="500">
 
 Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable, but your mileage may vary so feel free to benchmark it on your own system.
 
@@ -379,7 +379,7 @@ Resolution: 15.625000ms, Sleep(1) slept 15.624200ms (delta: 14.624200)
 
 As shown above, the registry key is working and Sleep(1) is sleeping around ~1.5ms which is what we want (the closer to 1ms the better). However, you can see that it was sleeping for ~16 ms towards the end. This is because I deliberately minimized the calling process to check whether GlobalTimerResolutionRequests circumvents this change (which it does not) as previously demonstrated:
 
-- See [media/windows11-timeapi-changes.png](../media/windows11-timeapi-changes.png)
+- See [media/windows11-timeapi-changes.png](/media/windows11-timeapi-changes.png)
 
 > Starting with Windows 11, if a window-owning process becomes fully occluded, minimized, or otherwise invisible or inaudible to the end user, Windows does not guarantee a higher resolution than the default system resolution. See SetProcessInformation for more information on this behavior.
 

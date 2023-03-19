@@ -10,9 +10,13 @@
 
 - Avoid single-channel and mixing/matching DIMMs
 
-- Ensure that your GPU is running at the rated bandwidth in [GPU-Z](https://www.techpowerup.com/gpuz) while running the built-in render test
+- Favor PCIe ports that go straight to the CPU rather than PCH. This typically applies to M.2/NVMe SSDs and GPUs (usually the top slot). Beware of limitations with the amount of lanes available
 
-    - See [media/gpuz-bus-interface.png](../media/gpuz-bus-interface.png)
+- Ensure that your PCIe devices under the ``PCIe Bus`` category are running at their rated specification (e.g. x16 3.0) in [HWiNFO](https://www.hwinfo.com). The current link width/speed of the device should match the maximum supported
+
+    - Link speed specifically for GPUs that are not limited to P-State 0 will decrease when idling. For this reason, you can check with GPU-Z while running the built-in render test. See [this example](/media/gpuz-bus-interface.png)
+
+    - See [media/hwinfo-pcie-width-speed.png](/media/hwinfo-pcie-width-speed.png)
 
 - IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the Conflicts/Sharing section
 
@@ -38,7 +42,7 @@
 
     - See [Stop Doing It Wrong: How to Kill Your CPU Cooler | Gamers Nexus](https://www.youtube.com/watch?v=BbGomv195sk)
 
-    - See [media/aio-orientation.png](../media/aio-orientation.png)
+    - See [media/aio-orientation.png](/media/aio-orientation.png)
 
 - Invest in non-RGB fans with a high static pressure
 
@@ -66,15 +70,15 @@
 
 - Ensure that there is a moderate amount of space between all cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
 
-- Disconnect unnecessary devices from your motherboard/setup such as LEDs, RGB light strips, front panel connectors, unused drives and all HDDs. Refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) for onboard devices (LED controllers, IR receivers) and disable them in BIOS if you can not physically disconnect them
+- Disconnect unnecessary devices from your motherboard/setup such as LEDs, RGB light strips, front panel connectors, USB devices, unused drives and all HDDs. Refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) for onboard devices (LED controllers, IR receivers) and disable them in BIOS if you can not physically disconnect them
 
 ## Configure USB Port Layout
 
-- Unplug unnecessary devices such as device chargers
-
 - Plug your mouse and keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports and avoid companion ports (indicated in the right section of the program) as the data has to go through a hub
 
-    - Ryzen systems have a USB port that is directly connected to the CPU which can be identified through the motherboard manual
+    - Ryzen systems have a USB controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the USB controller that is connected to a ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
+
+        - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
 - If you have more than one USB controller, you can isolate devices such as DACs, headsets and other devices onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
 
@@ -100,11 +104,13 @@
 
 ## BIOS
 
+- Check Spectre/Meltdown status after using the registry keys in the [Spectre and Meltdown](/docs/post-install.md#spectre-and-meltdown) step. If the status in the example images can not be replicated, you may need to roll back microcode on a BIOS level. Keep in mind Windows security updates also affect the results, so ideally this should be tested on a fresh Windows partition with internet disconnected
+
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
 
-- You can use BIOS and/or grub to change settings. I recommend configuring what you can in BIOS then use [this method](https://github.com/BoringBoredom/UEFI-Editor) to change hidden settings
+- You can use BIOS and/or GRUB to change settings. I recommend configuring what you can in BIOS then use [this method](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) to change hidden settings
 
-    - On some boards, you can enable Hidden OC Item or Hide Item if it exists to unlock a vast amount of options in BIOS
+    - On some boards, you can enable Hidden OC Item or Hide Item if present to unlock a vast amount of options in BIOS
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading). This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core requires resource sharing and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Other drawbacks include limited overclocking potential due to increased temperatures
 
@@ -144,7 +150,7 @@
 
 - Set the primary graphics to dGPU instead of iGPU if applicable
 
-- Set PCIe link speed to the maximum supported (Gen 3.0, 4.0)
+- Set PCIe link speed to the maximum supported (e.g. Gen 4.0)
 
 - As we will be configuring a static frequency/voltage for the CPU, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
