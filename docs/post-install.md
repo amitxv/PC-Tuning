@@ -488,7 +488,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 ## Configure Services and Drivers
 
-I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\bare-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
+I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
 - On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
 
@@ -497,7 +497,7 @@ I am not responsible if anything goes wrong or you BSOD. The idea is to disable 
 - Use the command below to build the scripts in the ``build`` folder. NSudo is required to run the batch scripts
 
     ```bat
-    service-list-builder.exe --config C:\bin\bare-services.ini
+    service-list-builder.exe --config C:\bin\minimal-services.ini
     ```
 
 - Move the batch scripts and ``NSudo.exe`` somewhere safe such as in the ``C:\`` drive and do not share it with other people as it is specific to your system
