@@ -225,14 +225,6 @@ This step is not required if you are [installing using DISM Apply-Image](/docs/p
     set "EXTRACTED_ISO=C:\Win10_ISO"
     ```
 
-## Integrating Required Files #2 (Windows 11)
-
-Place ``windows11-setup.reg`` in the extracted ISO directory. Open the directory with the command below.
-
-```bat
-explorer "%EXTRACTED_ISO%"
-```
-
 ## ISO Compression
 
 Compressing has no advantage other than reducing the size. Keep in mind that Windows setup must decompress the ISO upon installation which takes time. Use the command below to compress the ISO.

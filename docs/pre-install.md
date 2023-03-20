@@ -56,7 +56,14 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
 
     - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to bypass this step (this does not activate Windows)
 
-    - When installing Win11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and import ``windows11-setup.reg``
+    - When installing Win11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and add the relevant registry keys listed below
+
+        ```
+        [HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
+        "BypassTPMCheck"=dword:00000001
+        "BypassRAMCheck"=dword:00000001
+        "BypassSecureBootCheck"=dword:00000001
+        ```
 
 - Install using DISM Apply-Image (without a USB storage device):
 
