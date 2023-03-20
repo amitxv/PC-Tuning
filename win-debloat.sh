@@ -23,8 +23,6 @@ wildcard_names=(
     "upfc"
     "sihclient"
     "onedrive"
-    "mcupdate_authenticamd"
-    "mcupdate_genuineintel"
     "skype"
     "edge"
     "securitycenter"

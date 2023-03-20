@@ -104,7 +104,7 @@
 
 ## BIOS
 
-- Check Spectre/Meltdown status after using the registry keys in the [Spectre and Meltdown](/docs/post-install.md#spectre-and-meltdown) step. If the status in the example images can not be replicated, you may need to roll back microcode on a BIOS level. Keep in mind Windows security updates also affect the results, so ideally this should be tested on a fresh Windows partition with internet disconnected
+- Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
 
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
 

@@ -234,25 +234,29 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
     C:\bin\python\pythonw.exe C:\bin\scripts\install-firefox.py
     ```
 
-## Spectre and Meltdown
+## Spectre, Meltdown and CPU Microcode
 
-- A minority of anticheats (FACEIT) require Meltdown to be enabled, so this step can be skipped
+- Disable Spectre and Meltdown with [InSpectre](https://www.grc.com/inspectre.htm)
 
-- AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
+    - AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
 
-- The commands below can be used to disable Spectre and Meltdown
+    - A minority of anticheats (FACEIT) require Meltdown to be enabled
+
+- Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove CPU microcode
 
     ```bat
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f
+    del /f /q C:\Windows\System32\mcupdate_GenuineIntel.dll
     ```
 
     ```bat
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f
+    del /f /q C:\Windows\System32\mcupdate_AuthenticAMD.dll
     ```
 
-- Use [InSpectre](https://www.grc.com/inspectre.htm) and [CPU-Z's](https://www.cpuid.com/softwares/cpu-z.html) validation feature to check the status after a reboot
+- Reboot and use [InSpectre](https://www.grc.com/inspectre.htm) and [CPU-Z's](https://www.cpuid.com/softwares/cpu-z.html) validation feature to check the status after a reboot
 
     - See [media/meltdown-spectre-example.png](/media/meltdown-spectre-example.png)
+
+    - See [media/cpu-z-vulnerable-microcode.png](/media/cpu-z-vulnerable-microcode.png)
 
 ## Install 7-Zip
 
