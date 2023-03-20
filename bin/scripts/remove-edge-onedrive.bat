@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
+DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
 
 if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (
     echo info: uninstalling chromium microsoft edge
@@ -22,6 +22,4 @@ for %%a in (
     )
 )
 
-echo info: done
-pause
 exit /b

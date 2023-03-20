@@ -2,7 +2,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
+DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
 
 mode 300, 1000
 
@@ -45,7 +45,6 @@ if defined binary_path (
             echo info: fullscreen optimizations disabled
         )
 
-        pause
         exit /b
     )
 )

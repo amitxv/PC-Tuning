@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
+DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
 
 echo info: enabling dwm
 reg.exe delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /f

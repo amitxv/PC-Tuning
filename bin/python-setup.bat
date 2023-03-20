@@ -4,13 +4,6 @@ setlocal EnableDelayedExpansion
 :: Requirements
 :: - cURL
 
-echo info: checking for an internet connection
-ping 1.1.1.1 > nul 2>&1
-if not !errorlevel! == 0 (
-    echo error: no internet connection
-    exit /b
-)
-
 set "current_dir=%~dp0"
 set "current_dir=!current_dir:~0,-1!"
 
@@ -62,5 +55,4 @@ for %%a in ("python-embed.zip" "get-pip.py") do (
     )
 )
 
-echo info: done
 exit /b

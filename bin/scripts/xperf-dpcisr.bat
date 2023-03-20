@@ -1,12 +1,11 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
+DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
 
 where xperf.exe > nul 2>&1
 if not !errorlevel! == 0 (
     echo error: xperf not found in path
-    pause
     exit /b
 )
 
@@ -21,5 +20,4 @@ timeout -t !record_duration!
 xperf -stop
 xperf -i "!output_dir!\kernel.etl" -o "!output_dir!\report.txt" -a dpcisr
 echo info: report saved in !output_dir!
-pause
 exit /b

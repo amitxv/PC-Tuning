@@ -1,13 +1,12 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-DISM > nul 2>&1 || echo error: administrator privileges required && pause && exit /b
+DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
 
 :: initialize mask to get mask length
 PowerShell Set-ProcessMitigation -System -Disable CFG
 if not !errorlevel! == 0 (
     echo error: unsupported windows version
-    pause
     exit /b
 )
 
@@ -29,6 +28,4 @@ echo info: modified mask - !mitigation_mask!
 reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "!mitigation_mask!" /f > nul 2>&1
 reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "!mitigation_mask!" /f > nul 2>&1
 
-echo info: done
-pause
 exit /b

@@ -70,8 +70,6 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - This section is named ``Security and Maintenance`` on Windows 10+
 
-- Disable Scheduled optimization by typing ``dfrgui`` in ``Win+R`` More details on doing maintenance tasks ourselves in [Final Thoughts and Tips](#final-thoughts-and-tips)
-
 - Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
     - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary I/O
