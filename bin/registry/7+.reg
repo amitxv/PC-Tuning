@@ -168,7 +168,7 @@ Windows Registry Editor Version 5.00
 
 ; disable prefetch and superfetch
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\SysMain]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]
 "Start"=dword:00000004
 
 ; hide frequent folders in quick access

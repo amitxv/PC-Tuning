@@ -120,7 +120,7 @@
 
 - Disable [Virtualization](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://developer.amd.com/wordpress/media/2013/12/PerformanceTuningGuidelinesforLowLatencyResponse.pdf)
 
-- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management)
+- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, PCI Clock Gating etc. Search the internet if you are unsure whether a given setting is power saving related
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you are not using aux/line-in audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and DIMM slots
 
@@ -142,11 +142,9 @@
 
 - Disable Fast Startup or similar options
 
-- Disable DRAM Power Down Mode
-
-- Disable PCI Clock Gating
-
 - Disable Spread Spectrum and ensure BCLK frequency is close to 100.00 as possible in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
+
+- Disable Legacy USB Support as [it generates unnecessary SMIs](https://patents.google.com/patent/US6067589). You may need to turn this on while installing a new operating system or to access BIOS
 
 - Set the primary graphics to dGPU instead of iGPU if applicable
 

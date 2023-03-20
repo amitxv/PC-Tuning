@@ -12,7 +12,7 @@
 
 - Navigate to the driver directory (mine is ``B381690``) and extract ``ccc2_install.exe`` with 7-Zip and run ``CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
-- Ensure to disable the bloatware AMD services. They can be accessed by typing ``services.msc`` in ``Win+R``
+- Ensure to disable the bloatware AMD services and drivers in [ServiWin](https://www.nirsoft.net/utils/serviwin.html). These are typically the ``AMD Crash Defender`` services and ``AMD External Events Utility`` (required for VRR)
 
 ## Configure AMD Control Panel
 
