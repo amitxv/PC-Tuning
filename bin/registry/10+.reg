@@ -34,6 +34,9 @@ Windows Registry Editor Version 5.00
 
 ; disable defender
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]
+"Start"=dword:00000004
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Sense]
 "Start"=dword:00000004
 
