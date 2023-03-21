@@ -739,13 +739,3 @@ Configure default programs in ``Apps`` by pressing ``Win+I``.
     ```
 
 - If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you can disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration)
-
-- Carry out maintenance tasks yourself on a weekly basis. This includes:
-
-    - Trimming your SSD (as we disabled the scheduled task that does it automatically)
-
-    - Using a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from the mouse pad
-
-    - Using a small [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens
-
-    - Removing dust from components often
