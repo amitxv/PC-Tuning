@@ -187,7 +187,7 @@ Run the command below to replace all backgrounds and user profile pictures with 
 win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
 ```
 
-## Integrating Required Files #1
+## Integrating Required Files
 
 Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script in the mounted directory. Open the directory with the command below.
 

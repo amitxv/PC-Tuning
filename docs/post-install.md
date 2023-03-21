@@ -494,6 +494,8 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
+- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove entries with a yellow label in the ``Services`` section to prevent obsolete services from being added to the scripts that are going to be built in the next steps
+
 - On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
 
 - Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
@@ -678,7 +680,7 @@ Configure default programs in ``Apps`` by pressing ``Win+I``.
 
 ## Cleanup
 
-- Download and extract [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) then remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label and run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
+- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label and run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
