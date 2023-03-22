@@ -226,7 +226,7 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
 
 ## Install .NET 4.8 Runtimes
 
-Download and install the [.NET 4.8 runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=8109).
+Download and install the [.NET 4.8 runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
 
 ## Spectre, Meltdown and CPU Microcode
 
