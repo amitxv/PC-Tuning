@@ -24,6 +24,10 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png)
 
+- Windows 11+ has an updated scheduler for Intel 12th Gen CPUs
+
+    - See [Thread Director: Windows 11 Does It Best](https://www.anandtech.com/show/16959/intel-innovation-alder-lake-november-4th/3)
+
 - The implementation of ``Hardware: Independent Flip`` (full screen optimizations) improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
 
     - See the [Configuring Games and Applications](/docs/post-install.md#configuring-games-and-applications) section for more information
