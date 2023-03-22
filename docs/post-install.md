@@ -208,14 +208,6 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 - Since we do not have browser access at this stage, download them on another operating system or PC
 
-## Install [.NET 4.8 Runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
-
-Run the package below to install the runtimes.
-
-```
-C:\bin\ndp48-web.exe
-```
-
 ## Configure a [Web Browser](https://privacytests.org)
 
 A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below.
@@ -231,6 +223,10 @@ C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
     ```bat
     C:\bin\python\pythonw.exe C:\bin\scripts\install-firefox.py
     ```
+
+## Install .NET 4.8 Runtimes
+
+Download and install the [.NET 4.8 runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=8109).
 
 ## Spectre, Meltdown and CPU Microcode
 
