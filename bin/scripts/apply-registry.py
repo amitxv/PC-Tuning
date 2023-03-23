@@ -42,7 +42,7 @@ def main() -> None:
         "11+.reg",
     ):
         file_name = file.replace(".reg", "")
-        file = f"C:\\bin\\registry"\\{file}"
+        file = f"C:\\bin\\registry\\{file}"
 
         if not os.path.exists(file):
             print("error: registry files not found")
