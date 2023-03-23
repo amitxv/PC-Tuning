@@ -98,6 +98,8 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - Navigate to ``Computer Configuration -> Windows Settings -> Security Settings -> Account Policies -> Password Policy`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Password must meet complexity requirements``
 
+        - Open CMD as administrator and type ``gpupdate /force`` to apply the changes immediately
+
     - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank. As a reminder, this is required because the service list used will break user password functionality after the ``Services-Disable.bat`` script is run
 
 ## Remove Bloatware Natively
