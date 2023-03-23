@@ -17,17 +17,6 @@ def main() -> None:
         print("error: administrator privileges required")
         return
 
-    registry_dir = "C:\\bin\\registry"
-    registry_files = [
-        "7.reg",
-        "7+.reg",
-        "7-8.reg",
-        "8.reg",
-        "8+.reg",
-        "10+.reg",
-        "11+.reg",
-    ]
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--winver",
@@ -43,15 +32,21 @@ def main() -> None:
         print(f"error: {nsudo_path} not exists")
         return
 
-    if not all(os.path.exists(f"{registry_dir}\\{x}") for x in registry_files):
-        print("error: registry files not found")
-        return
-
-    print(f"info: applying registry file for windows {args.winver}")
-
-    for file in registry_files:
+    for file in (
+        "7.reg",
+        "7+.reg",
+        "7-8.reg",
+        "8.reg",
+        "8+.reg",
+        "10+.reg",
+        "11+.reg",
+    ):
         file_name = file.replace(".reg", "")
-        file = f"{registry_dir}\\{file}"
+        file = f"C:\\bin\\registry"\\{file}"
+
+        if not os.path.exists(file):
+            print("error: registry files not found")
+            return
 
         if "+" in file_name:
             if int(file_name[:-1]) <= args.winver:
@@ -63,7 +58,7 @@ def main() -> None:
         elif int(file_name) == args.winver:
             apply_registry(file)
 
-    print("info: done")
+    print(f"info: applied registry settings for windows {args.winver}")
 
 
 if __name__ == "__main__":

@@ -6,12 +6,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
 
-; remove 3d objects from explorer pane
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
-
 ; remove pin to quick access in context menu
 
 [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
@@ -73,39 +67,23 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
-; reduce menu show delay time
-; automatically close any apps and continue to restart, shutdown, or sign out of windows
-
-[HKEY_CURRENT_USER\Control Panel\Desktop]
-"MenuShowDelay"="0"
-"AutoEndTasks"="1"
-
 ; turn off display of recent search entries in the file explorer search box
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
 
-; disable shake to minimize
 ; disable sync provider notifications
 ; show file extensions
 ; launch file explorer to this pc
-; configure snap settings
 ; disable recent items and frequent places
-; disable app launch tracking
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"DisallowShaking"=dword:00000001
 "ShowSyncProviderNotifications"=dword:00000000
 "HideFileExt"=dword:00000000
 "LaunchTo"=dword:00000001
 "Start_TrackDocs"=dword:00000000
-"Start_TrackProgs"=dword:00000000
 
 ; disable search indexing
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
-"WholeFileSystem"=dword:00000001
-"SystemFolders"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]
 "Start"=dword:00000004
@@ -114,11 +92,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
-
-; disable autoplay
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
-"DisableAutoplay"=dword:00000001
 
 ; disable crash dumping
 ; do not automatically reboot after a BSOD
@@ -130,11 +103,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl\StorageTelemetry]
 "DeviceDumpEnabled"=dword:00000000
-
-; enable one view mode for all folders in file explorer
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
-"FolderType"="NotSpecified"
 
 ; disable language bar
 
@@ -173,12 +141,10 @@ Windows Registry Editor Version 5.00
 
 ; hide frequent folders in quick access
 ; hide recent folders in quick access
-; show all tray icons in the taskbar
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "ShowFrequent"=dword:00000000
 "ShowRecent"=dword:00000000
-"EnableAutoTray"=dword:00000000
 "ShellState"=hex(3):24,00,00,00,3E,20,00,00,00,00,00,00,00,00,00,00,00,00,\
 00,00,01,00,00,00,12,00,00,00,00,00,00,00,22,00,00,00
 
@@ -204,11 +170,9 @@ Windows Registry Editor Version 5.00
 "OptIn"=dword:00000000
 
 ; apply the default account picture to all users
-; remove the security and maintenance icon
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
-"HideSCAHealth"=dword:00000001
 
 ; clear history of recently opened documents on exit
 
@@ -219,94 +183,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
 "Enabled"=dword:00000000
-
-; disable website access to language list
-
-[HKEY_CURRENT_USER\Control Panel\International\User Profile]
-"HttpAcceptLanguageOptOut"=dword:00000001
-
-; disable inking and typing personalization
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
-"AcceptedPrivacyPolicy"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore]
-"HarvestContacts"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
-"RestrictImplicitInkCollection"=dword:00000001
-"RestrictImplicitTextCollection"=dword:00000001
-
-; disable automatic update of speech data on windows
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences]
-"ModelDownloadAllowed"=dword:00000000
-
-; disable archiving infrequently used apps
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
-"AllowAutomaticAppArchiving"=dword:00000000
-
-; disable windows feedback frequency
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-"PeriodInNanoSeconds"=-
-
-; disable recommended troubleshooting
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
-"UserPreference"=dword:00000001
-
-; disable device search history
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
-"IsDeviceSearchHistoryEnabled"=dword:00000000
-
-; disable automatic updates for offline maps
-
-[HKEY_LOCAL_MACHINE\SYSTEM\Maps]
-"AutoUpdateEnabled"=dword:00000000
-
-; disable hotspot
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
-"OsuRegistrationStatus"=dword:00000000
-
-; disable spell checking features
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\TabletTip\1.7]
-"EnableSpellchecking"=dword:00000000
-"EnableTextPrediction"=dword:00000000
-"EnablePredictionSpaceInsertion"=dword:00000000
-"EnableDoubleTapSpace"=dword:00000000
-"EnableAutocorrection"=dword:00000000
-
-; disable notifications
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell]
-"UseActionCenterExperience"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount\$quietmomentfullscreen$windows.data.notifications.quietmoment\Current]
-"Data"=hex(3):02,00,00,00,08,3B,5F,8D,81,8A,D8,01,00,00,00,00,43,42,01,00,\
-C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
-00,51,00,75,00,69,00,65,00,74,00,48,00,6F,00,75,00,72,00,73,00,50,00,72,00,\
-6F,00,66,00,69,00,6C,00,65,00,2E,00,41,00,6C,00,61,00,72,00,6D,00,73,00,4F,\
-00,6E,00,6C,00,79,00,C2,28,01,CA,50,00,00
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount\$quietmomentgame$windows.data.notifications.quietmoment\Current]
-"Data"=hex(3):02,00,00,00,22,9B,5D,8D,81,8A,D8,01,00,00,00,00,43,42,01,00,\
-C2,0A,01,D2,1E,28,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
-00,51,00,75,00,69,00,65,00,74,00,48,00,6F,00,75,00,72,00,73,00,50,00,72,00,\
-6F,00,66,00,69,00,6C,00,65,00,2E,00,50,00,72,00,69,00,6F,00,72,00,69,00,74,\
-00,79,00,4F,00,6E,00,6C,00,79,00,C2,28,01,CA,50,00,00
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount\$quietmomentpresentation$windows.data.notifications.quietmoment\Current]
-"Data"=hex(3):02,00,00,00,6C,BD,5C,8D,81,8A,D8,01,00,00,00,00,43,42,01,00,\
-C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
-00,51,00,75,00,69,00,65,00,74,00,48,00,6F,00,75,00,72,00,73,00,50,00,72,00,\
-6F,00,66,00,69,00,6C,00,65,00,2E,00,41,00,6C,00,61,00,72,00,6D,00,73,00,4F,\
-00,6E,00,6C,00,79,00,C2,28,01,CA,50,00,00
 
 ; disable sticky keys
 

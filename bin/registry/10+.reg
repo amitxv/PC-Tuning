@@ -69,11 +69,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "AllowOnlineTips"=dword:00000000
 
-; disable transparency effects
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
-"EnableTransparency"=dword:00000000
-
 ; disable suggested content in the immersive control panel
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
@@ -134,3 +129,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Classes\.jxr]
 @="PhotoViewer.FileAssoc.Tiff"
+
+; disable typing insights
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\input\Settings]
+"InsightsEnabled"=dword:00000000

@@ -20,12 +20,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisSvc]
 "Start"=dword:00000004
 
-; do not sync
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
-"DisableSettingSync"=dword:00000002
-"DisableSettingSyncUserOverride"=dword:00000001
-
 ; disable search the web or display web results in Search
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
@@ -35,18 +29,3 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
 "NoCloudApplicationNotification"=dword:00000001
-
-; prevent auto updating store apps
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-"AutoDownload"=dword:00000002
-
-; disable access to the store
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-"NoUseStoreOpenWith"=dword:00000001
-
-; disable startup delay for desktop apps
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
-"StartupDelayInMSec"=dword:00000000
