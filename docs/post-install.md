@@ -115,7 +115,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
     - Remove OneDrive
 
         ```bat
-        for %a in ("SysWOW64" "System32") do (if exist "!windir!\%~a\OneDriveSetup.exe" ("!windir!\%~a\OneDriveSetup.exe" /uninstall))
+        for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall))
         ```
 
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
