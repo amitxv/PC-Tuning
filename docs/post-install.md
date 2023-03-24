@@ -168,10 +168,10 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
 
-Run the package below to install the redistributables.
+Extract the zip file below and install the redistributables.
 
 ```
-C:\bin\VisualCppRedist_AIO_x86_x64.exe
+C:\bin\VisualCppRedist_AIO_x86_x64.zip
 ```
 
 ## Disable Residual Scheduled Tasks
@@ -190,7 +190,7 @@ Open CMD as administrator and enter the command below. Replace ``<winver>`` with
 C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
 ```
 
-- Ensure that the program prints a "done" message to the console, if it has not then CMD was probably not opened with administrator privileges and the registry files were not successfully merged
+- Ensure that the program prints a "successfully applied" message to the console, if it has not then CMD was probably not opened with administrator privileges and the registry files were not successfully merged
 
 - Restart your PC through ``Ctrl+Alt+Delete``. After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 

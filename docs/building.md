@@ -176,7 +176,7 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 This command removes the majority of Windows apps that nobody uses and potentially jeopardizes privacy such as Microsoft Store, maps, camera.
 
 ```bat
-for /f "tokens=3" %i in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%i)
+for /f "tokens=3" %a in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%a)
 ```
 
 ## Replace Wallpapers
@@ -193,6 +193,14 @@ Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script 
 
 ```bat
 explorer "%MOUNT_DIR%"
+```
+
+## Download Visual C++ Redistributable Runtimes
+
+Use the command below to download the latest packages/installer so that it is ready to install during the post-install steps.
+
+```bat
+for /f "tokens=2" %a in ('curl https://api.github.com/repos/abbodi1406/vcredist/releases/latest ^| findstr "browser_download_url" ^| findstr "x86_x64"') do (curl %a -L -o "%MOUNT_DIR%\bin\VisualCppRedist_AIO_x86_x64.zip")
 ```
 
 ## Setup Python

@@ -58,7 +58,7 @@ def main() -> None:
         elif int(file_name) == args.winver:
             apply_registry(file)
 
-    print(f"info: applied registry settings for windows {args.winver}")
+    print(f"info: successfully applied registry settings for windows {args.winver}")
 
 
 if __name__ == "__main__":
