@@ -104,11 +104,19 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 ## Remove Bloatware Natively
 
-- Open CMD as administrator and enter the command below to remove the chromium version of Microsoft Edge (if present) and OneDrive
+- Open CMD as administrator and enter the commands below to remove the chromium version of Microsoft Edge (if present) and OneDrive
 
-    ```bat
-    C:\bin\scripts\remove-edge-onedrive.bat
-    ```
+    - Remove Microsoft Edge
+
+        ```bat
+        if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do ("%a" --uninstall --system-level --verbose-logging --force-uninstall))
+        ```
+
+    - Remove OneDrive
+
+        ```bat
+        for %a in ("SysWOW64" "System32") do (if exist "!windir!\%~a\OneDriveSetup.exe" ("!windir!\%~a\OneDriveSetup.exe" /uninstall))
+        ```
 
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
 
