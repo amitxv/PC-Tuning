@@ -82,7 +82,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
 
-- Windows 10+ Only:
+- Windows 8+ Only:
 
     - Disable the following by pressing ``Win+I``:
 
