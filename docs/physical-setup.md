@@ -152,6 +152,8 @@
 
 - Set PCIe link speed to the maximum supported (e.g. Gen 4.0)
 
+- Disable Execute Disable Bit/NX Mode. A minority of applications (Valorant) require it to be enabled
+
 - As we will be configuring a static frequency/voltage for the CPU, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
     - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
