@@ -2,10 +2,6 @@
 
 ## Build Requirements
 
-- [7-Zip](https://www.7-zip.org)
-
-- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
-
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
 
 - [cURL](https://curl.se/windows) (included in Windows 10 1803+) - place ``curl.exe`` and ``curl-ca-bundle.crt`` in ``C:\Windows``
@@ -60,7 +56,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
-- Extract the contents of the ISO to a directory of your choice with 7-Zip, In the examples below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
+- Extract the contents of the ISO to a directory of your choice with [7-Zip](https://www.7-zip.org), In the examples below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
     ```bat
     set "EXTRACTED_ISO=C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939"
@@ -77,7 +73,6 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     if exist "%EXTRACTED_ISO%\sources\install.wim" (echo true) else (echo false)
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
     if exist "%OSCDIMG%" (echo true) else (echo false)
-    where win-wallpaper.exe > nul 2>&1 && echo true || echo false
     where curl.exe > nul 2>&1 && echo true || echo false
     ```
 
@@ -177,14 +172,6 @@ This command removes the majority of Windows apps that nobody uses and potential
 
 ```bat
 for /f "tokens=3" %a in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%a)
-```
-
-## Replace Wallpapers
-
-Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if you are building Windows 7.
-
-```bat
-win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
 ```
 
 ## Integrating Required Files

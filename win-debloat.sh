@@ -32,5 +32,4 @@ do
     find . -ipath "*$i*" -not -ipath "./bin/*" -delete
 done
 
-echo info: done
 exit 0

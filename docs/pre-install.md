@@ -28,11 +28,11 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See [Thread Director: Windows 11 Does It Best](https://www.anandtech.com/show/16959/intel-innovation-alder-lake-november-4th/3)
 
-- The implementation of ``Hardware: Independent Flip`` (full screen optimizations) improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
+- The implementation of ``Hardware: Independent Flip`` (fullscreen optimizations) improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip`` (exclusive fullscreen)
 
     - See the [Configuring Games and Applications](/docs/post-install.md#configuring-games-and-applications) section for more information
 
-- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which are not Windows 11 or server 2022
+- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which are not Windows 11 or server 2022
 
 - [AllowTelemetry](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DataCollection::AllowTelemetry) can *actually* be set to 0 on Windows Server editions
 

@@ -100,6 +100,8 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
         - Open CMD as administrator and type ``gpupdate /force`` to apply the changes immediately
 
+    - Navigate to ``Computer Configuration -> Administrative Templates -> System`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Display Shutdown Event Tracker`` to disable the shutdown prompt
+
     - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank. As a reminder, this is required because the service list used will break user password functionality after the ``Services-Disable.bat`` script is run
 
 ## Remove Bloatware Natively
@@ -294,7 +296,7 @@ If you usually use [Custom Resolution Utility](https://www.monitortests.com/foru
 
 - Use the exact timing for an integer refresh rate
 
-- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a workaround for the 1-second black screen when alt-tabbing in FSE, feel free to skip this step if you are not comfortable risking a black screen
+- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a workaround for the 1-second black screen when alt-tabbing in exclusive fullscreen, feel free to skip this step if you are not comfortable risking a black screen
 
 - Restart your PC instead of using ``restart64.exe`` as it may result in a black screen
 
@@ -654,33 +656,29 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
     - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) but disabling ``passive waiting`` in the settings page marginally helps with that. Disabling the ``Enable dedicated encoder server service`` setting also prevents ``EncoderServer.exe`` running which wastes resources
 
-- Configure FSE and QoS
+- Configure present mode
 
-    - Microsoft has claimed FSO/independent flip has improved in later Windows versions which has also been verified by members in the community with [Reflex Latency Analyzer](https://www.nvidia.com/en-us/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors). However, other users have claimed otherwise.
+    - Always check whether the game is using the desired present mode with PresentMon. ``Hardware: Legacy Flip`` (exclusive fullscreen) and ``Hardware: Independent Flip`` (fullscreen optimizations) are optimal
 
-    - Always check if the game is using the desired presentmode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal.
+    - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try to run the command below in CMD and reboot
 
-        - If you are having trouble with using legacy flip, try to run the command below in CMD and reboot
+        ```bat
+        reg.exe add "HKEY_CURRENT_USER\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
+        ```
 
-            ```bat
-            reg.exe add "HKEY_CURRENT_USER\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible " /t REG_DWORD /d "1" /f
-            ```
+    - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below to disable MPOs in CMD and reboot
 
-        - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below in CMD and reboot
+        ```bat
+        reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
+        ```
 
-            ```bat
-            reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
-            ```
+- Configuring QoS policies
 
-    - Configuring a QoS Policy will allow Windows to prioritize packets of an application over other devices on your network and PC
+    - This allows Windows to prioritize packets of an application
+
+    - See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
 
         - Related: [research.md - How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
-
-    - Run the ``C:\bin\scripts\fse-qos-for-game-exes.bat`` script and follow the instructions in the console output
-
-## Configure Default Programs
-
-Configure default programs in ``Apps`` by pressing ``Win+I``.
 
 ## Cleanup
 
@@ -744,4 +742,4 @@ Configure default programs in ``Apps`` by pressing ``Win+I``.
     powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
     ```
 
-- If you are using Windows 8.1+ and [FSE/Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) with your game, you can disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration)
+- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (fullscreen optimizations) with your game, you can disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration)

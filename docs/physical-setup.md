@@ -4,11 +4,11 @@
 
 - At least one SSD/NVMe (512 GB or larger preferred) is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
 
-- See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
+- See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
-- Avoid single-channel and mixing/matching DIMMs
+- Avoid single-channel, mixing/matching different DIMMs and ensure that they are in the correct slots (refer to motherboard manual)
 
 - Favor PCIe ports that go straight to the CPU rather than PCH. This typically applies to M.2/NVMe SSDs and GPUs (usually the top slot). Beware of limitations with the amount of lanes available
 
@@ -146,6 +146,8 @@
 
 - Disable Legacy USB Support as [it generates unnecessary SMIs](https://patents.google.com/patent/US6067589). You may need to turn this on while installing a new operating system or to access BIOS
 
+- Disable XHCI Hand-off
+
 - Set the primary graphics to dGPU instead of iGPU if applicable
 
 - Set PCIe link speed to the maximum supported (e.g. Gen 4.0)
@@ -154,7 +156,7 @@
 
     - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
-- Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually (see MemTestHelper). While increasing frequency or changing timings, ensure that the changes scale positively in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) due to error correction. Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-hardware-clocking-and-thermal-performance) section for more information
+- Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually (see MemTestHelper). While increasing frequency or changing timings, ensure that the changes scale positively in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching) due to error correction. Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-hardware-clocking-and-thermal-performance) section for more information
 
     - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
