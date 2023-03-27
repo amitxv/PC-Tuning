@@ -1,5 +1,7 @@
 # PC-Tuning
 
+[![Discord](https://discordapp.com/api/guilds/994887453599076422/widget.png?style=shield)](discord.com/invite/yrAnChXXZw)
+
 ## Rationale
 
 Windows is notorious for its ever-growing bloatware and third party telemetry which makes it difficult to execute real-time tasks efficiently due to excessive context switching, interrupts and I/O which ultimately leads to a poor user experience. This repository was created in hope of standardizing systems for latency sensitive tasks and minimizing unwanted outgoing traffic.

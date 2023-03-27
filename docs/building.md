@@ -168,7 +168,7 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 
 ## Remove Provisioned Appx Bloatware (Windows 8+)
 
-This command removes the majority of Windows apps that nobody uses and potentially jeopardizes privacy such as Microsoft Store, maps, camera.
+This command removes all the Windows apps that potentially jeopardizes privacy such as Microsoft Store, maps, camera.
 
 ```bat
 for /f "tokens=3" %a in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%a)
