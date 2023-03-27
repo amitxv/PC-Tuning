@@ -2,7 +2,7 @@
 
 [![Discord](https://discordapp.com/api/guilds/994887453599076422/widget.png?style=shield)](discord.com/invite/yrAnChXXZw)
 
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/gbraad)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/amitxv)
 
 ## Rationale
 
