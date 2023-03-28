@@ -1,6 +1,0 @@
-Windows Registry Editor Version 5.00
-
-; use the oem lock screen background image
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\Background]
-"OEMBackground"=dword:00000001

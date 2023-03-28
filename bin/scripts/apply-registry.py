@@ -33,7 +33,6 @@ def main() -> None:
         return
 
     for file in (
-        "7.reg",
         "7+.reg",
         "7-8.reg",
         "8.reg",
