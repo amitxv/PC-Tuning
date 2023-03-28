@@ -2,8 +2,6 @@
 
 ## OOBE Setup
 
-Do not connect to the internet until the [Merge the Registry Files](#merge-the-registry-files) section. Avoid using a password as the service list used will break user password functionality after the ``Services-Disable.bat`` script is run.
-
 - Windows Server will force you to enter a complex password which we will remove in a few steps later
 
 If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute the following command ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection demonstrated in the video examples below.
@@ -102,7 +100,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - Navigate to ``Computer Configuration -> Administrative Templates -> System`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Display Shutdown Event Tracker`` to disable the shutdown prompt
 
-    - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank. As a reminder, this is required because the service list used will break user password functionality after the ``Services-Disable.bat`` script is run
+    - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank
 
 ## Remove Bloatware Natively
 
@@ -248,7 +246,7 @@ Download and install the [.NET 4.8 runtimes](https://dotnet.microsoft.com/en-us/
 
     - A minority of anticheats (FACEIT) require Meltdown to be enabled
 
-- Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove CPU microcode
+- Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove the CPU microcode updates
 
     ```bat
     del /f /q C:\Windows\System32\mcupdate_GenuineIntel.dll
