@@ -168,10 +168,10 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 ## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
 
-Extract the zip file below and install the redistributables.
+Run the package below to install the redistributables.
 
 ```
-C:\bin\VisualCppRedist_AIO_x86_x64.zip
+C:\bin\VisualCppRedist_AIO_x86_x64.exe
 ```
 
 ## Disable Residual Scheduled Tasks

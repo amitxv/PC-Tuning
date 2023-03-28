@@ -182,14 +182,6 @@ Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script 
 explorer "%MOUNT_DIR%"
 ```
 
-## Download Visual C++ Redistributable Runtimes
-
-Use the command below to download the latest packages/installer so that it is ready to install during the post-install steps.
-
-```bat
-for /f "tokens=2" %a in ('curl https://api.github.com/repos/abbodi1406/vcredist/releases/latest ^| findstr "browser_download_url" ^| findstr "x86_x64"') do (curl %a -L -o "%MOUNT_DIR%\bin\VisualCppRedist_AIO_x86_x64.zip")
-```
-
 ## Setup Python
 
 Python is used to run scripts provided in the ``bin\scripts`` directory since batch scripting has limited power. Run the command below to set up a portable version of Python.
