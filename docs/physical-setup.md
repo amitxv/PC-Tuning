@@ -158,24 +158,33 @@
 
     - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
-- Set a static all-core frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions. Enable XMP for your RAM or configure the frequency and timings manually (see MemTestHelper). While increasing frequency or changing timings, ensure that the changes scale positively in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching) due to error correction. Core/uncore/memory affect each other in terms of stability, see the [Stability and Hardware Clocking](#stability-hardware-clocking-and-thermal-performance) section for more information
+- Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
 
     - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
+
+- Enable XMP for your RAM or preferably configure the frequency and timings manually
+
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
-- Try not to leave voltage settings on automatic due to potentially overvolting to a dangerous level
+- The previous two bullet points (core/uncore/memory) affect each other in terms of stability which means you should re-test each component after tinkering with the other
+
+- Try not to leave voltage settings on automatic due to potential overvolting
 
 ## Stability, Hardware Clocking and Thermal Performance
 
 Ensure your CPU, RAM and GPU (with overclock applied) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and algorithms vary between tools which is why it is important to use a range of them (non-exhaustive list of recommended tools are listed below).
 
+- Due to error correction, you should check whether increasing frequency or changing timings scale positively in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded) by adopting a systematic testing methodology
+
 - Ensure to disable CUDA - Force P2 State with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress testing
 
-- There are countless factors that contribute to stability such as temperature, power quality, quality of VRMs, silicon lottery...
+- There are countless factors that contribute to stability such as temperature, power delivery, quality of VRMs, silicon lottery etc
+
+    - An important note to make is that you can pass hours of stress tests (e.g. RAM) but as soon as another component (e.g. GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario
 
 - A single error is one too many
 
-- Avoid thermal throttling at all costs, ambient temperature will increase during the summer which can be replicated with a heater to create a worst-case scenario. An important note to make is that you can pass hours of stress tests (e.g. RAM) but as soon as another component (e.g. GPU) begins to warm up, you will encounter instability so ensure to cater for such scenario
+- Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to create a worst-case scenario
 
 - Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better than thermal throttling at a higher frequency
 
