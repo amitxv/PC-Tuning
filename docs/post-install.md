@@ -548,7 +548,7 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
 
 ## Disable Driver Power Saving
 
-Open CMD and enter the commands below to disable power saving on various devices in device manager and registry entries present in modern drivers.
+Open PowerShell and enter the command below to disable power saving on devices in device manager.
 
 ```bat
 C:\bin\scripts\disable-pnp-powersaving.ps1
