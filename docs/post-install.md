@@ -184,13 +184,13 @@ C:\bin\python\python.exe C:\bin\scripts\disable-tasks.py
 
 ## Merge the Registry Files
 
-Open CMD as administrator and enter the command below. Replace ``<winver>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
 
 ```bat
-C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
+C:\bin\scripts\apply-registry.ps1 -winver <option>
 ```
 
-- Ensure that the program prints a "successfully applied" message to the console, if it has not then CMD was probably not opened with administrator privileges and the registry files were not successfully merged
+- Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
 
 - Restart your PC through ``Ctrl+Alt+Delete``. After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 
