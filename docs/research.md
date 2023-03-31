@@ -413,7 +413,81 @@ Resolution: 0.500000ms, Sleep(1) slept 1.494400ms (delta: 0.494400)
 
 </details>
 
-<!-- #### Title
+---
+
+#### Micro-adjusting timer resolution for higher precision
+
+<details>
+
+<summary>Read More</summary>
+<br>
+
+Everyone is aware that raising the clock interrupt frequency/timer resolution results in higher precision. On most systems, 0.5ms is the maximum supported resolution, but what advantage does micro-adjusting the resolution bring to the table?
+
+During a period of testing, I mistakenly set the timer resolution to arbitrary value instead of the maximum supported and noticed that the sleep delays being measured in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program were reproducibly lower compared to any resolution that was requested before. The results below consist of the sleep delays with different requested resolutions.
+
+**1.000ms**:
+
+```
+Resolution: 0.999600ms, Sleep(1) slept 1.998081ms (delta: 0.998081)
+Resolution: 0.999600ms, Sleep(1) slept 1.998593ms (delta: 0.998593)
+Resolution: 0.999600ms, Sleep(1) slept 1.999105ms (delta: 0.999105)
+Resolution: 0.999600ms, Sleep(1) slept 1.998849ms (delta: 0.998849)
+Resolution: 0.999600ms, Sleep(1) slept 1.998849ms (delta: 0.998849)
+Resolution: 0.999600ms, Sleep(1) slept 1.999105ms (delta: 0.999105)
+Resolution: 0.999600ms, Sleep(1) slept 1.998849ms (delta: 0.998849)
+Resolution: 0.999600ms, Sleep(1) slept 1.999105ms (delta: 0.999105)
+Resolution: 0.999600ms, Sleep(1) slept 1.998849ms (delta: 0.998849)
+Resolution: 0.999600ms, Sleep(1) slept 1.998593ms (delta: 0.998593)
+```
+
+**0.507ms**:
+
+```
+Resolution: 0.506800ms, Sleep(1) slept 1.012480ms (delta: 0.012480)
+Resolution: 0.506800ms, Sleep(1) slept 1.011456ms (delta: 0.011456)
+Resolution: 0.506800ms, Sleep(1) slept 1.012224ms (delta: 0.012224)
+Resolution: 0.506800ms, Sleep(1) slept 1.012736ms (delta: 0.012736)
+Resolution: 0.506800ms, Sleep(1) slept 1.012736ms (delta: 0.012736)
+Resolution: 0.506800ms, Sleep(1) slept 1.012992ms (delta: 0.012992)
+Resolution: 0.506800ms, Sleep(1) slept 1.012480ms (delta: 0.012480)
+Resolution: 0.506800ms, Sleep(1) slept 1.012224ms (delta: 0.012224)
+Resolution: 0.506800ms, Sleep(1) slept 1.012736ms (delta: 0.012736)
+Resolution: 0.506800ms, Sleep(1) slept 1.012736ms (delta: 0.012736)
+```
+
+**0.500ms**:
+
+```
+Resolution: 0.499200ms, Sleep(1) slept 1.496064ms (delta: 0.496064)
+Resolution: 0.499200ms, Sleep(1) slept 1.497856ms (delta: 0.497856)
+Resolution: 0.499200ms, Sleep(1) slept 1.497344ms (delta: 0.497344)
+Resolution: 0.499200ms, Sleep(1) slept 1.496832ms (delta: 0.496832)
+Resolution: 0.499200ms, Sleep(1) slept 1.497088ms (delta: 0.497088)
+Resolution: 0.499200ms, Sleep(1) slept 1.497344ms (delta: 0.497344)
+Resolution: 0.499200ms, Sleep(1) slept 1.497088ms (delta: 0.497088)
+Resolution: 0.499200ms, Sleep(1) slept 1.496832ms (delta: 0.496832)
+Resolution: 0.499200ms, Sleep(1) slept 1.497088ms (delta: 0.497088)
+Resolution: 0.499200ms, Sleep(1) slept 1.496832ms (delta: 0.496832)
+```
+
+Despite 0.500ms being a higher resolution than 0.507ms, it offers worse precision compared to a slightly higher resolution which is 0.507ms in this case. Note that this is also an arbitrary value, going below ~0.502ms is where Sleep(1) sleeps the same amount of time as if 0.500ms was requested. It's a matter of finding a sweet spot with a low STDEV.
+
+30+ candidates were asked to compare 0.500ms against 0.507ms on their system. The observations are listed below.
+
+- 0.500ms resolution for a marginal percentage of candidates was *actually* providing higher precision than 0.507ms. We were not able to come to a conclusion as to why after comparing BCD store configuration, hardware, timers, CPU/RAM frequency, Windows versions and more
+
+- The remainder of candidates were able to reproduce my results of 0.507ms providing higher precision than 0.500ms
+
+- One candidate that was using a laptop had to lower the resolution to 0.600ms to achieve low deltas
+
+- 0.500ms resolution provided a high resolution for all candidates on Windows 7. There was not a case where 0.500ms resulted in ~0.49ms deltas as shown above
+
+</details>
+
+<!-- ---
+
+#### Title
 
 <details>
 
