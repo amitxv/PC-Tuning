@@ -498,9 +498,15 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
+- Use the command below to prevent the [Software Protection service attempting to register a restart every 30s](/media/software-protection-error.png) while services are disabled. I'm not sure what the problematic service is, but online sources point to Task Scheduler
+
+    ```bat
+    reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
+    ```
+
 - Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove entries with a yellow label in the ``Services`` section to prevent obsolete services from being added to the scripts that are going to be built in the next steps
 
-- On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the task scheduler service
+- On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the Task Scheduler service
 
 - Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
 
