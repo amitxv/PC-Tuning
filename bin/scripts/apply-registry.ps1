@@ -17,11 +17,11 @@ function apply_registry($file_path) {
 }
 
 if (!(is_admin)) {
-    Write-Host "error: administrator privileges required`n"
+    Write-Host "error: administrator privileges required"
     exit
 }
 
-foreach ($file in "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg") {
+foreach ($file in @("7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg")) {
     $file_name = $file.replace(".reg", "")
     $file = "C:\bin\registry\$file"
     
@@ -41,4 +41,4 @@ foreach ($file in "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg") 
     }
 }
 
-Write-Host "info: successfully applied registry settings for windows $winver`n"
+Write-Host "info: successfully applied registry settings for windows $winver"

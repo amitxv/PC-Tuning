@@ -220,19 +220,13 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below.
+A standard Firefox installation is recommended. Open PowerShell and enter the command below.
 
-```bat
-C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
+```powershell
+C:\bin\scripts\install-firefox.ps1
 ```
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
-
-- Automatic updates are disabled by default. To check for updates when Windows starts, type ``shell:startup`` in ``Win+R`` then create a shortcut with the below target
-
-    ```bat
-    C:\bin\python\pythonw.exe C:\bin\scripts\install-firefox.py
-    ```
 
 ## Install .NET 4.8 Runtimes
 
