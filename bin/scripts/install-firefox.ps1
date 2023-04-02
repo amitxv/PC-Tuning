@@ -18,8 +18,7 @@ if (!(is_admin)) {
 
 try {
     $response = $web_client.DownloadString("https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/firefox.json")
-}
-catch {
+} catch {
     Write-Host "error: failed to fetch json data, check internet connection and try again"
     exit
 }
@@ -34,14 +33,13 @@ $install_dir = "C:\Program Files\Mozilla Firefox"
 # check if currently installed version is already latest
 if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
     $local_version = (& "$install_dir\firefox.exe" --version | more).Split()[2]
-    
+
     if ($local_version -eq $remote_version) {
         Write-Host "info: latest version $remote_version already installed"
-        
+
         if ($force) {
             Write-Host "warning: -force specified, proceeding anyway"
-        }
-        else {
+        } else {
             exit
         }
     }
@@ -116,7 +114,7 @@ defaultPref(`"full-screen-api.warning.timeout`", 0)`
 defaultPref(`"nglayout.enable_drag_images`", false)`
 defaultPref(`"reader.parse-on-load.enabled`", false)`
 defaultPref(`"browser.tabs.firefox-view`", false)`
-defaultPref(`"browser.tabs.tabmanager.enabled`", false)" 
+defaultPref(`"browser.tabs.tabmanager.enabled`", false)"
 )
 
 Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$latest_version/releasenotes"
