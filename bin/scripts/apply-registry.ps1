@@ -10,10 +10,8 @@ function is_admin() {
 }
 
 function apply_registry($file_path) {
-    # user privileges
-    Start-Process -FilePath "regedit.exe" -ArgumentList "/s $file_path" -Wait
-    # trustedinstaller privileges
-    Start-Process -FilePath "C:\bin\NSudo.exe" -ArgumentList "-U:T -P:E -Wait regedit.exe /s $file_path" -Wait
+    regedit.exe /s `"$file_path`"
+    C:\bin\NSudo.exe -U:T -P:E -ShowWindowMode:Hide regedit.exe /s `"$file_path`"
 }
 
 if (!(is_admin)) {
