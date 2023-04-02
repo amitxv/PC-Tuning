@@ -471,7 +471,7 @@ Resolution: 0.499200ms, Sleep(1) slept 1.497088ms (delta: 0.497088)
 Resolution: 0.499200ms, Sleep(1) slept 1.496832ms (delta: 0.496832)
 ```
 
-Despite 0.500ms being a higher resolution than 0.507ms, it offers worse precision compared to a slightly higher resolution which is 0.507ms in this case. Note that this is also an arbitrary value, going below ~0.502ms is where Sleep(1) sleeps the same amount of time as if 0.500ms was requested. It's a matter of finding a sweet spot with a low STDEV.
+Despite 0.500ms being a higher resolution than 0.507ms, it offers worse precision compared to a slightly lower resolution which is 0.507ms in this case. Note that this is also an arbitrary value, going higher than ~0.502ms is where Sleep(1) sleeps the same amount of time as if 0.500ms was requested on my system. It's a matter of finding a sweet spot with a low STDEV.
 
 30+ candidates were asked to compare 0.500ms against 0.507ms on their system. The observations are listed below.
 
