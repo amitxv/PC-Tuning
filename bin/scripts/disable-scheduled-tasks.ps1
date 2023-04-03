@@ -1,9 +1,9 @@
-function is_admin() {
+function Is-Admin() {
     $current_principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     return $current_principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-if (!(is_admin)) {
+if (!(Is-Admin)) {
     Write-Host "error: administrator privileges required"
     exit
 }

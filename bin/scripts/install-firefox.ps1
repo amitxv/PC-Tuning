@@ -3,36 +3,68 @@ param(
 )
 
 Add-Type -AssemblyName System.Web.Extensions
+
 $web_client = New-Object System.Net.WebClient
 $serializer = New-Object System.Web.Script.Serialization.JavaScriptSerializer
+$hash_algorithm = New-Object -TypeName System.Security.Cryptography.SHA512CryptoServiceProvider;
 
-function is_admin() {
+function Convert-To-Json($item) {
+    return $serializer.Serialize($item)
+}
+
+function Get-SHA512($file) {
+    $hash = [System.BitConverter]::ToString($hash_algorithm.ComputeHash([System.IO.File]::ReadAllBytes($file)))
+    $ret = @{"Algorithm" = "SHA512"
+        "Path"           = $file
+        "Hash"           = $hash.Replace("-", "")
+    }
+
+    return $ret
+}
+
+function Fetch-SHA512($version) {
+    $response = $web_client.DownloadString("https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/$version/SHA512SUMS")
+    $response = $response.split("`n")
+
+    foreach ($line in $response) {
+        $split_line = $line.Split(" ", 2)
+        $hash = $split_line[0]
+        $file_name = $split_line[1].Trim()
+        
+        if ($file_name -eq "win64/en-US/Firefox Setup $version.exe") {
+            return $hash
+        }
+    }
+    return $null
+}
+
+function Is-Admin() {
     $current_principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     return $current_principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-if (!(is_admin)) {
+if (!(Is-Admin)) {
     Write-Host "error: administrator privileges required"
     exit
 }
 
 try {
-    $response = $web_client.DownloadString("https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/firefox.json")
+    $response = $web_client.DownloadString("https://product-details.mozilla.org/1.0/firefox_versions.json")
 } catch {
     Write-Host "error: failed to fetch json data, check internet connection and try again"
     exit
 }
 
 $firefox = $serializer.DeserializeObject($response)
-$remote_version = $firefox["version"]
+$remote_version = $firefox["LATEST_FIREFOX_VERSION"]
 $setup_file = "$Env:temp\FirefoxSetup.exe"
-$download_url = $firefox["architecture"]["64bit"]["url"]
-$remote_SHA512 = $firefox["architecture"]["64bit"]["hash"].replace("sha512:", "")
+$download_url = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+$remote_SHA512 = Fetch-SHA512($remote_version)
 $install_dir = "C:\Program Files\Mozilla Firefox"
 
 # check if currently installed version is already latest
 if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
-    $local_version = (& "$install_dir\firefox.exe" --version | more).Split()[2]
+    $local_version = ([string](& "$install_dir\firefox.exe" --version | more)).Split()[2]
 
     if ($local_version -eq $remote_version) {
         Write-Host "info: latest version $remote_version already installed"
@@ -48,7 +80,7 @@ if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
 Write-Host "info: downloading firefox $remote_version setup"
 $web_client.DownloadFile($download_url, $setup_file)
 
-$local_SHA512 = (Get-FileHash -Path $setup_file -Algorithm SHA512).Hash
+$local_SHA512 = (Get-SHA512($setup_file)).Hash
 
 if ($local_SHA512 -ne $remote_SHA512) {
     Write-Host "error: hash mismatch"
@@ -85,21 +117,20 @@ foreach ($file in @(
 # create policies.json
 New-Item -Path "$install_dir" -Name "distribution" -ItemType "directory" -Force | Out-Null
 
-Set-Content -Path "$install_dir\distribution\policies.json" -Value (@{
-        policies = @{
-            DisableAppUpdate     = $true
-            OverrideFirstRunPage = ""
-            Extensions           = @{
-                Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi")
+Set-Content -Path "$install_dir\distribution\policies.json" -Value (Convert-To-Json(@{
+            policies = @{
+                DisableAppUpdate     = $true
+                OverrideFirstRunPage = ""
+                Extensions           = @{
+                    Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi")
+                }
             }
-        }
-    } | ConvertTo-Json -Depth 100)
+        }))
 
-Set-Content -Path "$install_dir\defaults\pref\autoconfig.js" -Value (@(
-        "pref(`"general.config.filename`", `"firefox.cfg`");",
-        "pref(`"general.config.obscure_value`", 0);"
-    ) -join "`n"
-) -NoNewLine
+[System.IO.File]::WriteAllText("$install_dir\defaults\pref\autoconfig.js", (@(
+            "pref(`"general.config.filename`", `"firefox.cfg`");",
+            "pref(`"general.config.obscure_value`", 0);"
+        ) -join "`n"), [System.Text.Encoding]::ASCII)
 
 Set-Content -Path "$install_dir\firefox.cfg" -Value (
     "`r`ndefaultPref(`"app.shield.optoutstudies.enabled`", false)`
@@ -117,4 +148,4 @@ defaultPref(`"browser.tabs.firefox-view`", false)`
 defaultPref(`"browser.tabs.tabmanager.enabled`", false)"
 )
 
-Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$latest_version/releasenotes"
+Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
