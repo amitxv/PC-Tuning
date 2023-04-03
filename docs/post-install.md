@@ -166,14 +166,6 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     reboot
     ```
 
-## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
-
-Run the package below to install the redistributables.
-
-```
-C:\bin\VisualCppRedist_AIO_x86_x64.exe
-```
-
 ## Disable Residual Scheduled Tasks
 
 Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``cmd`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
@@ -227,6 +219,10 @@ C:\bin\scripts\install-firefox.ps1
 ```
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
+
+## Install Visual C++ Redistributable Runtimes
+
+Download and install the [Visual C++ redistributable runtimes](https://github.com/abbodi1406/vcredist).
 
 ## Install .NET 4.8 Runtimes
 
