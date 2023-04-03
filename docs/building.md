@@ -4,8 +4,6 @@
 
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
 
-- [cURL](https://curl.se/windows) (included in Windows 10 1803+) - place ``curl.exe`` and ``curl-ca-bundle.crt`` in ``C:\Windows``
-
 ## Download Stock ISOs
 
 Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <file>`` to get the hash of the ISO.
@@ -73,7 +71,6 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     if exist "%EXTRACTED_ISO%\sources\install.wim" (echo true) else (echo false)
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
     if exist "%OSCDIMG%" (echo true) else (echo false)
-    where curl.exe > nul 2>&1 && echo true || echo false
     ```
 
 ## Remove Non-Essential Editions
@@ -180,14 +177,6 @@ Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script 
 
 ```bat
 explorer "%MOUNT_DIR%"
-```
-
-## Setup Python
-
-Python is used to run scripts provided in the ``bin\scripts`` directory since batch scripting has limited power. Run the command below to set up a portable version of Python.
-
-```bat
-"%MOUNT_DIR%\bin\python-setup.bat"
 ```
 
 ## Unmount and Commit

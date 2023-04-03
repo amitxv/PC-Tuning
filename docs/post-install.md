@@ -166,31 +166,23 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     reboot
     ```
 
-## Install [Visual C++ Redistributable Runtimes](https://github.com/abbodi1406/vcredist)
-
-Run the package below to install the redistributables.
-
-```
-C:\bin\VisualCppRedist_AIO_x86_x64.exe
-```
-
 ## Disable Residual Scheduled Tasks
 
-Open CMD as administrator and enter the command below. To launch with administrator privileges, type ``cmd`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
+Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``cmd`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
 
 ```bat
-C:\bin\python\python.exe C:\bin\scripts\disable-tasks.py
+C:\bin\scripts\disable-scheduled-tasks.ps1
 ```
 
 ## Merge the Registry Files
 
-Open CMD as administrator and enter the command below. Replace ``<winver>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
 
 ```bat
-C:\bin\python\python.exe C:\bin\scripts\apply-registry.py --winver <winver>
+C:\bin\scripts\apply-registry.ps1 -winver <option>
 ```
 
-- Ensure that the program prints a "successfully applied" message to the console, if it has not then CMD was probably not opened with administrator privileges and the registry files were not successfully merged
+- Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
 
 - Restart your PC through ``Ctrl+Alt+Delete``. After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 
@@ -220,19 +212,17 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. I have created a script used to update/install the latest Firefox version. Open CMD and enter the command below.
+A standard Firefox installation is recommended. Open PowerShell and enter the command below.
 
-```bat
-C:\bin\python\python.exe C:\bin\scripts\install-firefox.py
+```powershell
+C:\bin\scripts\install-firefox.ps1
 ```
 
 - On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
-- Automatic updates are disabled by default. To check for updates when Windows starts, type ``shell:startup`` in ``Win+R`` then create a shortcut with the below target
+## Install Visual C++ Redistributable Runtimes
 
-    ```bat
-    C:\bin\python\pythonw.exe C:\bin\scripts\install-firefox.py
-    ```
+Download and install the [Visual C++ redistributable runtimes](https://github.com/abbodi1406/vcredist).
 
 ## Install .NET 4.8 Runtimes
 
