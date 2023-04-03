@@ -62,6 +62,12 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
         DISM /Online /Set-ReservedStorageState /State:Disabled
         ```
 
+    - Set PowerShell execution policy to unrestricted
+
+        ```bat
+        PowerShell Set-ExecutionPolicy Unrestricted
+        ```
+
 - Disable Enhance pointer precision by typing ``main.cpl`` in ``Win+R``
 
 - Disable all messages in ``System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings`` by typing ``control`` in ``Win+R``

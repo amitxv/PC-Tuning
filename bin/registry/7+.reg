@@ -117,11 +117,6 @@ Windows Registry Editor Version 5.00
 "ExtraIconsOnMinimized"=dword:00000000
 "ShowStatus"=dword:00000003
 
-; set PowerShell executionpolicy to unrestricted
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell]
-"ExecutionPolicy"="Unrestricted"
-
 ; set .ps1 file types to open with PowerShell by default
 
 [HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\Open\Command]
