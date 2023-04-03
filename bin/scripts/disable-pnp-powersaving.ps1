@@ -1,5 +1,5 @@
 $power_device_enable = Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi
-$usb_devices = "Win32_USBController", "Win32_USBControllerDevice", "Win32_USBHub"
+$usb_devices = @("Win32_USBController", "Win32_USBControllerDevice", "Win32_USBHub")
 
 foreach ($power_device in $power_device_enable) {
     $instance_name = $power_device.InstanceName.ToUpper()
