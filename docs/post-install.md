@@ -492,6 +492,8 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
+- The ``High precision event timer`` device in device manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
+
 - Use the command below to prevent the [Software Protection service attempting to register a restart every 30s](/media/software-protection-error.png) while services are disabled. I'm not sure what the problematic service is, but online sources point to Task Scheduler
 
     ```bat
@@ -542,9 +544,7 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
 
 - To prepare us for the next steps, run ``Services-Enable.bat`` with NSudo, ensure ``Enable All Privileges`` is enabled as mentioned
 
-- Download and extract [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip)
-
-- Open the program, select all devices and press the delete key to clean-up hidden devices
+- Use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
 
 ## Disable Driver Power Saving
 
@@ -604,13 +604,15 @@ Open CMD and enter the commands below.
 
 - Download and open [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy)
 
-    - Enable Message Signaled Interrupts on all devices that support it
+- Enable Message Signaled Interrupts on all devices that support it
 
-        - You will BSOD if you enable MSIs for the stock Windows 7 SATA driver which you should have already updated as mentioned in the [Install Drivers](#install-drivers) section
+    - You will BSOD if you enable MSIs for the stock Windows 7 SATA driver which you should have already updated as mentioned in the [Install Drivers](#install-drivers) section
 
-    - Be careful as to what you choose to prioritize. As an example, you will likely stutter in an open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
+- Be careful as to what you choose to prioritize. As an example, you will likely stutter in an open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
 
-- Restart your PC, you can verify if a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
+- Restart your PC, you can verify whether a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
+
+    - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
 - Although this carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the ``Conflicts/Sharing`` section
 
