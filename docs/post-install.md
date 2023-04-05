@@ -174,7 +174,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 ## Disable Residual Scheduled Tasks
 
-Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``cmd`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
+Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``PowerShell`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
 
 ```bat
 C:\bin\scripts\disable-scheduled-tasks.ps1
