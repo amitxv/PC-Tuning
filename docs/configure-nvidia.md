@@ -72,7 +72,15 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Ensure that settings are not being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
 
-- Set the scaling mode to no scaling and set perform scaling on display. Configure your resolution and refresh rate
+- Configure the following in the change resolution page:
+
+    - Output dynamic range - Full
+
+- Configure the following in the adjust desktop size and position page:
+
+    - Select a scaling mode - No scaling
+
+    - Perform scaling on - Display
 
 - Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time, your mileage may vary
 
