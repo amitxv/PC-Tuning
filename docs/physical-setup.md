@@ -120,7 +120,7 @@
 
 - Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU/VT-d](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
 
-- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, PCI Clock Gating etc. Search the internet if you are unsure whether a given setting is power saving related
+- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, PCIe Clock Gating etc. Search the internet if you are unsure whether a given setting is power saving related
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you are not using aux/line-in audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and DIMM slots
 
@@ -134,7 +134,7 @@
 
 - Resizable BAR requires GPT/UEFI
 
-- MBR/Legacy requires Compatibility Support Module and typically, only the storage and PCI OpROMs are required, but you can enable all of them if you are unsure. Disable CSM if you are using GPT/UEFI
+- MBR/Legacy requires Compatibility Support Module and typically, only the storage and PCIe OpROMs are required, but you can enable all of them if you are unsure. Disable CSM if you are using GPT/UEFI
 
     - Windows 7 UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
 

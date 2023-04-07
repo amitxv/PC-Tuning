@@ -524,7 +524,7 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
 
 - Open device manager by typing ``devmgmt.msc`` in ``Win+R`` then navigate to ``View -> Devices by connection``
 
-    - Disable any PCI, SATA, NVMe and USB controllers with nothing connected to them
+    - Disable any PCIe, SATA, NVMe and USB controllers with nothing connected to them
 
     - Unnecessary HID devices can be disabled, but mouse software will not work
 
@@ -534,7 +534,7 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
 
     - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power saving features. Disable the power saving option in the ``Power Management`` section
 
-    - Disable ``High Definition Audio Controller`` and the USB controller on the same PCI port as your GPU
+    - Disable everything that isn't the GPU on the same PCIe port
 
 - Navigate to ``View -> Resources by connection``
 
