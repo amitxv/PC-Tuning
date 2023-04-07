@@ -620,9 +620,11 @@ Open CMD and enter the commands below.
 
 By default, CPU 0 handles the majority of DPCs and ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes and system activities are scheduled on the same core competing for CPU time. We can set an interrupt affinity policy to the USB, GPU, NIC, HD Audio and storage driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. The device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``Properties -> General`` section of a device in device manager. Restart your PC instead of the driver to avoid issues.
 
-- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities
+Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence.
 
-- You can ensure interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
+- Ensure that the interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
+
+- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities
 
 - Use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
 
