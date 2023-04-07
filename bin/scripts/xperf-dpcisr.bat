@@ -20,4 +20,3 @@ timeout -t !record_duration!
 xperf -stop
 xperf -i "!output_dir!\kernel.etl" -o "!output_dir!\report.txt" -a dpcisr
 echo info: report saved in !output_dir!
-exit /b
