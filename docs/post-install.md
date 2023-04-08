@@ -644,6 +644,25 @@ Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/me
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
         ```
 
+## Raise the Clock Interrupt Frequency (Timer Resolution)
+
+There is a lot of misleading and inaccurate information regarding this topic polluting the internet along with people having no idea what it influences. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
+
+- Applications that require a high resolution already call for 1ms (1000hz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2000hz) being the maximum resolution supported on most systems
+
+- The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ as explained [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change) with the registry key below. As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel mode driver which is a topic for another day)
+
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
+    "GlobalTimerResolutionRequests"=dword:00000001
+    ```
+
+- Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution when they should
+
+- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution/releases/tag/MeasureSleep) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution/releases/tag/SetTimerResolution) program.
+
+    - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
+
 ## Configure Control Panel
 
 It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
