@@ -43,4 +43,6 @@ The guidance is currently updated and has been tested on client and server editi
 
 - [djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)
 
-- [Windows Internals Sixth Edition Part 1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf)
+- [Windows Internals, Part 1: System Architecture, Processes, Threads, Memory Management, and More](https://www.google.com/url?sa=t&source=web&rct=j&url=https://www.octawian.ro/fisiere/situri/asor/build/html/_downloads/122f95f9a032396603a837c53b125bb8/Russinovich_M_WinInternals_part1_7th_ed.pdf&ved=2ahUKEwjezIqq-Zj-AhXNiVwKHT6FBvMQFnoECBUQAQ&usg=AOvVaw0rrpH1ZdS71v1H6TMBm2xh)
+
+- [Windows Internals, Part 2](https://www.google.com/url?sa=t&source=web&rct=j&url=https://ftp.yuuta.moe/Library/Tech/Windows/Windows%2520Internals_7ed_Part_2.pdf&ved=2ahUKEwjezO2A-pj-AhXiolwKHR6kDAQQFnoECBIQAQ&usg=AOvVaw1x3LWFzfoYDRLlObgGR7AZ)
