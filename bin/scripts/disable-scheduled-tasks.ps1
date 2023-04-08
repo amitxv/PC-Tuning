@@ -32,7 +32,7 @@ $wildcards = @(
     "tpm",
     "systemrestore",
     "speech",
-    "spacePort",
+    "spaceport",
     "power efficiency",
     "cloudexperiencehost",
     "diagnosis",
@@ -41,7 +41,8 @@ $wildcards = @(
     "autochk\\proxy",
     "siuf",
     "device information",
-    "edp policy manager"
+    "edp policy manager",
+    "defender"
 )
 
 $scheduled_tasks = schtasks /query /fo list
