@@ -19,7 +19,7 @@ if (!(Is-Admin)) {
     exit
 }
 
-foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10+.reg", "11+.reg")) {
+foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
     $file_name = $file.replace(".reg", "")
     $file = "C:\bin\registry\$file"
 
