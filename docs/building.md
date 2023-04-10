@@ -28,14 +28,13 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - [Microsoft Software Download Listing](https://ave9858.github.io/msdl)
 
-    - [fido](https://github.com/pbatard/Fido)
+    - [Fido](https://github.com/pbatard/Fido)
         <details>
         <summary>Instructions</summary>
 
-        - Unextract the latest Fido.ps1.lzma from (https://github.com/pbatard/Fido/releases)
+        - Extract the latest ``Fido.ps1.lzma`` from [pbatard/Fido](https://github.com/pbatard/Fido)
 
-        - Run Fido.ps1 by right-clicking from the context menu and Run with PowerShell. 
-        - Select the version of Windows (7 to 11) you want to download, the operating system build you want, and the version that is only a combination of Home/Pro/Edu and the language you want. After pressing Continue, select the x64 architecture and then press the Download button to start downloading the ISO file in the default web browser.
+        - Open PowerShell as administrator and run ``Fido.ps1``
 
     - [UUP dump](https://uupdump.net) (Windows 10 1709+)
         <details>
