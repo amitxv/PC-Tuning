@@ -667,6 +667,16 @@ There is a lot of misleading and inaccurate information regarding this topic pol
 
 It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
 
+## Analyze Event Viewer
+
+This step is not required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly "broken" the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
+
+- The ``Services-Disable.bat`` script disables logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to 3 and 2 respectively
+
+- After running the script, use your PC normally for a while then open event viewer by typing ``eventvwr.msc`` in ``Win+R``. Inspect each section for errors and investigate how they can be solved
+
+- Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to 4 in the ``Services-Disable.bat`` script
+
 ## Configuring Games and Applications
 
 Install any programs and game launchers you commonly use to prepare us for the next steps.
