@@ -180,7 +180,7 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
 - There are countless factors that contribute to stability such as temperature, power delivery, quality of VRMs, silicon lottery etc
 
-    - An important note to make is that you can pass hours of stress tests (e.g. RAM) but as soon as another component (e.g. GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario
+    - An important note to make is that you can pass hours of stress tests (e.g. RAM) but as soon as another component (e.g. GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario. Assuming a fan is mounted to blow air onto the DIMMs, consider stress testing RAM without a fan or reduce the RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
 
 - A single error is one too many
 
