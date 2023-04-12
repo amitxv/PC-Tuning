@@ -106,6 +106,8 @@
 
 - Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
 
+- Ensure that the settings you are changing scale positively and make note of them on a piece of paper for future reference/backtracking to resolve issues
+
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
 
 - You can use BIOS and/or GRUB to change settings. I recommend configuring what you can in BIOS then use [this method](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) to change hidden settings
