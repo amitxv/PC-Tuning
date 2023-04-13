@@ -168,6 +168,8 @@
 
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
+    - See [Intel DDR4 RAM OC Guide by KoT#3421](https://docs.google.com/document/d/1WKCgjhFt2S7ncWzR-FdrImpckK7EZTdX-LoB1FQLZ8A/edit)
+
 - The previous two bullet points (core/uncore/memory) affect each other in terms of stability which means you should re-test each component after tinkering with the other
 
 - Try not to leave voltage settings on automatic due to potential overvolting
