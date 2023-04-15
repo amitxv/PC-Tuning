@@ -212,6 +212,8 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
     - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
 
+        - [HCI](https://hcidesign.com/memtest)
+
     - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
 
     - [OCCT](https://www.ocbase.com/) - VRAM
