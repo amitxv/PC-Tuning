@@ -170,6 +170,8 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     reboot
     ```
 
+- You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository to let me know that it should be removed. This is difficult to maintain as Microsoft never likes to be consistent
+
 ## Disable Residual Scheduled Tasks
 
 Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``PowerShell`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
