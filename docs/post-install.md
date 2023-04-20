@@ -500,29 +500,31 @@ I am not responsible if anything goes wrong or you BSOD. The idea is to disable 
     reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
     ```
 
-- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove entries with a yellow label in the ``Services`` section to prevent obsolete services from being added to the scripts that are going to be built in the next steps
-
 - On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the Task Scheduler service
+
+- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove entries with a yellow label in the ``Services`` section to prevent obsolete services from being added to the scripts that are going to be built in the next steps
 
 - Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
 
-- Use the command below to build the scripts in the ``build`` folder. NSudo is required to run the batch scripts
+- Use the command below to build the scripts in the ``build`` folder. Move the build folder somewhere safe such as ``C:\`` and do not share it with other people as it is specific to your system. Note that NSudo with the ``Enable All Privileges`` option is required to run the batch scripts
 
     ```bat
     service-list-builder.exe --config C:\bin\minimal-services.ini
     ```
 
-- Move the batch scripts and ``NSudo.exe`` somewhere safe such as in the ``C:\`` drive and do not share it with other people as it is specific to your system
-
-- To prepare us for the next steps, run ``Services-Disable.bat`` with NSudo, ensure ``Enable All Privileges`` is enabled as mentioned
-
 - If desired, you can use [ServiWin](https://www.nirsoft.net/utils/serviwin.html) to check for residual drivers and possibly create an issue on the repository to let me know that a given driver should be disabled
 
 ## Configure Device Manager
 
-Many devices in device manager will appear with a yellow icon as we ran the script to disable services, **DO NOT** disable any device with a yellow icon as this will completely defeat the purpose of building toggle scripts. My method for configuring services and device manager will ensure maximum compatibility while services are enabled.
+The section is directly related to the [Configure Services and Drivers](#configure-services-and-drivers) section. The methodology below will ensure maximum compatibility while services are enabled because devices with an associated driver will be toggled in the ``Services-Disable.bat`` script which means we do not need to permanently disable them
 
-- Open device manager by typing ``devmgmt.msc`` in ``Win+R`` then navigate to ``View -> Devices by connection``
+1. If you haven't disabled services at this stage, run the ``Services-Disable.bat`` script
+
+2. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
+
+3. **DO NOT** disable any devices with a yellow icon because these are the devices that are being handled by disabling services
+
+4. Navigate to ``View -> Devices by connection``
 
     - Disable any PCIe, SATA, NVMe and USB controllers with nothing connected to them
 
@@ -536,15 +538,19 @@ Many devices in device manager will appear with a yellow icon as we ran the scri
 
     - Disable everything that isn't the GPU on the same PCIe port
 
-- Navigate to ``View -> Resources by connection``
+5. Navigate to ``View -> Resources by connection``
 
-    - Disable any unneeded devices that are using an IRQ or I/O resources, always ask if unsure, take your time on this step. Windows should not allow you to disable any required devices but ensure you do not accidentally disable another important device such as your main USB controller or similar. Once again, **DO NOT** disable any device with a yellow icon
+    - Disable any unneeded devices that are using an IRQ or I/O resources, always ask if unsure and take your time on this step
 
-        - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate, unneeded devices in case you accidentally miss any with the confusing device manager tree structure
+    - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate, unneeded devices in case you accidentally miss any with the confusing device manager tree structure
 
-- To prepare us for the next steps, run ``Services-Enable.bat`` with NSudo, ensure ``Enable All Privileges`` is enabled as mentioned
+6. Run the ``Services-Enable.bat`` script
 
-- Use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
+7. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
+
+8. Now you **CAN** disable devices with a yellow icon because these are devices that *actually* have errors and are not due to services being disabled
+
+9. Optionally use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
 
 ## Disable Driver Power Saving
 
