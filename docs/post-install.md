@@ -567,7 +567,7 @@ Create registry files to toggle event trace sessions. Programs that rely on even
 - ets-enable
 
     ```bat
-    reg.exe export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
+    reg.exe export "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
     ```
 
 - ets-disable
@@ -706,7 +706,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
     - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below to disable MPOs in CMD and reboot
 
         ```bat
-        reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
         ```
 
 - Configuring QoS policies
