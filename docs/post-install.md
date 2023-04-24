@@ -284,7 +284,7 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 
 ## Configure CRU
 
-If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions, download and extract it.
+If you usually use [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) to configure display resolutions or a display overclock, download and extract it.
 
 - See [How to set up Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
 

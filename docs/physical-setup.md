@@ -106,13 +106,17 @@
 
 - Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
 
-- Ensure that the settings you are changing scale positively and make note of them on a piece of paper for future reference/backtracking to resolve issues
+- Ensure that the settings you are changing scale positively and make note of them on a piece of paper for future reference/backtracking to resolve potential issues
 
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
 
-- You can use BIOS and/or GRUB to change settings. I recommend configuring what you can in BIOS then use [this method](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) to change hidden settings
+- You can use BIOS, GRUB and/or SCEWIN to change settings
 
-    - On some boards, you can enable Hidden OC Item or Hide Item if present to unlock a vast amount of options in BIOS
+    - If you are **NOT** comfortable with flashing a modded BIOS to make hidden settings accessible, I recommend configuring what you can in BIOS then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) or SCEWIN to change the hidden settings
+
+        - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` if present to unlock a vast amount of options in BIOS
+
+    - If you **ARE** comfortable with flashing a modded BIOS, I recommend unlocking all settings using [this method](https://github.com/BoringBoredom/UEFI-Editor#usage-guide)
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading). This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core requires resource sharing and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Other drawbacks include limited overclocking potential due to increased temperatures
 
@@ -122,7 +126,7 @@
 
 - Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU/VT-d](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
 
-- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, PCIe Clock Gating etc. Search the internet if you are unsure whether a given setting is power saving related
+- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, PCIe Clock Gating and more. Search the internet if you are unsure whether a given setting is power saving related
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you are not using aux/line-in audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and DIMM slots
 
@@ -156,45 +160,13 @@
 
 - Disable Execute Disable Bit/NX Mode. A minority of applications (Valorant) require it to be enabled
 
-- As we will be configuring a static frequency/voltage for the CPU, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
+- As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
     - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
-- Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
-
-    - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
-
-- Enable XMP for your RAM or preferably configure the frequency and timings manually
-
-    - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
-
-    - See [KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT](https://github.com/KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT)
-
-- The previous two bullet points (core/uncore/memory) affect each other in terms of stability which means you should re-test each component after tinkering with the other
-
-- Try not to leave voltage settings on automatic due to potential overvolting
-
 ## Stability, Hardware Clocking and Thermal Performance
 
-Ensure your CPU, RAM and GPU (with overclock applied) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and algorithms vary between tools which is why it is important to use a range of them (non-exhaustive list of recommended tools are listed below).
-
-- Due to error correction, you should check whether increasing frequency or changing timings scale positively in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded) by adopting a systematic testing methodology
-
-- Ensure to disable CUDA - Force P2 State with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress testing
-
-- There are countless factors that contribute to stability such as temperature, power delivery, quality of VRMs, silicon lottery etc
-
-    - An important note to make is that you can pass hours of stress tests (e.g. RAM) but as soon as another component (e.g. GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario. Assuming a fan is mounted to blow air onto the DIMMs, consider stress testing RAM without a fan or reduce the RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
-
-- A single error is one too many
-
-- Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to create a worst-case scenario
-
-- Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better than thermal throttling at a higher frequency
-
-- Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors, a higher polling interval can help to identify sudden spikes. Avoid running while benchmarking as it has the potential to reduce the reliability of results
-
-- Disable the paging file and use safe mode for stress testing preferably on a throwaway operating system in case it becomes corrupted
+Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a new operating system as crashes can lead to data corruption or irreversible damage to hardware. There are many tools to test different hardware and algorithms vary between tools which is why it is important to use a range of them (non-exhaustive list of recommended tools are listed below).
 
 - Tools
 
@@ -216,4 +188,42 @@ Ensure your CPU, RAM and GPU (with overclock applied) are stable before configur
 
     - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
 
-    - [OCCT](https://www.ocbase.com/) - VRAM
+    - [OCCT](https://www.ocbase.com)
+
+- Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors, a higher polling interval can help to identify sudden spikes. Avoid running while benchmarking as it has the potential to reduce the reliability of results
+
+- A single error or crash is one too many
+
+- Try not to leave voltage settings on automatic due to potential overvolting
+
+- A stable overclock does not necessarily mean it will perform better due to factors such as error correction. You should verify whether whatever you are changing (e.g. frequency, timings) scale positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded)
+
+- There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
+
+    - An important note to make is that you can pass hours of stress tests (e.g. RAM) but as soon as another component (e.g. GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario. Assuming a fan is mounted to blow air onto the DIMMs, consider stress testing RAM without a fan or reduce the RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
+
+- Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to create a worst-case scenario
+
+    - Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better and safer compared to thermal throttling at a higher frequency
+
+- Disable the paging file and use safe mode for stress testing preferably on a throwaway operating system in case it becomes corrupted
+
+- Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
+
+    - Configure load-line calibration to minimize vcore fluctuation under load (try to aim for a flat line), this setting varies between motherboards so do your own research
+
+- Enable XMP for your RAM or preferably configure the frequency and timings manually
+
+    - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
+
+    - See [KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT](https://github.com/KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT)
+
+- The previous two bullet points (core/uncore/memory) affect each other in terms of stability which means you should re-test each component after tinkering with the other
+
+- Overclock your GPU. You may be required to flash a BIOS with a higher power limit
+
+    - Ensure to disable ``CUDA - Force P2 State`` with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress testing
+
+    - See [A slightly better way to overclock and tweak your Nvidia GPU | Cancerogeno](https://docs.google.com/document/d/14ma-_Os3rNzio85yBemD-YSpF_1z75mZJz1UdzmW8GE/edit)
+
+- Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
