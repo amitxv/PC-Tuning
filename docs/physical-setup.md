@@ -26,6 +26,8 @@
 
 - Bufferbloat is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets. [Measure](https://www.waveform.com/tools/bufferbloat) and [minimize](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat) it
 
+    - See [How to test your Internet Ping](https://support.netduma.com/support/solutions/articles/16000074717-how-to-test-your-internet-ping)
+
 - Tape the end of loose power cables to reduce the risk of shorting components
 
 ## Cooling
