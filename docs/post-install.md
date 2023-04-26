@@ -436,14 +436,6 @@ This step is not optional as the performance counter driver will be disabled whi
 
     - Always On Top (helpful for when applications crash and UI becomes unresponsive)
 
-## Disable Process Mitigations (Windows 10 1709+)
-
-Open CMD and enter the command below to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with ``Get-ProcessMitigation -System`` in PowerShell.
-
-```bat
-C:\bin\scripts\disable-process-mitigations.bat
-```
-
 ## Configure Memory Management Settings (Windows 8+)
 
 - Open PowerShell and enter the command below
