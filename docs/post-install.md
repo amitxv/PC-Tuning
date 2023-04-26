@@ -4,7 +4,7 @@
 
 - Windows Server will force you to enter a complex password which we will remove in a few steps later
 
-If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute the following command ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection demonstrated in the video examples below.
+- If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute the following command ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection demonstrated in the video examples below.
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows7-example.mp4)
 
