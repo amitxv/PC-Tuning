@@ -176,7 +176,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``PowerShell`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
 
-```bat
+``powershell
 C:\bin\scripts\disable-scheduled-tasks.ps1
 ```
 
@@ -184,7 +184,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
 
-```bat
+```powershell
 C:\bin\scripts\apply-registry.ps1 -winver <option>
 ```
 
@@ -550,7 +550,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 Open PowerShell and enter the command below to disable power saving on devices in device manager.
 
-```bat
+```powershell
 C:\bin\scripts\disable-pnp-powersaving.ps1
 ```
 
