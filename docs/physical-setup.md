@@ -4,6 +4,14 @@
 
 - A SSD/NVMe is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
 
+    - Ensure that there is always a sufficient amount of free space, investing in larger storage can help with this
+
+- Check condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark)
+
+    - When purchasing a new drive, check the total host read/writes to determine whether it is unused
+
+- Update firmware for storage devices
+
 - See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
@@ -33,6 +41,8 @@
 - Tape the end of loose power cables to reduce the risk of short-circuiting components
 
 ## Cooling
+
+- Generally, the goal is to run components as close as possible to ambient temperature
 
 - Remove the side panels from your case or consider not using one entirely (open bench)
 
@@ -176,7 +186,7 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
 
 - Tools
 
-    - [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended)/[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme/)
+    - [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended)/[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme)
 
         - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
 
@@ -191,6 +201,10 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
     - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
 
         - [HCI](https://hcidesign.com/memtest)
+
+        - [MemTest86](https://www.memtest86.com) (bootable)
+
+        - [MemTest86+](https://memtest.org) (bootable)
 
     - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
 
@@ -222,7 +236,7 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
 
 - Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
 
-- Enable XMP for your RAM or preferably configure the frequency and timings manually
+- Configure the frequency and timings for RAM manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP profiles does not tune subtimings not does it guarantee stability
 
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
