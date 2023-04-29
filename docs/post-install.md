@@ -176,7 +176,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``PowerShell`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
 
-``powershell
+```powershell
 C:\bin\scripts\disable-scheduled-tasks.ps1
 ```
 
