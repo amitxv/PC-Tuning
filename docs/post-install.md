@@ -212,6 +212,8 @@ Go through the ``C:\bin\preference`` folder to configure common user settings.
 
     - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
 
+        - See [Microsoft USB driver latency penalty](/docs/research.md#microsoft-usb-driver-latency-penalty)
+
     - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
 
 - Since we do not have browser access at this stage, download them on another operating system or PC
@@ -636,7 +638,7 @@ Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/me
 
 - Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 2/3/4/5 (or 2/4/6/8 with HT/SMT enabled) if RssBaseProcNumber is set to 2 with 4 RSS queues configured. [The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and).
 
-    - Related: [research.md - How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
+    - See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
     - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
@@ -709,7 +711,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
     - See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
 
-        - Related: [research.md - How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
+        - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
 ## Cleanup
 
