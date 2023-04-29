@@ -246,6 +246,8 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
 
     - See [A slightly better way to overclock and tweak your Nvidia GPU | Cancerogeno](https://docs.google.com/document/d/14ma-_Os3rNzio85yBemD-YSpF_1z75mZJz1UdzmW8GE/edit)
 
+    - See [LunarPSD/NvidiaOverclocking](https://github.com/LunarPSD/NvidiaOverclocking/blob/main/Nvidia%20Overclocking.md)
+
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
     - Aim for an "actual" integer refresh rate (e.g 60.000 not 60.002). Using the exact timing can help achieve this
