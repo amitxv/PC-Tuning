@@ -2,13 +2,9 @@
 
 ## General
 
-- A SSD/NVMe is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs
+- A SSD/NVMe is mandatory in the modern day due to the unreliability, degraded performance and excessive EMI of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
 
-    - Ensure that there is always a sufficient amount of free space, investing in larger storage can help with this
-
-- Check condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark)
-
-    - When purchasing a new drive, check the total host read/writes to determine whether it is unused
+- Check the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
 
 - Update firmware for storage devices
 
@@ -236,7 +232,7 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
 
 - Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
 
-- Configure the frequency and timings for RAM manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP profiles does not tune subtimings not does it guarantee stability
+- Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune subtimings nor does it guarantee stability
 
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
