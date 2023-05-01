@@ -404,7 +404,14 @@ Open CMD and enter the commands below.
 
 - Windows 8+ Only
 
-    - Implemented as a power saving feature for laptops and tablets, you absolutely do not want a [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) on a desktop
+    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2/). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency sensitive tasks and reducing jitter
+
+    - See [Reducing timer tick interrupts | Erik Rigtorp](https://rigtorp.se/low-latency-guide)
+
+    - See [(Nearly) full tickless operation](https://lwn.net/Articles/549580)
+
+    - See [Low Latency Performance Tuning for
+Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf)
 
         ```bat
         bcdedit /set disabledynamictick yes
