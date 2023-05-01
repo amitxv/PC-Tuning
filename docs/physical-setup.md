@@ -180,6 +180,8 @@
 
     - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
+- Backup BIOS by saving the current settings to a profile or use SCEWIN as clearing CMOS will wipe all settings if you need to do so while e.g. overclocking RAM and you are not able to POST
+
 ## Stability, Hardware Clocking and Thermal Performance
 
 Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (non-exhaustive list of recommended tools are listed below).
