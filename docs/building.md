@@ -29,12 +29,6 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     - [Microsoft Software Download Listing](https://ave9858.github.io/msdl)
 
     - [Fido](https://github.com/pbatard/Fido)
-        <details>
-        <summary>Instructions</summary>
-
-        - Extract the latest ``Fido.ps1.lzma`` from [pbatard/Fido](https://github.com/pbatard/Fido)
-
-        - Open PowerShell as administrator and run ``Fido.ps1``
 
     - [UUP dump](https://uupdump.net) (Windows 10 1709+)
         <details>

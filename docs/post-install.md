@@ -234,7 +234,7 @@ Download and install the [Visual C++ redistributable runtimes](https://github.co
 
 ## Install .NET 4.8 Runtimes
 
-Download and install the [.NET 4.8 runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
+Download and install the [.NET 4.8 runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48). NET 4.8 already ships with Windows 10 1909+.
 
 ## Spectre, Meltdown and CPU Microcode
 
@@ -487,7 +487,7 @@ This step is not optional as the performance counter driver will be disabled whi
 
 - I also like to set the sound scheme to no sounds in the sounds tab
 
-- Consider using [REAL](https://github.com/miniant-git/REAL) or [LowAudioLatency](https://github.com/spddl/LowAudioLatency) to minimize the size of the audio buffer. Beware of audio dropouts due to CPU not being able to keep up under load
+- Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to CPU not being able to keep up under load
 
     - Be warned regarding CPU 0 being reserved/underutilized with the usage of the mentioned programs
 

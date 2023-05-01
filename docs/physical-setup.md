@@ -36,13 +36,17 @@
 
 - Tape the end of loose power cables to reduce the risk of short-circuiting components
 
+- Favor short, shielded cables
+
 ## Cooling
 
 - Generally, the goal is to run components as close as possible to ambient temperature
 
 - Remove the side panels from your case or consider not using one entirely (open bench)
 
-- Delid your CPU and use liquid metal for a [significant thermal improvement](https://www.youtube.com/watch?v=rUy3WcDlBXE). Carry out research before attempting
+- Delid your CPU and use liquid metal for a [significant thermal improvement](https://www.youtube.com/watch?v=rUy3WcDlBXE). Direct die and lapping are also worth taking into consideration. Carry out research before attempting
+
+- Check for contact patches on IHS/Die and cold plate
 
 - Invest in high quality thermal paste
 
@@ -130,7 +134,7 @@
 
     - If you are comfortable flashing an unlocked BIOS and your motherboard has working BIOS flashback capability, see the [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) syntax. Otherwise, you can configure what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) or SCEWIN to change the hidden settings
 
-- Consider disabling [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough cores for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core requires resource sharing and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Other drawbacks include limited overclocking potential due to increased temperatures
+- Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough cores for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). [Disabling HT/SMT has the additional benefit of doubling (in case of 2-way SMT) the effective L1 and L2 cache available to a thread](https://rigtorp.se/low-latency-guide) and increased overclocking potential due to lower temperatures
 
 - Limit C-States, P-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
 
@@ -138,7 +142,7 @@
 
 - Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU/VT-d](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
 
-- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, PCIe Clock Gating and more. Search the internet if you are unsure whether a given setting is power saving related
+- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), PCIe Clock Gating and more. Search the internet if you are unsure whether a given setting is power saving related
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you are not using aux/line-in audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
 
@@ -221,6 +225,8 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
 - Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to mimic a worst-case scenario
 
     - Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better and safer compared to thermal throttling at a higher frequency
+
+- Monitor WHEAs. [HWiNFO](https://www.hwinfo.com) has an error count
 
 - Disable the paging file and use safe mode for stress testing preferably on a throwaway operating system in case it becomes corrupted
 
