@@ -70,13 +70,11 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
 
-; disable sync provider notifications
 ; show file extensions
 ; launch file explorer to this pc
 ; disable recent items and frequent places
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"ShowSyncProviderNotifications"=dword:00000000
 "HideFileExt"=dword:00000000
 "LaunchTo"=dword:00000001
 "Start_TrackDocs"=dword:00000000
