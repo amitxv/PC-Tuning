@@ -39,10 +39,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
 "IncludeRecommendedUpdates"=dword:00000000
-"AUOptions"=dword:00000001
 "SetupWizardLaunchTime"=-
 "AcceleratedInstallRequired"=-
-"ElevateNonAdmins"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
