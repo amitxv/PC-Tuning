@@ -1,4 +1,5 @@
 @echo off
+setlocal EnableDelayedExpansion
 
 DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
 
@@ -18,7 +19,7 @@ echo info: current mask - %mitigation_mask%
 
 :: set all values in current mask to 2 (disable all mitigations)
 for /L %%a in (0,1,9) do (
-    set "mitigation_mask=%mitigation_mask:%%a=2%"
+    set "mitigation_mask=!mitigation_mask:%%a=2!"
 )
 
 echo info: modified mask - %mitigation_mask%
