@@ -192,7 +192,21 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
 
 - Tools
 
-    - [Linpack-Extended (Intel)](https://github.com/BoringBoredom/Linpack-Extended)/[Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme)
+    - Linpack
+
+        - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
+
+        - [PorteusLinpack Bootable by SlovenianSlobodan#9859](https://drive.google.com/file/d/1g6hY_klVOyd2FQy0Ozit2aFrEyuC4r48/view?usp=sharing)
+
+            - The default config is 100 trials of 10 GB problem size. To customize the config, type ``vi lininput_xeon64``. See [this video](https://www.youtube.com/watch?v=vo2FXvPkcEA) for a basic overview of the vi editor
+
+            - Use the [sample config](https://raw.githubusercontent.com/BoringBoredom/Linpack-Extended/master/dependencies/linpack/misc/lininput_xeon64) as an example to chain multiple tests
+
+            - To run the test, type ``./runme_xeon64``
+
+            - To access sensors while the test is running, press ``Ctrl+Alt+F2`` to switch to TTY 2 then type ``./sensors``. Use ``Ctrl+Alt+F1`` to switch back to TTY 1 to view the output of the test
+
+        - [Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme) - Outdated binaries
 
         - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
 
