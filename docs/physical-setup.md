@@ -80,6 +80,8 @@
 
 - Repaste GPU due to factory application of thermal paste often being inadequate. Also consider replacing the stock fans with higher quality ones
 
+- Replace the stock PSU fan and connect it to a motherboard fan header or hub. You may need to drill a hole in the case for the wire
+
 ## Minimize Interference
 
 - Move devices that produce RF, EMF and EMI such as radios, cellphones and routers away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
