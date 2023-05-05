@@ -80,7 +80,7 @@
 
 - Repaste GPU due to factory application of thermal paste often being inadequate. Also consider replacing the stock fans with higher quality ones
 
-- Replace the stock PSU fan and connect it to a motherboard fan header or hub. You may need to drill a hole in the case for the wire
+- Consider replacing the stock PSU fan and connect it to a motherboard fan header or hub. Carry out research before attempting
 
 ## Minimize Interference
 
