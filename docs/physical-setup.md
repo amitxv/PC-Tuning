@@ -114,7 +114,7 @@
 
     - See [OpenRGB](https://openrgb.org)
 
-- Use [Mouse Tester](https://github.com/microe1/MouseTester) to check whether each poll contains data. If the interval is spiking to 2ms (500hz) or higher from 1ms (1000hz), this is obviously problematic and often caused by an inadequate sensor
+- Use [Mouse Tester](https://github.com/microe1/MouseTester) to check whether each poll contains data. If the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is obviously problematic and often caused by an inadequate sensor
 
 - Use a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from your mouse pad
 

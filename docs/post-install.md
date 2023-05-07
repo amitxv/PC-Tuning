@@ -665,7 +665,7 @@ Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/me
 
 There is a lot of misleading and inaccurate information regarding this topic polluting the internet along with people having no idea what it influences. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
 
-- Applications that require a high resolution already call for 1ms (1000hz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2000hz) being the maximum resolution supported on most systems
+- Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
 
 - The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ as explained [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change) with the registry key below. As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel mode driver which is a topic for another day)
 
