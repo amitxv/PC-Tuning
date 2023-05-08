@@ -46,6 +46,8 @@
 
 - Delid your CPU and use liquid metal for a [significant thermal improvement](https://www.youtube.com/watch?v=rUy3WcDlBXE). Direct die and lapping are also worth taking into consideration. Carry out research before attempting
 
+- Use a contact frame if your CPU/socket is affected by ILM (independent loading mechanism) issues
+
 - Check for contact patches on IHS/Die and cold plate
 
 - Invest in high quality thermal paste
