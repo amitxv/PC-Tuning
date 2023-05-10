@@ -1,5 +1,6 @@
 param(
-    [switch]$force
+    [switch]$force,
+    [switch]$skip_hash_check
 )
 
 Add-Type -AssemblyName System.Web.Extensions
@@ -23,14 +24,20 @@ function Get-SHA512($file) {
 }
 
 function Fetch-SHA512($version) {
-    $response = $web_client.DownloadString("https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/$version/SHA512SUMS")
+    try {
+        $response = $web_client.DownloadString("https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/$version/SHA512SUMS")
+    } catch {
+        Write-Host "error: unable to fetch hash data, consider -skip_hash_check"
+        exit
+    }
+
     $response = $response.split("`n")
 
     foreach ($line in $response) {
         $split_line = $line.Split(" ", 2)
         $hash = $split_line[0]
         $file_name = $split_line[1].Trim()
-        
+
         if ($file_name -eq "win64/en-US/Firefox Setup $version.exe") {
             return $hash
         }
@@ -59,7 +66,6 @@ $firefox = $serializer.DeserializeObject($response)
 $remote_version = $firefox["LATEST_FIREFOX_VERSION"]
 $setup_file = "$Env:temp\FirefoxSetup.exe"
 $download_url = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
-$remote_SHA512 = Fetch-SHA512($remote_version)
 $install_dir = "C:\Program Files\Mozilla Firefox"
 
 # check if currently installed version is already latest
@@ -80,11 +86,14 @@ if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
 Write-Host "info: downloading firefox $remote_version setup"
 $web_client.DownloadFile($download_url, $setup_file)
 
-$local_SHA512 = (Get-SHA512($setup_file)).Hash
+if (-not $skip_hash_check) {
+    $local_SHA512 = (Get-SHA512($setup_file)).Hash
+    $remote_SHA512 = Fetch-SHA512($remote_version)
 
-if ($local_SHA512 -ne $remote_SHA512) {
-    Write-Host "error: hash mismatch"
-    exit
+    if ($local_SHA512 -ne $remote_SHA512) {
+        Write-Host "error: hash mismatch"
+        exit
+    }
 }
 
 Write-Host "info: installing firefox"
