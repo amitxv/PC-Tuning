@@ -25,8 +25,8 @@ function Get-SHA512($file) {
 
 function Fetch-SHA512($version) {
     try {
-        $response = $web_client.DownloadString("https://mediacdn.prod.productdelivery.prod.webservices.mozgcp.net/pub/firefox/releases/$version/SHA512SUMS")
-    } catch {
+        $response = $web_client.DownloadString("https://ftp.mozilla.org/pub/firefox/releases/$version/SHA512SUMS")
+    } catch [System.Management.Automation.MethodInvocationException] {
         Write-Host "error: unable to fetch hash data, consider -skip_hash_check"
         exit
     }
@@ -57,7 +57,7 @@ if (!(Is-Admin)) {
 
 try {
     $response = $web_client.DownloadString("https://product-details.mozilla.org/1.0/firefox_versions.json")
-} catch {
+} catch [System.Management.Automation.MethodInvocationException] {
     Write-Host "error: failed to fetch json data, check internet connection and try again"
     exit
 }
