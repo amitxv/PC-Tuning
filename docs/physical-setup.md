@@ -146,9 +146,15 @@
 
     - Verify S-State status with ``powercfg -a`` in CMD
 
+- Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU/VT-d](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
+
 - Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), PCIe Clock Gating and more. Search the internet if you are unsure whether a given setting is power saving related
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you are not using aux/line-in audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
+
+- Disable Trusted Platform Module. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
+
+    - Verify TPM status by typing ``tpm.msc`` in ``Win+R``
 
 - Enable High Precision Event Timer. If the setting is hidden, there is a good chance that it is enabled by default
 
@@ -160,25 +166,7 @@
 
     - Windows 7 UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
 
-- Disable Secure Boot
-
-    - On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
-
-    - [Valorant Tournament Mode requires it to be enabled regardless of the Windows version](https://drive.google.com/file/d/16qf46wLPVpeD3Vn3-q81p3Rxia2N9DrR/view)
-
-    - Verify ``Secure Boot State`` by typing ``msinfo32`` in ``Win+R``
-
-- Disable Trusted Platform Module
-
-    - On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be present and enabled
-
-    - [Valorant Tournament Mode requires TPM 2.0 to be present and enabled regardless of the Windows version](https://drive.google.com/file/d/16qf46wLPVpeD3Vn3-q81p3Rxia2N9DrR/view)
-
-    - Verify TPM status by typing ``tpm.msc`` in ``Win+R``
-
-- Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU (Intel VT-d/AMD-Vi)](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
-
-    - [Valorant Tournament Mode requires these two settings to be enabled](https://drive.google.com/file/d/16qf46wLPVpeD3Vn3-q81p3Rxia2N9DrR/view)
+- Disable Secure Boot. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
 
 - Disable Fast Startup or similar options
 
