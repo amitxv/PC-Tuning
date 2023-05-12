@@ -38,6 +38,8 @@
 
 - Favor short, shielded cables
 
+- Clean pins and connectors of devices. Use compressed air to remove dust from slots such as PCIe, NVMe, RAM etc
+
 ## Cooling
 
 - Generally, the goal is to run components as close as possible to ambient temperature
