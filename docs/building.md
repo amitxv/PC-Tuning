@@ -21,7 +21,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
         <details>
         <summary>How to check integrated updates</summary>
 
-        - [Extract and mount the ISO](#prepare-the-build-environment)
+        - Extract and mount the ISO by following the steps from [Prepare the Build Environment](#prepare-the-build-environment) to [Mount the ISO](#mount-the-iso)
 
         - View installed updates
 
