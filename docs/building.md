@@ -16,7 +16,26 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - Windows 8: ``en_windows_8_1_x64_dvd_2707217.iso`` - [Adguard hashes](https://files.rg-adguard.net/file/406e60db-4275-7bf8-616f-56e88d9e0a4a?lang=en-us)
 
-    - Windows 10+: Try to obtain an ISO with minimal updates
+    - Windows 10+: Try to obtain an ISO with minimal updates as we will be integrating those of our choice. ISOs built with UUP dump typically ship with the latest updates which is fine
+
+        <details>
+        <summary>How to check integrated updates</summary>
+
+        - [Extract and mount the ISO](#prepare-the-build-environment)
+
+        - View installed updates
+
+            ```bat
+            DISM /Image:"%MOUNT_DIR%" /Get-Packages
+            ```
+
+        - If you are satisfied with the update list, you can continue and proceed to the next steps. Otherwise, unmount with the command below to discard the ISO
+
+            ```bat
+            DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Discard && rd /s /q "%MOUNT_DIR%"
+            ```
+
+        </details>
 
 - ISO Sources:
 
@@ -102,7 +121,7 @@ Remove every edition except the desired edition by retrieving the indexes of eve
 
 ## Mount the ISO
 
-Mount the image with the command below.
+Mount the ISO with the command below.
 
 ```bat
 DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDir:"%MOUNT_DIR%"
@@ -194,7 +213,7 @@ explorer "%MOUNT_DIR%"
 
 ## Unmount and Commit
 
-Run the command below to commit our changes to the ISO. If you get an error, check if the directory is empty to ensure the image is unmounted by typing ``explorer "%MOUNT_DIR%"``. If it is empty, you can likely ignore the error, otherwise try close all open folders and run the command again.
+Run the command below to commit our changes to the ISO. If you get an error, check if the directory is empty to ensure the ISO is unmounted by typing ``explorer "%MOUNT_DIR%"``. If it is empty, you can likely ignore the error, otherwise try close all open folders and run the command again.
 
 ```bat
 DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
@@ -232,4 +251,4 @@ This step is not required if you are [installing using DISM Apply-Image](/docs/p
 
 ## Cleanup
 
-Optionally uninstall the programs and remove the binaries installed in the [Build Requirements](#build-requirements) section if you do not plan on building another image anytime soon.
+Optionally uninstall the programs and remove the binaries installed in the [Build Requirements](#build-requirements) section if you do not plan on building another ISO anytime soon.
