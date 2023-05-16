@@ -43,6 +43,8 @@ The guidance is currently updated and has been tested on client and server editi
 
 - [djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)
 
+- [klasbo/GamePerfTesting](https://github.com/klasbo/GamePerfTesting)
+
 - [sieger/handbook](https://github.com/sieger/handbook)
 
 - [Windows Internals, Part 1: System Architecture, Processes, Threads, Memory Management, and More](https://www.google.com/url?sa=t&source=web&rct=j&url=https://www.octawian.ro/fisiere/situri/asor/build/html/_downloads/122f95f9a032396603a837c53b125bb8/Russinovich_M_WinInternals_part1_7th_ed.pdf&ved=2ahUKEwjezIqq-Zj-AhXNiVwKHT6FBvMQFnoECBUQAQ&usg=AOvVaw0rrpH1ZdS71v1H6TMBm2xh)
