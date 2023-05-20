@@ -40,6 +40,16 @@
 
 - Clean pins and connectors of devices. Use compressed air to remove dust from slots such as PCIe, NVMe, RAM etc
 
+- If you are not already using the partition style you want to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (ctrl-f GPT/UEFI). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup. There are third party tools that can also do this without the need to wipe the disk, but I am not sure how well they work. GPT/UEFI should be fine for most people
+
+    - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
+
+    - See [MBR vs GPT: Which One Is Better for You?](https://www.diskpart.com/gpt-mbr/mbr-vs-gpt-1004.html)
+
+    - See [How to Convert MBR to GPT During Windows 10/8/7 Installation |
+MDTechVideos
+](https://www.youtube.com/watch?v=f81qKAJUdKc)
+
 ## Cooling
 
 - Generally, the goal is to run components as close as possible to ambient temperature
@@ -168,7 +178,7 @@
 
 - MBR/Legacy requires Compatibility Support Module and typically, only the storage and PCIe OpROMs are required, but you can enable all of them if you are unsure. Disable CSM if you are using GPT/UEFI
 
-    - Windows 7 UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
+    - Windows 7 GPT/UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
 
 - Disable Secure Boot. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
 
