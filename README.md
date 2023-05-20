@@ -6,7 +6,7 @@
 
 ## Rationale
 
-Windows is notorious for its ever-growing bloatware and third party telemetry which makes it difficult to execute real-time tasks efficiently due to excessive context switching, interrupts and I/O which ultimately leads to a poor user experience. This repository was created in hope of standardizing systems for latency sensitive tasks and minimizing unwanted outgoing traffic.
+Windows is notorious for its ever-growing bloatware, third party telemetry, excessive context switching, interrupts and I/O. This repository was created in hope of standardizing systems for latency sensitive tasks and minimizing unwanted outgoing traffic. Note that the operating system related sections are not indented to be followed on existing installs. On the contrary, the mentioned sections will guide you to customize an ISO using DISM then reinstall Windows properly.
 
 This repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however it is not my intention to directly copy from them.
 
