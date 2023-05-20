@@ -136,11 +136,13 @@
 
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
 
-- You can use BIOS, GRUB and/or SCEWIN to change settings. For clarification, unlocking BIOS corresponds to making hidden settings accessible
+- Access BIOS settings. Motherboard vendors hide/lock a lot of useful settings so that they are not visible to a regular user. For clarification, unlocking BIOS corresponds to making hidden settings accessible/visible
 
-    - On some boards, you can natively enable ``Hidden OC Item`` or ``Hide Item`` if present to unlock BIOS
+    - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` if present to unlock BIOS
 
-    - If you are comfortable flashing an unlocked BIOS and your motherboard has working BIOS flashback capability, see the [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) syntax. Otherwise, you can configure what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) or SCEWIN to change the hidden settings
+    - The easiest approach to take is to change the access levels within the BIOS file using [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) or AMIBCP then flash it. However, this is only recommended if you have a method for flashing a stock BIOS in case anything goes wrong (e.g. working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer)
+
+    - For changing hidden settings without flashing a modded BIOS, you can start by configuring what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) or SCEWIN to change the hidden settings
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough cores for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). [Disabling HT/SMT has the additional benefit of doubling (in case of 2-way SMT) the effective L1 and L2 cache available to a thread](https://rigtorp.se/low-latency-guide) and increased overclocking potential due to lower temperatures
 
