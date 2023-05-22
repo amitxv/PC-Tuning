@@ -686,6 +686,16 @@ There is a lot of misleading and inaccurate information regarding this topic pol
 
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
+## XHCI Interrupt Moderation (IMOD)
+
+On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. From my understanding, this means that after an interrupt has been generated, the USB controller waits for the specified interval for more data to arrive before generating another interrupt. This reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same USB controller.
+
+For example, a mouse with an 1kHz polling rate will report data every 1ms. While **only** moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate greater or equal to the interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly less than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
+
+- See [Can you define the interrupt moderation rate for USB controllers? Do different versions of windows have different default values?](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/PERIPHERALS/README.md#universal-serial-bus-usb)
+
+- See [How to persistently disable xHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
+
 ## Configure Control Panel
 
 It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
