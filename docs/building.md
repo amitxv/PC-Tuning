@@ -77,15 +77,28 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
-- Extract the contents of the ISO to a directory of your choice with [7-Zip](https://www.7-zip.org), In the examples below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
+- Extract the contents of the ISO to a directory of your choice with [7-Zip](https://www.7-zip.org) then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
     ```bat
     set "EXTRACTED_ISO=C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939"
-    set "MOUNT_DIR=%temp%\MOUNT_DIR"
-    set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
+    ```
 
-    if exist "%MOUNT_DIR%" (rd /s /q "%MOUNT_DIR%")
-    mkdir "%MOUNT_DIR%"
+- Set the path where the ISO will be mounted for servicing to the ``MOUNT_DIR`` variable. Changing the value below is not necessary
+
+    ```bat
+    set "MOUNT_DIR=%temp%\MOUNT_DIR"
+    ```
+
+- Set the path to the ``oscdimg.exe`` binary to the ``OSCDIMG`` variable. Unless you installed deployment tools to a location other than default, changing the value below is not necessary
+
+    ```bat
+    set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
+    ```
+
+- Prepare the ``MOUNT_DIR`` directory for mounting
+
+    ```bat
+    DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Discard > nul 2>&1 & rd /s /q "%MOUNT_DIR%" & mkdir "%MOUNT_DIR%"
     ```
 
 - If the environment variables are configured correctly, the commands below should display ``true``
