@@ -144,6 +144,8 @@ MDTechVideos
 
 - Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
 
+- Consider [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI)
+
 - Ensure that the settings you are changing scale positively and make note of them on a piece of paper for future reference/backtracking to resolve potential issues
 
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
@@ -175,8 +177,6 @@ MDTechVideos
 - Enable High Precision Event Timer. If the setting is hidden, there is a good chance that it is enabled by default
 
     - On AMD systems with newer AGESA firmware, changing this setting will have no effect
-
-- Resizable BAR requires GPT/UEFI
 
 - MBR/Legacy requires Compatibility Support Module and typically, only the storage and PCIe OpROMs are required, but you can enable all of them if you are unsure. Disable CSM if you are using GPT/UEFI
 
