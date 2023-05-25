@@ -52,8 +52,6 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates.
 
-As some commands in [docs/post-install.md](/docs/post-install.md) are tedious to manually type in the console, you can keep a copy of the document locally and open it in notepad when you find yourself having to execute a long command.
-
 - Install using a USB storage device:
 
     - Move your Windows ISO into the USB storage in file explorer (where the Linux ISO is also located)

@@ -34,15 +34,69 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
+## Unrestricted PowerShell Execution Policy
+
+This is required to execute the scripts within the repository. Open PowerShell as administrator and enter the command below.
+
+```powershell
+Set-ExecutionPolicy Unrestricted
+```
+
+## Merge the Registry Files
+
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
+
+```powershell
+C:\bin\scripts\apply-registry.ps1 -winver <option>
+```
+
+- Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
+
+- After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
+
+## Install Drivers
+
+- Avoid installing chipset drivers
+
+- GPU drivers will be installed in a later step so do not install them at this stage
+
+- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+
+- Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
+
+- I would recommend updating and installing following:
+
+    - NIC
+
+    - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
+
+        - See [Microsoft USB driver latency penalty](/docs/research.md#microsoft-usb-driver-latency-penalty)
+
+    - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
+
+- Since we do not have browser access at this stage, download them on another operating system or PC
+
+## Configure a [Web Browser](https://privacytests.org)
+
+A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip-hash-check`` to the end of the command.
+
+```powershell
+C:\bin\scripts\install-firefox.ps1
+```
+
+- On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
+
+## Disable Residual Scheduled Tasks
+
+Open PowerShell as administrator and enter the command below.
+
+```powershell
+C:\bin\scripts\disable-scheduled-tasks.ps1
+```
+
 ## Miscellaneous
 
 - Open CMD as administrator and enter the commands below
-
-    - Disable fast startup. Must be disabled before booting into Linux to avoid file system errors
-
-        ```bat
-        powercfg /hibernate off
-        ```
 
     - Set the maximum password age to never expire
 
@@ -60,12 +114,6 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
         ```bat
         DISM /Online /Set-ReservedStorageState /State:Disabled
-        ```
-
-    - Set PowerShell execution policy to unrestricted
-
-        ```bat
-        PowerShell Set-ExecutionPolicy Unrestricted
         ```
 
 - Disable all messages in ``System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings`` by typing ``control`` in ``Win+R``
@@ -178,61 +226,9 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository to let me know that it should be removed. This is difficult to maintain as Microsoft never likes to be consistent
 
-## Disable Residual Scheduled Tasks
-
-Open PowerShell as administrator and enter the command below. To launch with administrator privileges, type ``PowerShell`` in ``Win+R`` then simultaneously press ``Ctrl+Shift+Enter``
-
-```powershell
-C:\bin\scripts\disable-scheduled-tasks.ps1
-```
-
-## Merge the Registry Files
-
-Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
-
-```powershell
-C:\bin\scripts\apply-registry.ps1 -winver <option>
-```
-
-- Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
-
-- Restart your PC through ``Ctrl+Alt+Delete``. After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
-
 ## User Preference
 
 Go through the ``C:\bin\preference`` folder to configure common user settings.
-
-## Install Drivers
-
-- Avoid installing chipset drivers
-
-- GPU drivers will be installed in a later step so do not install them at this stage
-
-- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
-
-- Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
-
-- I would recommend updating and installing following:
-
-    - NIC
-
-    - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
-
-        - See [Microsoft USB driver latency penalty](/docs/research.md#microsoft-usb-driver-latency-penalty)
-
-    - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
-
-- Since we do not have browser access at this stage, download them on another operating system or PC
-
-## Configure a [Web Browser](https://privacytests.org)
-
-A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip-hash-check`` to the end of the command.
-
-```powershell
-C:\bin\scripts\install-firefox.ps1
-```
-
-- On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Install Visual C++ Redistributable Runtimes
 
