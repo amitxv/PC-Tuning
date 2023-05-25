@@ -140,11 +140,13 @@ MDTechVideos
 
 ## BIOS
 
+- Keep in mind, anything can go sideways when modifying BIOS. You should explore methods to flash a stock BIOS if [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work in case anything goes wrong (e.g. working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer)
+
 - Check for BIOS updates and positive changes in the change log (e.g. increased memory stability). Beware of problems brought up in reviews and forums
 
 - Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
 
-- Consider [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI)
+- Consider [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable Resizable BAR on systems that do not officially support it
 
 - Ensure that the settings you are changing scale positively and make note of them on a piece of paper for future reference/backtracking to resolve potential issues
 
@@ -154,9 +156,9 @@ MDTechVideos
 
     - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` if present to unlock BIOS
 
-    - The easiest approach to take is to change the access levels within the BIOS file using [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) or AMIBCP then flash it. However, this is only recommended if you have a method for flashing a stock BIOS in case anything goes wrong (e.g. working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer)
+    - The easiest approach to take is to change the access levels within the BIOS file using [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) or AMIBCP then flash it
 
-    - For changing hidden settings without flashing a modded BIOS, you can start by configuring what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) or SCEWIN to change the hidden settings. Keep in mind things can still go wrong so you should explore methods to recover
+    - For changing hidden settings without flashing a modded BIOS, you can start by configuring what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) or SCEWIN to change the hidden settings
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough cores for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). [Disabling HT/SMT has the additional benefit of doubling (in case of 2-way SMT) the effective L1 and L2 cache available to a thread](https://rigtorp.se/low-latency-guide) and increased overclocking potential due to lower temperatures
 
