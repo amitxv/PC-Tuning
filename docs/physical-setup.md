@@ -296,4 +296,4 @@ Ensure all of your hardware (e.g. CPU, RAM, GPU) are stable before configuring a
 
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
-    - Aim for an "actual" integer refresh rate (e.g 60.000 not 60.002). Using the exact timing can help achieve this
+    - Aim for an "actual" integer refresh rate (e.g. 60.00/240.00 not 59.94/239.76). Using the exact timing can help achieve this
