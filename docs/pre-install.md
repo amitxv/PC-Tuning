@@ -48,6 +48,8 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Download a live Linux distribution of your choice and move the ISO into the USB storage in file explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 
+    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#removing-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
+
 ## Boot Into the ISO
 
 For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates.
