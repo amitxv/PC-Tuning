@@ -146,7 +146,11 @@ MDTechVideos
 
 - Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
 
-- Consider [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable Resizable BAR on systems that do not officially support it
+- Resizable BAR
+
+    - Requires GPT/UEFI
+
+    - Consider [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable it on unsupported systems
 
 - Ensure that the settings you are changing scale positively and make note of them on a piece of paper for future reference/backtracking to resolve potential issues
 
