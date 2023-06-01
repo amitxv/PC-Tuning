@@ -106,15 +106,17 @@ MDTechVideos
 
 - Disconnect unnecessary devices from your motherboard, setup and peripherals such as LEDs, RGB light strips, front panel connectors, USB devices, unused drives and all HDDs. Refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) for onboard devices (LED controllers, IR receivers) and disable them in BIOS if you can not physically disconnect them
 
+    - Some new motherboards have the High Definition Audio controller (motherboard audio) linked to the USB controller
+
 ## Configure USB Port Layout
 
-- Plug your mouse and keyboard into the first two ports on your first USB controller. This can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports and avoid companion ports (indicated in the right section of the program) as the data has to go through a hub
+- Favor the first few ports on the desired USB controller. Some of them may not be physically accessible due to onboard headers which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports and avoid companion ports (indicated in the right section of the program) as the data has to go through a hub
 
     - Ryzen systems have a USB controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the USB controller that is connected to a ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
 
         - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
-- If you have more than one USB controller, you can isolate devices such as DACs, headsets and other devices onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
+- If you have more than one USB controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
 
 ## Configure Peripherals
 
