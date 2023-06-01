@@ -286,7 +286,7 @@ You should have already found a stable overclock for your display in the [Physic
 
 - See [How to set up Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
 
-- Aim for an "actual" integer refresh rate (e.g. 60.000 not 60.002). Using the exact timing can help achieve this
+- Aim for an "actual" integer refresh rate (e.g. 60.00/240.00 not 59.94/239.76). Using the exact timing can help achieve this
 
 - Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a workaround for the 1-second black screen when alt-tabbing in exclusive fullscreen, feel free to skip this step if you are not comfortable risking a black screen
 
