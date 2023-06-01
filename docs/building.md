@@ -98,7 +98,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 - Prepare the ``MOUNT_DIR`` directory for mounting
 
     ```bat
-    DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Discard > nul 2>&1 & rd /s /q "%MOUNT_DIR%" & mkdir "%MOUNT_DIR%"
+    > nul 2>&1 (DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Discard & rd /s /q "%MOUNT_DIR%" & mkdir "%MOUNT_DIR%")
     ```
 
 - If the environment variables are configured correctly, the commands below should display ``true``
