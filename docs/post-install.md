@@ -22,6 +22,10 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
+## User Preference
+
+Go through the ``C:\bin\preference`` folder to configure common user settings.
+
 ## Unrestricted PowerShell Execution Policy
 
 This is required to execute the scripts within the repository. Open PowerShell as administrator and enter the command below.
@@ -218,42 +222,6 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository to let me know that it should be removed. This is difficult to maintain as Microsoft never likes to be consistent
 
-## User Preference
-
-Go through the ``C:\bin\preference`` folder to configure common user settings.
-
-## Install Visual C++ Redistributable Runtimes
-
-Download and install the [Visual C++ redistributable runtimes](https://github.com/abbodi1406/vcredist).
-
-## Install .NET 4.8 Runtimes
-
-Download and install the [.NET 4.8 runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48). NET 4.8 already ships with Windows 10 1909+.
-
-## Spectre, Meltdown and CPU Microcode
-
-- Disable Spectre and Meltdown with [InSpectre](https://www.grc.com/inspectre.htm)
-
-    - AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
-
-    - A minority of anticheats (FACEIT) require Meltdown to be enabled
-
-- Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove the CPU microcode updates
-
-    ```bat
-    del /f /q C:\Windows\System32\mcupdate_GenuineIntel.dll
-    ```
-
-    ```bat
-    del /f /q C:\Windows\System32\mcupdate_AuthenticAMD.dll
-    ```
-
-- Reboot and use [InSpectre](https://www.grc.com/inspectre.htm) and [CPU-Z's](https://www.cpuid.com/softwares/cpu-z.html) validation feature to check the status after a reboot
-
-    - See [media/meltdown-spectre-example.png](/media/meltdown-spectre-example.png)
-
-    - See [media/cpu-z-vulnerable-microcode.png](/media/cpu-z-vulnerable-microcode.png)
-
 ## Install 7-Zip
 
 Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then navigate ``Tools -> Options`` and associate 7-Zip with all file extensions by clicking the ``+`` button. You may need to click it twice to override existing associated extensions.
@@ -263,6 +231,14 @@ Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Z
 - See [docs/configure-nvidia.md](/docs/configure-nvidia.md)
 
 - See [docs/configure-amd.md](/docs/configure-amd.md)
+
+## Install Visual C++ Redistributable Runtimes
+
+Download and install the [Visual C++ redistributable runtimes](https://github.com/abbodi1406/vcredist).
+
+## Install .NET 4.8 Runtimes
+
+Download and install the [.NET 4.8 runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48). NET 4.8 already ships with Windows 10 1909+.
 
 ## Install DirectX Runtimes
 
@@ -281,8 +257,6 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 ## Configure CRU
 
 You should have already found a stable overclock for your display in the [Physical Setup](/docs/physical-setup.md) section. Download and extract [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU).
-
-- See [How to set up Display Scaling, works with all games | KajzerD](https://www.youtube.com/watch?v=50itBs-sz1w)
 
 - Aim for an "actual" integer refresh rate (e.g. 60.00/240.00 not 59.94/239.76). Using the exact timing can help achieve this
 
@@ -319,6 +293,30 @@ You should have already found a stable overclock for your display in the [Physic
 - Windows 8 Only:
 
     - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then navigate to the Windows 8 Settings section and set ``Disable active corners`` to ``All``
+
+## Spectre, Meltdown and CPU Microcode
+
+- Disable Spectre and Meltdown with [InSpectre](https://www.grc.com/inspectre.htm)
+
+    - AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
+
+    - A minority of anticheats (FACEIT) require Meltdown to be enabled
+
+- Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove the CPU microcode updates
+
+    ```bat
+    del /f /q C:\Windows\System32\mcupdate_GenuineIntel.dll
+    ```
+
+    ```bat
+    del /f /q C:\Windows\System32\mcupdate_AuthenticAMD.dll
+    ```
+
+- Reboot and use [InSpectre](https://www.grc.com/inspectre.htm) and [CPU-Z's](https://www.cpuid.com/softwares/cpu-z.html) validation feature to check the status after a reboot
+
+    - See [media/meltdown-spectre-example.png](/media/meltdown-spectre-example.png)
+
+    - See [media/cpu-z-vulnerable-microcode.png](/media/cpu-z-vulnerable-microcode.png)
 
 ## Install a Media Player
 
