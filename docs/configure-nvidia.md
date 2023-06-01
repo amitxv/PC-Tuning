@@ -82,8 +82,6 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Perform scaling on - Display
 
-- Consider disabling G-Sync, it has the potential to increase input latency due to extra processing however it has supposedly improved over time, your mileage may vary
-
 ## Lock GPU Clocks/P-State 0
 
 Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while not in-game, consider using [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).

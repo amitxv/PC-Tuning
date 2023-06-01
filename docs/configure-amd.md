@@ -26,8 +26,6 @@
 
 - Configure the following in the display section:
 
-    - FreeSync - Has the potential to increase input latency due to extra processing. However, it has supposedly improved over time, your mileage may vary
-
     - GPU Scaling - Off
 
     - HDCP Support - Disable (required for DRM content)
