@@ -170,12 +170,6 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall))
         ```
 
-    - Remove all Appx bloatware (Microsoft Store, maps, camera etc.)
-
-        ```bat
-        for /f "tokens=3" %a in ('DISM /Online /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Online /Remove-ProvisionedAppxPackage /PackageName:%a)
-        ```
-
 - Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
 
 - Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this has to be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features`` (top right)
