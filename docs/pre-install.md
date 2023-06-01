@@ -34,6 +34,10 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which are not Windows 11+ or server 2022+
 
+- As of May 2023, Windows 11 limits the message rate of background raw input listeners
+
+    - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide)
+
 - [AllowTelemetry](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DataCollection::AllowTelemetry) can *actually* be set to 0 on Windows Server editions
 
 ## Create the Base ISO
