@@ -74,8 +74,6 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
     - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
 
-- Since we do not have browser access at this stage, download them on another operating system or PC
-
 ## Configure a [Web Browser](https://privacytests.org)
 
 A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip-hash-check`` to the end of the command.
@@ -88,7 +86,7 @@ C:\bin\scripts\install-firefox.ps1
 
 ## Disable Residual Scheduled Tasks
 
-Open PowerShell as administrator and enter the command below.
+Open PowerShell and enter the command below. Ignore any errors.
 
 ```powershell
 C:\bin\scripts\disable-scheduled-tasks.ps1
@@ -96,7 +94,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 ## Miscellaneous
 
-- Open CMD as administrator and enter the commands below
+- Open CMD and enter the commands below
 
     - Set the maximum password age to never expire
 
@@ -126,7 +124,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable
 
-    - ``Remote`` - disable remote assistance and remote desktop
+    - ``Remote`` - disable remote assistance
 
 - Allow users full control of the ``C:\`` directory to resolve xperf etl processing
 
@@ -148,7 +146,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - Navigate to ``Computer Configuration -> Windows Settings -> Security Settings -> Account Policies -> Password Policy`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Password must meet complexity requirements``
 
-        - Open CMD as administrator and type ``gpupdate /force`` to apply the changes immediately
+        - Open CMD and type ``gpupdate /force`` to apply the changes immediately
 
     - Navigate to ``Computer Configuration -> Administrative Templates -> System`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Display Shutdown Event Tracker`` to disable the shutdown prompt
 
@@ -156,7 +154,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 ## Remove Bloatware Natively
 
-- Open CMD as administrator and enter the commands below
+- Open CMD and enter the commands below
 
     - Remove Chromium Microsoft Edge (if present)
 
