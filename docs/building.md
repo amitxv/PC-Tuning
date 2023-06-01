@@ -26,7 +26,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
         - View installed updates
 
             ```bat
-            DISM /Image:"%MOUNT_DIR%" /Get-Packages
+            DISM /Image:"%MOUNT_DIR%" /Get-Packages | findstr /i "KB"
             ```
 
         - If you are satisfied with the update list, you can continue and proceed to the next steps. Otherwise, unmount with the command below to discard the ISO
