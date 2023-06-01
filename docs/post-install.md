@@ -12,18 +12,6 @@
 
 - See [media/oobe-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows10+-example.mp4)
 
-## Activate Windows
-
-Use the commands below to activate Windows using your license key if you do not have one linked to your HWID. Ensure that the activation process was successful by verifying the activation status in computer properties. Open CMD as administrator and enter the commands below.
-
-```bat
-slmgr /ipk <license key>
-```
-
-```bat
-slmgr /ato
-```
-
 ## Visual Cleanup
 
 Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and start menu.
@@ -53,6 +41,18 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 - Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
 
 - After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
+
+## Activate Windows
+
+Use the commands below to activate Windows using your license key if you do not have one linked to your HWID. Ensure that the activation process was successful by verifying the activation status in computer properties. Open CMD as administrator and enter the commands below.
+
+```bat
+slmgr /ipk <license key>
+```
+
+```bat
+slmgr /ato
+```
 
 ## Install Drivers
 
