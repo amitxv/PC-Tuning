@@ -155,8 +155,8 @@ defaultPref(`"nglayout.enable_drag_images`", false)`
 defaultPref(`"reader.parse-on-load.enabled`", false)`
 defaultPref(`"browser.tabs.firefox-view`", false)`
 defaultPref(`"browser.tabs.tabmanager.enabled`", false)`
-lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons`", false)`
-lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features`", false)"
+pref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons`", false)`
+pref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features`", false)"
 )
 
 Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
