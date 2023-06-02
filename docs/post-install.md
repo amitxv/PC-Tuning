@@ -788,7 +788,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before launching a game and enable idle after you close your game. This will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). 0 is idle enabled, 1 is idle disabled
+- Consider disabling idle states to force C-State 0 with the commands below before launching a game and enable idle after you close your game. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). 0 is idle enabled, 1 is idle disabled
 
     ```bat
     powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
