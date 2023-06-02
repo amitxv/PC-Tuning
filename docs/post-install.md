@@ -262,7 +262,7 @@ You should have already found a stable overclock for your display in the [Physic
 
 - Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a workaround for the 1-second black screen when alt-tabbing in exclusive fullscreen, feel free to skip this step if you are not comfortable risking a black screen
 
-    - On many systems with an NVIDIA GPU, at least either two ``Detailed resolutions`` or ``Standard resolutions`` are required in order to keep the ``Display`` option for the ``Perform scaling on`` setting
+    - On systems with an NVIDIA GPU, ensure that the ``Display`` option for the ``Perform scaling on`` setting is still available. If it is not, then find out what change you made in CRU results in it not being accessible through trial and error. This can be accomplished by running ``reset.exe`` to reset the settings to default then re-configure CRU. After each change, run ``restart64.exe`` then check whether the option is still available
 
 - Restart your PC instead of using ``restart64.exe`` as it may result in a black screen
 
