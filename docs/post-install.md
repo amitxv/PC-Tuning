@@ -706,7 +706,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
 - Cap your frame rate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). E.g. possible frame rate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
 
-    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) but disabling ``passive waiting`` in the settings page marginally helps with that. Disabling the ``Enable dedicated encoder server service`` setting also prevents ``EncoderServer.exe`` running which wastes resources
+    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk). Disabling the ``Enable dedicated encoder server service`` setting also prevents ``EncoderServer.exe`` running which wastes resources
 
 - Configure present mode
 
