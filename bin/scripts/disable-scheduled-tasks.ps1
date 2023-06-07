@@ -5,7 +5,7 @@ function Is-Admin() {
 
 if (!(Is-Admin)) {
     Write-Host "error: administrator privileges required"
-    exit
+    exit 1
 }
 
 $wildcards = @(
@@ -63,3 +63,5 @@ foreach ($wildcard in $wildcards) {
         }
     }
 }
+
+exit 0

@@ -21,7 +21,7 @@ function Apply-Registry($file_path) {
 
 if (!(Is-Admin)) {
     Write-Host "error: administrator privileges required"
-    exit
+    exit 1
 }
 
 foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
@@ -44,8 +44,9 @@ foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "
 
     if ($is_successful -ne 0) {
         Write-Host "error: failed merging one or more registry files"
-        exit
+        exit 1
     }
 }
 
 Write-Host "info: successfully applied registry settings for windows $winver"
+exit 0

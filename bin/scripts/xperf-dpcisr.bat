@@ -1,11 +1,11 @@
 @echo off
 
-DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
+DISM > nul 2>&1 || echo error: administrator privileges required && exit /b 1
 
 where xperf.exe > nul 2>&1
 if not %errorlevel% == 0 (
     echo error: xperf not found in path
-    exit /b
+    exit /b 1
 )
 
 set "record_delay=3"
@@ -21,3 +21,5 @@ timeout -t %record_duration%
 xperf -stop
 xperf -i "C:\kernel.etl" -o "C:\report.txt" -a dpcisr
 echo info: report saved in C:\
+
+exit /b 0

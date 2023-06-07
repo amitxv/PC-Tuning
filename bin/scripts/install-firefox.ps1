@@ -28,7 +28,7 @@ function Fetch-SHA512($version) {
         $response = $web_client.DownloadString("https://ftp.mozilla.org/pub/firefox/releases/$version/SHA512SUMS")
     } catch [System.Management.Automation.MethodInvocationException] {
         Write-Host "error: unable to fetch hash data, consider -skip_hash_check"
-        exit
+        exit 1
     }
 
     $response = $response.split("`n")
@@ -52,14 +52,14 @@ function Is-Admin() {
 
 if (!(Is-Admin)) {
     Write-Host "error: administrator privileges required"
-    exit
+    exit 1
 }
 
 try {
     $response = $web_client.DownloadString("https://product-details.mozilla.org/1.0/firefox_versions.json")
 } catch [System.Management.Automation.MethodInvocationException] {
     Write-Host "error: failed to fetch json data, check internet connection and try again"
-    exit
+    exit 1
 }
 
 $firefox = $serializer.DeserializeObject($response)
@@ -78,7 +78,7 @@ if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
         if ($force) {
             Write-Host "warning: -force specified, proceeding anyway"
         } else {
-            exit
+            exit 1
         }
     }
 }
@@ -92,7 +92,7 @@ if (-not $skip_hash_check) {
 
     if ($local_SHA512 -ne $remote_SHA512) {
         Write-Host "error: hash mismatch"
-        exit
+        exit 1
     }
 }
 
@@ -160,3 +160,5 @@ lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features`",
 )
 
 Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
+
+exit 0

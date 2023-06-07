@@ -13,3 +13,5 @@ foreach ($power_device in $power_device_enable) {
         }
     }
 }
+
+exit 0

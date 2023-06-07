@@ -1,6 +1,6 @@
 @echo off
 
-DISM > nul 2>&1 || echo error: administrator privileges required && exit /b
+DISM > nul 2>&1 || echo error: administrator privileges required && exit /b 1
 
 echo info: disabling dwm
 reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /t REG_SZ /d "\"C:\Windows\System32\rundll32.exe\"" /f > nul 2>&1
@@ -14,3 +14,4 @@ for %%a in ("UIRibbon" "UIRibbonRes" "Windows.UI.Logon" "DWMInit" "WSClient") do
 )
 
 shutdown /r /f /t 0
+exit /b 0
