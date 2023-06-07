@@ -124,7 +124,7 @@ foreach ($file in @(
 }
 
 # create policies.json
-New-Item -Path "$install_dir" -Name "distribution" -ItemType "directory" -Force | Out-Null
+(New-Item -Path "$install_dir" -Name "distribution" -ItemType "directory" -Force) 2>&1 > $null
 
 Set-Content -Path "$install_dir\distribution\policies.json" -Value (Convert-To-Json(@{
             policies = @{

@@ -50,7 +50,7 @@ $task_names = [System.Collections.ArrayList]@()
 
 foreach ($line in $scheduled_tasks) {
     if ($line.contains("TaskName:")) {
-        $task_names.Add($line.Split(":")[1].Trim().ToLower()) | Out-Null
+        ($task_names.Add($line.Split(":")[1].Trim().ToLower())) 2>&1 > $null
     }
 }
 
@@ -58,7 +58,7 @@ foreach ($wildcard in $wildcards) {
     Write-Output "info: searching for $wildcard"
     foreach ($task in $task_names) {
         if ($task.contains($wildcard)) {
-            schtasks.exe /change /disable /tn `"$task`" | Out-Null
+            (schtasks.exe /change /disable /tn `"$task`") 2>&1 > $null
             C:\bin\NSudo.exe -U:T -P:E -ShowWindowMode:Hide schtasks.exe /change /disable /tn `"$task`"
         }
     }

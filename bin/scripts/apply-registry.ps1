@@ -10,10 +10,10 @@ function Is-Admin() {
 }
 
 function Apply-Registry($file_path) {
-    reg.exe import `"$file_path`" | Out-Null
+    (reg.exe import `"$file_path`") 2>&1 > $null
     $normal_call = $LASTEXITCODE
 
-    C:\bin\NSudo.exe -U:T -P:E -ShowWindowMode:Hide reg.exe import `"$file_path`" | Out-Null
+    (C:\bin\NSudo.exe -U:T -P:E -ShowWindowMode:Hide reg.exe import `"$file_path`") 2>&1 > $null
     $nsudo_call = $LASTEXITCODE
 
     return $normal_call -band $nsudo_call
