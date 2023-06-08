@@ -794,4 +794,4 @@ Install any programs and game launchers you commonly use to prepare us for the n
     powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
     ```
 
-- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your game, you can disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration)
+- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your game, you can disable DWM using the ``C:\bin\scripts\toggle-dwm`` script as the process wastes resources despite there being no composition. Beware of the UI breaking and some applications will not be able to launch (you may need to disable hardware acceleration)
