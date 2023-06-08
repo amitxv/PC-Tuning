@@ -643,7 +643,7 @@ Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/me
 
     - Use the ``Interval vs Time`` graph (frequency = 1000 / interval)
 
-    - Ideally this should be benchmarked under load such as idle benchmarks are misleading
+    - Ideally this should be benchmarked under load as idle benchmarks are misleading
 
 - Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 3/4/5/6 (3/5/7/9 with HT/SMT enabled) if RssBaseProcNumber is set to 2 with 4 RSS queues configured. [The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and).
 
