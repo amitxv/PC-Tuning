@@ -12,11 +12,11 @@
 
     <img src="/media/network-monitor-new-capture.png" width="450">
 
-- Open a game that you have applied a DSCP value for and enter a game mode in which the game will send and receive packets (e.g. an online match, not a local match)
+- Open the application that you have applied a DSCP value for and reproduce a scenario where packets will be sent and received (e.g. an online gaming match)
 
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log
 
-- In the left-hand pane, click on the game executable name and click on a packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame
+- In the left-hand pane, click on the process name and click on a packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame
 
     <img src="/media/network-monitor-dscp-value.png" width="400">
 
@@ -174,7 +174,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     <summary>Read More</summary>
     <br>
 
-    Out of the box, Windows uses 0x2 (2 decimal) which (in terms of foreground boosting) means that the threads of foreground processes get three times as much processor time than the threads of background processes each time they are scheduled for the processor. While this is theoretically desirable when playing a game for example, we need to pause for a moment and think about the potential damage this may be doing.
+    Out of the box, Windows uses 0x2 (2 decimal) which (in terms of foreground boosting) means that the threads of foreground processes get three times as much processor time than the threads of background processes each time they are scheduled for the processor. While this is theoretically desirable when running your real-time application, we need to pause for a moment and think about the potential damage this may be doing.
 
     We can view the QuantumReset value in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to check what a process's share of the total quantum is.
 
@@ -195,7 +195,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
 
     ---
 
-    ``Valorant`` (game)
+    ``Valorant`` (real-time application)
 
     ```
     lkd> $$>a< "script.txt"
@@ -223,9 +223,9 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
         +0x281 QuantumReset : 6 ''
     ```
 
-    As you can see above, despite their importance, the game gets three times more CPU times than csrss, kernel and audio threads which can be problematic. If we use no foreground boost, all processes will get as much CPU time as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used
+    As you can see above, despite their importance, the real-time application gets three times more CPU times than csrss, kernel and audio threads which can be problematic. If we use no foreground boost, all processes will get as much CPU time as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used
 
-    ``Valorant`` (game)
+    ``Valorant`` (real-time application)
 
     ```
     lkd> $$>a< "script.txt"

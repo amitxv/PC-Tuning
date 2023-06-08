@@ -2,7 +2,7 @@
 
 ## Configure Partitions
 
-Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate work/bloatware and gaming environments. This way you will not be forced to install bloatware on your gaming partition (such as mouse software as previously mentioned) and full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management which will create unallocated space for the new operating system to be installed to. This will be completely independent of the current operating system.
+Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate environments for work/bloatware and your real-time application. This way you will not be forced to install bloatware on the same partition where you will be using your real-time application (such as mouse software as previously mentioned) and full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management which will create unallocated space for the new operating system to be installed to. This will be completely independent of the current operating system.
 
 ## What Version of Windows Should You Use?
 
@@ -30,7 +30,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - The implementation of ``Hardware: Independent Flip`` (fullscreen optimizations) improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip`` (exclusive fullscreen)
 
-    - See the [Configuring Games and Applications](/docs/post-install.md#configuring-games-and-applications) section for more information
+    - See the [Configuring Applications](/docs/post-install.md#configuring-applications) section for more information
 
 - The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which are not Windows 11+ or server 2022+
 

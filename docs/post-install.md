@@ -495,7 +495,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 ## Configure Services and Drivers
 
-I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while gaming and use default services for everything else. Feel free to customize the lists by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
+I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. Feel free to customize the lists by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
 - The ``High precision event timer`` device in device manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
 
@@ -619,7 +619,7 @@ Open CMD and enter the commands below.
 
     - You will BSOD if you enable MSIs for the stock Windows 7 SATA driver which you should have already updated as mentioned in the [Install Drivers](#install-drivers) section
 
-- Be careful as to what you choose to prioritize. As an example, you will likely stutter in an open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
+- Be careful as to what you choose to prioritize. As an example, an I/O bound application may suffer a performance loss including an open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
 
 - Restart your PC, you can verify whether a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
 
@@ -643,7 +643,7 @@ Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/me
 
     - Use the ``Interval vs Time`` graph (frequency = 1000 / interval)
 
-    - Ideally this should be benchmarked during realistic load such as a game running in the background as idle benchmarks are misleading but as we do not have any games installed yet, you can and benchmark this later
+    - Ideally this should be benchmarked under load such as idle benchmarks are misleading
 
 - Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 3/4/5/6 (3/5/7/9 with HT/SMT enabled) if RssBaseProcNumber is set to 2 with 4 RSS queues configured. [The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and).
 
@@ -698,19 +698,19 @@ This step is not required, but can help to justify unexplained performance issue
 
 - Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to 4 in the ``Services-Disable.bat`` script
 
-## Configuring Games and Applications
+## Configuring Applications
 
-Install any programs and game launchers you commonly use to prepare us for the next steps.
+Install any programs and configure your real-time applications to prepare us for the next steps.
 
-- Consider [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform) if your game has support for it
+- Consider [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform)
 
 - Cap your frame rate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). E.g. possible frame rate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
 
-    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk). Disabling the ``Enable dedicated encoder server service`` setting also prevents ``EncoderServer.exe`` running which wastes resources
+    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk). Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` running which wastes resources
 
 - Configure present mode
 
-    - Always check whether the game is using the desired present mode with PresentMon. ``Hardware: Legacy Flip`` (exclusive fullscreen) and ``Hardware: Independent Flip`` (fullscreen optimizations) are optimal
+    - Always check whether your real-time application is using the desired present mode with PresentMon. ``Hardware: Legacy Flip`` (exclusive fullscreen) and ``Hardware: Independent Flip`` (fullscreen optimizations) are optimal
 
     - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try to run the command below in CMD and reboot
 
@@ -734,7 +734,7 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
 ## Cleanup
 
-- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs such as game launchers. Remove all obsolete entries with a yellow label and run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
+- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs from launching at startup. Remove all obsolete entries with a yellow label and run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
 - Some locations you may want to review for leftover bloatware and unwanted shortcuts
 
@@ -780,18 +780,18 @@ Install any programs and game launchers you commonly use to prepare us for the n
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 
-- Consider removing your game off the GPU core by setting an affinity to the game process to prevent them being serviced on the same CPU as [this improves frame pacing](/media/isolate-gpu-core.png). Your mileage may vary, but it is definitely something worth mentioning
+- Consider isolating your real-time applications from other resource intensive modules or processes being serviced on the same core by setting an affinity. For example, removing my real-time application from the same core that the GPU driver is serviced on [improved frame pacing](/media/isolate-gpu-core.png). Your mileage may vary
 
 - Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files  
 
-- Kill processes that waste resources such as game clients and ``explorer.exe``
+- Kill processes that waste resources such as clients, ``explorer.exe`` and more
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before launching a game and enable idle after you close your game. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). 0 is idle enabled, 1 is idle disabled
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). 0 is idle enabled, 1 is idle disabled
 
     ```bat
     powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
     ```
 
-- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your game, you can disable DWM using the ``C:\bin\scripts\toggle-dwm`` script as the process wastes resources despite there being no composition. Beware of the UI breaking and some applications will not be able to launch (you may need to disable hardware acceleration)
+- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your real-time application, you can disable DWM using the ``C:\bin\scripts\toggle-dwm`` script as the process wastes resources despite there being no composition. Beware of the UI breaking and some applications will not be able to launch (you may need to disable hardware acceleration)
