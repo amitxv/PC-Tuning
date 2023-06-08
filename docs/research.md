@@ -202,7 +202,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
         +0x281 QuantumReset : 18 ''
     ```
 
-    ``Csrss`` (responsible for input)
+    ``Csrss`` (input processing)
 
     ```
     lkd> $$>a< "script.txt"
@@ -232,7 +232,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
         +0x281 QuantumReset : 6 ''
     ```
 
-    ``Csrss`` (responsible for input)
+    ``Csrss`` (input processing)
 
     ```
     lkd> $$>a< "script.txt"
@@ -240,6 +240,13 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     ```
 
     ``System`` (Windows kernel)
+
+    ```
+    lkd> $$>a< "script.txt"
+        +0x281 QuantumReset : 6 ''
+    ```
+
+    ``Audiodg`` (Windows audio)
 
     ```
     lkd> $$>a< "script.txt"
