@@ -6,7 +6,7 @@ DISM > nul 2>&1 || echo error: administrator privileges required && exit /b 1
 :: initialize mask to get mask length
 PowerShell Set-ProcessMitigation -System -Disable CFG
 if not %errorlevel% == 0 (
-    echo error: unsupported windows version
+    echo error: unsupported windows version >&2
     exit /b 1
 )
 

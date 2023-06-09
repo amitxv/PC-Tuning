@@ -1,10 +1,10 @@
 @echo off
 
-DISM > nul 2>&1 || echo error: administrator privileges required && exit /b 1
+DISM > nul 2>&1 || echo error: administrator privileges required >&2 && exit /b 1
 
 where xperf.exe > nul 2>&1
 if not %errorlevel% == 0 (
-    echo error: xperf not found in path
+    echo error: xperf not found in path >&2
     exit /b 1
 )
 

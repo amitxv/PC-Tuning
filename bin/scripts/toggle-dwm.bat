@@ -1,6 +1,6 @@
 @echo off
 
-DISM > nul 2>&1 || echo error: administrator privileges required && exit /b 1
+DISM > nul 2>&1 || echo error: administrator privileges required >&2 && exit /b 1
 
 set "DWM_IFEO=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe"
 
