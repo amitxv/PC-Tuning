@@ -54,9 +54,11 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Configure NVIDIA Control Panel
 
-- Configure the following in the manage 3D settings page:
+- Configure the following in the adjust image settings with preview page:
 
-    - Anisotropic filtering - Off
+    - Use my preference emphasizing: Performance
+
+- Configure the following in the manage 3D settings page:
 
     - Antialiasing - Gamma correction - Off
 
