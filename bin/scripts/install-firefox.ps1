@@ -87,8 +87,8 @@ Write-Host "info: downloading firefox $remote_version setup"
 $web_client.DownloadFile($download_url, $setup_file)
 
 if (-not $skip_hash_check) {
-    $local_SHA512 = (Get-SHA512($setup_file)).Hash
-    $remote_SHA512 = Fetch-SHA512($remote_version)
+    $local_SHA512 = (Get-SHA512 -file $setup_file).Hash
+    $remote_SHA512 = Fetch-SHA512 -version $remote_version
 
     if ($local_SHA512 -ne $remote_SHA512) {
         Write-Host "error: hash mismatch"

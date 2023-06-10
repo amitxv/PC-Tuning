@@ -3,6 +3,15 @@ function Is-Admin() {
     return $current_principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+function Toggle-Task($task, $enable) {
+    $toggle = if ($switch) { "/enable" } else { "/disable" }
+
+    $user_task_result = (Start-Process "schtasks.exe" -ArgumentList "/change $toggle /tn `"$task`"" -PassThru -Wait -WindowStyle Hidden).ExitCode
+    $trustedinstaller_task_result = [int](C:\bin\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "schtasks.exe /change $toggle /tn `"$task`" > nul 2>&1 && echo 0 || echo 1")
+
+    return $user_task_result -band $trustedinstaller_task_result
+}
+
 if (!(Is-Admin)) {
     Write-Host "error: administrator privileges required"
     exit 1
@@ -45,6 +54,8 @@ $wildcards = @(
     "defender"
 )
 
+Write-Host "info: this may take a while..."
+
 $scheduled_tasks = schtasks /query /fo list
 $task_names = [System.Collections.ArrayList]@()
 
@@ -55,11 +66,13 @@ foreach ($line in $scheduled_tasks) {
 }
 
 foreach ($wildcard in $wildcards) {
-    Write-Output "info: searching for $wildcard"
+    Write-Host "info: searching for $wildcard"
     foreach ($task in $task_names) {
         if ($task.contains($wildcard)) {
-            (schtasks.exe /change /disable /tn `"$task`") 2>&1 > $null
-            C:\bin\NSudo.exe -U:T -P:E -ShowWindowMode:Hide schtasks.exe /change /disable /tn `"$task`"
+            if ((Toggle-Task -task $task -enable $false) -ne 0) {
+                Write-Host "error: failed toggling one or more scheduled tasks"
+                exit 1
+            }
         }
     }
 }

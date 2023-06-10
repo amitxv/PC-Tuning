@@ -36,7 +36,7 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
-Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11). If you get an error regarding merging registry files, you may need to disable tamper protection in Windows Defender.
 
 ```powershell
 C:\bin\scripts\apply-registry.ps1 -winver <option>
@@ -172,7 +172,13 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall))
         ```
 
-- Although nothing should appear, as a precautionary measure check and uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
+- Open PowerShell and enter the command below to remove all Appx packages (Windows 8+)
+
+    ```powershell
+    Get-AppxPackage | Remove-AppxPackage -ErrorAction SilentlyContinue
+    ```
+
+- Uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
 
 - Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this has to be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features`` (top right)
 

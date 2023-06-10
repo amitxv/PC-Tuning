@@ -10,19 +10,18 @@ function Is-Admin() {
 }
 
 function Apply-Registry($file_path) {
-    (reg.exe import `"$file_path`") 2>&1 > $null
-    $normal_call = $LASTEXITCODE
+    $user_merge_result = (Start-Process "reg.exe" -ArgumentList "import $file_path" -PassThru -Wait -WindowStyle Hidden).ExitCode
+    $trustedinstaller_merge_result = [int](C:\bin\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $file_path > nul 2>&1 && echo 0 || echo 1")
 
-    (C:\bin\NSudo.exe -U:T -P:E -ShowWindowMode:Hide reg.exe import `"$file_path`") 2>&1 > $null
-    $nsudo_call = $LASTEXITCODE
-
-    return $normal_call -band $nsudo_call
+    return $user_merge_result -band $trustedinstaller_merge_result
 }
 
 if (!(Is-Admin)) {
     Write-Host "error: administrator privileges required"
     exit 1
 }
+
+Write-Host "info: this may take a while..."
 
 foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
     $file_name = $file.replace(".reg", "")
@@ -31,15 +30,15 @@ foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "
 
     if ($file_name.Contains("+")) {
         if ([int]$file_name.replace("+", "") -le $winver) {
-            $is_successful = Apply-Registry($file)
+            $is_successful = Apply-Registry -file_path $file
         }
     } elseif ($file_name.Contains("-")) {
         $lower, $upper = $file_name.Split("-")
         if (($winver -ge $lower) -and ($winver -le $upper)) {
-            $is_successful = Apply-Registry($file)
+            $is_successful = Apply-Registry -file_path $file
         }
     } elseif ([int]$file_name -eq $winver) {
-        $is_successful = Apply-Registry($file)
+        $is_successful = Apply-Registry -file_path $file
     }
 
     if ($is_successful -ne 0) {

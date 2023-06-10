@@ -208,14 +208,6 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess 
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 ```
 
-## Remove Provisioned Appx Bloatware (Windows 8+)
-
-This command removes all the Windows apps that potentially jeopardizes privacy such as Microsoft Store, maps, camera.
-
-```bat
-for /f "tokens=3" %a in ('DISM /Image:"%MOUNT_DIR%" /Get-ProvisionedAppxPackages ^| findstr "PackageName"') do (DISM /Image:"%MOUNT_DIR%" /Remove-ProvisionedAppxPackage /PackageName:%a)
-```
-
 ## Integrating Required Files
 
 Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script in the mounted directory. Open the directory with the command below.
