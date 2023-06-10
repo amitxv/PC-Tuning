@@ -50,99 +50,100 @@ function Is-Admin() {
     return $current_principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-if (!(Is-Admin)) {
-    Write-Host "error: administrator privileges required"
-    exit 1
-}
+function main() {
+    if (!(Is-Admin)) {
+        Write-Host "error: administrator privileges required"
+        exit 1
+    }
 
-try {
-    $response = $web_client.DownloadString("https://product-details.mozilla.org/1.0/firefox_versions.json")
-} catch [System.Management.Automation.MethodInvocationException] {
-    Write-Host "error: failed to fetch json data, check internet connection and try again"
-    exit 1
-}
+    try {
+        $response = $web_client.DownloadString("https://product-details.mozilla.org/1.0/firefox_versions.json")
+    } catch [System.Management.Automation.MethodInvocationException] {
+        Write-Host "error: failed to fetch json data, check internet connection and try again"
+        exit 1
+    }
 
-$firefox = $serializer.DeserializeObject($response)
-$remote_version = $firefox["LATEST_FIREFOX_VERSION"]
-$setup_file = "$Env:temp\FirefoxSetup.exe"
-$download_url = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
-$install_dir = "C:\Program Files\Mozilla Firefox"
+    $firefox = $serializer.DeserializeObject($response)
+    $remote_version = $firefox["LATEST_FIREFOX_VERSION"]
+    $setup_file = "$Env:temp\FirefoxSetup.exe"
+    $download_url = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+    $install_dir = "C:\Program Files\Mozilla Firefox"
 
-# check if currently installed version is already latest
-if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
-    $local_version = ([string](& "$install_dir\firefox.exe" --version | more)).Split()[2]
+    # check if currently installed version is already latest
+    if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
+        $local_version = ([string](& "$install_dir\firefox.exe" --version | more)).Split()[2]
 
-    if ($local_version -eq $remote_version) {
-        Write-Host "info: latest version $remote_version already installed"
+        if ($local_version -eq $remote_version) {
+            Write-Host "info: latest version $remote_version already installed"
 
-        if ($force) {
-            Write-Host "warning: -force specified, proceeding anyway"
-        } else {
+            if ($force) {
+                Write-Host "warning: -force specified, proceeding anyway"
+            } else {
+                exit 1
+            }
+        }
+    }
+
+    Write-Host "info: downloading firefox $remote_version setup"
+    $web_client.DownloadFile($download_url, $setup_file)
+
+    if (-not $skip_hash_check) {
+        $local_SHA512 = (Get-SHA512 -file $setup_file).Hash
+        $remote_SHA512 = Fetch-SHA512 -version $remote_version
+
+        if ($local_SHA512 -ne $remote_SHA512) {
+            Write-Host "error: hash mismatch"
             exit 1
         }
     }
-}
 
-Write-Host "info: downloading firefox $remote_version setup"
-$web_client.DownloadFile($download_url, $setup_file)
+    Write-Host "info: installing firefox"
+    Stop-Process -Name "firefox" -ErrorAction SilentlyContinue
+    Start-Process -FilePath $setup_file -ArgumentList "/S /MaintenanceService=false" -Wait
 
-if (-not $skip_hash_check) {
-    $local_SHA512 = (Get-SHA512 -file $setup_file).Hash
-    $remote_SHA512 = Fetch-SHA512 -version $remote_version
-
-    if ($local_SHA512 -ne $remote_SHA512) {
-        Write-Host "error: hash mismatch"
-        exit 1
+    if (Test-Path $setup_file -PathType Leaf) {
+        Remove-Item $setup_file
     }
-}
 
-Write-Host "info: installing firefox"
-Stop-Process -Name "firefox" -ErrorAction SilentlyContinue
-Start-Process -FilePath $setup_file -ArgumentList "/S /MaintenanceService=false" -Wait
-
-if (Test-Path $setup_file -PathType Leaf) {
-    Remove-Item $setup_file
-}
-
-foreach ($file in @(
-        "crashreporter.exe",
-        "crashreporter.ini",
-        "defaultagent.ini",
-        "defaultagent_localized.ini",
-        "default-browser-agent.exe",
-        "maintenanceservice.exe",
-        "maintenanceservice_installer.exe",
-        "pingsender.exe",
-        "updater.exe",
-        "updater.ini",
-        "update-settings.ini"
-    )) {
-    $file = "$install_dir\$file"
-    if (Test-Path $file -PathType Leaf) {
-        Remove-Item $file
+    foreach ($file in @(
+            "crashreporter.exe",
+            "crashreporter.ini",
+            "defaultagent.ini",
+            "defaultagent_localized.ini",
+            "default-browser-agent.exe",
+            "maintenanceservice.exe",
+            "maintenanceservice_installer.exe",
+            "pingsender.exe",
+            "updater.exe",
+            "updater.ini",
+            "update-settings.ini"
+        )) {
+        $file = "$install_dir\$file"
+        if (Test-Path $file -PathType Leaf) {
+            Remove-Item $file
+        }
     }
-}
 
-# create policies.json
+    # create policies.json
 (New-Item -Path "$install_dir" -Name "distribution" -ItemType "directory" -Force) 2>&1 > $null
 
-Set-Content -Path "$install_dir\distribution\policies.json" -Value (Convert-To-Json(@{
-            policies = @{
-                DisableAppUpdate     = $true
-                OverrideFirstRunPage = ""
-                Extensions           = @{
-                    Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi")
+    Set-Content -Path "$install_dir\distribution\policies.json" -Value (Convert-To-Json(@{
+                policies = @{
+                    DisableAppUpdate     = $true
+                    OverrideFirstRunPage = ""
+                    Extensions           = @{
+                        Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi")
+                    }
                 }
-            }
-        }))
+            }))
 
-[System.IO.File]::WriteAllText("$install_dir\defaults\pref\autoconfig.js", (@(
-            "pref(`"general.config.filename`", `"firefox.cfg`");",
-            "pref(`"general.config.obscure_value`", 0);"
-        ) -join "`n"), [System.Text.Encoding]::ASCII)
+    [System.IO.File]::WriteAllText("$install_dir\defaults\pref\autoconfig.js", (@(
+                "pref(`"general.config.filename`", `"firefox.cfg`");",
+                "pref(`"general.config.obscure_value`", 0);"
+            ) -join "`n"), [System.Text.Encoding]::ASCII)
 
-Set-Content -Path "$install_dir\firefox.cfg" -Value (
-    "`r`ndefaultPref(`"app.shield.optoutstudies.enabled`", false)`
+    Set-Content -Path "$install_dir\firefox.cfg" -Value (
+        "`r`ndefaultPref(`"app.shield.optoutstudies.enabled`", false)`
 defaultPref(`"datareporting.healthreport.uploadEnabled`", false)`
 defaultPref(`"browser.newtabpage.activity-stream.feeds.section.topstories`", false)`
 defaultPref(`"browser.newtabpage.activity-stream.feeds.topsites`", false)`
@@ -157,8 +158,11 @@ defaultPref(`"browser.tabs.firefox-view`", false)`
 defaultPref(`"browser.tabs.tabmanager.enabled`", false)`
 lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons`", false)`
 lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features`", false)"
-)
+    )
 
-Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
+    Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
 
-exit 0
+    exit 0
+}
+
+main

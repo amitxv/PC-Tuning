@@ -16,36 +16,40 @@ function Apply-Registry($file_path) {
     return $user_merge_result -band $trustedinstaller_merge_result
 }
 
-if (!(Is-Admin)) {
-    Write-Host "error: administrator privileges required"
-    exit 1
-}
-
-Write-Host "info: this may take a while..."
-
-foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
-    $file_name = $file.replace(".reg", "")
-    $file = "C:\bin\registry\$file"
-    $is_successful = 0
-
-    if ($file_name.Contains("+")) {
-        if ([int]$file_name.replace("+", "") -le $winver) {
-            $is_successful = Apply-Registry -file_path $file
-        }
-    } elseif ($file_name.Contains("-")) {
-        $lower, $upper = $file_name.Split("-")
-        if (($winver -ge $lower) -and ($winver -le $upper)) {
-            $is_successful = Apply-Registry -file_path $file
-        }
-    } elseif ([int]$file_name -eq $winver) {
-        $is_successful = Apply-Registry -file_path $file
-    }
-
-    if ($is_successful -ne 0) {
-        Write-Host "error: failed merging one or more registry files"
+function main() {
+    if (!(Is-Admin)) {
+        Write-Host "error: administrator privileges required"
         exit 1
     }
+
+    Write-Host "info: this may take a while..."
+
+    foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
+        $file_name = $file.replace(".reg", "")
+        $file = "C:\bin\registry\$file"
+        $is_successful = 0
+
+        if ($file_name.Contains("+")) {
+            if ([int]$file_name.replace("+", "") -le $winver) {
+                $is_successful = Apply-Registry -file_path $file
+            }
+        } elseif ($file_name.Contains("-")) {
+            $lower, $upper = $file_name.Split("-")
+            if (($winver -ge $lower) -and ($winver -le $upper)) {
+                $is_successful = Apply-Registry -file_path $file
+            }
+        } elseif ([int]$file_name -eq $winver) {
+            $is_successful = Apply-Registry -file_path $file
+        }
+
+        if ($is_successful -ne 0) {
+            Write-Host "error: failed merging one or more registry files"
+            exit 1
+        }
+    }
+
+    Write-Host "info: successfully applied registry settings for windows $winver"
+    exit 0
 }
 
-Write-Host "info: successfully applied registry settings for windows $winver"
-exit 0
+main

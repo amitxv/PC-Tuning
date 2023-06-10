@@ -12,69 +12,73 @@ function Toggle-Task($task, $enable) {
     return $user_task_result -band $trustedinstaller_task_result
 }
 
-if (!(Is-Admin)) {
-    Write-Host "error: administrator privileges required"
-    exit 1
-}
-
-$wildcards = @(
-    "update",
-    "maps",
-    "helloface",
-    "customer experience improvement program",
-    "microsoft compatibility appraiser",
-    "startupapptask",
-    "dssvccleanup",
-    "bitlocker",
-    "chkdsk",
-    "data integrity scan",
-    "defrag",
-    "diskcleanup",
-    "diskfootprint",
-    "languagecomponentsinstaller",
-    "memorydiagnostic",
-    "registry",
-    "time synchronization",
-    "time zone",
-    "upnp",
-    "windows filtering platform",
-    "tpm",
-    "systemrestore",
-    "speech",
-    "spaceport",
-    "power efficiency",
-    "cloudexperiencehost",
-    "diagnosis",
-    "file history",
-    "bgtaskregistrationmaintenancetask",
-    "autochk\\proxy",
-    "siuf",
-    "device information",
-    "edp policy manager",
-    "defender"
-)
-
-Write-Host "info: this may take a while..."
-
-$scheduled_tasks = schtasks /query /fo list
-$task_names = [System.Collections.ArrayList]@()
-
-foreach ($line in $scheduled_tasks) {
-    if ($line.contains("TaskName:")) {
-        ($task_names.Add($line.Split(":")[1].Trim().ToLower())) 2>&1 > $null
+function main() {
+    if (!(Is-Admin)) {
+        Write-Host "error: administrator privileges required"
+        exit 1
     }
-}
 
-foreach ($wildcard in $wildcards) {
-    Write-Host "info: searching for $wildcard"
-    foreach ($task in $task_names) {
-        if ($task.contains($wildcard)) {
-            if ((Toggle-Task -task $task -enable $false) -ne 0) {
-                Write-Host "error: failed toggling one or more scheduled tasks"
-                exit 1
+    $wildcards = @(
+        "update",
+        "maps",
+        "helloface",
+        "customer experience improvement program",
+        "microsoft compatibility appraiser",
+        "startupapptask",
+        "dssvccleanup",
+        "bitlocker",
+        "chkdsk",
+        "data integrity scan",
+        "defrag",
+        "diskcleanup",
+        "diskfootprint",
+        "languagecomponentsinstaller",
+        "memorydiagnostic",
+        "registry",
+        "time synchronization",
+        "time zone",
+        "upnp",
+        "windows filtering platform",
+        "tpm",
+        "systemrestore",
+        "speech",
+        "spaceport",
+        "power efficiency",
+        "cloudexperiencehost",
+        "diagnosis",
+        "file history",
+        "bgtaskregistrationmaintenancetask",
+        "autochk\\proxy",
+        "siuf",
+        "device information",
+        "edp policy manager",
+        "defender"
+    )
+
+    Write-Host "info: this may take a while..."
+
+    $scheduled_tasks = schtasks /query /fo list
+    $task_names = [System.Collections.ArrayList]@()
+
+    foreach ($line in $scheduled_tasks) {
+        if ($line.contains("TaskName:")) {
+        ($task_names.Add($line.Split(":")[1].Trim().ToLower())) 2>&1 > $null
+        }
+    }
+
+    foreach ($wildcard in $wildcards) {
+        Write-Host "info: searching for $wildcard"
+        foreach ($task in $task_names) {
+            if ($task.contains($wildcard)) {
+                if ((Toggle-Task -task $task -enable $false) -ne 0) {
+                    Write-Host "error: failed toggling one or more scheduled tasks"
+                    exit 1
+                }
             }
         }
     }
+
+    exit 0
 }
 
-exit 0
+main
