@@ -122,7 +122,9 @@ MDTechVideos
 
 - Most modern peripherals support onboard memory profiles. Configure them before configuring the operating system as you will not be required to install the bloatware to change the settings later. More details on separating environments for work/bloatware and your real-time application with a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) in the next section
 
-- [Higher DPI reduces latency](https://www.youtube.com/watch?v=6AoRfv9W110). Most mice are able to handle 1600 DPI without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing). Optionally [reduce the pointer speed](https://boringboredom.github.io/tools/#/WinSens) in Windows. This will not interfere with in-game input as modern games use raw input
+- [Higher DPI reduces latency](https://www.youtube.com/watch?v=6AoRfv9W110). Use the highest DPI possible without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing). If your game uses raw input, you can [reduce the pointer speed](https://boringboredom.github.io/tools/#/WinSens) in Windows. Otherwise, leave the slider at the default position as input will be negatively affected
+
+    - One way to determine whether a given application is using raw input is to spy on the raw input API calls with [API Monitor](http://www.rohitab.com/apimonitor) or check whether the enhance pointer precision option has any affect in-game. If you are still unsure or have doubts, leave the slider at the default position. Better safe than sorry
 
 - [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly. This is less of an issue after the May 2023 Windows 11 update
 
