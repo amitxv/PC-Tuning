@@ -63,7 +63,7 @@ lkd> dd HalpTscSyncPolicy l1
 fffff802`2864a3ac  00000002
 ```
 
-Conclusion: By default, Windows uses the default value, not enhanced or legacy. Although, the default value may correspond to another value which is not exposed by reading the output of HalpTscSyncPolicy.
+In conclusion, Windows uses the default value, not enhanced or legacy. Although, the default value may correspond to another value which is not exposed by reading the output of HalpTscSyncPolicy.
 
 </details>
 
@@ -489,6 +489,126 @@ Despite 0.500ms being a higher resolution than 0.507ms, it offers worse precisio
 - One candidate that was using a laptop had to lower the resolution to 0.600ms to achieve low deltas
 
 - 0.500ms resolution provided a high resolution for all candidates on Windows 7. There was not a case where 0.500ms resulted in ~0.49ms deltas as shown above
+
+</details>
+
+---
+
+#### What is identity scaling and how can you use it?
+
+<details>
+
+<summary>Read More</summary>
+<br>
+
+Identity scaling, sometimes referred to as *real no scaling*, is the operation which [SetDisplayConfig](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setdisplayconfig) uses when the desktop and monitor resolution are identical.
+
+After monitoring registry activity while changing the scaling mode in the GPU control panel, the ``Scaling`` registry key is modified which align with the values in the [DISPLAYCONFIG_SCALING enum](https://learn.microsoft.com/en-us/windows/win32/api/wingdi/ne-wingdi-displayconfig_scaling) documentation. The comments below indicate what the GPU control panel options correspond to.
+
+```
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\GraphicsDrivers\Configuration\<id>]
+"Scaling"=dword:00000002
+```
+
+```cpp
+typedef enum {
+    DISPLAYCONFIG_SCALING_IDENTITY = 1,
+    DISPLAYCONFIG_SCALING_CENTERED = 2, // No scaling
+    DISPLAYCONFIG_SCALING_STRETCHED = 3, // Full-screen
+    DISPLAYCONFIG_SCALING_ASPECTRATIOCENTEREDMAX = 4, // Aspect ratio
+    DISPLAYCONFIG_SCALING_CUSTOM = 5,
+    DISPLAYCONFIG_SCALING_PREFERRED = 128,
+    DISPLAYCONFIG_SCALING_FORCE_UINT32 = 0xFFFFFFFF
+} DISPLAYCONFIG_SCALING;
+```
+
+As you can see above, there is no option in the GPU control panel that corresponds to ``DISPLAYCONFIG_SCALING_IDENTITY``. Consequently, people have resorted to changing the ``Scaling`` value to 1 manually in registry and claim to perceive a difference, but does this actually set the scaling mode to identity scaling? Does changing the value even work when the native resolution is used? Isn't the identity scaling mode already being used with the native resolution? What other factors determine the scaling mode? After all, Microsoft states that this is a **request** for what scaling mode to use, it does not necessarily mean that it will be used.
+
+All the questions above can be answered by simply retrieving the current scaling mode value with the data [QueryDisplayConfig](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-querydisplayconfig) returns then test what it is in different scenarios. The example program in the documentation can be used to display the current scaling mode by logging ``path.targetInfo.scaling`` to the console. Compiled binaries and the source code can be found in the [QueryDisplayScaling repository](https://github.com/amitxv/QueryDisplayScaling).
+
+The table below consists of my results after testing what the current scaling mode is with GPU/Display scaling, requesting different scaling modes and resolutions configured in the GPU control panel and [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU).
+
+```
+PS C:\> .\GetDisplaySettings.exe
+Scaling Mode: 2
+```
+
+<table style="text-align: center;">
+    <tr>
+        <td rowspan="2">Peform Scaling On</td>
+        <td rowspan="2">Requested Scaling Mode</td>
+        <td colspan="3">Actual Scaling Mode</td>
+    </tr>
+    <tr>
+        <td>Native (1920x1080)</td>
+        <td>GPU Control Panel (1280x720)</td>
+        <td>CRU (1280x720)</td>
+    </tr>
+    <tr>
+        <td rowspan=4>GPU</td>
+        <td>Identity (1)</td>
+        <td>Identity (1)</td>
+        <td>Aspect ratio (4)</td>
+        <td>Aspect ratio (4)</td>
+    </tr>
+    <tr>
+        <td>No scaling (2)</td>
+        <td>Identity (1)</td>
+        <td>Centered (2)</td>
+        <td>Centered (2)</td>
+    </tr>
+    <tr>
+        <td>Full-screen (3)</td>
+        <td>Identity (1)</td>
+        <td>Full-screen (3)</td>
+        <td>Full-screen (3)</td>
+    </tr>
+    <tr>
+        <td>Aspect ratio (4)</td>
+        <td>Identity (1)</td>
+        <td>Aspect ratio (4)</td>
+        <td>Aspect ratio (4)</td>
+    </tr>
+    <tr>
+        <td rowspan=4>Display</td>
+        <td>Identity (1)</td>
+        <td>Identity (1)</td>
+        <td>Aspect ratio (4)</td>
+        <td>Identity (1)</td>
+    </tr>
+    <tr>
+        <td>No scaling (2)</td>
+        <td>Identity (1)</td>
+        <td>Centered (2)</td>
+        <td>Identity (1)</td>
+    </tr>
+    <tr>
+        <td>Full-screen (3)</td>
+        <td>Identity (1)</td>
+        <td>Full-screen (3)</td>
+        <td>Identity (1)</td>
+    </tr>
+    <tr>
+        <td>Aspect ratio (4)</td>
+        <td>Identity (1)</td>
+        <td>Aspect ratio (4)</td>
+        <td>Identity (1)</td>
+    </tr>
+</table>
+
+- Conclusion
+
+    - No scaling in GPU control panel requests the centered (2) scaling mode
+
+    - Requesting to use the identity (1) scaling mode with GPU scaling resorts to the aspect ratio (4) scaling mode
+
+    - The GPU/Display scaling option in the GPU control panel only makes a difference when using a custom resolution created in CRU
+
+    - Native resolution **AND** display scaling + CRU custom resolution results in the same outcome
+
+    - GPU control panel custom resolution **AND** GPU scaling + CRU custom resolution results in the same outcome
+
+    - You can determine whether you are using identity scaling by checking if the resolution listed in the monitor OSD matches the desktop resolution. Otherwise, you are GPU scaling
 
 </details>
 
