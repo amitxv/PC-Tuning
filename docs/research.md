@@ -529,7 +529,7 @@ All the questions above can be answered by simply retrieving the current scaling
 The table below consists of my results after testing what the current scaling mode is with GPU/Display scaling, requesting different scaling modes and resolutions configured in the GPU control panel and [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU).
 
 ```
-PS C:\> .\GetDisplaySettings.exe
+PS C:\> .\QueryDisplayScaling.exe
 Scaling Mode: 2
 ```
 
