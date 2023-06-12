@@ -1,5 +1,7 @@
 # Configure the AMD Driver
 
+Disclaimer: I do not own an AMD GPU so this section may be incomplete/unmaintained.
+
 ## Strip and Install the Driver
 
 - Download and extract the latest recommended driver from the [AMD drivers and support page](https://www.amd.com/en/support)
