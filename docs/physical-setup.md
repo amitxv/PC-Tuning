@@ -124,7 +124,7 @@ MDTechVideos
 
 - [Higher DPI reduces latency](https://www.youtube.com/watch?v=6AoRfv9W110). Use the highest DPI possible without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing). If your game uses raw input, you can [reduce the pointer speed](https://boringboredom.github.io/tools/#/WinSens) in Windows. Otherwise, leave the slider at the default position as input will be negatively affected
 
-    - One way to determine whether a given application is using raw input is to spy on the raw input API calls with [API Monitor](http://www.rohitab.com/apimonitor) or check whether the enhance pointer precision option has any affect in-game. If you are still unsure or have doubts, leave the slider at the default position. Better safe than sorry
+    - One way to determine whether a given application is using raw input is to spy on the raw input API calls with [API Monitor](http://www.rohitab.com/apimonitor) or check whether the ``enhance pointer precision`` option has any effect in-game. If you are still unsure or have doubts, leave the slider at the default position. Better safe than sorry
 
 - [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly. This is less of an issue after the May 2023 Windows 11 update
 
