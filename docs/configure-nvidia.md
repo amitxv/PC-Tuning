@@ -78,12 +78,6 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Output dynamic range - Full
 
-- Configure the following in the adjust desktop size and position page:
-
-    - Select a scaling mode - No scaling
-
-    - Perform scaling on - Display
-
 ## Lock GPU Clocks/P-State 0
 
 Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while your real-time application is not running, consider using [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).

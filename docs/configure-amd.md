@@ -28,8 +28,6 @@ Disclaimer: I do not own an AMD GPU so this section may be incomplete/unmaintain
 
 - Configure the following in the display section:
 
-    - GPU Scaling - Off
-
     - HDCP Support - Disable (required for DRM content)
 
 ## Lock GPU Clocks/P-State 0

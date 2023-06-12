@@ -260,19 +260,25 @@ If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/gra
 
 - To automatically load profile 1 (as an example) and exit, type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
 
-## Configure CRU
+## Display Resolutions and Scaling Modes
 
-You should have already found a stable overclock for your display in the [Physical Setup](/docs/physical-setup.md) section. Download and extract [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU).
+You may have already found a stable overclock for your display in the [Physical Setup](/docs/physical-setup.md) section which you can configure in this section.
 
-- Aim for an "actual" integer refresh rate (e.g. 60.00/240.00 not 59.94/239.76). Using the exact timing can help achieve this
+- Typically, you have the option of performing scaling on the GPU or display. Native resolution does not require scaling thus results in the identity scaling mode being used. Furthermore, identity scaling renders most of the scaling options in the GPU control panel obsolete. If you are using a non-native resolution, there is an argument for favoring display scaling due to less GPU processing
 
-- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution, this may be a workaround for the 1-second black screen when alt-tabbing in exclusive fullscreen, feel free to skip this step if you are not comfortable risking a black screen
+- Aim for an "actual" integer refresh rate (e.g. 60.00/240.00 not 59.94/239.76). Using the exact timing can help achieve this in [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU)
+
+- There are many ways to achieve the same outcome regarding GPU and display scaling. See the table in the link below for example scenarios
+
+    - See [What is identity scaling and how can you use it?](/docs/research.md#what-is-identity-scaling-and-how-can-you-use-it)
+
+- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in CRU. This may be a workaround for the 1-second black screen when alt-tabbing in exclusive fullscreen
 
     - On systems with an NVIDIA GPU, ensure that the ``Display`` option for the ``Perform scaling on`` setting is still available. If it is not, then find out what change you made in CRU results in it not being accessible through trial and error. This can be accomplished by running ``reset.exe`` to reset the settings to default then re-configure CRU. After each change, run ``restart64.exe`` then check whether the option is still available
 
-- Restart your PC instead of using ``restart64.exe`` as it may result in a black screen
-
 - Ensure your resolution is configured properly in Display Adapter Settings
+
+- On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior
 
 ## Install Open-Shell (Windows 8+)
 
