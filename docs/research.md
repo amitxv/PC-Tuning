@@ -549,25 +549,25 @@ Scaling Mode: 2
         <td>Identity (1)</td>
         <td>Identity (1)</td>
         <td>Aspect ratio (4)</td>
-        <td>Aspect ratio (4)</td>
+        <td>Identity (1)</td>
     </tr>
     <tr>
         <td>No scaling (2)</td>
         <td>Identity (1)</td>
         <td>Centered (2)</td>
-        <td>Centered (2)</td>
+        <td>Identity (1)</td>
     </tr>
     <tr>
         <td>Full-screen (3)</td>
         <td>Identity (1)</td>
         <td>Full-screen (3)</td>
-        <td>Full-screen (3)</td>
+        <td>Identity (1)</td>
     </tr>
     <tr>
         <td>Aspect ratio (4)</td>
         <td>Identity (1)</td>
         <td>Aspect ratio (4)</td>
-        <td>Aspect ratio (4)</td>
+        <td>Identity (1)</td>
     </tr>
     <tr>
         <td rowspan=4>Display</td>
@@ -602,11 +602,11 @@ Scaling Mode: 2
 
     - Requesting to use the identity (1) scaling mode with GPU scaling resorts to the aspect ratio (4) scaling mode
 
-    - The GPU/Display scaling option in the GPU control panel only makes a difference when using a custom resolution created in CRU
+    - An observation that is not demonstrated in the table above is that, in my case, having two or more detailed resolutions in CRU with ``Perform Scaling On: GPU`` resulted in the centered, full-screen and aspect ratio scaling modes used (GPU scaling)
 
-    - Native resolution **AND** display scaling + CRU custom resolution results in the same outcome
+    - Due to the previous bullet point, the GPU/Display scaling option in the GPU control panel only makes a difference when using two or more detailed resolutions in CRU
 
-    - GPU control panel custom resolution **AND** GPU scaling + CRU custom resolution results in the same outcome
+    - Different combinations of settings can result in the same outcome
 
     - You can determine whether you are using identity scaling by checking if the resolution listed in the monitor OSD matches the desktop resolution. Otherwise, you are GPU scaling
 
