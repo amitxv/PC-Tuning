@@ -272,13 +272,15 @@ You may have already found a stable overclock for your display in the [Physical 
 
     - See [What is identity scaling and how can you use it?](/docs/research.md#what-is-identity-scaling-and-how-can-you-use-it)
 
+    - Optionally use [QueryDisplayScaling](https://github.com/amitxv/QueryDisplayScaling) to query the current scaling mode
+
 - Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in CRU. This may be a workaround for the 1-second black screen when alt-tabbing in exclusive fullscreen
 
     - On systems with an NVIDIA GPU, ensure that the ``Display`` option for the ``Perform scaling on`` setting is still available. If it is not, then find out what change you made in CRU results in it not being accessible through trial and error. This can be accomplished by running ``reset.exe`` to reset the settings to default then re-configure CRU. After each change, run ``restart64.exe`` then check whether the option is still available
 
 - Ensure your resolution is configured properly in Display Adapter Settings
 
-- On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior
+- On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior accross applications
 
 ## Install Open-Shell (Windows 8+)
 
