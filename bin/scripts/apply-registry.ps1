@@ -17,7 +17,7 @@ function Apply-Registry($file_path) {
 }
 
 function main() {
-    if (!(Is-Admin)) {
+    if (-not (Is-Admin)) {
         Write-Host "error: administrator privileges required"
         exit 1
     }

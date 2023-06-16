@@ -51,7 +51,7 @@ function Is-Admin() {
 }
 
 function main() {
-    if (!(Is-Admin)) {
+    if (-not (Is-Admin)) {
         Write-Host "error: administrator privileges required"
         exit 1
     }
