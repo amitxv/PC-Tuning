@@ -684,7 +684,7 @@ There is a lot of misleading and inaccurate information regarding this topic pol
 
 - Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution when they should
 
-- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution/releases/tag/MeasureSleep) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution/releases/tag/SetTimerResolution) program. This should be carried out under load while running something CPU/memory/cache intensive such as linpack as idle benchmarks may be misleading
+- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load while running something CPU/memory/cache intensive such as linpack as idle benchmarks may be misleading
 
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
