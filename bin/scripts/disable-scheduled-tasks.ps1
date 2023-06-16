@@ -15,7 +15,7 @@ function Toggle-Task($task, $enable) {
 function main() {
     if (-not (Is-Admin)) {
         Write-Host "error: administrator privileges required"
-        exit 1
+        return 1
     }
 
     $wildcards = @(
@@ -72,13 +72,13 @@ function main() {
             if ($task.contains($wildcard)) {
                 if ((Toggle-Task -task $task -enable $false) -ne 0) {
                     Write-Host "error: failed toggling one or more scheduled tasks"
-                    exit 1
+                    return 1
                 }
             }
         }
     }
 
-    exit 0
+    return 0
 }
 
-main
+exit main

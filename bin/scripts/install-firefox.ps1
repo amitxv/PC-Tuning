@@ -53,14 +53,14 @@ function Is-Admin() {
 function main() {
     if (-not (Is-Admin)) {
         Write-Host "error: administrator privileges required"
-        exit 1
+        return 1
     }
 
     try {
         $response = $web_client.DownloadString("https://product-details.mozilla.org/1.0/firefox_versions.json")
     } catch [System.Management.Automation.MethodInvocationException] {
         Write-Host "error: failed to fetch json data, check internet connection and try again"
-        exit 1
+        return 1
     }
 
     $firefox = $serializer.DeserializeObject($response)
@@ -79,7 +79,7 @@ function main() {
             if ($force) {
                 Write-Host "warning: -force specified, proceeding anyway"
             } else {
-                exit 1
+                return 1
             }
         }
     }
@@ -93,7 +93,7 @@ function main() {
 
         if ($local_SHA512 -ne $remote_SHA512) {
             Write-Host "error: hash mismatch"
-            exit 1
+            return 1
         }
     }
 
@@ -162,7 +162,7 @@ lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features`",
 
     Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
 
-    exit 0
+    return 0
 }
 
-main
+exit main

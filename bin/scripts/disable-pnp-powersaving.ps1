@@ -15,7 +15,7 @@ function main() {
         }
     }
 
-    exit 0
+    return 0
 }
 
-main
+exit main

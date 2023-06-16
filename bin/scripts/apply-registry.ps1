@@ -19,7 +19,7 @@ function Apply-Registry($file_path) {
 function main() {
     if (-not (Is-Admin)) {
         Write-Host "error: administrator privileges required"
-        exit 1
+        return 1
     }
 
     Write-Host "info: this may take a while..."
@@ -44,12 +44,12 @@ function main() {
 
         if ($is_successful -ne 0) {
             Write-Host "error: failed merging one or more registry files"
-            exit 1
+            return 1
         }
     }
 
     Write-Host "info: successfully applied registry settings for windows $winver"
-    exit 0
+    return 0
 }
 
-main
+exit main
