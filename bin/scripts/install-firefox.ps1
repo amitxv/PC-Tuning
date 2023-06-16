@@ -71,7 +71,7 @@ function main() {
     $setup_file = "$Env:temp\FirefoxSetup.exe"
 
     if ($developer_edition) {
-        $product = "devedition"
+        $product = "-devedition"
         $folder_name = "Firefox Developer Edition"
         $remote_version = $firefox["FIREFOX_DEVEDITION"]
         $hash_source = "https://ftp.mozilla.org/pub/devedition/releases/$remote_version/SHA512SUMS"
@@ -82,7 +82,7 @@ function main() {
         $hash_source = "https://ftp.mozilla.org/pub/firefox/releases/$remote_version/SHA512SUMS"
     }
 
-    $download_url = "https://download.mozilla.org/?product=firefox-$product-latest-ssl&os=win64&lang=$lang"
+    $download_url = "https://download.mozilla.org/?product=firefox$product-latest-ssl&os=win64&lang=$lang"
     $install_dir = "C:\Program Files\$folder_name"
 
     # check if currently installed version is already latest
