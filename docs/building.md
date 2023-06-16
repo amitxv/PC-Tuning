@@ -2,6 +2,8 @@
 
 ## Build Requirements
 
+- Extraction tool - [7-Zip](https://www.7-zip.org) recommended
+
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
 
 - [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
@@ -77,7 +79,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
-- Extract the contents of the ISO to a directory of your choice with [7-Zip](https://www.7-zip.org) then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
+- Extract the contents of the ISO to a directory of your choice with then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
     ```bat
     set "EXTRACTED_ISO=C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939"
