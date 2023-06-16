@@ -1,6 +1,8 @@
 param(
     [switch]$force,
-    [switch]$skip_hash_check
+    [switch]$skip_hash_check,
+    [switch]$developer_edition,
+    [string]$lang = "en-GB"
 )
 
 Add-Type -AssemblyName System.Web.Extensions
@@ -23,9 +25,9 @@ function Get-SHA512($file) {
     return $ret
 }
 
-function Fetch-SHA512($version) {
+function Fetch-SHA512($source, $file_name) {
     try {
-        $response = $web_client.DownloadString("https://ftp.mozilla.org/pub/firefox/releases/$version/SHA512SUMS")
+        $response = $web_client.DownloadString($source)
     } catch [System.Management.Automation.MethodInvocationException] {
         Write-Host "error: unable to fetch hash data, consider -skip_hash_check"
         exit 1
@@ -36,10 +38,12 @@ function Fetch-SHA512($version) {
     foreach ($line in $response) {
         $split_line = $line.Split(" ", 2)
         $hash = $split_line[0]
-        $file_name = $split_line[1].Trim()
+        $current_file_name = $split_line[1].Trim()
 
-        if ($file_name -eq "win64/en-US/Firefox Setup $version.exe") {
-            return $hash
+        if ($null -ne $hash -and $null -ne $current_file_name) {
+            if ($current_file_name -eq $file_name) {
+                return $hash
+            }
         }
     }
     return $null
@@ -64,17 +68,29 @@ function main() {
     }
 
     $firefox = $serializer.DeserializeObject($response)
-    $remote_version = $firefox["LATEST_FIREFOX_VERSION"]
     $setup_file = "$Env:temp\FirefoxSetup.exe"
-    $download_url = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
-    $install_dir = "C:\Program Files\Mozilla Firefox"
+
+    if ($developer_edition) {
+        $product = "devedition"
+        $folder_name = "Firefox Developer Edition"
+        $remote_version = $firefox["FIREFOX_DEVEDITION"]
+        $hash_source = "https://ftp.mozilla.org/pub/devedition/releases/$remote_version/SHA512SUMS"
+    } else {
+        $product = ""
+        $folder_name = "Mozilla Firefox"
+        $remote_version = $firefox["LATEST_FIREFOX_VERSION"]
+        $hash_source = "https://ftp.mozilla.org/pub/firefox/releases/$remote_version/SHA512SUMS"
+    }
+
+    $download_url = "https://download.mozilla.org/?product=firefox-$product-latest-ssl&os=win64&lang=$lang"
+    $install_dir = "C:\Program Files\$folder_name"
 
     # check if currently installed version is already latest
     if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
         $local_version = ([string](& "$install_dir\firefox.exe" --version | more)).Split()[2]
 
         if ($local_version -eq $remote_version) {
-            Write-Host "info: latest version $remote_version already installed"
+            Write-Host "info: $folder_name $remote_version already installed"
 
             if ($force) {
                 Write-Host "warning: -force specified, proceeding anyway"
@@ -89,7 +105,7 @@ function main() {
 
     if (-not $skip_hash_check) {
         $local_SHA512 = (Get-SHA512 -file $setup_file).Hash
-        $remote_SHA512 = Fetch-SHA512 -version $remote_version
+        $remote_SHA512 = Fetch-SHA512 -source $hash_source -file_name "win64/$lang/Firefox Setup $remote_version.exe"
 
         if ($local_SHA512 -ne $remote_SHA512) {
             Write-Host "error: hash mismatch"
