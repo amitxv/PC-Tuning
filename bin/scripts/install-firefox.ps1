@@ -121,19 +121,21 @@ function main() {
         Remove-Item $setup_file
     }
 
-    foreach ($file in @(
-            "crashreporter.exe",
-            "crashreporter.ini",
-            "defaultagent.ini",
-            "defaultagent_localized.ini",
-            "default-browser-agent.exe",
-            "maintenanceservice.exe",
-            "maintenanceservice_installer.exe",
-            "pingsender.exe",
-            "updater.exe",
-            "updater.ini",
-            "update-settings.ini"
-        )) {
+    $remove_files = @(
+        "crashreporter.exe",
+        "crashreporter.ini",
+        "defaultagent.ini",
+        "defaultagent_localized.ini",
+        "default-browser-agent.exe",
+        "maintenanceservice.exe",
+        "maintenanceservice_installer.exe",
+        "pingsender.exe",
+        "updater.exe",
+        "updater.ini",
+        "update-settings.ini"
+    )
+
+    foreach ($file in $remove_files) {
         $file = "$install_dir\$file"
         if (Test-Path $file -PathType Leaf) {
             Remove-Item $file
@@ -141,25 +143,25 @@ function main() {
     }
 
     # create policies.json
-(New-Item -Path "$install_dir" -Name "distribution" -ItemType "directory" -Force) 2>&1 > $null
+    (New-Item -Path "$install_dir" -Name "distribution" -ItemType "directory" -Force) 2>&1 > $null
 
-    Set-Content -Path "$install_dir\distribution\policies.json" -Value (Convert-To-Json(@{
-                policies = @{
-                    DisableAppUpdate     = $true
-                    OverrideFirstRunPage = ""
-                    Extensions           = @{
-                        Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi")
-                    }
+    $policies = Convert-To-Json(@{
+            policies = @{
+                DisableAppUpdate     = $true
+                OverrideFirstRunPage = ""
+                Extensions           = @{
+                    Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi")
                 }
-            }))
+            }
+        })
 
-    [System.IO.File]::WriteAllText("$install_dir\defaults\pref\autoconfig.js", (@(
-                "pref(`"general.config.filename`", `"firefox.cfg`");",
-                "pref(`"general.config.obscure_value`", 0);"
-            ) -join "`n"), [System.Text.Encoding]::ASCII)
+    $autoconfig = @(
+        "pref(`"general.config.filename`", `"firefox.cfg`");",
+        "pref(`"general.config.obscure_value`", 0);"
+    ) -join "`n"
 
-    Set-Content -Path "$install_dir\firefox.cfg" -Value (
-        "`r`ndefaultPref(`"app.shield.optoutstudies.enabled`", false)`
+    $firefox_config =
+    "`r`ndefaultPref(`"app.shield.optoutstudies.enabled`", false)`
 defaultPref(`"datareporting.healthreport.uploadEnabled`", false)`
 defaultPref(`"browser.newtabpage.activity-stream.feeds.section.topstories`", false)`
 defaultPref(`"browser.newtabpage.activity-stream.feeds.topsites`", false)`
@@ -174,7 +176,10 @@ defaultPref(`"browser.tabs.firefox-view`", false)`
 defaultPref(`"browser.tabs.tabmanager.enabled`", false)`
 lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons`", false)`
 lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features`", false)"
-    )
+
+    Set-Content -Path "$install_dir\distribution\policies.json" -Value ($policies)
+    [System.IO.File]::WriteAllText("$install_dir\defaults\pref\autoconfig.js", ($autoconfig), [System.Text.Encoding]::ASCII)
+    Set-Content -Path "$install_dir\firefox.cfg" -Value ($firefox_config)
 
     Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
 
