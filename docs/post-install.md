@@ -26,6 +26,10 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 Go through the ``C:\bin\preference`` folder to configure common user settings.
 
+## Disable Tamper Protection
+
+Tamper protection can be disabled through Windows Defender. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
+
 ## Unrestricted PowerShell Execution Policy
 
 This is required to execute the scripts within the repository. Open PowerShell as administrator and enter the command below.
@@ -36,7 +40,7 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
-Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11). If you get an error regarding merging registry files, you may need to disable tamper protection in Windows Defender.
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
 
 ```powershell
 C:\bin\scripts\apply-registry.ps1 -winver <option>
