@@ -205,7 +205,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
 
-; disable fast startup
+; disable hibernation
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Power]
 "HibernateEnabled"=dword:00000000
+
+; disable fast startup
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Power]
+"HiberbootEnabled"=dword:00000000
