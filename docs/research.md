@@ -150,7 +150,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     quantum,” PsPrioritySeparation reflects the quantum-table index used to select quantums for the
     threads of foreground applications. However, in this case, it is being used as a priority boost value.
 
-    |**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**PsPrioritySeparation**|**ForegroundQU**|**BackgroundQU**|**TotalQU**|
+    |**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**PsPrioSep**|**ForegroundQU**|**BackgroundQU**|**TotalQU**|
     |---|---|---|---|---|---|---|---|---|
     |0x14|20|010100|Long|Variable|0|12 (62.50ms)|12 (62.50ms)|24 (125.00ms)
     |0x15|21|010101|Long|Variable|1|24 (125.00ms)|12 (62.50ms)|36 (187.50ms)
