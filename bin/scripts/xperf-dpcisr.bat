@@ -4,7 +4,8 @@ DISM > nul 2>&1 || echo error: administrator privileges required >&2 && exit /b 
 
 where xperf.exe > nul 2>&1
 if not %errorlevel% == 0 (
-    echo error: xperf not found in path >&2
+    echo error: xperf not found in path. install "Windows Performance Toolkit" in the ADK from the link below >&2
+    echo https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install
     exit /b 1
 )
 
