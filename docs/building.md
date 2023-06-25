@@ -43,8 +43,6 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk)
 
-    - [MVS Collection](https://isofiles.bd581e55.workers.dev)
-
     - [Adguard File List](https://files.rg-adguard.net)
 
     - [Microsoft Software Download Listing](https://ave9858.github.io/msdl)
