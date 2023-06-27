@@ -35,11 +35,11 @@ Download the latest game ready (not security update) driver using the [advanced 
 - Open CMD and enter the commands below to disable telemetry
 
     ```bat
-    reg.exe add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d "0" /f
+    reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d "0" /f
     ```
 
     ```bat
-    reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
+    reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
     ```
 
 ## Disable HDCP (required for DRM content)
@@ -49,16 +49,12 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
     ```bat
-    reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
+    reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Control Panel
 
-- Configure the following in the adjust image settings with preview page:
-
-    - Use my preference emphasizing: Performance
-
-- Configure the following in the manage 3D settings page:
+- Configure the following in the ``Manage 3D settings`` page:
 
     - Antialiasing - Gamma correction - Off
 
@@ -70,22 +66,22 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Texture filtering - Quality - High performance
 
-    - Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also consider whether you are already CPU bottlenecked if you do choose to enable the setting
+    - Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
 
     - Ensure that settings are not being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
 
-- Configure the following in the change resolution page:
+- Configure the following in the ``Change resolution`` page:
 
     - Output dynamic range - Full
 
 ## Lock GPU Clocks/P-State 0
 
-Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while your real-time application is not running, consider using [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
+Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while your real-time application is not running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
     ```bat
-    reg.exe add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
+    reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Inspector

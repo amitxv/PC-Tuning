@@ -4,9 +4,9 @@
 
 - Extraction tool - [7-Zip](https://www.7-zip.org) recommended
 
-- [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - install Deployment Tools
+- [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - Install Deployment Tools
 
-- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - place the binary in ``C:\Windows``
+- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - Place the binary in ``C:\Windows``
 
 ## Download Stock ISOs
 
@@ -186,7 +186,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
     - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so this step (integrating updates) can be skipped
 
-    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can ctrl-f "non-security" for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35)). Search for the sever update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
+    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can search for *"non-security"* for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35)). Search for the sever update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
 
 - Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Ensure to download the correct variant (server/client)
 

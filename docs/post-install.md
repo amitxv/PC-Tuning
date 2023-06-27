@@ -4,7 +4,7 @@
 
 - Windows Server will force you to enter a complex password which we will remove in a few steps later
 
-- If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute the following command ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection demonstrated in the video examples below.
+- If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection as demonstrated in the video examples below.
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows7-example.mp4)
 
@@ -40,7 +40,7 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
-Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (e.g. 7, 8, 10, 11).
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
 
 ```powershell
 C:\bin\scripts\apply-registry.ps1 -winver <option>
@@ -90,7 +90,7 @@ A standard Firefox installation is recommended. Open PowerShell and enter the co
 C:\bin\scripts\install-firefox.ps1
 ```
 
-- On Firefox, after configuring extensions, I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
+- I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Disable Residual Scheduled Tasks
 
@@ -123,8 +123,6 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         ```
 
 - Disable all messages in ``System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings`` by typing ``control`` in ``Win+R``
-
-    - This section is named ``Security and Maintenance`` on Windows 10+
 
 - Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
@@ -164,7 +162,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 - Open CMD and enter the commands below
 
-    - Remove Chromium Microsoft Edge (if present)
+    - Remove Chromium Microsoft Edge (legacy version will be removed in a later step if it is present)
 
         ```bat
         if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do ("%a" --uninstall --system-level --verbose-logging --force-uninstall))
@@ -184,7 +182,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 - Uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
 
-- Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this has to be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features`` (top right)
+- Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``
 
     - See [media/windows7-features-example.png](/media/windows7-features-example.png)
 
@@ -216,7 +214,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - Boot into Ventoy on your USB in BIOS and select the Linux ISO
 
-- Open file explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume that has the ``win-debloat.sh`` script in
+- Open file explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume where the ``win-debloat.sh`` is located
 
 - Right-click an empty space and select ``Open in Terminal`` to open a terminal window in the current directory. Use the command below to run the script
 
@@ -230,7 +228,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
     reboot
     ```
 
-- You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository to let me know that it should be removed. This is difficult to maintain as Microsoft never likes to be consistent
+- You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository to let me know that it should be removed
 
 ## Install 7-Zip
 
@@ -256,7 +254,7 @@ Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/down
 
 ## Configure MSI Afterburner
 
-If you usually use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) to configure the clock/memory frequency, fan speed and other settings, download and install it.
+If you use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards), download and install it.
 
 - Disable update checks in settings
 
@@ -270,7 +268,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
 - Typically, you have the option of performing scaling on the GPU or display. Native resolution does not require scaling thus results in the identity scaling mode being used. Furthermore, identity scaling renders most of the scaling options in the GPU control panel obsolete. If you are using a non-native resolution, there is an argument for favoring display scaling due to less GPU processing
 
-- Aim for an "actual" integer refresh rate (e.g. 60.00/240.00 not 59.94/239.76). Using the exact timing can help achieve this in [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU)
+- Aim for a ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this in [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU)
 
 - There are many ways to achieve the same outcome regarding GPU and display scaling. See the table in the link below for example scenarios
 
@@ -278,13 +276,13 @@ You may have already found a stable overclock for your display in the [Physical 
 
     - Optionally use [QueryDisplayScaling](https://github.com/amitxv/QueryDisplayScaling) to query the current scaling mode
 
-- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in CRU. This may be a workaround for the 1-second black screen when alt-tabbing in exclusive fullscreen
+- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in CRU. This may be a workaround for the ~1-second black screen when alt-tabbing while using the ``Hardware: Legacy Flip`` present mode
 
     - On systems with an NVIDIA GPU, ensure that the ``Display`` option for the ``Perform scaling on`` setting is still available. If it is not, then find out what change you made in CRU results in it not being accessible through trial and error. This can be accomplished by running ``reset.exe`` to reset the settings to default then re-configure CRU. After each change, run ``restart64.exe`` then check whether the option is still available
 
 - Ensure your resolution is configured properly in Display Adapter Settings
 
-- On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior accross applications
+- On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior across applications and desktops
 
 ## Install Open-Shell (Windows 8+)
 
@@ -408,7 +406,7 @@ Open CMD and enter the commands below.
     bcdedit /set nx AlwaysOff
     ```
 
-- Configure the operating system name, I usually name it to whatever Windows version I am using e.g. Windows 10 1803
+- Configure the operating system name, I usually name it to whatever Windows version I am using such as ``Windows 10 1803``
 
     ```bat
     bcdedit /set {current} description "OSNAME"
@@ -431,17 +429,15 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 ## Replace Task Manager with Process Explorer
 
-This step is not optional as the performance counter driver will be disabled which breaks the stock Task Manager functionality.
-
 <details>
 
 <summary>Reasons not to use Task Manager</summary>
 
-- It relies on a kernel mode driver to operate (additional overhead)
+- It relies on a kernel mode driver to operate which may introduce additional overhead
 
 - Does not display process tree
 
-- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the disable idle power setting results in 100% CPU utilization on Windows 8+
+- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the ``disable idle`` power setting results in 100% CPU utilization on Windows 8+
 
 </details>
 
@@ -456,6 +452,20 @@ This step is not optional as the performance counter driver will be disabled whi
     - Allow Only One Instance
 
     - Always On Top (helpful for when applications crash and UI becomes unresponsive)
+
+    - Enable the following columns granular resource measurement metrics
+
+        - Context Switch Delta (Process Performance)
+
+        - CPU Cycles Delta (Process Performance)
+
+        - Delta Reads (Process I/O)
+
+        - Delta Writes (Process I/O)
+
+        - Delta Other (Process I/O)
+
+    - Enable the ``VirusTotal`` column
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
@@ -509,18 +519,18 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to CPU not being able to keep up under load
 
-    - Be warned regarding CPU 0 being reserved/underutilized with the usage of the mentioned programs
+    - Be warned regarding cores being reserved or underutilized with the usage of the mentioned programs
 
 ## Configure Services and Drivers
 
-I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. Feel free to customize the lists by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
+I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
 - The ``High precision event timer`` device in device manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
 
 - Use the command below to prevent the [Software Protection service attempting to register a restart every 30s](/media/software-protection-error.png) while services are disabled. I'm not sure what the problematic service is, but online sources point to Task Scheduler
 
     ```bat
-    reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
+    reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
     ```
 
 - On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the Task Scheduler service
@@ -571,7 +581,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 7. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
 
-8. Now you **CAN** disable devices with a yellow icon because these are devices that *actually* have errors and are not due to services being disabled
+8. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and are not due to services being disabled
 
 9. Optionally use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
 
@@ -590,7 +600,7 @@ Create registry files to toggle event trace sessions. Programs that rely on even
 - ets-enable
 
     ```bat
-    reg.exe export "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
+    reg export "HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger" "C:\ets-enable.reg"
     ```
 
 - ets-disable
@@ -619,12 +629,6 @@ Open CMD and enter the commands below.
 
     ```bat
     fsutil behavior set disablelastaccess 1
-    ```
-
-- Enables delete notifications (also known as trim or unmap), should be enabled by default, but it is here for safe measure
-
-    ```bat
-    fsutil behavior set disabledeletenotify 0
     ```
 
 ## Message Signaled Interrupts
@@ -670,25 +674,25 @@ Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/me
     - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
         ```bat
-        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
+        reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
         ```
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
-There is a lot of misleading and inaccurate information regarding this topic polluting the internet along with people having no idea what it influences. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
+There is a lot of misleading and inaccurate information regarding this topic polluting the internet. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
 
 - Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
 
-- The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ as explained [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change) with the registry key below. As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel mode driver which is a topic for another day)
+- The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ with the registry key below as explained in depth [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel mode driver which is a topic for another day)
 
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
     "GlobalTimerResolutionRequests"=dword:00000001
     ```
 
-- Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution when they should
+- Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution which results in unexpected behavior
 
-- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load while running something CPU/memory/cache intensive such as linpack as idle benchmarks may be misleading
+- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load while running something CPU/memory/cache intensive such as linpack as idle benchmarks may be misleading
 
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
@@ -696,7 +700,7 @@ There is a lot of misleading and inaccurate information regarding this topic pol
 
 On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. From my understanding, this means that after an interrupt has been generated, the USB controller waits for the specified interval for more data to arrive before generating another interrupt. This reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same USB controller.
 
-For example, a mouse with an 1kHz polling rate will report data every 1ms. While **only** moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
+For example, a mouse with an 1kHz polling rate will report data every 1ms. While only moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
 
 - See [Can you define the interrupt moderation rate for USB controllers? Do different versions of windows have different default values?](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/PERIPHERALS/README.md#universal-serial-bus-usb)
 
@@ -708,7 +712,7 @@ It is not a bad idea to skim through both the legacy and immersive control panel
 
 ## Analyze Event Viewer
 
-This step is not required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly "broken" the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
+This step is not required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
 
 - The ``Services-Disable.bat`` script disables logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to 3 and 2 respectively
 
@@ -720,26 +724,28 @@ This step is not required, but can help to justify unexplained performance issue
 
 Install any programs and configure your real-time applications to prepare us for the next steps.
 
-- Consider [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform)
+- Use [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform)
 
-- Cap your frame rate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). E.g. possible frame rate caps with a 144Hz monitor include 72, 144, 288, 432. Consider capping at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
+- Cap your frame rate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). Cap at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
 
-    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk). Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` running which wastes resources
+    - See [FPS Cap Calculator](https://boringboredom.github.io/tools/#/FPSCap)
+
+    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience as it utilizes [busy-wait](https://en.wikipedia.org/wiki/Busy_waiting) which is offers higher precision than 100% passive-waiting but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) and potentially greater CPU overhead. Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` running which wastes resources
 
 - Configure present mode
 
-    - Always check whether your real-time application is using the desired present mode with PresentMon. ``Hardware: Legacy Flip`` (exclusive fullscreen) and ``Hardware: Independent Flip`` (fullscreen optimizations) are optimal
+    - Always check whether your real-time application is using the desired present mode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal
 
     - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try to run the command below in CMD and reboot
 
         ```bat
-        reg.exe add "HKEY_CURRENT_USER\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
+        reg add "HKEY_CURRENT_USER\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
         ```
 
     - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below to disable MPOs in CMD and reboot
 
         ```bat
-        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
+        reg add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
         ```
 
 - Configuring QoS policies
@@ -768,7 +774,7 @@ Install any programs and configure your real-time applications to prepare us for
 
     - ``"%userprofile%\Downloads"``
 
-- Clear the PATH user environment variable of locations pointing to Windows bloatware folders
+- Clear the ``PATH`` user environment variable of locations pointing to Windows bloatware folders
 
 - Configure Disk Cleanup
 
@@ -789,27 +795,27 @@ Install any programs and configure your real-time applications to prepare us for
     - Open CMD and enter the commands below
 
         ```bat
-        reg.exe delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg.exe add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
+        reg delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
 
 ## Final Thoughts and Tips
 
-- Avoid applying random tweaks, using tweaking programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
+- Avoid applying random changes and tweaks, using all-in-one solution programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 
-- Consider isolating your real-time applications from other resource intensive modules or processes being serviced on the same core by setting an affinity. For example, removing my real-time application from the same core that the GPU driver is serviced on [improved frame pacing](/media/isolate-gpu-core.png). Your mileage may vary
+- Isolate your real-time applications from other resource intensive modules or processes being serviced on the same core by setting an affinity. For example, removing my real-time application from the same core that the GPU driver is serviced on [improved frame pacing](/media/isolate-gpu-core.png)
 
-- Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files  
+- Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files
 
 - Kill processes that waste resources such as clients, ``explorer.exe`` and more
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). 0 is idle enabled, 1 is idle disabled
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled
 
     ```bat
     powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
     ```
 
-- If you are using Windows 8.1+ and [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) (exclusive fullscreen) with your real-time application, you can disable DWM using the ``C:\bin\scripts\toggle-dwm`` script as the process wastes resources despite there being no composition. Beware of the UI breaking and some applications will not be able to launch (you may need to disable hardware acceleration)
+- If you are using Windows 8+ and the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) present mode with your real-time application, you can disable DWM using the ``C:\bin\scripts\toggle-dwm.bat`` script as the process wastes resources despite there being no composition. Beware of the UI breaking and some applications will not be able to launch (you may need to disable hardware acceleration)

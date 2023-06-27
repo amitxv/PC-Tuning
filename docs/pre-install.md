@@ -2,13 +2,13 @@
 
 ## Configure Partitions
 
-Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate environments for work/bloatware and your real-time application. This way you will not be forced to install bloatware on the same partition where you will be using your real-time application (such as mouse software as previously mentioned) and full functionality of the operating system will be guaranteed for when you need it. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management which will create unallocated space for the new operating system to be installed to. This will be completely independent of the current operating system.
+Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate environments for work/bloatware and your real-time application. This way you will not be forced to install bloatware on the same partition where you will be using your real-time application. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management which will create unallocated space for the new operating system to be installed to.
 
 ## What Version of Windows Should You Use?
 
 - Generally, older versions of Windows are superior for real-time tasks as the concern for power efficiency and security is heightened after each edition release. For this reason, Windows 7 is the preferable choice but lacks driver support for modern hardware and developers are increasingly dropping support for legacy operating systems
 
-- Earlier versions of Windows lack anticheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of March 2023
+- Earlier versions of Windows lack anticheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of July 2023
 
     |GPU|Minimum Windows Version|
     |---|---|
@@ -28,7 +28,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See [Thread Director: Windows 11 Does It Best](https://www.anandtech.com/show/16959/intel-innovation-alder-lake-november-4th/3)
 
-- The implementation of ``Hardware: Independent Flip`` (fullscreen optimizations) improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip`` (exclusive fullscreen)
+- The implementation of ``Hardware: Independent Flip`` improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
 
     - See the [Configuring Applications](/docs/post-install.md#configuring-applications) section for more information
 
@@ -38,7 +38,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide)
 
-- [AllowTelemetry](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DataCollection::AllowTelemetry) can *actually* be set to 0 on Windows Server editions
+- [AllowTelemetry](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DataCollection::AllowTelemetry) can be set to 0 on Windows Server editions
 
 ## Create the Base ISO
 
@@ -46,7 +46,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 ## Prepare the USB
 
-- Plug in your USB storage and backup any important files. Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it is not enabled in BIOS, then select your USB storage and click install
+- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it is not enabled in BIOS, then select your USB storage and click install
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
 
@@ -56,7 +56,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 ## Boot Into the ISO
 
-For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from fetching updates.
+For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from installing unwanted updates and drivers.
 
 - Install using a USB storage device:
 

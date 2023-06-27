@@ -12,7 +12,7 @@
 
     <img src="/media/network-monitor-new-capture.png" width="450">
 
-- Open the application that you have applied a DSCP value for and reproduce a scenario where packets will be sent and received (e.g. an online gaming match)
+- Open the application that you have applied a DSCP value for and reproduce a scenario where packets will be sent and received such as an online gaming match
 
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log
 
@@ -137,7 +137,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     fffff802`3a72e874  0c 18 24
     ```
 
-    ``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is actually equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
+    ``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
 
     Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is that the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) and there are no restrictions in place to prevent users to entering an illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values, so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values. The table below consists of all possible values (consistent between client and server editions of Windows as ``00`` or ``11`` were not used in ``AABB`` of ``AABBCC`` in the bitmask which have different meanings on client/server). The time in milliseconds are based on the modern x86/x64 multiprocessor clock interrupt frequency.
 
@@ -181,7 +181,7 @@ Conclusion: During online matches, at most two RSS queues/cores are being utiliz
     ```
     QuantumReset is the default, full quantum of each thread on the system when it
     is replenished This value is cached into each thread of the process, but the KPROCESS
-    structure is easier to look at 
+    structure is easier to look at
     ```
 
     A script must be used as a sleep delay is required so that the window can be brought to the front and be made the foreground process. ``!process 0 0`` can be used to list running processes on the system.
@@ -274,7 +274,7 @@ On a stock Win10 installation, the Wdf01000.sys driver handles USB connectivity 
 
 <img src="/media/amdxhc31-usb-xperf-report.png" width="500">
 
-Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable, but your mileage may vary so feel free to benchmark it on your own system.
+Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable, but your mileage may vary.
 
 </details>
 
@@ -482,7 +482,7 @@ Despite 0.500ms being a higher resolution than 0.507ms, it offers worse precisio
 
 30+ candidates were asked to compare 0.500ms against 0.507ms on their system under load. The observations are listed below.
 
-- 0.500ms resolution for a marginal percentage of candidates was *actually* providing higher precision than 0.507ms. We were not able to come to a conclusion as to why after comparing BCD store configuration, hardware, timers, CPU/RAM frequency, Windows versions and more
+- 0.500ms resolution for a marginal percentage of candidates was providing higher precision than 0.507ms. We were not able to come to a conclusion as to why after comparing BCD store configuration, hardware, timers, CPU/RAM frequency, Windows versions and more
 
 - The remainder of candidates were able to reproduce my results of 0.507ms providing higher precision than 0.500ms
 
@@ -522,7 +522,7 @@ typedef enum {
 } DISPLAYCONFIG_SCALING;
 ```
 
-As you can see above, there is no option in the GPU control panel that corresponds to ``DISPLAYCONFIG_SCALING_IDENTITY``. Consequently, people have resorted to changing the ``Scaling`` value to 1 manually in registry and claim to perceive a difference, but does this actually set the scaling mode to identity scaling? Does changing the value even work when the native resolution is used? Isn't the identity scaling mode already being used with the native resolution? What other factors determine the scaling mode? After all, Microsoft states that this is a **request** for what scaling mode to use, it does not necessarily mean that it will be used.
+As you can see above, there is no option in the GPU control panel that corresponds to ``DISPLAYCONFIG_SCALING_IDENTITY``. Consequently, people have resorted to changing the ``Scaling`` value to 1 manually in registry and claim to perceive a difference, but does this really set the scaling mode to identity scaling? Does changing the value even work when the native resolution is used? Isn't the identity scaling mode already being used with the native resolution? What other factors determine the scaling mode? After all, Microsoft states that this is a request for what scaling mode to use, it does not necessarily mean that it will be used.
 
 All the questions above can be answered by simply retrieving the current scaling mode value with the data [QueryDisplayConfig](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-querydisplayconfig) returns then test what it is in different scenarios. The example program in the documentation can be used to display the current scaling mode by logging ``path.targetInfo.scaling`` to the console. Compiled binaries and the source code can be found in the [QueryDisplayScaling repository](https://github.com/amitxv/QueryDisplayScaling).
 

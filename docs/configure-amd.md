@@ -1,6 +1,6 @@
 # Configure the AMD Driver
 
-Disclaimer: I do not own an AMD GPU so this section may be incomplete/unmaintained.
+Disclaimer: I no longer own an AMD GPU meaning this section may be incomplete/unmaintained.
 
 ## Strip and Install the Driver
 
@@ -10,15 +10,15 @@ Disclaimer: I do not own an AMD GPU so this section may be incomplete/unmaintain
 
     - See [media/amd-driver-example.png](/media/amd-driver-example.png)
 
-- Open device manager and install the driver by right-clicking on the display adapter, browse my computer for driver software and select the driver folder
+- Open device manager and install the driver by right-clicking on the display adapter, then select ``Update driver`` and select the driver folder
 
 - Navigate to the driver directory (mine is ``B381690``) and extract ``ccc2_install.exe`` with 7-Zip and run ``CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
-- Ensure to disable the bloatware AMD services and drivers in [ServiWin](https://www.nirsoft.net/utils/serviwin.html). These are typically the ``AMD Crash Defender`` services and ``AMD External Events Utility`` (required for VRR)
+- Ensure to disable the unnecessary AMD services and drivers in [ServiWin](https://www.nirsoft.net/utils/serviwin.html). These are typically the ``AMD Crash Defender`` services and ``AMD External Events Utility`` (required for VRR)
 
 ## Configure AMD Control Panel
 
-- Configure the following in the graphics section:
+- Configure the following in the ``Graphics`` section:
 
     - Texture Filtering Quality - Performance
 
@@ -26,7 +26,7 @@ Disclaimer: I do not own an AMD GPU so this section may be incomplete/unmaintain
 
     - Maximum Tessellation Level - Off
 
-- Configure the following in the display section:
+- Configure the following in the `Display` section:
 
     - HDCP Support - Disable (required for DRM content)
 
