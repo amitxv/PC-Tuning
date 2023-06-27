@@ -657,7 +657,7 @@ Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/me
 
 - Use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
 
-- Use [Mouse Tester](https://github.com/microe1/MouseTester) to compare polling variation between the USB controller on different cores
+- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to compare polling variation between the USB controller on different cores
 
     - Use the ``Interval vs Time`` graph (frequency = 1000 / interval)
 

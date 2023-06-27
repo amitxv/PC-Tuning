@@ -134,7 +134,7 @@ MDTechVideos
 
     - See [OpenRGB](https://openrgb.org)
 
-- Use [Mouse Tester](https://github.com/microe1/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is obviously problematic and often caused by an inadequate sensor. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz).
+- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is obviously problematic and often caused by an inadequate sensor. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz).
 
     - See [XHCI Interrupt Moderation (IMOD)](/docs/post-install.md#xhci-interrupt-moderation-imod)
 
