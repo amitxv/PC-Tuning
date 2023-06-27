@@ -56,6 +56,8 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 - Configure the following in the ``Manage 3D settings`` page:
 
+    - Anisotropic filtering - Off
+
     - Antialiasing - Gamma correction - Off
 
     - Low Latency Mode - On (limits prerendered frames to 1)
