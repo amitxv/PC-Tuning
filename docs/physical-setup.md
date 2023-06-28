@@ -18,7 +18,7 @@
 
 - Ensure that your PCIe devices under the ``PCIe Bus`` category are running at their rated specification such as ``x16 3.0`` in [HWiNFO](https://www.hwinfo.com). The current link width/speed of the device should match the maximum supported
 
-    - The link speed for GPUs that are not limited to P-State 0 may decrease when idling. Check with GPU-Z while running the built-in render test
+    - The link speed for GPUs that are not limited to P-State 0 may decrease when idling. Check with [GPU-Z](https://www.techpowerup.com/gpuz) while running the built-in render test
 
         - See [media/gpuz-bus-interface.png](/media/gpuz-bus-interface.png)
 
