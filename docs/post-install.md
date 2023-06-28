@@ -50,18 +50,6 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 - After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 
-## Activate Windows
-
-Use the commands below to activate Windows using your license key if you do not have one linked to your HWID. Ensure that the activation process was successful by verifying the activation status in computer properties. Open CMD as administrator and enter the commands below.
-
-```bat
-slmgr /ipk <license key>
-```
-
-```bat
-slmgr /ato
-```
-
 ## Install Drivers
 
 - Avoid installing chipset drivers
@@ -81,6 +69,18 @@ slmgr /ato
         - See [Microsoft USB driver latency penalty](/docs/research.md#microsoft-usb-driver-latency-penalty)
 
     - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
+
+## Activate Windows
+
+Use the commands below to activate Windows using your license key if you do not have one linked to your HWID. Ensure that the activation process was successful by verifying the activation status in computer properties. Open CMD as administrator and enter the commands below.
+
+```bat
+slmgr /ipk <license key>
+```
+
+```bat
+slmgr /ato
+```
 
 ## Configure a [Web Browser](https://privacytests.org)
 
