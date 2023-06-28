@@ -702,8 +702,6 @@ On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions 
 
 For example, a mouse with an 1kHz polling rate will report data every 1ms. While only moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
 
-- See [Can you define the interrupt moderation rate for USB controllers? Do different versions of windows have different default values?](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/PERIPHERALS/README.md#universal-serial-bus-usb)
-
 - See [How to persistently disable xHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
 ## Configure Control Panel
