@@ -207,10 +207,18 @@ Windows Registry Editor Version 5.00
 
 ; disable hibernation
 
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Power]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
 "HibernateEnabled"=dword:00000000
 
 ; disable fast startup
 
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Power]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
 "HiberbootEnabled"=dword:00000000
+
+; disable windows error reporting
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
