@@ -122,7 +122,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         DISM /Online /Set-ReservedStorageState /State:Disabled
         ```
 
-- Disable all messages in ``System and Security -> Action Center -> Change Action Center settings -> Change Security and Maintenance settings`` by typing ``control`` in ``Win+R``
+- Disable all messages in ``Change Security and Maintenance settings`` by typing ``wscui.cpl`` in ``Win+R``
 
 - Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
@@ -156,7 +156,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - Navigate to ``Computer Configuration -> Administrative Templates -> System`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Display Shutdown Event Tracker`` to disable the shutdown prompt
 
-    - To remove the user password, navigate to ``User Accounts`` by typing ``control`` in ``Win+R`` then enter your current password and leave the new/confirm password fields blank
+    - To remove the user password, enter your current password and leave the new/confirm password fields blank in ``User Accounts`` by typing ``control userpasswords`` in ``Win+R``
 
 ## Remove Bloatware Natively
 
@@ -491,7 +491,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 ## Configure the Network Adapter
 
-- Open ``Network and Sharing Center -> Change adapter settings`` by typing ``control`` in ``Win+R``
+- Open ``Network Connections`` by typing ``ncpa.cpl`` in ``Win+R``
 
 - Disable any unused network adapters then right-click your main one and select properties
 
