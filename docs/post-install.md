@@ -445,27 +445,29 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 - Copy ``procexp64.exe`` into ``C:\Windows`` and open it
 
-- Navigate to ``Options`` and select ``Replace Task Manager`` I also configure the following:
+- Navigate to ``Options`` and select the following:
 
-    - Confirm Kill
+    - ``Always On Top`` (helpful for when applications crash and UI becomes unresponsive)
 
-    - Allow Only One Instance
+    - ``Replace Task Manager``
 
-    - Always On Top (helpful for when applications crash and UI becomes unresponsive)
+    - ``Allow Only One Instance``
 
-    - Enable the following columns granular resource measurement metrics
+    - ``Confirm Kill``
 
-        - Context Switch Delta (Process Performance)
+- Enable the following columns granular resource measurement metrics:
 
-        - CPU Cycles Delta (Process Performance)
+    - ``Context Switch Delta`` (Process Performance)
 
-        - Delta Reads (Process I/O)
+    - ``CPU Cycles Delta`` (Process Performance)
 
-        - Delta Writes (Process I/O)
+    - ``Delta Reads`` (Process I/O)
 
-        - Delta Other (Process I/O)
+    - ``Delta Writes`` (Process I/O)
 
-    - Enable the ``VirusTotal`` column
+    - ``Delta Other`` (Process I/O)
+
+- Enable the ``VirusTotal`` column
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
