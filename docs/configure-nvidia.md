@@ -75,8 +75,8 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 - Configure the following in the ``Change resolution`` page:
 
     - Output dynamic range - Full
- 
-- Configure the following in the ``Adjust video color settings`` -> ``Advanced`` page:
+
+- Configure the following in the ``Adjust video color settings`` page:
 
     - Dynamic range - Full
 
