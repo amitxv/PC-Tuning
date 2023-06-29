@@ -22,10 +22,6 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
-## User Preference
-
-Go through the ``C:\bin\preference`` folder to configure common user settings.
-
 ## Disable Tamper Protection
 
 Tamper protection can be disabled through Windows Defender. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
@@ -69,6 +65,10 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
         - See [Microsoft USB driver latency penalty](/docs/research.md#microsoft-usb-driver-latency-penalty)
 
     - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
+
+## User Preference
+
+Go through the ``C:\bin\preference`` folder to configure common user settings.
 
 ## Activate Windows
 
