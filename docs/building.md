@@ -210,7 +210,7 @@ DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
 
 ## Integrating Required Files
 
-Clone the repository and place the ``bin`` folder and ``win-debloat.sh`` script in the mounted directory. Open the directory with the command below.
+[Clone the repository](https://github.com/amitxv/PC-Tuning/archive/refs/heads/main.zip) and place the ``bin`` folder and ``win-debloat.sh`` script in the mounted directory. Open the directory with the command below.
 
 ```bat
 explorer "%MOUNT_DIR%"
