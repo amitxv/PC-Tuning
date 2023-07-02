@@ -257,3 +257,7 @@ This step is not required if you are [installing using DISM Apply-Image](/docs/p
 ## Cleanup
 
 Optionally uninstall the programs and remove the binaries installed in the [Build Requirements](#build-requirements) section if you do not plan on building another ISO anytime soon.
+
+---
+
+Continue to [docs/pre-install.md](/docs/pre-install.md#prepare-the-usb).

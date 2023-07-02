@@ -308,3 +308,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
     - Aim for an ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
+
+---
+
+Continue to [docs/pre-install.md](/docs/pre-install.md).

@@ -86,3 +86,7 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
         ```bat
         bcdboot <windir>
         ```
+
+---
+
+Continue to [docs/post-install.md](/docs/post-install.md).

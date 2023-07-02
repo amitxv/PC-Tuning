@@ -10,7 +10,7 @@ Windows is notorious for its ever-growing bloatware, third party telemetry, exce
 
 This repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however it is not my intention to directly copy from them.
 
-The guidance is currently updated and has been tested on client and server editions of Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues).
+The guidance is currently updated and has been tested on client and server editions of Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues). Users are expected to follow the guidance in the order listed below starting with [Physical Setup](#physical-setup) through to [Post-Install Instructions](#post-install-instructions).
 
 ## Requirements
 
