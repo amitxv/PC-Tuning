@@ -234,15 +234,15 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then navigate ``Tools -> Options`` and associate 7-Zip with all file extensions by clicking the ``+`` button. You may need to click it twice to override existing associated extensions.
 
+## Install Visual C++ Redistributable Runtimes
+
+Download and install the [Visual C++ redistributable runtimes](https://github.com/abbodi1406/vcredist).
+
 ## Configure the Graphics Driver
 
 - See [docs/configure-nvidia.md](/docs/configure-nvidia.md)
 
 - See [docs/configure-amd.md](/docs/configure-amd.md)
-
-## Install Visual C++ Redistributable Runtimes
-
-Download and install the [Visual C++ redistributable runtimes](https://github.com/abbodi1406/vcredist).
 
 ## Install .NET 4.8 Runtimes
 
