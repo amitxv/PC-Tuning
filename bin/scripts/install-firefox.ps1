@@ -60,6 +60,19 @@ function main() {
         return 1
     }
 
+    # silently try to enforce Tls
+
+    try {
+        # not available on Windows 7 by default
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls2
+    } catch {
+        try {
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls
+        } catch {
+            # ignore
+        }
+    }
+
     try {
         $response = $web_client.DownloadString("https://product-details.mozilla.org/1.0/firefox_versions.json")
     } catch [System.Management.Automation.MethodInvocationException] {
