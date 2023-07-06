@@ -115,7 +115,13 @@ function main() {
 
     Write-Host "info: installing firefox"
     Stop-Process -Name "firefox" -ErrorAction SilentlyContinue
-    Start-Process -FilePath $setup_file -ArgumentList "/S /MaintenanceService=false" -Wait
+
+    try {
+        Start-Process -FilePath $setup_file -ArgumentList "/S /MaintenanceService=false" -Wait
+    } Catch [System.InvalidOperationException] {
+        Write-Host "error: failed to download setup file"
+        return 1
+    }
 
     if (Test-Path $setup_file -PathType Leaf) {
         Remove-Item $setup_file
