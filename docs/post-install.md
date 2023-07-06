@@ -788,6 +788,12 @@ Install any programs and configure your real-time applications to prepare us for
         cleanmgr /sagerun:0
         ```
 
+- For reference, the ``ScheduledDefrag`` task that was disabled in the [Disable Residual Scheduled Tasks](#disable-residual-scheduled-tasks) section executes the command below
+
+    ```bat
+    defrag -c -h -o -$
+    ```
+
 - Reset Firewall rules
 
     - Open CMD and enter the commands below
