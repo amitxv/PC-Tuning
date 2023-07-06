@@ -776,16 +776,16 @@ Install any programs and configure your real-time applications to prepare us for
 
 - Configure Disk Cleanup
 
-    - Open CMD and enter the command below, tick all the boxes, press ``OK``
+    - Open CMD and enter the command below, tick all the boxes except ``DirectX Shader Cache``, press ``OK``
 
         ```bat
-        cleanmgr /sageset:50
+        cleanmgr /sageset:0
         ```
 
     - Run Disk Cleanup
 
         ```bat
-        cleanmgr /sagerun:50
+        cleanmgr /sagerun:0
         ```
 
 - Reset Firewall rules
