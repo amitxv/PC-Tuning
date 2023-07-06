@@ -549,7 +549,7 @@ I am not responsible if anything goes wrong or you BSOD. The idea is to disable 
 
 ## Configure Device Manager
 
-The section is directly related to the [Configure Services and Drivers](#configure-services-and-drivers) section. The methodology below will ensure maximum compatibility while services are enabled because devices with an associated driver will be toggled in the ``Services-Disable.bat`` script which means we do not need to permanently disable them
+The section is directly related to the [Configure Services and Drivers](#configure-services-and-drivers) section. The methodology below will ensure maximum compatibility while services are enabled because devices with an associated driver will be toggled in the ``Services-Disable.bat`` script which means we do not need to permanently disable them.
 
 1. If you haven't disabled services at this stage, run the ``Services-Disable.bat`` script
 
