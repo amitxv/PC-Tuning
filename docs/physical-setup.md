@@ -2,7 +2,7 @@
 
 ## General
 
-- A SSD or NVMe is mandatory due to the unreliability, degraded performance and excessive EMI of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
+- A SSD or NVMe is mandatory due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
 
 - Assess the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
 
@@ -43,6 +43,8 @@
 - Favor short and shielded cables
 
 - Clean the pins and connectors of components. Use compressed air to remove dust from slots before installing components such as PCIe, NVMe, RAM and more
+
+- An Ethernet cable is mandatory due to the unreliability, degraded performance and excessive interference of wireless connections
 
 - If you are not already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup. GPT/UEFI is recommended for most people
 
@@ -96,7 +98,7 @@ MDTechVideos
 
 ## Minimize Interference
 
-- Move devices that produce RF, EMF and EMI such as radios, cellphones and routers away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
+- Move devices that produce interference such as radios, cellphones, routers and more away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
 
 - Always favor wired over cordless. Wireless devices also tend to implement aggressive power saving for a longer battery life
 

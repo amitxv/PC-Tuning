@@ -743,7 +743,7 @@ Install any programs and configure your real-time applications to prepare us for
     - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try to run the command below in CMD and reboot
 
         ```bat
-        reg add "HKEY_CURRENT_USER\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
+        reg add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
         ```
 
     - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below to disable MPOs in CMD and reboot
