@@ -88,10 +88,6 @@ MDTechVideos
 
 - Mount a fan over VRMs, CPU backplate, storage devices, PCH, NIC and other hot spots
 
-- Configure fan curves or set a static, high, noise-acceptable RPM
-
-    - See [Ultimate fan speed curve (by KGCT, iteration 1)](https://imgur.com/a/2UDYXp0)
-
 - Replace stock thermal pads with higher quality ones
 
 - Repaste GPU due to factory application of thermal paste often being inadequate and replace the stock fans with higher quality ones
@@ -215,6 +211,10 @@ MDTechVideos
 - As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
     - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
+
+- Configure fan curves or set a static, high, noise-acceptable RPM
+
+    - See [Ultimate fan speed curve (by KGCT, iteration 1)](https://imgur.com/a/2UDYXp0)
 
 - Backup BIOS by saving the current settings to a profile as clearing CMOS will wipe all settings if you need to do so while overclocking
 
