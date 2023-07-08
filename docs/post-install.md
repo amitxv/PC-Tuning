@@ -517,7 +517,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to CPU not being able to keep up under load
 
-    - Be warned regarding cores being reserved or underutilized with the usage of the mentioned programs
+    - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs
 
 ## Configure Services and Drivers
 
@@ -557,7 +557,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 4. Navigate to ``View -> Devices by connection``
 
-    - Disable any PCIe, SATA, NVMe and USB controllers with nothing connected to them
+    - Disable any PCIe, SATA, NVMe and XHCI controllers with nothing connected to them
 
     - Unnecessary HID devices can be disabled, but mouse software will not work
 
@@ -647,33 +647,57 @@ Open CMD and enter the commands below.
 
     - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
-## Interrupt Affinity
+## Per-CPU Scheduling
 
-By default, CPU 0 handles the majority of DPCs and ISRs for several devices which can be viewed in a xperf dpcisr trace. This is not desirable as there will be a latency penalty because many processes and system activities are scheduled on the same core competing for CPU time. We can set an interrupt affinity policy to the USB, GPU, NIC, HD Audio and storage driver, which are few of many devices responsible for the most DPCs/ISRs, to offload them onto another core. The device can be identified by cross-checking the ``Location Info`` with the ``Location`` in the ``Properties -> General`` section of a device in device manager. Restart your PC instead of the driver to avoid issues.
+Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
 
-Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence.
+- Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
 
-- Ensure that the interrupt affinity policies have been configured correctly by analyzing a xperf trace while the device is busy
+    - See [bin/scripts/xperf-dpcisr.bat](/bin/scripts/xperf-dpcisr.bat)
 
-- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities
+- Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence. This is usually not a problem with MSI-X devices
 
-- Use [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) to benchmark the GPU affinity
+- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in device manager
 
-- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to compare polling variation between the USB controller on different cores
+### XHCI Controller
 
-    - Use the ``Interval vs Time`` graph (frequency = 1000 / interval)
+[Mouse Tester](https://github.com/amitxv/MouseTester) can be used to compare polling variation with the XHCI controller assigned to different CPUs. Ideally this should be benchmarked under load as idle benchmarks may be misleading
 
-    - Ideally this should be benchmarked under load as idle benchmarks are misleading
+### GPU and DirectX Graphics Kernel
 
-- Open CMD and enter the command below to configure what CPU handles DPCs/ISRs for the network driver. Ensure to change the driver key to suit your needs. Keep in mind that RSS queues determine the amount of consecutive cores ndis.sys is processed on. For example, ndis.sys will be processed on CPU 3/4/5/6 (3/5/7/9 with HT/SMT enabled) if RssBaseProcNumber is set to 2 with 4 RSS queues configured. [The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and).
+[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU related modules are assigned to
 
-    - See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
+### Network Interface Card
 
-    - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
+[The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the NIC driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
 
-        ```bat
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
-        ```
+The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct NIC. Keep in mind that the amount of RSS queues determine the amount of consecutive CPUs ``ndis.sys`` is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
+
+- See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
+
+- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
+
+    ```bat
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
+    ```
+
+### Reserved CPU Sets (Windows 10+)
+
+[ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, reduce jitter and allows time-sensitive modules to get the CPU time they require.
+
+- As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs.
+
+- Ensure that you have enough cores to run your real-time application on and aren't reserving too many CPUs to the point where isolating modules does not yield real-time performance
+
+- As CPU sets are considered soft policies, the configuration is not guaranteed. A CPU intensive process such as a stress-test will utilize the reserved cores if required
+
+#### Potential Use Cases
+
+- Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. Then the user may explicitly define what will be scheduled on the P-Cores
+
+- Reserving hyper-threaded CPUs
+
+- Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU driver is serviced on [improved frame pacing](/media/isolate-gpu-core.png)
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
@@ -690,17 +714,17 @@ There is a lot of misleading and inaccurate information regarding this topic pol
 
 - Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution which results in unexpected behavior
 
-- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load while running something CPU/memory/cache intensive such as linpack as idle benchmarks may be misleading
+- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load as idle benchmarks may be misleading
 
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
 ## XHCI Interrupt Moderation (IMOD)
 
-On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. This means that after an interrupt has been generated, the USB controller waits for the specified interval for more data to arrive before generating another interrupt which reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same USB controller.
+On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. This means that after an interrupt has been generated, the XHCI controller waits for the specified interval for more data to arrive before generating another interrupt which reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same XHCI controller.
 
 For example, a mouse with an 1kHz polling rate will report data every 1ms. While only moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
 
-- See [How to persistently disable xHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
+- See [How to persistently disable XHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
 - Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to use [RWEverything](http://rweverything.com/) on Windows 11+
 
@@ -811,8 +835,6 @@ Install any programs and configure your real-time applications to prepare us for
 - Avoid applying random changes and tweaks, using all-in-one solution programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
 
 - Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
-
-- Isolate your real-time applications from other resource intensive modules or processes being serviced on the same core by setting an affinity. For example, removing my real-time application from the same core that the GPU driver is serviced on [improved frame pacing](/media/isolate-gpu-core.png)
 
 - Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files
 

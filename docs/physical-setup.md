@@ -52,9 +52,7 @@
 
     - See [MBR vs GPT: Which One Is Better for You?](https://www.diskpart.com/gpt-mbr/mbr-vs-gpt-1004.html)
 
-    - See [How to Convert MBR to GPT During Windows 10/8/7 Installation |
-MDTechVideos
-](https://www.youtube.com/watch?v=f81qKAJUdKc)
+    - See [How to Convert MBR to GPT During Windows 10/8/7 Installation | MDTechVideos](https://www.youtube.com/watch?v=f81qKAJUdKc)
 
 ## Cooling
 
@@ -106,17 +104,17 @@ MDTechVideos
 
 - Disconnect unnecessary devices from your motherboard, setup and peripherals such as LEDs, RGB light strips, front panel connectors, USB devices, unused drives and all HDDs. Refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) for onboard devices (LED controllers, IR receivers) and disable them in BIOS if you can not physically disconnect them
 
-    - Some motherboards have the High Definition Audio controller (motherboard audio) linked to the USB controller
+    - Some motherboards have the High Definition Audio controller (motherboard audio) linked to the XHCI controller
 
 ## Configure USB Port Layout
 
-- Favor the first few ports on the desired USB controller. Some of them may not be physically accessible which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports and avoid companion ports (indicated in the right section of the program) as the data has to go through a hub
+- Favor the first few ports on the desired XHCI controller. Some of them may not be physically accessible which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports and avoid companion ports (indicated in the right section of the program) as the data has to go through a hub
 
-    - Ryzen systems have a USB controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the USB controller that is connected to a ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
+    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to a ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
 
         - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
-- If you have more than one USB controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
+- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
 
 ## Configure Peripherals
 
@@ -170,7 +168,7 @@ MDTechVideos
 
     - For changing hidden settings without flashing a modded BIOS, you can start by configuring what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) to change the hidden settings
 
-- Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough cores for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per core increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). [Disabling HT/SMT has the additional benefit of doubling (in case of 2-way SMT) the effective L1 and L2 cache available to a thread](https://rigtorp.se/low-latency-guide) along with increased overclocking potential due to lower temperatures
+- Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough CPUs for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per CPU increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). [Disabling HT/SMT has the additional benefit of doubling (in case of 2-way SMT) the effective L1 and L2 cache available to a thread](https://rigtorp.se/low-latency-guide) along with increased overclocking potential due to lower temperatures
 
 - Limit C-States, P-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
 
@@ -273,7 +271,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
 
-    - An important note to make is that you can pass hours of stress tests (RAM) but as soon as another component (GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario. Assuming a fan is mounted to blow air onto the RAM, stress testing without a fan or reduce RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
+    - An important note to make is that you can pass hours of stress-tests (RAM) but as soon as another component (GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario. Assuming a fan is mounted to blow air onto the RAM, stress-testing without a fan or reduce RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
 
 - Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to mimic a worst-case scenario
 
@@ -281,7 +279,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Monitor WHEAs. [HWiNFO](https://www.hwinfo.com) has an error count
 
-- Disable the paging file and use safe mode for stress testing preferably on a throwaway operating system in case it becomes corrupted
+- Disable the paging file and use safe mode for stress-testing preferably on a throwaway operating system in case it becomes corrupted
 
 - Configure load-line calibration. Opinionated setting, mentioning for awareness. This is not a recommendation for what mode to use
 
@@ -301,7 +299,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Overclock your GPU. You may be required to flash a BIOS with a higher power limit
 
-    - Ensure to disable ``CUDA - Force P2 State`` with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress testing
+    - Ensure to disable ``CUDA - Force P2 State`` with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress-testing
 
     - See [A slightly better way to overclock and tweak your Nvidia GPU | Cancerogeno](https://docs.google.com/document/d/14ma-_Os3rNzio85yBemD-YSpF_1z75mZJz1UdzmW8GE/edit)
 
@@ -309,7 +307,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
-    - Aim for an ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
+    - Aim for a ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
 
 ---
 

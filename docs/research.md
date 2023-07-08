@@ -88,7 +88,7 @@ I noticed that despite having RSS queues set to 2, only CPU 1 was primarily hand
 
 As expected, this scenario demonstrates that both CPU 0 and CPU 1 are handling DPCs/ISRs for ndis.sys.
 
-Conclusion: During online matches, at most two RSS queues/cores are being utilized. However, there is no harm in using more than two, but it is important to be aware of the information above as people reserve consecutive cores specifically for the network driver when those core(s) could better be used for another driver or a real-time application. The amount of RSS queues a network adapter has may also determine the quality of the hardware, but this is yet to be explored but something to keep in mind.
+Conclusion: During online matches, at most two RSS queues/CPUs are being utilized. However, there is no harm in using more than two, but it is important to be aware of the information above as people reserve consecutive CPUs specifically for the network driver when those CPUs could better be used for another driver or a real-time application. The amount of RSS queues a network adapter has may also determine the quality of the hardware, but this is yet to be explored but something to keep in mind.
 
 </details>
 
