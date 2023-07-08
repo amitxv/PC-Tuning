@@ -15,9 +15,10 @@ Windows Registry Editor Version 5.00
 ; disable windows update
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-"WUServer"="0.0.0.0"
-"WUStatusServer"="0.0.0.0"
-"UpdateServiceUrlAlternate"="0.0.0.0"
+"WUServer"=" "
+"WUStatusServer"=" "
+"UpdateServiceUrlAlternate"=" "
+"DisableWindowsUpdateAccess"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
 "NoAutoUpdate"=dword:00000001
