@@ -64,9 +64,13 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
     - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
 
-## User Preference
+## Time, Language and Region
 
-Go through the ``C:\bin\preference`` folder to configure common user settings.
+- Configure settings by typing ``intl.cpl`` and ``timedate.cpl`` in ``Win+R``
+
+- Windows 10+ Only
+
+    - Configure settings in ``Time and Language`` by pressing ``Win+I``
 
 ## Activate Windows
 
@@ -155,6 +159,12 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
     - Navigate to ``Computer Configuration -> Administrative Templates -> System`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Display Shutdown Event Tracker`` to disable the shutdown prompt
 
     - To remove the user password, enter your current password and leave the new/confirm password fields blank in ``User Accounts`` by typing ``control userpasswords`` in ``Win+R``
+
+- Windows 10+ Only:
+
+    - Disable transparency effects in Windows settings as it wastes resources
+
+        - See [media/transparency-effects-benchmark.png](/media/transparency-effects-benchmark.png)
 
 ## Remove Bloatware Natively
 
