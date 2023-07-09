@@ -6,7 +6,7 @@
 
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - Install Deployment Tools
 
-- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - Place the binary in ``C:\Windows``
+- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - Place the binary in PATH (e.g. ``C:\Windows``)
 
 ## Download Stock ISOs
 
