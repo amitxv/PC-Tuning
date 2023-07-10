@@ -36,16 +36,13 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
-Use the table below to determine which registry files are required to be merged according to your Windows version. Run with ``C:\bin\NSudo.exe`` if you encounter any permission errors but **DO NOT** merge all of them exclusively with NSudo as the user-specific entries will not apply properly.
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
 
-The registry files can be found in ``C:\bin\registry``.
+```powershell
+C:\bin\scripts\apply-registry.ps1 -winver <option>
+```
 
-|Windows Version|Merge Registry Files|
-|---|---|
-|Windows 7|``7.reg``<br>``7+.reg``<br>``7-8.reg``|
-|Windows 8/8.1|``7+.reg``<br>``7-8.reg``<br>``8.reg``<br>``8+.reg``|
-|Windows 10|``7+.reg``<br>``8+.reg``<br>``10.reg``<br>``10+.reg``|
-|Windows 11|``7+.reg``<br>``8+.reg``<br>``10+.reg``<br>``11+.reg``|
+- Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
 
 - After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 
