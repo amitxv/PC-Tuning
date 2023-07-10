@@ -1,17 +1,5 @@
 Windows Registry Editor Version 5.00
 
-; clear image file execution options
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
-
-; remove pin to quick access in context menu
-
-[-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
-
 ; disable windows update
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
@@ -72,12 +60,10 @@ Windows Registry Editor Version 5.00
 "DisableSearchBoxSuggestions"=dword:00000001
 
 ; show file extensions
-; launch file explorer to this pc
 ; disable recent items and frequent places
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "HideFileExt"=dword:00000000
-"LaunchTo"=dword:00000001
 "Start_TrackDocs"=dword:00000000
 
 ; disable search indexing
@@ -125,20 +111,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]
 "Start"=dword:00000004
-
-; hide frequent folders in quick access
-; hide recent folders in quick access
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-"ShowFrequent"=dword:00000000
-"ShowRecent"=dword:00000000
-"ShellState"=hex(3):24,00,00,00,3E,20,00,00,00,00,00,00,00,00,00,00,00,00,\
-00,00,01,00,00,00,12,00,00,00,00,00,00,00,22,00,00,00
-
-; hide quick access from file explorer
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-"HubMode"=dword:00000001
 
 ; disable automatic setup of network devices
 
