@@ -54,38 +54,38 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from installing unwanted updates and drivers.
 
-- Install using a USB storage device:
+### Install using a USB storage device
 
-    - Move your Windows ISO into the USB storage in file explorer (where the Linux ISO is also located)
+- Move your Windows ISO into the USB storage in file explorer (where the Linux ISO is also located)
 
-    - Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual
+- Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual
 
-    - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to bypass this step (this does not activate Windows)
+- When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to bypass this step (this does not activate Windows)
 
-    - When installing Win11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and add the relevant registry keys listed below
+- When installing Win11 with a USB, you may encounter system requirement issues. To bypass the checks, press ``Shift+F10`` to open CMD then type ``regedit`` and add the relevant registry keys listed below
 
-        ```
-        [HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
-        "BypassTPMCheck"=dword:00000001
-        "BypassRAMCheck"=dword:00000001
-        "BypassSecureBootCheck"=dword:00000001
-        ```
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
+    "BypassTPMCheck"=dword:00000001
+    "BypassRAMCheck"=dword:00000001
+    "BypassSecureBootCheck"=dword:00000001
+    ```
 
-- Install using DISM Apply-Image (without a USB storage device):
+### Install using DISM Apply-Image (without a USB storage device)
 
-    - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign the newly created unallocated space a drive letter
+- Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign the newly created unallocated space a drive letter
 
-    - Extract the ISO if required then run the command below to apply the image. Replace ``<path\to\wim>`` with the path to the ``install.wim`` or ``install.esd`` and replace ``<drive letter>`` with the drive letter you assigned in the previous step. For example, ``C:\en_windows_8_1_x64_dvd_2707217\sources\install.wim`` and ``D:``
+- Extract the ISO if required then run the command below to apply the image. Replace ``<path\to\wim>`` with the path to the ``install.wim`` or ``install.esd`` and replace ``<drive letter>`` with the drive letter you assigned in the previous step. For example, ``C:\en_windows_8_1_x64_dvd_2707217\sources\install.wim`` and ``D:``
 
-        ```bat
-        DISM /Apply-Image /ImageFile:<path\to\wim> /Index:1 /ApplyDir:<drive letter>
-        ```
+    ```bat
+    DISM /Apply-Image /ImageFile:<path\to\wim> /Index:1 /ApplyDir:<drive letter>
+    ```
 
-    - Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory. For example ``D:\Windows``
+- Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory. For example ``D:\Windows``
 
-        ```bat
-        bcdboot <windir>
-        ```
+    ```bat
+    bcdboot <windir>
+    ```
 
 ---
 
