@@ -145,7 +145,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if building Windows 7.
 
 ```bat
-win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000
+win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
 ```
 
 ## Integrate and Obtain Drivers (Windows 7)

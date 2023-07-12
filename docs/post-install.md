@@ -38,6 +38,8 @@ Set-ExecutionPolicy Unrestricted
 
 Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
 
+Append the ``-ui_cleanup`` argument to clean up the interface further.
+
 ```powershell
 C:\bin\scripts\apply-registry.ps1 -winver <option>
 ```
@@ -132,9 +134,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable
 
-    - ``Remote`` - disable remote assistance
-
-- Allow users full control of the ``C:\`` directory to resolve xperf etl processing
+- Allow users full control of the ``C:\`` directory to resolve xperf ETL processing
 
     - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
 
@@ -146,7 +146,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
         - All permissions in ``Privacy`` Allow microphone access if desired
 
-- Windows Server Only:
+- Windows Server+ Only:
 
     - In Server Manager, navigate to ``Manage -> Server Manager Properties`` and enable the option to prevent Server Manager from starting automatically
 
@@ -159,12 +159,6 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
     - Navigate to ``Computer Configuration -> Administrative Templates -> System`` by typing ``gpedit.msc`` in ``Win+R`` and disable ``Display Shutdown Event Tracker`` to disable the shutdown prompt
 
     - To remove the user password, enter your current password and leave the new/confirm password fields blank in ``User Accounts`` by typing ``control userpasswords`` in ``Win+R``
-
-- Windows 10+ Only:
-
-    - Disable transparency effects in Windows settings as it wastes resources
-
-        - See [media/transparency-effects-benchmark.png](/media/transparency-effects-benchmark.png)
 
 ## Remove Bloatware Natively
 
@@ -179,7 +173,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
     - Remove OneDrive
 
         ```bat
-        for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall))
+        for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall)) && reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
         ```
 
 - Open PowerShell and enter the command below to remove all Appx packages (Windows 8+)
@@ -637,6 +631,12 @@ Open CMD and enter the commands below.
 
     ```bat
     fsutil behavior set disablelastaccess 1
+    ```
+
+- If an HDD is not present in the system then Superfetch/Prefetch can be disabled with the command below
+
+    ```bat
+    reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
     ```
 
 ## Message Signaled Interrupts

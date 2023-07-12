@@ -1,7 +1,8 @@
 param(
     [Parameter(Mandatory = $true)]
     [ValidateSet(7, 8, 10, 11)]
-    [int]$winver
+    [int]$winver,
+    [switch]$ui_cleanup
 )
 
 function Is-Admin() {
@@ -24,7 +25,7 @@ function main() {
 
     Write-Host "info: this may take a while..."
 
-    foreach ($file in @("7.reg", "7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
+    foreach ($file in @("7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
         $file_name = $file.replace(".reg", "")
         $file = "C:\bin\registry\$file"
         $is_successful = 0
@@ -46,6 +47,11 @@ function main() {
             Write-Host "error: failed merging one or more registry files"
             return 1
         }
+    }
+
+    if ($ui_cleanup -and (Apply-Registry("C:\bin\registry\ui_cleanup.reg") -ne 0)) {
+        Write-Host "error: failed merging ui_cleanup.reg"
+        return 1
     }
 
     Write-Host "info: successfully applied registry settings for windows $winver"

@@ -34,7 +34,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
 
-; set user account control to never notify
+; disable UAC
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "EnableLUA"=dword:00000000
@@ -54,18 +54,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
-; turn off display of recent search entries in the file explorer search box
-
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-"DisableSearchBoxSuggestions"=dword:00000001
-
-; show file extensions
-; disable recent items and frequent places
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"HideFileExt"=dword:00000000
-"Start_TrackDocs"=dword:00000000
-
 ; disable search indexing
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]
@@ -76,17 +64,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
 
-; disable crash dumping
-; do not automatically reboot after a BSOD
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
-"CrashDumpEnabled"=dword:00000000
-"AutoReboot"=dword:00000000
-"LogEvent"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl\StorageTelemetry]
-"DeviceDumpEnabled"=dword:00000000
-
 ; disable language bar
 
 [HKEY_CURRENT_USER\Keyboard Layout\Toggle]
@@ -95,27 +72,7 @@ Windows Registry Editor Version 5.00
 "Hotkey"="3"
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\CTF\LangBar]
-"Transparency"=dword:000000ff
-"Label"=dword:00000000
-"ExtraIconsOnMinimized"=dword:00000000
 "ShowStatus"=dword:00000003
-
-; disable paging executive
-; disable page combining
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
-"DisablePagingExecutive"=dword:00000001
-"DisablePageCombining"=dword:00000001
-
-; disable prefetch and superfetch
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]
-"Start"=dword:00000004
-
-; disable automatic setup of network devices
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\NcdAutoSetup\Private]
-"AutoSetup"=dword:00000000
 
 ; disable customer experience improvement program
 
@@ -128,11 +85,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VSCommon\15.0\SQM]
 "OptIn"=dword:00000000
 
-; clear history of recently opened documents on exit
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"ClearRecentDocsOnExit"=dword:00000001
-
 ; disable fault tolerant heap
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
@@ -143,7 +95,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
 "Flags"="506"
 
-; disable defender
+; disable windows defender
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 "DisableAntiSpyware"=dword:00000001
@@ -173,11 +125,6 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
 
-; required for win-wallpaper
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"UseDefaultTile"=dword:00000001
-
 ; disable hibernation
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
@@ -196,7 +143,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "Disabled"=dword:00000001
 
-; reserve 10 percent of CPU resources for low-priority tasks instead of the default 20 percent
+; reserve 10% of CPU resources for low-priority tasks instead of the default 20%
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
 "SystemResponsiveness"=dword:0000000a
+
+; disable remote assistance
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
+"fAllowToGetHelp"=dword:00000000
