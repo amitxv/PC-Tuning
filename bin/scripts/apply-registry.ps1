@@ -49,7 +49,7 @@ function main() {
         }
     }
 
-    if ($ui_cleanup -and (Apply-Registry("C:\bin\registry\ui_cleanup.reg") -ne 0)) {
+    if ($ui_cleanup -and (Apply-Registry("C:\bin\registry\ui-cleanup.reg") -ne 0)) {
         Write-Host "error: failed merging ui_cleanup.reg"
         return 1
     }
