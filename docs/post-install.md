@@ -36,6 +36,59 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
+<details>
+<br>
+<summary>What do the registry files do and modify?</summary>
+
+|Modification|Justification|
+|---|---|
+|Disables Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
+|Disable Sticky Keys|Intrusive|
+|Disable Search The Web or Display Web Results In Search|Telemetry|
+|Disable Transparency|[Wastes resources](/media/transparency-effects-benchmark.png)|
+|Disable Corner Navigation|Intrusive|
+|Prevent Windows Marking File Attachments With Information About Their Zone of Origin|Intrusive|
+|Disable Windows Defender|Security and performance are generally mutually exclusive|
+|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable drivers. Security and performance are generally mutually exclusive|
+|Disable Customer Experience Improvement Program|Telemetry|
+|Disable Automatic Maintenance|Intrusive|
+|Remove 3D Objects from Explorer Pane|Intrusive|
+|Disable UAC|Eliminates intrusive UAC prompt but reduces security as all processes are run with Administrator privileges by default|
+|Disable Fast Startup|Interferes with shutting down and is required for making changes to the file system offline within the Linux debloating steps|
+|Disable Sign-In and Lock Last Interactive User After a Restart|Intrusive|
+|Disable Suggestions In The Search Box and In Search Home|Telemetry and intrusive|
+|Disable Powershell Telemetry|Telemetry|
+|Restore Old Context Menu|Intrusive|
+|Disable Fault Tolerant Heap|Prevents Windows autonomously applying mitigations to prevent future crashes on a per-application basis|
+|Disable GameBarPresenceWriter|Runs constantly and wastes resources despite disabling Game Bar|
+|Disable Language Bar|Accidentally opens on occasions which is intrusive for most people|
+|Disable Telemetry|Telemetry|
+|Disable Notifications Network Usage|Polls constantly and wastes resources|
+|Reserve 10% of CPU Resources for Low-Priority Tasks Instead of The Default 20%|On an optimized system with few background tasks, it is desirable to allocate most of the CPU time to the foreground process|
+|Disable Your *PC Is Out of Support* Message|Intrusive|
+|Disable Search Indexing|Runs constantly and wastes resources|
+|Enable The Legacy Photo Viewer|Alternative option for viewing photos as the Windows Photos app is removed in the Appx removal step|
+|Disable Hibernation|Eliminates the need for a hibernation file. It is recommended to shut down instead|
+|Disable Remote Assistance|Security risk|
+|Allocate Processor Resources Primarily To Programs|On client editions of Windows, this has no effect but is changed to ensure consistency between all editions including Windows Server|
+|Disable Program Compatibility Assistant|Prevent Windows applying changes anonymously after running troubleshooters|
+|Disable Pointer Acceleration|Ensures one-to-one mouse response for games that do not subscribe to raw input events|
+|Disable Windows Error Reporting|Telemetry|
+|Disable Typing Insights|Telemetry|
+
+Changes made with ``-ui_cleanup``:
+
+- Launch File Explorer To This PC
+- Turn Off Display of Recent Search Entries In the File Explorer Search Box
+- Remove Pin To Quick Access In Context Menu
+- Disable Recent Items and Frequent Places In File Explorer and Quick Access
+- Hide Recent Folders In Quick Access
+- Clear History of Recently Opened Documents On Exit
+- Hide Quick Access from File Explorer
+- Hide Frequent Folders In Quick Access
+
+</details>
+
 Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
 
 Append the ``-ui_cleanup`` argument to clean up the interface further.
