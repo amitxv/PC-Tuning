@@ -160,21 +160,35 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - To remove the user password, enter your current password and leave the new/confirm password fields blank in ``User Accounts`` by typing ``control userpasswords`` in ``Win+R``
 
+## Disable Features
+
+Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``
+
+- See [media/windows7-features-example.png](/media/windows7-features-example.png)
+
+- See [media/windows8+-features-example.png](/media/windows8+-features-example.png)
+
+- See [media/windows-server-features-example.png](/media/windows-server-features-example.png)
+
+    - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` and enable ``Wireless LAN Service``
+
+## Remove Chromium Microsoft Edge and OneDrive
+
+Open CMD and enter the commands below. The legacy version of Microsoft Edge will be removed in a later step if it is present.
+
+- Microsoft Edge
+
+    ```bat
+    if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do ("%a" --uninstall --system-level --verbose-logging --force-uninstall))
+    ```
+
+- OneDrive
+
+    ```bat
+    for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall)) && reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
+    ```
+
 ## Remove Bloatware Natively
-
-- Open CMD and enter the commands below
-
-    - Remove Chromium Microsoft Edge (legacy version will be removed in a later step if it is present)
-
-        ```bat
-        if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do ("%a" --uninstall --system-level --verbose-logging --force-uninstall))
-        ```
-
-    - Remove OneDrive
-
-        ```bat
-        for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall)) && reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
-        ```
 
 - Open PowerShell and enter the command below to remove all Appx packages (Windows 8+)
 
@@ -183,16 +197,6 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
     ```
 
 - Uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
-
-- Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``
-
-    - See [media/windows7-features-example.png](/media/windows7-features-example.png)
-
-    - See [media/windows8+-features-example.png](/media/windows8+-features-example.png)
-
-    - See [media/windows-server-features-example.png](/media/windows-server-features-example.png)
-
-        - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` (top right) and enable ``Wireless LAN Service``
 
 - Windows 10+ Only:
 
