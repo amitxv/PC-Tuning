@@ -28,6 +28,8 @@
 
     - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software related causes of IRQ sharing but the purpose of checking IRQ sharing now is to resolve the hardware related causes
 
+- An Ethernet cable is mandatory due to the unreliability, degraded performance and excessive interference of wireless connections
+
 - Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets.
 
     - See [Bufferbloat and Internet Speed Test](https://www.waveform.com/tools/bufferbloat)
@@ -43,8 +45,6 @@
 - Favor short and shielded cables
 
 - Clean the pins and connectors of components. Use compressed air to remove dust from slots before installing components such as PCIe, NVMe, RAM and more
-
-- An Ethernet cable is mandatory due to the unreliability, degraded performance and excessive interference of wireless connections
 
 - If you are not already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup. GPT/UEFI is recommended for most people
 
