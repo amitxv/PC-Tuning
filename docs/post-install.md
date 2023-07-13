@@ -193,6 +193,12 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
 
+- If an HDD is not present in the system then Superfetch/Prefetch can be disabled with the command below
+
+    ```bat
+    reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
+    ```
+
 - Windows 8+ Only:
 
     - Disable the following by pressing ``Win+I``:
@@ -690,12 +696,6 @@ Open CMD and enter the commands below.
 
     ```bat
     fsutil behavior set disablelastaccess 1
-    ```
-
-- If an HDD is not present in the system then Superfetch/Prefetch can be disabled with the command below
-
-    ```bat
-    reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
     ```
 
 ## Message Signaled Interrupts
