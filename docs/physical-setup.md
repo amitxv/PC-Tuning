@@ -226,45 +226,6 @@
 
 Ensure that all of your hardware are stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (non-exhaustive list of recommended tools are listed below).
 
-- Tools
-
-    - Linpack
-
-        - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
-
-        - [PorteusLinpack Bootable by SlovenianSlobodan#9859](https://drive.google.com/file/d/1g6hY_klVOyd2FQy0Ozit2aFrEyuC4r48/view?usp=sharing)
-
-            - The default config is 100 trials of 10 GB problem size. To customize the config, type ``vi lininput_xeon64``. See [this video](https://www.youtube.com/watch?v=vo2FXvPkcEA) for a basic overview of the vi editor
-
-            - Use the [sample config](https://raw.githubusercontent.com/BoringBoredom/Linpack-Extended/master/dependencies/linpack/misc/lininput_xeon64) as an example to chain multiple tests
-
-            - To run the test, type ``./runme_xeon64``
-
-            - To access sensors while the test is running, press ``Ctrl+Alt+F2`` to switch to TTY 2 then type ``./sensors``. Use ``Ctrl+Alt+F1`` to switch back to TTY 1 to view the output of the test
-
-        - [Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme) - Outdated binaries
-
-        - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
-
-        - Residuals should match, otherwise it is a sign of instability
-
-        - GFLOP variation should be minimal
-
-    - [Prime95](https://www.mersenne.org/download)
-    - [y-cruncher](http://www.numberworld.org/y-cruncher)
-
-    - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
-
-        - [HCI](https://hcidesign.com/memtest)
-
-        - [MemTest86](https://www.memtest86.com) (bootable)
-
-        - [MemTest86+](https://memtest.org) (bootable)
-
-    - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
-
-    - [OCCT](https://www.ocbase.com)
-
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors. A higher polling interval can help to identify sudden spikes but not transients on a microsecond scale as an example. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
 - A single error or crash is one too many
@@ -312,6 +273,45 @@ Ensure that all of your hardware are stable before configuring a new operating s
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
     - Aim for a ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
+
+### Stess-Testing Tools
+
+- Linpack
+
+    - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
+
+    - [PorteusLinpack Bootable by SlovenianSlobodan#9859](https://drive.google.com/file/d/1g6hY_klVOyd2FQy0Ozit2aFrEyuC4r48/view?usp=sharing)
+
+        - The default config is 100 trials of 10 GB problem size. To customize the config, type ``vi lininput_xeon64``. See [this video](https://www.youtube.com/watch?v=vo2FXvPkcEA) for a basic overview of the vi editor
+
+        - Use the [sample config](https://raw.githubusercontent.com/BoringBoredom/Linpack-Extended/master/dependencies/linpack/misc/lininput_xeon64) as an example to chain multiple tests
+
+        - To run the test, type ``./runme_xeon64``
+
+        - To access sensors while the test is running, press ``Ctrl+Alt+F2`` to switch to TTY 2 then type ``./sensors``. Use ``Ctrl+Alt+F1`` to switch back to TTY 1 to view the output of the test
+
+    - [Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme) - Outdated binaries
+
+    - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
+
+    - Residuals should match, otherwise it is a sign of instability
+
+    - GFLOP variation should be minimal
+
+- [Prime95](https://www.mersenne.org/download)
+- [y-cruncher](http://www.numberworld.org/y-cruncher)
+
+- [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
+
+    - [HCI](https://hcidesign.com/memtest)
+
+    - [MemTest86](https://www.memtest86.com) (bootable)
+
+    - [MemTest86+](https://memtest.org) (bootable)
+
+- [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
+
+- [OCCT](https://www.ocbase.com)
 
 ---
 
