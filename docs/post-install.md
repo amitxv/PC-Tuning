@@ -147,6 +147,8 @@ A standard Firefox installation is recommended. Open PowerShell and enter the co
 C:\bin\scripts\install-firefox.ps1
 ```
 
+- Install [language dictionaries](https://addons.mozilla.org/en-GB/firefox/language-tools) for spell-checking
+
 - I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Disable Residual Scheduled Tasks
