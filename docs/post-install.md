@@ -24,7 +24,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 ## Disable Tamper Protection
 
-Tamper protection can be disabled through Windows Defender. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
+Disable Tamper protection through Windows Defender then restart your PC. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
 
 ## Unrestricted PowerShell Execution Policy
 
