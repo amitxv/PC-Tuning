@@ -54,6 +54,10 @@
 
     - See [How to Convert MBR to GPT During Windows 10/8/7 Installation | MDTechVideos](https://www.youtube.com/watch?v=f81qKAJUdKc)
 
+- Consider what Windows version you will be using because some settings listed in the [BIOS](#bios) section depend on the Windows version used (search for *"Windows"*)
+
+    - See [What Version of Windows Should You Use?](/docs/pre-install.md#what-version-of-windows-should-you-use)
+
 ## Cooling
 
 - Remove the side panels from your case or consider an open-bench setup
