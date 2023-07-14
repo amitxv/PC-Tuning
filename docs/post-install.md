@@ -654,7 +654,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 ## Disable Driver Power Saving
 
-Open PowerShell and enter the command below to disable power saving on devices in device manager.
+Open PowerShell and enter the command below to disable power saving on devices in device manager. Avoid re-plugging devices as the power saving settings will get restored
 
 ```powershell
 C:\bin\scripts\disable-pnp-powersaving.ps1
