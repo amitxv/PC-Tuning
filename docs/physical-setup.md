@@ -2,7 +2,7 @@
 
 ## General
 
-- A SSD or NVMe is mandatory due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
+- A SSD or NVMe is strongly recommended due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
 
 - Assess the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
 
@@ -28,7 +28,7 @@
 
     - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software related causes of IRQ sharing but the purpose of checking IRQ sharing now is to resolve the hardware related causes
 
-- An Ethernet cable is mandatory due to the unreliability, degraded performance and excessive interference of wireless connections
+- An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
 - Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets.
 
