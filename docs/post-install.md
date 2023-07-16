@@ -105,9 +105,9 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 - GPU drivers will be installed in a later step so do not install them at this stage
 
-- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in Device Manager for a given device
 
-- Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
+- Try to obtain the driver in its INF form so that it can be installed in Device Manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
 
 - It is recommended to update and install the following:
 
@@ -594,7 +594,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 I'm not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
-- The ``High precision event timer`` device in device manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
+- The ``High precision event timer`` device in Device Manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
 
 - Use the command below to prevent the [Software Protection service attempting to register a restart every 30s](/media/software-protection-error.png) while services are disabled. I'm not sure what the problematic service is, but online sources point to Task Scheduler
 
@@ -622,7 +622,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 1. If you haven't disabled services at this stage, run the ``Services-Disable.bat`` script
 
-2. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
+2. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
 
 3. **DO NOT** disable any devices with a yellow icon because these are the devices that are being handled by disabling services
 
@@ -644,11 +644,11 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - Disable any unneeded devices that are using an IRQ or I/O resources, always ask if unsure and take your time on this step
 
-    - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate, unneeded devices in case you accidentally miss any with the confusing device manager tree structure
+    - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate, unneeded devices in case you accidentally miss any with the confusing Device Manager tree structure
 
 6. Run the ``Services-Enable.bat`` script
 
-7. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
+7. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
 
 8. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and aren't due to services being disabled
 
@@ -656,7 +656,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 ## Disable Driver power-saving
 
-Open PowerShell and enter the command below to disable power-saving on devices in device manager. Avoid re-plugging devices as the power-saving settings will get restored
+Open PowerShell and enter the command below to disable power-saving on devices in Device Manager. Avoid re-plugging devices as the power-saving settings will get restored
 
 ```powershell
 C:\bin\scripts\disable-pnp-powersaving.ps1
@@ -728,7 +728,7 @@ Windows schedules interrupts, DPCs, threads and more on CPU 0 for several module
 
 - Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence. This is usually not a problem with MSI-X devices
 
-- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in device manager
+- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in Device Manager
 
 ### XHCI Controller
 
@@ -746,7 +746,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 - See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
-- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
+- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
