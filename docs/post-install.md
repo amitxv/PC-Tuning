@@ -22,16 +22,16 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
-## Disable Tamper Protection
+## Disable Tamper Protection (Windows 10 1903+)
 
-Disable Tamper protection through Windows Defender then restart your PC. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
+Disable Tamper protection through Security App then restart your PC. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
 
 ## Unrestricted PowerShell Execution Policy
 
 This is required to execute the scripts within the repository. Open PowerShell as administrator and enter the command below.
 
 ```powershell
-Set-ExecutionPolicy Unrestricted
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
 
 ## Merge the Registry Files
@@ -42,7 +42,7 @@ Set-ExecutionPolicy Unrestricted
 
 |Modification|Justification|
 |---|---|
-|Disables Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
+|Disable Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
 |Disable Sticky Keys|Intrusive|
 |Disable Search The Web or Display Web Results In Search|Telemetry|
 |Disable Transparency|[Wastes resources](/media/transparency-effects-benchmark.png)|
@@ -89,7 +89,7 @@ Changes made with ``-ui_cleanup``:
 
 </details>
 
-Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
+Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring (``7``, ``8``, ``10`` or ``11``).
 
 Append the ``-ui_cleanup`` argument to clean up the interface further.
 
@@ -103,9 +103,11 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 ## Install Drivers
 
-- GPU drivers will be installed in a later step so do not install them at this stage
+- GPU driver will be installed in a later step so do not install it at this stage
 
 - You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+
+- If you do not have network connectivity at this stage, you may need to download your drivers from another device
 
 - Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
 
@@ -125,7 +127,7 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 - Windows 10+ Only
 
-    - Configure settings in ``Time and Language`` by pressing ``Win+I``
+    - Configure settings in ``Time & Language`` by pressing ``Win+I``
 
 ## Activate Windows
 
@@ -144,16 +146,16 @@ slmgr /ato
 A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip-hash-check`` to the end of the command.
 
 ```powershell
-C:\bin\scripts\install-firefox.ps1
+C:\bin\scripts\install-firefox.ps1 <option>
 ```
 
 - Install [language dictionaries](https://addons.mozilla.org/en-GB/firefox/language-tools) for spell-checking
 
-- I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
+- Optionally configure and cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar``then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Disable Residual Scheduled Tasks
 
-Open PowerShell and enter the command below. Ignore any errors.
+Open PowerShell and enter the command below. Ignore any encountered errors.
 
 ```powershell
 C:\bin\scripts\disable-scheduled-tasks.ps1
@@ -205,7 +207,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
         - Everything in ``System -> Notifications and actions``
 
-        - All permissions in ``Privacy`` Allow microphone access if desired
+        - All permissions in ``Privacy``. Allow microphone access if desired
 
 - Windows Server+ Only:
 
@@ -223,7 +225,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 ## Disable Features
 
-Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``
+Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``.
 
 - See [media/windows7-features-example.png](/media/windows7-features-example.png)
 
@@ -240,7 +242,7 @@ Open CMD and enter the commands below. The legacy version of Microsoft Edge will
 - Microsoft Edge
 
     ```bat
-    if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do ("%a" --uninstall --system-level --verbose-logging --force-uninstall))
+    > nul 2>&1 (reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /v "NoRemove" /f & reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\ClientState\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}" /v "experiment_control_labels" /f & reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdateDev" /v "AllowUninstall" /t REG_DWORD /d "1" /f) & if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do ("%a" --uninstall --system-level --verbose-logging --force-uninstall))
     ```
 
 - OneDrive
@@ -323,15 +325,15 @@ Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/down
 
 If you use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards), download and install it.
 
-- Disable update checks in settings
+- Set ``Check for available product updates`` to ``Never`` in ``Properties -> General``
 
-- I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
+- I would recommend configuring a static GPU fan speed as using the fan curve feature requires the program to run continually
 
 - To automatically load profile 1 (as an example) and exit, type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
 
 ## Display Resolutions and Scaling Modes
 
-You may have already found a stable overclock for your display in the [Physical Setup](/docs/physical-setup.md) section which you can configure in this section.
+You may have already found a stable overclock for your display in the [Stability, Hardware Clocking and Thermal Performance](/docs/physical-setup.md#stability-hardware-clocking-and-thermal-performance) section which you can configure in this section.
 
 - Typically, you have the option of performing scaling on the GPU or display. Native resolution does not require scaling thus results in the identity scaling mode being used. Furthermore, identity scaling renders most of the scaling options in the GPU control panel obsolete. If you are using a non-native resolution, there is an argument for favoring display scaling due to less GPU processing
 
@@ -343,11 +345,11 @@ You may have already found a stable overclock for your display in the [Physical 
 
     - Optionally use [QueryDisplayScaling](https://github.com/amitxv/QueryDisplayScaling) to query the current scaling mode
 
-- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in CRU. This may be a workaround for the ~1-second black screen when alt-tabbing while using the ``Hardware: Legacy Flip`` present mode
+- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in [CRU](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU). This may be a workaround for the ~1-second black screen when alt-tabbing while using the ``Hardware: Legacy Flip`` present mode
 
     - On systems with an NVIDIA GPU, ensure that the ``Display`` option for the ``Perform scaling on`` setting is still available. If it is not, then find out what change you made in CRU results in it not being accessible through trial and error. This can be accomplished by running ``reset.exe`` to reset the settings to default then re-configure CRU. After each change, run ``restart64.exe`` then check whether the option is still available
 
-- Ensure your resolution is configured properly in Display Adapter Settings
+- Ensure your resolution is configured properly in Display Adapter Settings by typing ``rundll32.exe display.dll,ShowAdapterSettings`` in ``Win+R``
 
 - On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior across applications and desktops
 
