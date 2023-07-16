@@ -668,7 +668,7 @@ C:\bin\scripts\disable-pnp-powersaving.ps1
 
 ## Configure Event Trace Sessions
 
-Create registry files to toggle event trace sessions. Programs that rely on event tracers will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in `Win+R` and then navigating to ``Data Collector Sets -> Event Trace Sessions``.
+Create registry files to toggle event trace sessions. Programs that rely on event tracers will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in ``Win+R`` and then navigating to ``Data Collector Sets -> Event Trace Sessions``.
 
 - ets-enable
 
@@ -718,7 +718,7 @@ Open CMD and enter the commands below.
 
 - Restart your PC, you can verify whether a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
 
-- Although this was carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by typing ``msinfo32`` in `Win+R` and then navigating to the ``Conflicts/Sharing`` section
+- Although this was carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` and then navigating to the ``Conflicts/Sharing`` section
 
     - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
