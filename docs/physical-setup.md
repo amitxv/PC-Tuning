@@ -30,7 +30,7 @@
 
 - An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
-- Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets.
+- Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets
 
     - See [Bufferbloat and Internet Speed Test](https://www.waveform.com/tools/bufferbloat)
 
@@ -96,7 +96,7 @@
 
 - Repaste GPU due to factory application of thermal paste often being inadequate and replace the stock fans with higher quality ones
 
-- Consider replacing the stock PSU fan and connect it to a motherboard fan header or hub
+- Consider replacing the stock PSU fan and connecting it to a motherboard fan header or hub
 
 ## Minimize Interference
 
@@ -114,7 +114,7 @@
 
 - Favor the first few ports on the desired XHCI controller. Some of them may not be physically accessible which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports, avoid companion ports (indicated in the right section of the program) and [internal headers](/media/xhci-internal-headers.png) as the data must go through hubs
 
-    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to a ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
+    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to an ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
 
         - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
@@ -148,11 +148,11 @@
 
 ## BIOS
 
-- Keep in mind, anything can go sideways when modifying BIOS. You should explore methods to flash a stock BIOS if [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work in case anything goes wrong such as working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer
+- Keep in mind that anything can go sideways when modifying BIOS. You should explore methods to flash a stock BIOS such as working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer if [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work
 
 - Check for BIOS updates and positive changes in the change log such as increased memory stability. Beware of problems brought up in reviews and forums
 
-- Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
+- Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back the microcode on a BIOS level if possible
 
 - Resizable BAR
 
@@ -160,7 +160,7 @@
 
     - Consider using [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable it on unsupported systems
 
-- Ensure that the settings you are changing scales positively and make note of them for future reference/backtracking to resolve potential issues
+- Ensure that the settings you are changing scale positively and make note of them for future reference/backtracking to resolve potential issues
 
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
 
@@ -176,7 +176,7 @@
 
 - Limit C-States, P-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
 
-    - Verify S-State status with ``powercfg -a`` in CMD
+    - Verify S-State status with ``powercfg /a`` in CMD
 
 - Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU (Intel VT-d/AMD-Vi)](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
 
@@ -214,7 +214,7 @@
 
 - As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
-    - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
+    - In some cases, the settings mentioned above may prevent the processor from exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
 - Configure fan curves or set a static, high, noise-acceptable RPM
 
@@ -224,7 +224,7 @@
 
 ## Stability, Hardware Clocking and Thermal Performance
 
-Ensure that all of your hardware are stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (non-exhaustive list of recommended tools are listed below).
+Ensure that all of your hardware is stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (non-exhaustive list of recommended tools are listed below).
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors. A higher polling interval can help to identify sudden spikes but not transients on a microsecond scale as an example. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
@@ -244,7 +244,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Monitor WHEAs. [HWiNFO](https://www.hwinfo.com) has an error count
 
-- Disable the paging file and use safe mode for stress-testing preferably on a throwaway operating system in case it becomes corrupted
+- Disable the paging file and use safe mode for stress-testing, preferably on a throwaway operating system in case it becomes corrupted
 
 - Configure load-line calibration. Opinionated setting, mentioning for awareness. This isn't a recommendation for what mode to use
 
@@ -272,7 +272,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
-    - Aim for a ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
+    - Aim for an ``actual`` integer refresh rate such as 60.00/240.00, not 59.94/239.76. Using the exact timing can help achieve this
 
 ### Stess-Testing Tools
 
@@ -294,7 +294,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
     - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
 
-    - Residuals should match, otherwise it is a sign of instability
+    - Residuals should match, otherwise, it is a sign of instability
 
     - GFLOP variation should be minimal
 
