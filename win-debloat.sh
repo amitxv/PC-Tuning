@@ -23,7 +23,7 @@ rm -rf "Windows/System32/mobsync.exe"
 for i in "${wildcard_names[@]}"
 do
     echo info: removing $i
-    find . -ipath "*$i*" -not -ipath "./bin/*" -delete
+    find . -ipath "*$i*" -delete
 done
 
 exit 0
