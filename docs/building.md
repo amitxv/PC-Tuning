@@ -18,7 +18,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - Windows 8: ``en_windows_8_1_x64_dvd_2707217.iso`` - [Adguard hashes](https://files.rg-adguard.net/file/406e60db-4275-7bf8-616f-56e88d9e0a4a?lang=en-us)
 
-    - Windows 10+: Try to obtain an ISO with minimal updates as we will be integrating those of our choice. ISOs built with UUP dump typically ship with the latest updates which is fine
+    - Windows 10+: Try obtaining an ISO with minimal updates as we will be integrating those of our choice. ISOs built with UUP dump typically ship with the latest updates which is fine
 
         <details>
         <summary>How to check integrated updates</summary>
@@ -65,7 +65,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
             <img src="/media/uupdump-choose-edition.png" width="750">
 
-        - Copy the configuration below, ensure that the ``include updates`` and ``create download package`` options are checked
+        - Copy the configuration below, ensure that ``Include updates`` is ticked and click ``Create download package``
 
             <img src="/media/uupdump-download-options.png" width="750">
 
@@ -142,7 +142,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 ## Replace Wallpapers
 
-Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if building Windows 7.
+Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if building Windows 7 ISO.
 
 ```bat
 win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
@@ -150,7 +150,7 @@ win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
 
 ## Integrate and Obtain Drivers (Windows 7)
 
-This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable ourselves to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try to integrate the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934). Ensure to integrate ``KB2864202`` into the ISO if you use this driver.
+This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable ourselves to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try integrating the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934). Ensure to integrate ``KB2864202`` into the ISO if you use this driver.
 
 You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in Device Manager for a given device.
 
