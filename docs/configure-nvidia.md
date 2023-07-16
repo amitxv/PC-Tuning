@@ -23,7 +23,7 @@ Download the latest game ready (not security update) driver using the [advanced 
     <file name="${{PrivacyPolicyFile}}"/>
     ```
 
-- In ``NVI2\presentations.cfg`` set the value for ProgressPresentationUrl and ProgressPresentationSelectedPackageUrl to an empty string:
+- In ``NVI2\presentations.cfg`` set the value for ``ProgressPresentationUrl`` and ``ProgressPresentationSelectedPackageUrl`` to an empty string:
 
     ```
     <string name="ProgressPresentationUrl" value=""/>
