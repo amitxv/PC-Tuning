@@ -68,7 +68,7 @@
 
 - Check for contact patches on the IHS/Die and cold plate
 
-- Use high quality thermal paste
+- Use high-quality thermal paste
 
     - See [Best Thermal Paste for CPUs](https://www.tomshardware.com/best-picks/best-thermal-paste)
 
@@ -92,15 +92,13 @@
 
 - Mount a fan over VRMs, CPU backplate, storage devices, PCH, NIC and other hot spots
 
-- Replace stock thermal pads with higher quality ones
-
-- Repaste GPU due to factory application of thermal paste often being inadequate and replace the stock fans with higher quality ones
+- Repaste GPU due to often inadequate factory application of thermal paste, replace the stock fans and thermal pads with higher quality ones
 
 - Consider replacing the stock PSU fan and connect it to a motherboard fan header or hub
 
 ## Minimize Interference
 
-- Move devices that produce interference such as radios, cellphones, routers and more away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
+- Move devices that produce interference such as radios, cell phones, routers and more away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
 
 - Always favor wired over cordless. Wireless devices also tend to implement aggressive power saving for a longer battery life
 
@@ -144,29 +142,29 @@
 
 - Use an [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens
 
-- Factory reset your monitor and reconfigure the settings. Avoid post-processing effects and set overdrive/AMA to an acceptably high setting [as it reduces latency](https://twitter.com/CaIypto/status/1464236780190851078) but comes with a penalty of additional overshoot
+- Factory reset your monitor and reconfigure the settings. Avoid post-processing effects and set overdrive/AMA to an acceptably high setting [as it reduces latency](https://twitter.com/CaIypto/status/1464236780190851078) but also comes with a penalty of additional overshoot
 
 ## BIOS
 
-- Keep in mind, anything can go sideways when modifying BIOS. You should explore methods to flash a stock BIOS if [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work in case anything goes wrong such as working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer
+- Keep in mind that anything can go sideways when modifying the BIOS. You should explore methods to flash a stock BIOS. If [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work, make sure to have another method such as working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer
 
 - Check for BIOS updates and positive changes in the change log such as increased memory stability. Beware of problems brought up in reviews and forums
 
-- Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level
+- Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level if possible
 
 - Resizable BAR
 
     - Requires GPT/UEFI
 
-    - Consider [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable it on unsupported systems
+    - Consider using [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable it on unsupported systems
 
 - Ensure that the settings you are changing scale positively and make note of them for future reference/backtracking to resolve potential issues
 
-- Reset all settings to default settings with the option in BIOS to work with a clean slate
+- Reset all settings to default settings with the option in the BIOS to work with a clean slate
 
-- Motherboard vendors hide/lock a lot of useful settings so that they are not visible to a regular user. For clarification, unlocking BIOS corresponds to making hidden settings accessible and visible
+- Motherboard vendors hide/lock a lot of useful settings so that they are not visible to a regular user. For clarification, unlocking the BIOS corresponds to making hidden settings accessible and visible
 
-    - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` to unlock BIOS if present
+    - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` to unlock the BIOS if present
 
     - The easiest approach to take is to change the access levels within the BIOS using [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) or AMIBCP then flash it
 
@@ -176,7 +174,7 @@
 
 - Limit C-States, P-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
 
-    - Verify S-State status with ``powercfg -a`` in CMD
+    - Verify S-State status with ``powercfg /a`` in CMD
 
 - Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU (Intel VT-d/AMD-Vi)](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
 
@@ -198,9 +196,11 @@
 
 - Disable Secure Boot. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
 
+    - Verify Secure Boot state by typing ``msinfo32`` in ``Win+R``
+
 - Disable Fast Startup, Suspend to RAM or similar options
 
-- Disable Spread Spectrum and ensure BCLK frequency is close to 100.00 as possible in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
+- Disable Spread Spectrum/Enable BCLK 100MHz Lock On and ensure BCLK frequency is close to 100.00 as possible in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
 
 - Disable Legacy USB Support as [it generates unnecessary SMIs](https://patents.google.com/patent/US6067589). You may need to turn this on to install a new operating system or to access BIOS
 
@@ -212,7 +212,7 @@
 
 - Disable Execute Disable Bit/NX Mode. A minority of applications (Valorant) require it to be enabled
 
-- As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
+- As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost, Voltage Optimization and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
     - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
@@ -224,7 +224,7 @@
 
 ## Stability, Hardware Clocking and Thermal Performance
 
-Ensure that all of your hardware are stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (non-exhaustive list of recommended tools are listed below).
+Ensure that all of your hardware is stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (non-exhaustive list of recommended tools are listed below).
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors. A higher polling interval can help to identify sudden spikes but not transients on a microsecond scale as an example. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
@@ -242,9 +242,9 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
     - Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better and safer compared to thermal throttling at a higher frequency
 
-- Monitor WHEAs. [HWiNFO](https://www.hwinfo.com) has an error count
+- Use [HWiNFO](https://www.hwinfo.com) to monitor WHEAs
 
-- Disable the paging file and use safe mode for stress-testing preferably on a throwaway operating system in case it becomes corrupted
+- Disable the paging file and use safe mode for stress-testing, preferably on a throwaway operating system in case it becomes corrupted
 
 - Configure load-line calibration. Opinionated setting, mentioning for awareness. This is not a recommendation for what mode to use
 
@@ -254,7 +254,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
 
-- Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many subtimings nor does it guarantee stability
+- Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many subtimings or guarantee stability
 
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
@@ -272,7 +272,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
-    - Aim for a ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
+    - Aim for an ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
 
 ### Stess-Testing Tools
 
