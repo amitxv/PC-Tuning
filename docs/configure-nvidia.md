@@ -54,7 +54,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Configure NVIDIA Control Panel
 
-- Configure the following on the `Manage` 3D settings`` page:
+- Configure the following on the ``Manage 3D settings`` page:
 
     - Anisotropic filtering - Off
 
@@ -72,7 +72,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Ensure that settings are not being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
 
-- Configure the following on the `Change` resolution`` page:
+- Configure the following on the ``Change resolution`` page:
 
     - Output dynamic range - Full
 
