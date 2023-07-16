@@ -65,7 +65,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
             <img src="/media/uupdump-choose-edition.png" width="750">
 
-        - Copy the configuration below, ensure the `Include`` updates` option is checked and click ``Create download package``
+        - Copy the configuration below, ensure the ``Include updates`` option is checked and click ``Create download package``
 
             <img src="/media/uupdump-download-options.png" width="750">
 
