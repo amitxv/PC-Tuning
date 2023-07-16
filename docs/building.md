@@ -10,7 +10,7 @@
 
 ## Download Stock ISOs
 
-Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <file>`` to get the hash of the ISO.
+Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <file> <hashalgorithm>`` to get the desired hash of the ISO.
 
 - Recommended ISOs:
 
