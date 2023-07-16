@@ -18,7 +18,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - Windows 8: ``en_windows_8_1_x64_dvd_2707217.iso`` - [Adguard hashes](https://files.rg-adguard.net/file/406e60db-4275-7bf8-616f-56e88d9e0a4a?lang=en-us)
 
-    - Windows 10+: Try to obtain an ISO with minimal updates as we will be integrating those of our choice. ISOs built with UUP dump typically ship with the latest updates which is fine
+    - Windows 10+: Try to obtain an ISO with minimal updates as we will be integrating those of our choice. Latest versions of ISOs built with UUP dump ship with the latest updates which is fine
 
         <details>
         <summary>How to check integrated updates</summary>
@@ -152,9 +152,9 @@ win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
 
 This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable ourselves to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try to integrate the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934). Ensure to integrate ``KB2864202`` into the ISO if you use this driver.
 
-You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device.
 
-Once you have obtained the relevant drivers, place all the drivers to be integrated in a folder such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
+Once you have obtained the relevant drivers, place all the drivers to be integrated in a folder such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
@@ -184,16 +184,16 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 - Windows 10+ recommended updates:
 
-    - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so this step (integrating updates) can be skipped
+    - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so integrating updates can be skipped
 
-    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can search for *"non-security"* for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35)). Search for the sever update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
+    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can search for *"Security"* for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-8127c2c6-6edf-4fdf-8b9f-0f7be1ef3562), [Windows 11](https://support.microsoft.com/en-us/topic/windows-11-version-22h2-update-history-ec4229c3-9c5f-4e75-9d6d-9025ab70fcce)). Search for the sever update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
 
-- Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Ensure to download the correct variant (server/client)
+- Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Ensure to download the correct variant (i.e. server/client and the proper architecture)
 
 - Integrate the updates into the mounted ISO with the command below. The servicing stack must be installed before installing the cumulative updates
 
     ```bat
-    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath=<path\to\update>
+    DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath=<update_path>
     ```
 
 ## Enable .NET 3.5 (Windows 8+)
@@ -218,7 +218,7 @@ explorer "%MOUNT_DIR%"
 
 ## Unmount and Commit
 
-Run the command below to commit our changes to the ISO. If you get an error, check if the directory is empty to ensure the ISO is unmounted by typing ``explorer "%MOUNT_DIR%"``. If it is empty, you can likely ignore the error, otherwise try close all open folders and run the command again.
+Run the command below to commit our changes to the ISO. If you get an error, check if the directory is empty to ensure the ISO is unmounted by typing ``explorer "%MOUNT_DIR%"``. If it is empty, you can likely ignore the error, otherwise try closing all open folders and execute the command again.
 
 ```bat
 DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
