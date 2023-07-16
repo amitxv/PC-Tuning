@@ -325,7 +325,7 @@ These are runtimes that are dependencies of applications worldwide.
 
 If you use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards), download and install it.
 
-- Set ``Check for available product updates`` to ``Never`` in ``Settings -> General``
+- Set ``Check for available product updates`` to ``never`` in ``Settings -> General``
 
 - It is recommended to configure a static fan speed as using the fan curve feature requires the program to run continually
 
