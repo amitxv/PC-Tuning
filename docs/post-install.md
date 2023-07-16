@@ -732,7 +732,7 @@ Windows schedules interrupts, DPCs, threads and more on CPU 0 for several module
 
 - Ensure that the [corresponding DPC for an ISR is processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interference with cache coherence. This is usually not a problem with MSI-X devices
 
-- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in the Device Manager
+- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in Device Manager
 
 ### XHCI Controller
 
@@ -775,6 +775,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 - Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU driver is serviced on [improved frame pacing](/media/isolate-gpu-core.png)
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
+
 
 There is a lot of misleading and inaccurate information regarding this topic polluting the internet. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as in multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
 
