@@ -30,13 +30,13 @@
 
 - An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
-- Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets.
+- Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets
 
     - See [Bufferbloat and Internet Speed Test](https://www.waveform.com/tools/bufferbloat)
 
     - See [How to test your Internet Ping (PingPlotter)](https://support.netduma.com/support/solutions/articles/16000074717-how-to-test-your-internet-ping)
 
-    - See [What Can I Do About Bufferbloat?](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat/)
+    - See [What Can I Do About Bufferbloat?](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat)
 
 - Avoid daisy-chaining power cables anywhere
 
@@ -130,7 +130,7 @@
 
 - [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly. This is less of an issue after the May 2023 Windows 11 update
 
-    - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide/)
+    - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide)
 
 - USB output is limited to ~7A and RGB requires unnecessary power. Turn off lighting effects or strip the LED from the peripheral as [running an RGB effect/animation can take a great toll on the MCU and will delay other processes](https://blog.wooting.nl/what-influences-keyboard-speed)
 
@@ -248,7 +248,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Configure load-line calibration. Opinionated setting, mentioning for awareness. This is not a recommendation for what mode to use
 
-    - See [Vdroop setting and it’s impact on CPU operation](https://xdevs.com/guide/e399ocg/#vdroop)
+    - See [Vdroop setting and it's impact on CPU operation](https://xdevs.com/guide/e399ocg/#vdroop)
 
     - See [Why Vdroop is good for overclocking and taking a look at Gigabyte's Override Vcore mode | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=zqvNkh4TVw8)
 

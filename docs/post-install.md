@@ -481,7 +481,7 @@ Open CMD and enter the commands below.
 
 - Windows 8+ Only
 
-    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2/). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency sensitive tasks and reducing jitter
+    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency sensitive tasks and reducing jitter
 
     - See [Reducing timer tick interrupts | Erik Rigtorp](https://rigtorp.se/low-latency-guide)
 
@@ -795,7 +795,7 @@ For example, a mouse with an 1kHz polling rate will report data every 1ms. While
 
 - See [How to persistently disable XHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
-- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to use [RWEverything](http://rweverything.com/) on Windows 11+
+- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to use [RWEverything](http://rweverything.com) on Windows 11+
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f
