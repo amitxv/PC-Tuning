@@ -409,9 +409,9 @@ You may have already found a stable overclock for your display in the [Stability
 
 - [mpv](https://mpv.io) or [mpv.net](https://github.com/stax76/mpv.net)
 
-- [mpc-hc](https://mpc-hc.org) ([alternative link](https://github.com/clsid2/mpc-hc))
+- [mpc-hc](https://github.com/clsid2/mpc-hc)
 
-- [VLC](https://www.videolan.org)
+- [VLC](https://www.videolan.org/vlc)
 
 ## Configure Power Options
 
