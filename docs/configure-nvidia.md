@@ -44,7 +44,7 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 ## Disable HDCP (required for DRM content)
 
-HDCP can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required), ensure to change the driver key to suit your needs.
+HDCP can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required). Ensure to change the driver key to suit your needs.
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
@@ -82,7 +82,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Lock GPU Clocks/P-State 0
 
-Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while your real-time application is not running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
+Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while your real-time application is not running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
@@ -92,7 +92,7 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
 ## Configure NVIDIA Inspector
 
-During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps. For this reason, you should disable ``CUDA - Force P2 State``. [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) along with Enable Ansel can also be disabled as [it is injected in all games by the display drivers, regardless if the game supports Ansel or not](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel). This might cause conflicts with third-party tools or injectors.
+During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps. For this reason, you should disable ``CUDA - Force P2 State``. [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) along with ``Enable Ansel`` can also be disabled as [it is injected in all games by the display drivers, regardless if the game supports Ansel or not](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel). This might cause conflicts with third-party tools or injectors.
 
 - See [media/CUDA-force-p2-state-analysis](/media/cuda-force-p2-state-analysis.png)
 
