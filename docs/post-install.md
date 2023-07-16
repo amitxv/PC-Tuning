@@ -644,7 +644,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - Disable any unneeded devices that are using an IRQ or I/O resources, always ask if unsure and take your time on this step
 
-    - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate, unneeded devices in case you accidentally miss any with the confusing Device Manager tree structure
+    - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate and unneeded devices in case you accidentally miss any with the confusing Device Manager tree structure
 
 6. Run the ``Services-Enable.bat`` script
 
@@ -722,7 +722,7 @@ Open CMD and enter the commands below.
 
 Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such as servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
 
-- Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
+- Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally, verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
 
     - See [bin/scripts/xperf-dpcisr.bat](/bin/scripts/xperf-dpcisr.bat)
 
