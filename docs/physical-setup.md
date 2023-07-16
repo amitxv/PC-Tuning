@@ -2,7 +2,7 @@
 
 ## General
 
-- A SSD or NVMe is strongly recommended due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
+- An SSD or NVMe is strongly recommended due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
 
 - Assess the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
 
@@ -24,9 +24,9 @@
 
     - See [media/hwinfo-pcie-width-speed.png](/media/hwinfo-pcie-width-speed.png)
 
-- IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the ``Conflicts/Sharing section``
+- IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by typing ``msinfo32`` in `Win+R` and then navigating to the ``Conflicts/Sharing section``
 
-    - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software related causes of IRQ sharing but the purpose of checking IRQ sharing now is to resolve the hardware related causes
+    - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software-related causes of IRQ sharing but the purpose of checking IRQ sharing now is to resolve the hardware-related causes
 
 - An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
@@ -46,7 +46,7 @@
 
 - Clean the pins and connectors of components. Use compressed air to remove dust from slots before installing components such as PCIe, NVMe, RAM and more
 
-- If you are not already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup. GPT/UEFI is recommended for most people
+- If you are not already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within the Windows setup. GPT/UEFI is recommended for most people
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
 
@@ -94,7 +94,7 @@
 
 - Repaste GPU due to often inadequate factory application of thermal paste, replace the stock fans and thermal pads with higher quality ones
 
-- Consider replacing the stock PSU fan and connect it to a motherboard fan header or hub
+- Consider replacing the stock PSU fan and connecting it to a motherboard fan header or hub
 
 ## Minimize Interference
 
@@ -112,11 +112,11 @@
 
 - Favor the first few ports on the desired XHCI controller. Some of them may not be physically accessible which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports, avoid companion ports (indicated in the right section of the program) and [internal headers](/media/xhci-internal-headers.png) as the data must go through hubs
 
-    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to a ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
+    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to an `Internal`` PCIe Bridge``` which is also labeled with the CPU architecture
 
         - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
-- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
+- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them from interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
 
 ## Configure Peripherals
 
@@ -124,7 +124,7 @@
 
 - [Higher DPI reduces latency](https://www.youtube.com/watch?v=6AoRfv9W110). Use the highest DPI possible without [sensor smoothing](https://www.reddit.com/r/MouseReview/comments/5haxn4/sensor_smoothing). If your game uses raw input, you can [reduce the pointer speed](https://boringboredom.github.io/tools/#/WinSens) in Windows. Otherwise, leave the slider at the default position as input will be negatively affected due to scaling
 
-    - One way to determine whether a given application is using raw input is to spy on the raw input API calls with [API Monitor](http://www.rohitab.com/apimonitor) or check whether the ``enhance pointer precision`` option has any effect in-game. If you are still unsure or have doubts, leave the slider at the default position
+    - One way to determine whether a given application is using raw input is to spy on the raw input API calls with [API Monitor](http://www.rohitab.com/apimonitor) or check whether the ``enhance pointer precision`` option has any effect in-game. If you are still unsure or have doubts, leave the slider in the default position
 
 - [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly. This is less of an issue after the May 2023 Windows 11 update
 
@@ -134,7 +134,7 @@
 
     - See [OpenRGB](https://openrgb.org)
 
-- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is obviously problematic and may be due to several variables such as the device itself, cable, power issues, hardware, operating system and more. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz).
+- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is problematic and may be due to several variables such as the device itself, cable, power issues, hardware, operating system and more. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz).
 
     - See [XHCI Interrupt Moderation (IMOD)](/docs/post-install.md#xhci-interrupt-moderation-imod)
 
@@ -146,11 +146,11 @@
 
 ## BIOS
 
-- Keep in mind that anything can go sideways when modifying the BIOS. You should explore methods to flash a stock BIOS. If [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work, make sure to have another method such as working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer
+- Keep in mind that anything can go sideways when modifying the BIOS. You should explore methods to flash a stock BIOS. If [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work, make sure to have another method such as a working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer
 
 - Check for BIOS updates and positive changes in the change log such as increased memory stability. Beware of problems brought up in reviews and forums
 
-- Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back microcode on a BIOS level if possible
+- Check Spectre, Meltdown and CPU microcode status after following the steps in the [Spectre, Meltdown and CPU Microcode](/docs/post-install.md#spectre-meltdown-and-cpu-microcode) section on your current operating system. If you are unable to reproduce the results in the example images, you may need to roll back the microcode on a BIOS level if possible
 
 - Resizable BAR
 
@@ -182,7 +182,7 @@
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you are not using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
 
-- Disable Trusted Platform Module. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
+- Disable Trusted Platform Module. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
 
     - Verify TPM status by typing ``tpm.msc`` in ``Win+R``
 
@@ -194,7 +194,7 @@
 
     - Windows 7 GPT/UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
 
-- Disable Secure Boot. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
+- Disable Secure Boot. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
 
     - Verify Secure Boot state by typing ``msinfo32`` in ``Win+R``
 
@@ -214,7 +214,7 @@
 
 - As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost, Voltage Optimization and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
-    - In some cases, the settings mentioned above may prevent the processor exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
+    - In some cases, the settings mentioned above may prevent the processor from exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
 - Configure fan curves or set a static, high, noise-acceptable RPM
 
@@ -224,7 +224,7 @@
 
 ## Stability, Hardware Clocking and Thermal Performance
 
-Ensure that all of your hardware is stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (non-exhaustive list of recommended tools are listed below).
+Ensure that all of your hardware is stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (a non-exhaustive list of recommended tools are listed below).
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors. A higher polling interval can help to identify sudden spikes but not transients on a microsecond scale as an example. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
@@ -232,11 +232,11 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Try not to leave voltage settings on automatic due to potential overvolting
 
-- Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scale positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded)
+- Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded)
 
-- There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
+- Countless factors contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
 
-    - An important note to make is that you can pass hours of stress-tests (RAM) but as soon as another component (GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario. Assuming a fan is mounted to blow air onto the RAM, stress-testing without a fan or reduce RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
+    - An important note to make is that you can pass hours of stress tests (RAM) but as soon as another component (GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such a scenario. Assuming a fan is mounted to blow air onto the RAM, stress-testing without a fan or reducing RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
 
 - Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to mimic a worst-case scenario
 
@@ -246,13 +246,13 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Disable the paging file and use safe mode for stress-testing, preferably on a throwaway operating system in case it becomes corrupted
 
-- Configure load-line calibration. Opinionated setting, mentioning for awareness. This is not a recommendation for what mode to use
+- Configure load-line calibration. The opinionated setting, mentioning for awareness. This is not a recommendation for what mode to use
 
-    - See [Vdroop setting and it's impact on CPU operation](https://xdevs.com/guide/e399ocg/#vdroop)
+    - See [Vdroop setting and its impact on CPU operation](https://xdevs.com/guide/e399ocg/#vdroop)
 
     - See [Why Vdroop is good for overclocking and taking a look at Gigabyte's Override Vcore mode | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=zqvNkh4TVw8)
 
-- Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
+- Set a static all-core core/uncore frequency and voltage for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions
 
 - Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many subtimings or guarantee stability
 
@@ -272,7 +272,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
-    - Aim for an ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this
+    - Aim for an ``actual`` integer refresh rate such as 60.00/240.00, not 59.94/239.76. Using the exact timing can help achieve this
 
 ### Stess-Testing Tools
 
@@ -294,7 +294,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
     - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
 
-    - Residuals should match, otherwise it is a sign of instability
+    - Residuals should match, otherwise, it is a sign of instability
 
     - GFLOP variation should be minimal
 

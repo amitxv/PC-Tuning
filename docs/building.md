@@ -65,7 +65,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
             <img src="/media/uupdump-choose-edition.png" width="750">
 
-        - Copy the configuration below, ensure include updates is checked and click create download package
+        - Copy the configuration below, ensure the `Include`` updates` option is checked and click ``Create download package``
 
             <img src="/media/uupdump-download-options.png" width="750">
 
@@ -77,7 +77,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
-- Extract the contents of the ISO to a directory of your choice with then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
+- Extract the contents of the ISO to a directory of your choice then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
     ```bat
     set "EXTRACTED_ISO=C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939"
@@ -89,7 +89,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     set "MOUNT_DIR=%temp%\MOUNT_DIR"
     ```
 
-- Set the path to the ``oscdimg.exe`` binary to the ``OSCDIMG`` variable. Unless you installed deployment tools to a location other than default, changing the value below is not necessary
+- Set the path to the ``oscdimg.exe`` binary to the ``OSCDIMG`` variable. Unless you installed deployment tools to a location other than the default, changing the value below is not necessary
 
     ```bat
     set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
@@ -150,9 +150,9 @@ win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
 
 ## Integrate and Obtain Drivers (Windows 7)
 
-This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable ourselves to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try to integrate the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934). Ensure to integrate ``KB2864202`` into the ISO if you use this driver.
+This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable us to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try to integrate the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934). Ensure to integrate ``KB2864202`` into the ISO if you use this driver.
 
-You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device.
+You can find drivers by searching for drivers that are compatible with your device's HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) regarding finding your HWID in the device manager for a given device.
 
 Once you have obtained the relevant drivers, place all the drivers to be integrated in a folder such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO.
 
@@ -186,7 +186,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
     - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so integrating updates can be skipped
 
-    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can search for *"Security"* for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-8127c2c6-6edf-4fdf-8b9f-0f7be1ef3562), [Windows 11](https://support.microsoft.com/en-us/topic/windows-11-version-22h2-update-history-ec4229c3-9c5f-4e75-9d6d-9025ab70fcce)). Search for the sever update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
+    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified on the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can search for *"Security"* for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-8127c2c6-6edf-4fdf-8b9f-0f7be1ef3562), [Windows 11](https://support.microsoft.com/en-us/topic/windows-11-version-22h2-update-history-ec4229c3-9c5f-4e75-9d6d-9025ab70fcce)). Search for the server update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
 
 - Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Ensure to download the correct variant (i.e. server/client and the proper architecture)
 

@@ -105,13 +105,13 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 - GPU driver will be installed in a later step so do not install it at this stage
 
-- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+- You can find drivers by searching for drivers that are compatible with your device's HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) regarding finding your HWID in Device Manager for a given device
 
 - If you do not have network connectivity at this stage, you may need to download your drivers from another device
 
-- Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
+- Try to obtain the driver in its INF form so that it can be installed in Device Manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
 
-- I would recommend updating and installing following:
+- I would recommend updating and installing the following:
 
     - NIC
 
@@ -151,7 +151,7 @@ C:\bin\scripts\install-firefox.ps1 <option>
 
 - Install [language dictionaries](https://addons.mozilla.org/en-GB/firefox/language-tools) for spell-checking
 
-- Optionally configure and cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar``then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
+- Optionally configure and clean up the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Disable Residual Scheduled Tasks
 
@@ -283,7 +283,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - Boot into Ventoy on your USB in BIOS and select the Linux ISO
 
-- Open file explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume where the ``win-debloat.sh`` is located
+- Open File Explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume where the ``win-debloat.sh`` is located
 
 - Right-click an empty space and select ``Open in Terminal`` to open a terminal window in the current directory. Use the command below to run the script
 
@@ -335,9 +335,9 @@ If you use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-ca
 
 You may have already found a stable overclock for your display in the [Stability, Hardware Clocking and Thermal Performance](/docs/physical-setup.md#stability-hardware-clocking-and-thermal-performance) section which you can configure in this section.
 
-- Typically, you have the option of performing scaling on the GPU or display. Native resolution does not require scaling thus results in the identity scaling mode being used. Furthermore, identity scaling renders most of the scaling options in the GPU control panel obsolete. If you are using a non-native resolution, there is an argument for favoring display scaling due to less GPU processing
+- Typically, you have the option of performing scaling on the GPU or display. The native resolution does not require scaling thus resulting in the identity scaling mode being used. Furthermore, identity scaling renders most of the scaling options in the GPU control panel obsolete. If you are using a non-native resolution, there is an argument for favoring display scaling due to less GPU processing
 
-- Aim for a ``actual`` integer refresh rate such as 60.00/240.00 not 59.94/239.76. Using the exact timing can help achieve this in [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU)
+- Aim for an ``actual`` integer refresh rate such as 60.00/240.00, not 59.94/239.76. Using the exact timing can help achieve this in [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU)
 
 - There are many ways to achieve the same outcome regarding GPU and display scaling. See the table in the link below for example scenarios
 
@@ -357,7 +357,7 @@ You may have already found a stable overclock for your display in the [Stability
 
 - Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the ``Open-Shell Menu``
 
-- Settings I personally use as per section:
+- Settings I use as per section:
 
     - Skin
 
@@ -387,7 +387,7 @@ You may have already found a stable overclock for your display in the [Stability
 
     - AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
 
-    - A minority of anticheats (FACEIT) require Meltdown to be enabled
+    - A minority of anti-cheats (FACEIT) require Meltdown to be enabled
 
 - Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove the CPU microcode updates
 
@@ -417,7 +417,7 @@ You may have already found a stable overclock for your display in the [Stability
 
 Open CMD and enter the commands below.
 
-- Set active power scheme to High performance
+- Set the active power scheme to High performance
 
     ```bat
     powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
@@ -469,21 +469,21 @@ Open CMD and enter the commands below.
     bcdedit /timeout 0
     ```
 
-- [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) is set to ``Turn on for essential Windows programs and services only`` by default. However, DEP can be completely disabled with the command below but a minority of anticheats require DEP to be left on the default setting. Do not change if unsure
+- [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) is set to ``Turn on for essential Windows programs and services only`` by default. However, DEP can be completely disabled with the command below but a minority of anti-cheats require DEP to be left on the default setting. Do not change if unsure
 
     ```bat
     bcdedit /set nx AlwaysOff
     ```
 
-- Configure the operating system name, I usually name it to whatever Windows version I am using such as ``Windows 10 1803``
+- Configure the operating system name, I usually name it whatever Windows version I am using such as ``Windows 10 1803``
 
     ```bat
-    bcdedit /set {current} description "OSNAME"
+    bcdedit /set {current} description "OS_NAME"
     ```
 
 - Windows 8+ Only
 
-    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency sensitive tasks and reducing jitter
+    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency-sensitive tasks and reducing jitter
 
     - See [Reducing timer tick interrupts | Erik Rigtorp](https://rigtorp.se/low-latency-guide)
 
@@ -504,7 +504,7 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 - It relies on a kernel mode driver to operate which may introduce additional overhead
 
-- Does not display process tree
+- Does not display the process tree
 
 - On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the ``disable idle`` power setting results in 100% CPU utilization on Windows 8+
 
@@ -514,7 +514,9 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 - Copy ``procexp64.exe`` into ``C:\Windows`` and open it
 
-- Navigate to ``Options`` and select ``Replace Task Manager`` I also configure the following:
+- Enable the following in ``Options``:
+
+    - Replace Task Manager
 
     - Confirm Kill
 
@@ -522,7 +524,7 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
     - Always On Top (helpful for when applications crash and UI becomes unresponsive)
 
-    - Enable the following columns granular resource measurement metrics
+- Enable the following columns' granular resource measurement metrics:
 
         - Context Switch Delta (Process Performance)
 
@@ -534,7 +536,7 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
         - Delta Other (Process I/O)
 
-    - Enable the ``VirusTotal`` column
+- Enable the ``VirusTotal`` column
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
@@ -546,13 +548,15 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 ## Configure Memory Management Settings (Windows 8+)
 
+If you disabled the SysMain service in the [Miscellaneous](#miscellaneous) section, you can skip this section as all memory management settings were disabled automatically.
+
 - Open PowerShell and enter the command below
 
     ```powershell
     Get-MMAgent
     ```
 
-- If anything is set to True, use the command below as an example to disable a given setting
+- If anything is set to ``True``, use the command below as an example to disable a given setting
 
     ```powershell
     Disable-MMAgent -MemoryCompression
@@ -574,7 +578,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - The sound control panel can be opened by typing ``mmsys.cpl`` in ``Win+R``
 
-- Disable unused Playback and Recording devices
+- Disable unused ``Playback`` and ``Recording`` devices
 
 - Disable audio enhancements as they waste resources
 
@@ -582,21 +586,21 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Disable Exclusive Mode in the Advanced section
 
-- Set the option in the communications tab to Do nothing
+- Set the option in the ``Communications`` tab to ``Do nothing``
 
-- I also like to set the sound scheme to no sounds in the sounds tab
+- Optionally set the sound scheme to ``No Sounds`` in the ``Sounds`` tab
 
-- Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to CPU not being able to keep up under load
+- Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to the CPU not being able to keep up under the load
 
     - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs
 
 ## Configure Services and Drivers
 
-I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
+I am not responsible if anything goes wrong or you get a BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need Wi-Fi services enabled.
 
-- The ``High precision event timer`` device in device manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
+- The ``High precision event timer`` device in Device Manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I am aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
 
-- Use the command below to prevent the [Software Protection service attempting to register a restart every 30s](/media/software-protection-error.png) while services are disabled. I'm not sure what the problematic service is, but online sources point to Task Scheduler
+- Use the command below to prevent the [Software Protection service attempting to register a restart every 30s](/media/software-protection-error.png) while services are disabled. I am not sure what the problematic service is, but online sources point to Task Scheduler
 
     ```bat
     reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
@@ -606,7 +610,7 @@ I am not responsible if anything goes wrong or you BSOD. The idea is to disable 
 
 - Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove entries with a yellow label in the ``Services`` section to prevent obsolete services from being added to the scripts that are going to be built in the next steps. Run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
 
-- Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
+- Download and extract [service-list-builder](https://github.com/amitxv/service-list-builder). Open CMD and CD to the extracted folder where the executable is located
 
 - Use the command below to build the scripts in the ``build`` folder. Move the build folder somewhere safe such as ``C:\`` and do not share it with other people as it is specific to your system. Note that NSudo with the ``Enable All Privileges`` option is required to run the batch scripts
 
@@ -620,9 +624,9 @@ I am not responsible if anything goes wrong or you BSOD. The idea is to disable 
 
 The section is directly related to the [Configure Services and Drivers](#configure-services-and-drivers) section. The methodology below will ensure maximum compatibility while services are enabled because devices with an associated driver will be toggled in the ``Services-Disable.bat`` script which means we do not need to permanently disable them.
 
-1. If you haven't disabled services at this stage, run the ``Services-Disable.bat`` script
+1. If you have not disabled services at this stage, run the ``Services-Disable.bat`` script
 
-2. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
+2. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
 
 3. **DO NOT** disable any devices with a yellow icon because these are the devices that are being handled by disabling services
 
@@ -638,17 +642,17 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power saving features. Disable the power saving option in the ``Power Management`` section
 
-    - Disable everything that isn't the GPU on the same PCIe port
+    - Disable everything that is not the GPU on the same PCIe port
 
 5. Navigate to ``View -> Resources by connection``
 
     - Disable any unneeded devices that are using an IRQ or I/O resources, always ask if unsure and take your time on this step
 
-    - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate, unneeded devices in case you accidentally miss any with the confusing device manager tree structure
+    - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate and unneeded devices in case you accidentally miss any with the confusing Device Manager tree structure
 
 6. Run the ``Services-Enable.bat`` script
 
-7. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
+7. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
 
 8. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and are not due to services being disabled
 
@@ -656,7 +660,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 ## Disable Driver Power Saving
 
-Open PowerShell and enter the command below to disable power saving on devices in device manager. Avoid re-plugging devices as the power saving settings will get restored
+Open PowerShell and enter the command below to disable power saving on devices in Device Manager. Avoid re-plugging devices as the power saving settings will get restored
 
 ```powershell
 C:\bin\scripts\disable-pnp-powersaving.ps1
@@ -664,7 +668,7 @@ C:\bin\scripts\disable-pnp-powersaving.ps1
 
 ## Configure Event Trace Sessions
 
-Create registry files to toggle event trace sessions. Programs that rely on event tracers such will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in ``Win+R`` then navigating to ``Data Collector Sets -> Event Trace Sessions``.
+Create registry files to toggle event trace sessions. Programs that rely on event tracers will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in `Win+R` and then navigating to ``Data Collector Sets -> Event Trace Sessions``.
 
 - ets-enable
 
@@ -708,45 +712,45 @@ Open CMD and enter the commands below.
 
 - Enable Message Signaled Interrupts on all devices that support it
 
-    - You will BSOD if you enable MSIs for the stock Windows 7 SATA driver which you should have already updated as mentioned in the [Install Drivers](#install-drivers) section
+    - You will get a BSOD if you enable MSIs for the stock Windows 7 SATA driver which you should have already updated as mentioned in the [Install Drivers](#install-drivers) section
 
 - Be careful as to what you choose to prioritize. As an example, an I/O bound application may suffer a performance loss including an open-world game that utilizes texture streaming if the GPU IRQ priority is set higher than the storage controller priority. For this reason, you can set all devices to undefined/normal priority
 
 - Restart your PC, you can verify whether a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
 
-- Although this carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the ``Conflicts/Sharing`` section
+- Although this was carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by typing ``msinfo32`` in `Win+R` and then navigating to the ``Conflicts/Sharing`` section
 
     - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
 ## Per-CPU Scheduling
 
-Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
+Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such as servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
 
-- Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
+- Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally, verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
 
     - See [bin/scripts/xperf-dpcisr.bat](/bin/scripts/xperf-dpcisr.bat)
 
-- Ensure that the [corresponding DPC for an ISR are processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence. This is usually not a problem with MSI-X devices
+- Ensure that the [corresponding DPC for an ISR is processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interference with cache coherence. This is usually not a problem with MSI-X devices
 
-- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in device manager
+- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in the Device Manager
 
 ### XHCI Controller
 
-[Mouse Tester](https://github.com/amitxv/MouseTester) can be used to compare polling variation with the XHCI controller assigned to different CPUs. Ideally this should be benchmarked under load as idle benchmarks may be misleading
+[Mouse Tester](https://github.com/amitxv/MouseTester) can be used to compare polling variation with the XHCI controller assigned to different CPUs. Ideally, this should be benchmarked under load as idle benchmarks may be misleading
 
 ### GPU and DirectX Graphics Kernel
 
-[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU related modules are assigned to
+[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU-related modules are assigned to
 
 ### Network Interface Card
 
 [The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the NIC driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
 
-The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct NIC. Keep in mind that the amount of RSS queues determine the amount of consecutive CPUs ``ndis.sys`` is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
+The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct NIC. Keep in mind that the amount of RSS queues determines the amount of consecutive CPUs ``ndis.sys`` is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
 
 - See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
-- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
+- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
@@ -754,13 +758,13 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 ### Reserved CPU Sets (Windows 10+)
 
-[ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, reduce jitter and allows time-sensitive modules to get the CPU time they require.
+[ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, reduce jitter and allow time-sensitive modules to get the CPU time they require.
 
 - As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs.
 
-- Ensure that you have enough cores to run your real-time application on and aren't reserving too many CPUs to the point where isolating modules does not yield real-time performance
+- Ensure that you have enough cores to run your real-time application on and are not reserving too many CPUs to the point where isolating modules does not yield real-time performance
 
-- As CPU sets are considered soft policies, the configuration is not guaranteed. A CPU intensive process such as a stress-test will utilize the reserved cores if required
+- As CPU sets are considered soft policies, the configuration is not guaranteed. A CPU-intensive process such as a stress test will utilize the reserved cores if required
 
 #### Potential Use Cases
 
@@ -772,7 +776,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
-There is a lot of misleading and inaccurate information regarding this topic polluting the internet. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
+There is a lot of misleading and inaccurate information regarding this topic polluting the internet. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as in multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
 
 - Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
 
@@ -793,11 +797,11 @@ There is a lot of misleading and inaccurate information regarding this topic pol
 
 On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. This means that after an interrupt has been generated, the XHCI controller waits for the specified interval for more data to arrive before generating another interrupt which reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same XHCI controller.
 
-For example, a mouse with an 1kHz polling rate will report data every 1ms. While only moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
+For example, a mouse with a 1kHz polling rate will report data every 1ms. While only moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either device. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
 
 - See [How to persistently disable XHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
-- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to use [RWEverything](http://rweverything.com) on Windows 11+
+- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below to use [RWEverything](http://rweverything.com) on Windows 11+
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f
@@ -805,11 +809,11 @@ For example, a mouse with an 1kHz polling rate will report data every 1ms. While
 
 ## Configure Control Panel
 
-It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
+It is not a bad idea to skim through both the legacy and immersive control panels to ensure nothing is misconfigured.
 
 ## Analyze Event Viewer
 
-This step is not required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
+This step is not required but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use an event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
 
 - The ``Services-Disable.bat`` script disables logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to 3 and 2 respectively
 
@@ -827,13 +831,13 @@ Install any programs and configure your real-time applications to prepare us for
 
     - See [FPS Cap Calculator](https://boringboredom.github.io/tools/#/FPSCap)
 
-    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience as it utilizes [busy-wait](https://en.wikipedia.org/wiki/Busy_waiting) which is offers higher precision than 100% passive-waiting but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) and potentially greater CPU overhead. Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` running which wastes resources
+    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience as it utilizes [busy-wait](https://en.wikipedia.org/wiki/Busy_waiting) which offers higher precision than 100% passive-waiting but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) and potentially greater CPU overhead. Disabling the ``Enable dedicated encoder server service`` setting prevents `EncoderServer.exe` from running which wastes resources
 
 - Configure present mode
 
     - Always check whether your real-time application is using the desired present mode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal
 
-    - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try to run the command below in CMD and reboot
+    - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try running the command below in CMD and reboot
 
         ```bat
         reg add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
@@ -913,7 +917,7 @@ Install any programs and configure your real-time applications to prepare us for
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled
 
     ```bat
     powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current

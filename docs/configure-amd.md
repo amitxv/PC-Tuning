@@ -6,11 +6,11 @@ Disclaimer: I no longer own an AMD GPU meaning this section may be incomplete/un
 
 - Download and extract the latest recommended driver from the [AMD drivers and support page](https://www.amd.com/en/support)
 
-- Move ``Packages\Drivers\Display\XXXX_INF`` to the desktop (folder may be named differently on other driver versions). Delete everything apart from the following:
+- Move ``Packages\Drivers\Display\XXXX_INF`` to the desktop (the folder may be named differently on other driver versions). Delete everything apart from the following:
 
     - See [media/amd-driver-example.png](/media/amd-driver-example.png)
 
-- Open device manager and install the driver by right-clicking on the display adapter, then select ``Update driver`` and select the driver folder
+- Open Device Manager and install the driver by right-clicking on the display adapter, then select ``Update driver`` and select the driver folder
 
 - Navigate to the driver directory (mine is ``B381690``) and extract ``ccc2_install.exe`` with 7-Zip and run ``CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 

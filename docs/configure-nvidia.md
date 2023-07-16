@@ -46,7 +46,7 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 HDCP can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required). Ensure to change the driver key to suit your needs.
 
-- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
+- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
@@ -54,7 +54,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Configure NVIDIA Control Panel
 
-- Configure the following in the ``Manage 3D settings`` page:
+- Configure the following on the `Manage` 3D settings`` page:
 
     - Anisotropic filtering - Off
 
@@ -72,7 +72,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Ensure that settings are not being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
 
-- Configure the following in the ``Change resolution`` page:
+- Configure the following on the `Change` resolution`` page:
 
     - Output dynamic range - Full
 
@@ -84,7 +84,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 Force P-State 0 with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while your real-time application is not running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
 
-- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
+- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
