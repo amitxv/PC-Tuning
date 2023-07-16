@@ -8,7 +8,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Generally, older versions of Windows are superior for real-time tasks as the concern for power efficiency and security is heightened after each edition release. For this reason, Windows 7 is the preferable choice but lacks driver support for modern hardware and developers are increasingly dropping support for legacy operating systems
 
-- Earlier versions of Windows lack anticheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of July 2023
+- Earlier versions of Windows lack anti-cheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of July 2023
 
     |GPU|Minimum Windows Version|
     |---|---|
@@ -24,11 +24,11 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png)
 
-- The implementation of ``Hardware: Independent Flip`` improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
+- The implementation of ``Hardware: Independent Flip`` improved around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
 
     - See the [Configuring Applications](/docs/post-install.md#configuring-applications) section for more information
 
-- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which are not Windows 11+ or server 2022+
+- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which aren't Windows 11+ or server 2022+
 
 - As of May 2023, Windows 11 limits the message rate of background raw input listeners
 
@@ -42,21 +42,21 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 ## Prepare the USB
 
-- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it is not enabled in BIOS, then select your USB storage and click install
+- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it isn't enabled in BIOS, then select your USB storage and click install
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
 
-- Download a live Linux distribution of your choice and move the ISO into the USB storage in file explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
+- Download a live Linux distribution of your choice and move the ISO into the USB storage in File Explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 
     - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#removing-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
 
 ## Boot Into the ISO
 
-For the next steps, it is mandatory to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from installing unwanted updates and drivers.
+For the next steps, you are required to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from installing unwanted updates and drivers.
 
 ### Install using a USB storage device
 
-- Move your Windows ISO into the USB storage in file explorer (where the Linux ISO is also located)
+- Move your Windows ISO into the USB storage in File Explorer (where the Linux ISO is also located)
 
 - Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual
 

@@ -2,7 +2,7 @@
 
 ## General
 
-- A SSD or NVMe is mandatory due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
+- An SSD or NVMe is strongly recommended due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
 
 - Assess the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
 
@@ -18,7 +18,7 @@
 
 - Ensure that your PCIe devices under the ``PCIe Bus`` category are running at their rated specification such as ``x16 3.0`` in [HWiNFO](https://www.hwinfo.com). The current link width/speed of the device should match the maximum supported
 
-    - The link speed for GPUs that are not limited to P-State 0 may decrease when idling. Check with [GPU-Z](https://www.techpowerup.com/gpuz) while running the built-in render test
+    - The link speed for GPUs that aren't limited to P-State 0 may decrease when idling. Check with [GPU-Z](https://www.techpowerup.com/gpuz) while running the built-in render test
 
         - See [media/gpuz-bus-interface.png](/media/gpuz-bus-interface.png)
 
@@ -26,9 +26,9 @@
 
 - IRQ sharing is problematic and is a source of high interrupt latency. Ensure that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the ``Conflicts/Sharing section``
 
-    - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software related causes of IRQ sharing but the purpose of checking IRQ sharing now is to resolve the hardware related causes
+    - Enabling [message signaled interrupts](/docs/post-install.md#message-signaled-interrupts) on devices may resolve the software-related causes of IRQ sharing but the purpose of checking IRQ sharing now is to resolve the hardware-related causes
 
-- An Ethernet cable is mandatory due to the unreliability, degraded performance and excessive interference of wireless connections
+- An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
 - Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets.
 
@@ -36,7 +36,7 @@
 
     - See [How to test your Internet Ping (PingPlotter)](https://support.netduma.com/support/solutions/articles/16000074717-how-to-test-your-internet-ping)
 
-    - See [What Can I Do About Bufferbloat?](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat/)
+    - See [What Can I Do About Bufferbloat?](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat)
 
 - Avoid daisy-chaining power cables anywhere
 
@@ -46,7 +46,7 @@
 
 - Clean the pins and connectors of components. Use compressed air to remove dust from slots before installing components such as PCIe, NVMe, RAM and more
 
-- If you are not already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup. GPT/UEFI is recommended for most people
+- If you aren't already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup. GPT/UEFI is recommended for most people
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
 
@@ -68,7 +68,7 @@
 
 - Check for contact patches on the IHS/Die and cold plate
 
-- Use high quality thermal paste
+- Use high-quality thermal paste
 
     - See [Best Thermal Paste for CPUs](https://www.tomshardware.com/best-picks/best-thermal-paste)
 
@@ -100,9 +100,9 @@
 
 ## Minimize Interference
 
-- Move devices that produce interference such as radios, cellphones, routers and more away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
+- Move devices that produce interference such as radios, cell phones, routers and more away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
 
-- Always favor wired over cordless. Wireless devices also tend to implement aggressive power saving for a longer battery life
+- Always favor wired over cordless. Wireless devices also tend to implement aggressive power-saving for a longer battery life
 
 - Ensure that there is a moderate amount of space between all cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
 
@@ -118,7 +118,7 @@
 
         - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
-- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
+- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them from interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
 
 ## Configure Peripherals
 
@@ -130,13 +130,13 @@
 
 - [Higher polling rate reduces jitter](https://www.youtube.com/watch?app=desktop&v=djCLZ6qEVuA). Polling rates higher than 1kHz may negatively impact performance depending on your hardware so adjust accordingly. This is less of an issue after the May 2023 Windows 11 update
 
-    - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide/)
+    - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide)
 
 - USB output is limited to ~7A and RGB requires unnecessary power. Turn off lighting effects or strip the LED from the peripheral as [running an RGB effect/animation can take a great toll on the MCU and will delay other processes](https://blog.wooting.nl/what-influences-keyboard-speed)
 
     - See [OpenRGB](https://openrgb.org)
 
-- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is obviously problematic and may be due to several variables such as the device itself, cable, power issues, hardware, operating system and more. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz).
+- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is problematic and may be due to several variables such as the device itself, cable, power issues, hardware, operating system and more. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz).
 
     - See [XHCI Interrupt Moderation (IMOD)](/docs/post-install.md#xhci-interrupt-moderation-imod)
 
@@ -158,13 +158,13 @@
 
     - Requires GPT/UEFI
 
-    - Consider [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable it on unsupported systems
+    - Consider using [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable it on unsupported systems
 
-- Ensure that the settings you are changing scale positively and make note of them for future reference/backtracking to resolve potential issues
+- Ensure that the settings you are changing scales positively and make note of them for future reference/backtracking to resolve potential issues
 
 - Reset all settings to default settings with the option in BIOS to work with a clean slate
 
-- Motherboard vendors hide/lock a lot of useful settings so that they are not visible to a regular user. For clarification, unlocking BIOS corresponds to making hidden settings accessible and visible
+- Motherboard vendors hide/lock a lot of useful settings so that they aren't visible to a regular user. For clarification, unlocking BIOS corresponds to making hidden settings accessible and visible
 
     - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` to unlock BIOS if present
 
@@ -180,11 +180,11 @@
 
 - Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU (Intel VT-d/AMD-Vi)](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
 
-- Disable all power saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), PCIe Clock Gating and more. Search the internet if you are unsure whether a given setting is power saving related
+- Disable all power-saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), PCIe Clock Gating and more. Search the internet if you are unsure whether a given setting is power-saving-related
 
-- Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you are not using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
+- Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you aren't using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
 
-- Disable Trusted Platform Module. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
+- Disable Trusted Platform Module. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
 
     - Verify TPM status by typing ``tpm.msc`` in ``Win+R``
 
@@ -196,7 +196,7 @@
 
     - Windows 7 GPT/UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
 
-- Disable Secure Boot. On Windows 11, a minority of anticheats (Vanguard, FACEIT) require it to be enabled
+- Disable Secure Boot. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
 
 - Disable Fast Startup, Suspend to RAM or similar options
 
@@ -232,7 +232,7 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Try not to leave voltage settings on automatic due to potential overvolting
 
-- Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scale positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded)
+- Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded)
 
 - There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
 
@@ -246,13 +246,13 @@ Ensure that all of your hardware are stable before configuring a new operating s
 
 - Disable the paging file and use safe mode for stress-testing preferably on a throwaway operating system in case it becomes corrupted
 
-- Configure load-line calibration. Opinionated setting, mentioning for awareness. This is not a recommendation for what mode to use
+- Configure load-line calibration. Opinionated setting, mentioning for awareness. This isn't a recommendation for what mode to use
 
     - See [Vdroop setting and it’s impact on CPU operation](https://xdevs.com/guide/e399ocg/#vdroop)
 
     - See [Why Vdroop is good for overclocking and taking a look at Gigabyte's Override Vcore mode | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=zqvNkh4TVw8)
 
-- Set a static all-core core/uncore frequency and voltage for the CPU. Variation in hardware clocks can introduce jitter due to the process of frequency transitions
+- Set a static all-core core/uncore frequency and voltage for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions
 
 - Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many subtimings nor does it guarantee stability
 

@@ -65,7 +65,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
             <img src="/media/uupdump-choose-edition.png" width="750">
 
-        - Copy the configuration below, ensure include updates is checked and click create download package
+        - Copy the configuration below, ensure that the ``include updates`` and ``create download package`` options are checked
 
             <img src="/media/uupdump-download-options.png" width="750">
 
@@ -77,19 +77,19 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
-- Extract the contents of the ISO to a directory of your choice with then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I am using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
+- Extract the contents of the ISO to a directory of your choice then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I'm using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
     ```bat
     set "EXTRACTED_ISO=C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939"
     ```
 
-- Set the path where the ISO will be mounted for servicing to the ``MOUNT_DIR`` variable. Changing the value below is not necessary
+- Set the path where the ISO will be mounted for servicing to the ``MOUNT_DIR`` variable. Changing the value below isn't necessary
 
     ```bat
     set "MOUNT_DIR=%temp%\MOUNT_DIR"
     ```
 
-- Set the path to the ``oscdimg.exe`` binary to the ``OSCDIMG`` variable. Unless you installed deployment tools to a location other than default, changing the value below is not necessary
+- Set the path to the ``oscdimg.exe`` binary to the ``OSCDIMG`` variable. Unless you installed deployment tools to a location other than default, changing the value below isn't necessary
 
     ```bat
     set "OSCDIMG=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe"
@@ -126,7 +126,7 @@ Remove every edition except the desired edition by retrieving the indexes of eve
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_ISO%\sources\install.wim"
     ```
 
-- Remove edition by index
+- Remove edition by index. Replace ``<index>`` with the index number
 
     ```bat
     DISM /Delete-Image /ImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:<index>
@@ -152,9 +152,9 @@ win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
 
 This step is only required for users configuring Windows 7 so that typically only [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) and [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) drivers can be integrated into the ISO to enable ourselves to even physically boot into the ISO. If you are unable to find a USB driver for your HWID, try to integrate the [generic USB driver](https://forums.mydigitallife.net/threads/usb-3-xhci-driver-stack-for-windows-7.81934). Ensure to integrate ``KB2864202`` into the ISO if you use this driver.
 
-You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device
+You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in device manager for a given device.
 
-Once you have obtained the relevant drivers, place all the drivers to be integrated in a folder such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO
+Once you have obtained the relevant drivers, place all the drivers to be integrated in a folder such as ``C:\drivers`` and use the command below to integrate them into the mounted ISO.
 
 ```bat
 DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsigned
@@ -186,9 +186,9 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
     - ISOs built with UUP dump already contain the latest updates (assuming the latest version was built) so this step (integrating updates) can be skipped
 
-    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can search for *"non-security"* for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35)). Search for the sever update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
+    - Download the latest non-security cumulative update along with the servicing stack for that specific update (specified in the update page). The update page should also specify whether the update is non-security or a security update, if it does not, then download the latest update. Most of the time you can search for *"security"* for each update. Use the official update history page ([Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-93345c32-4ae1-6d1c-f885-6c0b718adf3b), [Windows 11](https://support.microsoft.com/en-us/topic/october-12-2021-kb5006674-os-build-22000-258-32255bb8-6b25-4265-934c-74fdb25f4d35)). Search for the sever update history manually as it gets moved to a separate page when the client equivalent reaches end-of-life
 
-- Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Ensure to download the correct variant (server/client)
+- Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Ensure to download the correct variant that corresponds to the correct edition (server/client) and architecture
 
 - Integrate the updates into the mounted ISO with the command below. The servicing stack must be installed before installing the cumulative updates
 
@@ -218,7 +218,7 @@ explorer "%MOUNT_DIR%"
 
 ## Unmount and Commit
 
-Run the command below to commit our changes to the ISO. If you get an error, check if the directory is empty to ensure the ISO is unmounted by typing ``explorer "%MOUNT_DIR%"``. If it is empty, you can likely ignore the error, otherwise try close all open folders and run the command again.
+Run the command below to commit our changes to the ISO. If you get an error, check if the directory is empty to ensure the ISO is unmounted by typing ``explorer "%MOUNT_DIR%"``. If it is empty, you can likely ignore the error, otherwise try closing all open folders and run the command again.
 
 ```bat
 DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
@@ -226,9 +226,9 @@ DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we have not yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim`` which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim`` which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
+This step isn't required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we haven't yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim`` which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim`` which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
 
-- Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, I would recommend renaming the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\Win10_ISO``
+- Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, It is recommended to rename the extracted folder to avoid confusion. In the examples below, I have extracted it to ``C:\Win10_ISO``
 
 - Replace ``sources\install.wim`` or ``sources\install.esd`` in the extracted Windows 10 ISO with the Windows 7 ``install.wim``
 
@@ -248,7 +248,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Sourc
 
 ## Convert to ISO
 
-This step is not required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). Use the command below to pack the extracted contents back to a single ISO which will be created on the desktop.
+This step isn't required if you are [installing using DISM Apply-Image](/docs/pre-install.md#boot-into-the-iso). Use the command below to pack the extracted contents back to a single ISO which will be created on the desktop.
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"FINAL" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\FINAL.iso"

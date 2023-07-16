@@ -6,9 +6,9 @@
 
 ## Rationale
 
-Windows is notorious for its ever-growing bloatware, third party telemetry, excessive context switching, interrupts and I/O. This repository was created in hope of standardizing systems for latency sensitive tasks and minimizing unwanted outgoing traffic. Note that the operating system related sections are not indented to be followed on existing installs. On the contrary, the mentioned sections will guide you to customize an ISO using DISM then reinstall Windows properly.
+Windows is notorious for its ever-growing bloatware, third-party telemetry, excessive context switching, interrupts and I/O. This repository was created in hope of standardizing systems for latency-sensitive tasks and minimizing unwanted outgoing traffic. Note that the OS-related sections aren't indented to be followed on existing installs. On the contrary, the mentioned sections will guide you to customize an ISO using DISM then reinstall Windows properly.
 
-This repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however it is not my intention to directly copy from them.
+This repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however it isn't my intention to directly copy from them.
 
 The guidance is currently updated and has been tested on client and server editions of Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues). Users are expected to follow the guidance in the order listed below starting with [Physical Setup](#physical-setup) through to [Post-Install Instructions](#post-install-instructions).
 

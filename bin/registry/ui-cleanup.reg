@@ -13,17 +13,17 @@ Windows Registry Editor Version 5.00
 "ShowFrequent"=dword:00000000
 "ShowRecent"=dword:00000000
 
-; hide quick access from file explorer
+; hide quick access from File Explorer
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "HubMode"=dword:00000001
 
-; launch file explorer to this pc
+; launch File Explorer to this pc
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "LaunchTo"=dword:00000001
 
-; turn off display of recent search entries in the file explorer search box
+; turn off display of recent search entries in the File Explorer search box
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
@@ -33,7 +33,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "ClearRecentDocsOnExit"=dword:00000001
 
-; disable recent items and frequent places in file explorer and quick access
+; disable recent items and frequent places in File Explorer and quick access
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_TrackDocs"=dword:00000000

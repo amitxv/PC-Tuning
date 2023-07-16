@@ -23,7 +23,7 @@ Download the latest game ready (not security update) driver using the [advanced 
     <file name="${{PrivacyPolicyFile}}"/>
     ```
 
-- In ``NVI2\presentations.cfg`` set the value for ProgressPresentationUrl and ProgressPresentationSelectedPackageUrl to an empty string:
+- In ``NVI2\presentations.cfg`` set the value for ``ProgressPresentationUrl`` and ``ProgressPresentationSelectedPackageUrl`` to an empty string:
 
     ```
     <string name="ProgressPresentationUrl" value=""/>
@@ -44,12 +44,12 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 ## Disable HDCP (required for DRM content)
 
-HDCP can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required), ensure to change the driver key to suit your needs.
+HDCP can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required). Ensure to change the driver key to the one that corresponds to the correct NVIDIA GPU.
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
     ```bat
-    reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Control Panel
@@ -70,7 +70,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
 
-    - Ensure that settings are not being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
+    - Ensure that settings aren't being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
 
 - Configure the following in the ``Change resolution`` page:
 
@@ -82,12 +82,12 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Lock GPU Clocks/P-State 0
 
-Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to suit your needs. To reduce power consumption while your real-time application is not running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
+Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to the one that corresponds to the correct NVIDIA GPU. To reduce power consumption while your real-time application isn't running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
     ```bat
-    reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Inspector

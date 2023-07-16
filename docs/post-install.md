@@ -22,7 +22,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
-## Disable Tamper Protection
+## Disable Tamper Protection (Windows 10 1909+)
 
 Disable Tamper protection through Windows Defender then restart your PC. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
 
@@ -42,7 +42,7 @@ Set-ExecutionPolicy Unrestricted
 
 |Modification|Justification|
 |---|---|
-|Disables Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
+|Disable Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
 |Disable Sticky Keys|Intrusive|
 |Disable Search The Web or Display Web Results In Search|Telemetry|
 |Disable Transparency|[Wastes resources](/media/transparency-effects-benchmark.png)|
@@ -109,9 +109,11 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 - Try to obtain the driver in its INF form so that it can be installed in device manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
 
-- I would recommend updating and installing following:
+- It is recommended to update and install the following:
 
     - NIC
+
+        - If you do not have internet access at this stage, you will need to download your NIC drivers from another device or dual boot as they may not be packaged at all in some versions of Windows
 
     - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
 
@@ -125,7 +127,7 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 - Windows 10+ Only
 
-    - Configure settings in ``Time and Language`` by pressing ``Win+I``
+    - Configure settings in ``Time & Language`` by pressing ``Win+I``
 
 ## Activate Windows
 
@@ -149,7 +151,7 @@ C:\bin\scripts\install-firefox.ps1
 
 - Install [language dictionaries](https://addons.mozilla.org/en-GB/firefox/language-tools) for spell-checking
 
-- I usually customize/cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
+- Optionally configure and cleanup the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
 ## Disable Residual Scheduled Tasks
 
@@ -193,7 +195,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
 
-- If an HDD is not present in the system then Superfetch/Prefetch can be disabled with the command below
+- If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
@@ -205,7 +207,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
         - Everything in ``System -> Notifications and actions``
 
-        - All permissions in ``Privacy`` Allow microphone access if desired
+        - All permissions in ``Privacy``. Allow microphone access if desired
 
 - Windows Server+ Only:
 
@@ -223,7 +225,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 ## Disable Features
 
-Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``
+Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``.
 
 - See [media/windows7-features-example.png](/media/windows7-features-example.png)
 
@@ -281,7 +283,7 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 - Boot into Ventoy on your USB in BIOS and select the Linux ISO
 
-- Open file explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume where the ``win-debloat.sh`` is located
+- Open the File Explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume where the ``win-debloat.sh`` is located
 
 - Right-click an empty space and select ``Open in Terminal`` to open a terminal window in the current directory. Use the command below to run the script
 
@@ -301,9 +303,17 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 
 Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then navigate ``Tools -> Options`` and associate 7-Zip with all file extensions by clicking the ``+`` button. You may need to click it twice to override existing associated extensions.
 
-## Install Visual C++ Redistributable Runtimes
+## Install Runtimes
 
-Download and install the [Visual C++ redistributable runtimes](https://github.com/abbodi1406/vcredist).
+These are runtimes that are dependencies of applications worldwide.
+
+- [Visual C++ Redistributable](https://github.com/abbodi1406/vcredist)
+
+- [.NET 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) (ships with Windows 10 1909+)
+
+- [WebView](https://developer.microsoft.com/en-us/microsoft-edge/webview2)
+
+- [DirectX](https://www.microsoft.com/en-gb/download/details.aspx?id=8109)
 
 ## Configure the Graphics Driver
 
@@ -311,21 +321,13 @@ Download and install the [Visual C++ redistributable runtimes](https://github.co
 
 - See [docs/configure-amd.md](/docs/configure-amd.md)
 
-## Install .NET 4.8 Runtimes
-
-Download and install the [.NET 4.8 runtimes](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48). NET 4.8 already ships with Windows 10 1909+.
-
-## Install DirectX Runtimes
-
-Download and install the [DirectX runtimes](https://www.microsoft.com/en-gb/download/details.aspx?id=8109).
-
 ## Configure MSI Afterburner
 
 If you use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards), download and install it.
 
-- Disable update checks in settings
+- Set ``Check for available product updates`` to ``never`` in ``Settings -> General``
 
-- I would recommend configuring a static fan speed as using the fan curve feature requires the program to run continually
+- It is recommended to configure a static fan speed as using the fan curve feature requires the program to run continually
 
 - To automatically load profile 1 (as an example) and exit, type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
 
@@ -347,7 +349,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
     - On systems with an NVIDIA GPU, ensure that the ``Display`` option for the ``Perform scaling on`` setting is still available. If it is not, then find out what change you made in CRU results in it not being accessible through trial and error. This can be accomplished by running ``reset.exe`` to reset the settings to default then re-configure CRU. After each change, run ``restart64.exe`` then check whether the option is still available
 
-- Ensure your resolution is configured properly in Display Adapter Settings
+- Ensure your resolution is configured properly by typing ``rundll32.exe display.dll,ShowAdapterSettings`` in ``Win+R``
 
 - On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior across applications and desktops
 
@@ -385,7 +387,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
     - AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
 
-    - A minority of anticheats (FACEIT) require Meltdown to be enabled
+    - A minority of anti-cheats (FACEIT) require Meltdown to be enabled
 
 - Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove the CPU microcode updates
 
@@ -415,7 +417,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
 Open CMD and enter the commands below.
 
-- Set active power scheme to High performance
+- Set the active power scheme to High performance
 
     ```bat
     powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
@@ -467,21 +469,21 @@ Open CMD and enter the commands below.
     bcdedit /timeout 0
     ```
 
-- [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) is set to ``Turn on for essential Windows programs and services only`` by default. However, DEP can be completely disabled with the command below but a minority of anticheats require DEP to be left on the default setting. Do not change if unsure
+- [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) is set to ``Turn on for essential Windows programs and services only`` by default. However, DEP can be completely disabled with the command below but a minority of anti-cheats require DEP to be left on the default setting. Do not change if unsure
 
     ```bat
     bcdedit /set nx AlwaysOff
     ```
 
-- Configure the operating system name, I usually name it to whatever Windows version I am using such as ``Windows 10 1803``
+- Configure the operating system name, I usually name it to whatever Windows version I'm using such as ``Windows 10 1803``
 
     ```bat
-    bcdedit /set {current} description "OSNAME"
+    bcdedit /set {current} description "OS_NAME"
     ```
 
 - Windows 8+ Only
 
-    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2/). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency sensitive tasks and reducing jitter
+    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency-sensitive tasks and reducing jitter
 
     - See [Reducing timer tick interrupts | Erik Rigtorp](https://rigtorp.se/low-latency-guide)
 
@@ -502,7 +504,7 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 - It relies on a kernel mode driver to operate which may introduce additional overhead
 
-- Does not display process tree
+- Does not display the process tree
 
 - On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the ``disable idle`` power setting results in 100% CPU utilization on Windows 8+
 
@@ -512,7 +514,7 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 - Copy ``procexp64.exe`` into ``C:\Windows`` and open it
 
-- Navigate to ``Options`` and select ``Replace Task Manager`` I also configure the following:
+- Navigate to ``Options`` and select ``Replace Task Manager``. Optionally configure the following:
 
     - Confirm Kill
 
@@ -520,7 +522,7 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
     - Always On Top (helpful for when applications crash and UI becomes unresponsive)
 
-    - Enable the following columns granular resource measurement metrics
+    - Enable the following columns for granular resource measurement metrics
 
         - Context Switch Delta (Process Performance)
 
@@ -550,7 +552,7 @@ C:\bin\scripts\disable-process-mitigations.bat
     Get-MMAgent
     ```
 
-- If anything is set to True, use the command below as an example to disable a given setting
+- If anything is set to ``True``, use the command below as an example to disable a given setting
 
     ```powershell
     Disable-MMAgent -MemoryCompression
@@ -584,13 +586,13 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - I also like to set the sound scheme to no sounds in the sounds tab
 
-- Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to CPU not being able to keep up under load
+- Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to the CPU not being able to keep up under load
 
     - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs
 
 ## Configure Services and Drivers
 
-I am not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
+I'm not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
 - The ``High precision event timer`` device in device manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
 
@@ -634,7 +636,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
 
-    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power saving features. Disable the power saving option in the ``Power Management`` section
+    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power-saving features. Disable the power-saving option in the ``Power Management`` section
 
     - Disable everything that isn't the GPU on the same PCIe port
 
@@ -648,13 +650,13 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 7. Open device manager by typing ``devmgmt.msc`` in ``Win+R``
 
-8. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and are not due to services being disabled
+8. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and aren't due to services being disabled
 
 9. Optionally use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
 
-## Disable Driver Power Saving
+## Disable Driver power-saving
 
-Open PowerShell and enter the command below to disable power saving on devices in device manager. Avoid re-plugging devices as the power saving settings will get restored
+Open PowerShell and enter the command below to disable power-saving on devices in device manager. Avoid re-plugging devices as the power-saving settings will get restored
 
 ```powershell
 C:\bin\scripts\disable-pnp-powersaving.ps1
@@ -712,13 +714,13 @@ Open CMD and enter the commands below.
 
 - Restart your PC, you can verify whether a device is utilizing MSIs by checking if it has a negative IRQ in MSI Utility
 
-- Although this carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the ``Conflicts/Sharing`` section
+- Although this was carried out in the [Physical Setup](/docs/physical-setup.md) section, confirm that there is no IRQ sharing on your system by typing ``msinfo32`` in ``Win+R`` then navigating to the ``Conflicts/Sharing`` section
 
     - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
 ## Per-CPU Scheduling
 
-Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
+Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such as servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
 
 - Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
 
@@ -734,7 +736,7 @@ Windows schedules interrupts, DPCs, threads and more on CPU 0 for several module
 
 ### GPU and DirectX Graphics Kernel
 
-[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU related modules are assigned to
+[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU-related modules are assigned to
 
 ### Network Interface Card
 
@@ -758,7 +760,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 - Ensure that you have enough cores to run your real-time application on and aren't reserving too many CPUs to the point where isolating modules does not yield real-time performance
 
-- As CPU sets are considered soft policies, the configuration is not guaranteed. A CPU intensive process such as a stress-test will utilize the reserved cores if required
+- As CPU sets are considered soft policies, the configuration isn't guaranteed. A CPU-intensive process such as a stress-test will utilize the reserved cores if required
 
 #### Potential Use Cases
 
@@ -795,7 +797,7 @@ For example, a mouse with an 1kHz polling rate will report data every 1ms. While
 
 - See [How to persistently disable XHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
-- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to use [RWEverything](http://rweverything.com/) on Windows 11+
+- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to use [RWEverything](http://rweverything.com) on Windows 11+
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f
@@ -803,11 +805,11 @@ For example, a mouse with an 1kHz polling rate will report data every 1ms. While
 
 ## Configure Control Panel
 
-It is not a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
+It isn't a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
 
 ## Analyze Event Viewer
 
-This step is not required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
+This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
 
 - The ``Services-Disable.bat`` script disables logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to 3 and 2 respectively
 
@@ -821,7 +823,7 @@ Install any programs and configure your real-time applications to prepare us for
 
 - Use [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform)
 
-- Cap your frame rate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). Cap at your minimum fps threshold for increased smoothness and ensure the GPU is not maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
+- Cap your frame rate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). Cap at your minimum fps threshold for increased smoothness and ensure the GPU isn't maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
 
     - See [FPS Cap Calculator](https://boringboredom.github.io/tools/#/FPSCap)
 
@@ -834,7 +836,7 @@ Install any programs and configure your real-time applications to prepare us for
     - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try to run the command below in CMD and reboot
 
         ```bat
-        reg add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
+        reg add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
         ```
 
     - If you are stuck with ``Hardware Composed: Independent Flip``, try to run the command below to disable MPOs in CMD and reboot
@@ -896,7 +898,7 @@ Install any programs and configure your real-time applications to prepare us for
     - Open CMD and enter the commands below
 
         ```bat
-        reg delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
+        reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
         ```
 
 ## Final Thoughts and Tips
@@ -911,10 +913,10 @@ Install any programs and configure your real-time applications to prepare us for
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled
 
     ```bat
     powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
     ```
 
-- If you are using Windows 8.1+, the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) presentation mode with your application, and take responsibility for damage caused to your operating system, you can disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). Ensure that there are not any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM
+- If you are using Windows 8.1+, the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) presentation mode with your application, and take responsibility for damage caused to your operating system, you can disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM

@@ -63,7 +63,7 @@ lkd> dd HalpTscSyncPolicy l1
 fffff802`2864a3ac  00000002
 ```
 
-In conclusion, Windows uses the default value, not enhanced or legacy. Although, the default value may correspond to another value which is not exposed by reading the output of HalpTscSyncPolicy.
+In conclusion, Windows uses the default value, not enhanced or legacy. Although, the default value may correspond to another value which isn't exposed by reading the output of HalpTscSyncPolicy.
 
 </details>
 
@@ -506,7 +506,7 @@ Identity scaling, sometimes referred to as *real no scaling*, is the operation w
 After monitoring registry activity while changing the scaling mode in the GPU control panel, the ``Scaling`` registry key is modified which align with the values in the [DISPLAYCONFIG_SCALING enum](https://learn.microsoft.com/en-us/windows/win32/api/wingdi/ne-wingdi-displayconfig_scaling) documentation. The comments below indicate what the GPU control panel options correspond to.
 
 ```
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\GraphicsDrivers\Configuration\<id>]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Configuration\<id>]
 "Scaling"=dword:00000002
 ```
 
@@ -602,7 +602,7 @@ Scaling Mode: 2
 
     - Requesting to use the identity (1) scaling mode with GPU scaling resorts to the aspect ratio (4) scaling mode
 
-    - An observation that is not demonstrated in the table above is that, in my case, having two or more detailed resolutions in CRU while using ``Perform Scaling On: GPU`` along with the desired resolution not being topmost resolution resulted in the centered, full-screen and aspect ratio scaling modes used (GPU scaling)
+    - An observation that isn't demonstrated in the table above is that, in my case, having two or more detailed resolutions in CRU while using ``Perform Scaling On: GPU`` along with the desired resolution not being topmost resolution resulted in the centered, full-screen and aspect ratio scaling modes used (GPU scaling)
 
     - Due to the previous bullet point, the GPU/Display scaling option in the GPU control panel only makes a difference when using two or more detailed resolutions in CRU
 
