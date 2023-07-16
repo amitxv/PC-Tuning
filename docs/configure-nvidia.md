@@ -49,7 +49,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
     ```bat
-    reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "RMHdcpKeyglobZero" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Control Panel
@@ -87,7 +87,7 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in device manager
 
     ```bat
-    reg add "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
     ```
 
 ## Configure NVIDIA Inspector
