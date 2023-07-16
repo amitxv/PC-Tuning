@@ -32,7 +32,7 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 - Run ``setup.exe`` to install the driver
 
-- Open CMD and enter the commands below to disable telemetry
+- Open CMD and enter the commands below to disable NVIDIA-related telemetry
 
     ```bat
     reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d "0" /f
