@@ -101,7 +101,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     > nul 2>&1 (DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Discard & rd /s /q "%MOUNT_DIR%" & mkdir "%MOUNT_DIR%")
     ```
 
-- If the environment variables are configured correctly, the commands below should display ``true``
+- If the environment variables are configured correctly, each command below should output ``true``
 
     ```bat
     if exist "%EXTRACTED_ISO%\sources\install.wim" (echo true) else (echo false)
@@ -112,7 +112,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 ## Remove Non-Essential Editions
 
-Remove every edition except the desired edition by retrieving the indexes of every other edition and removing them with the commands below. Once completed, the only edition to exist should be the desired edition at index 1.
+Remove every edition except the desired edition by retrieving the indexes of every other edition and removing them with the commands below. Once completed, the only edition to exist should be the desired edition at index 1. This step is not required when building an ISO with UUP dump.
 
 - Recommended editions:
 
