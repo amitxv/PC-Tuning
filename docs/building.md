@@ -142,7 +142,7 @@ DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDi
 
 ## Replace Wallpapers
 
-Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if building Windows 7 ISO.
+Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if building a Windows 7 ISO.
 
 ```bat
 win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
