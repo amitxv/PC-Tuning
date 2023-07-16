@@ -48,7 +48,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Download a live Linux distribution of your choice and move the ISO into the USB storage in file explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 
-    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#removing-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
+    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#removing-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux, however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
 
 ## Boot Into the ISO
 
@@ -75,16 +75,16 @@ For the next steps, it is mandatory to disconnect the Ethernet cable and not be 
 
 - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) and assign the newly created unallocated space a drive letter
 
-- Extract the ISO if required then run the command below to apply the image. Replace ``<path\to\wim>`` with the path to the ``install.wim`` or ``install.esd`` and replace ``<drive letter>`` with the drive letter you assigned in the previous step. For example, ``C:\en_windows_8_1_x64_dvd_2707217\sources\install.wim`` and ``D:``
+- Extract the ISO if required then run the command below to apply the image. Replace ``<wim_path>`` with the path to the ``install.wim`` or ``install.esd`` and replace ``<drive_letter>`` with the drive letter you assigned in the previous step. For example, ``C:\en_windows_8_1_x64_dvd_2707217\sources\install.wim`` and ``D:``
 
     ```bat
-    DISM /Apply-Image /ImageFile:<path\to\wim> /Index:1 /ApplyDir:<drive letter>
+    DISM /Apply-Image /ImageFile:<wim_path> /Index:1 /ApplyDir:<drive_letter>
     ```
 
-- Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory. For example ``D:\Windows``
+- Create the boot entry with the command below. Replace ``<win_dir>`` with the path to the mounted ``Windows`` directory. For example ``D:\Windows``
 
     ```bat
-    bcdboot <windir>
+    bcdboot <win_dir>
     ```
 
 ---

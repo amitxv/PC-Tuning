@@ -126,7 +126,7 @@ Remove every edition except the desired edition by retrieving the indexes of eve
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_ISO%\sources\install.wim"
     ```
 
-- Remove edition by index
+- Remove edition by index. Replace ``<index>`` with the index number
 
     ```bat
     DISM /Delete-Image /ImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:<index>
@@ -190,7 +190,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 
 - Download the updates from the [Microsoft update catalog](https://www.catalog.update.microsoft.com/Home.aspx) by searching for the KB identifier. Ensure to download the correct variant (i.e. server/client and the proper architecture)
 
-- Integrate the updates into the mounted ISO with the command below. The servicing stack must be installed before installing the cumulative updates
+- Integrate the updates into the mounted ISO with the command below. The servicing stack must be installed before installing the cumulative updates. Replace ``<update_path>`` with a path to the folder containing the updates
 
     ```bat
     DISM /Image:"%MOUNT_DIR%" /Add-Package /PackagePath=<update_path>
