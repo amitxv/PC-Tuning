@@ -105,7 +105,7 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 
 - GPU drivers will be installed in a later step so do not install them at this stage
 
-- You can find drivers by searching for drivers that are compatible with your device HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in Device Manager for a given device
+- You can find drivers by searching for drivers that are compatible with your device's HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in Device Manager for a given device
 
 - Try to obtain the driver in its INF form so that it can be installed in Device Manager as executable installers usually install other bloatware along with the driver itself. Most of the time, you can extract the installer's executable with 7-Zip to obtain the driver
 
@@ -562,7 +562,7 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Open ``Network Connections`` by typing ``ncpa.cpl`` in ``Win+R``
 
-- Disable any unused network adapters then right-click your main one and select properties
+- Disable any unused network adapters then right-click your main one and select ``Properties``
 
 - Disable all items except ``QoS Packet Scheduler`` and ``Internet Protocol Version 4 (TCP/IPv4)``
 

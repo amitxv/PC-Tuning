@@ -92,7 +92,7 @@
 
 - Mount a fan over VRMs, CPU backplate, storage devices, PCH, NIC and other hot spots
 
-- Replace stock thermal pads with higher quality ones
+- Replace stock thermal pads with higher-quality ones
 
 - Repaste GPU due to factory application of thermal paste often being inadequate and replace the stock fans with higher quality ones
 
@@ -148,7 +148,7 @@
 
 ## BIOS
 
-- Keep in mind that anything can go sideways when modifying BIOS. You should explore methods to flash a stock BIOS such as working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer if [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work
+- Keep in mind that anything can go sideways when modifying BIOS. You should explore methods to flash a stock BIOS such as a working USB flashback or a [CH341A](https://www.techinferno.com/index.php?/topic/12230-some-guide-how-to-use-spi-programmer-ch341a) programmer if [clearing CMOS](https://www.intel.co.uk/content/www/uk/en/support/articles/000025368/processors.html) does not work
 
 - Check for BIOS updates and positive changes in the change log such as increased memory stability. Beware of problems brought up in reviews and forums
 
