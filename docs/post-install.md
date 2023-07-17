@@ -343,7 +343,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
     - Optionally use [QueryDisplayScaling](https://github.com/amitxv/QueryDisplayScaling) to query the current scaling mode
 
-- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in CRU. This may be a workaround for the ~1-second black screen when alt-tabbing while using the ``Hardware: Legacy Flip`` present mode
+- Try to delete every resolution and the other bloatware (audio blocks) apart from your native resolution in CRU. This may be a workaround for the ~1-second black screen when alt-tabbing while using the ``Hardware: Legacy Flip`` presentation mode
 
     - On systems with an NVIDIA GPU, ensure that the ``Display`` option for the ``Perform scaling on`` setting is still available. If it is not, then find out what change you made in CRU results in it not being accessible through trial and error. This can be accomplished by running ``reset.exe`` to reset the settings to default then re-configure CRU. After each change, run ``restart64.exe`` then check whether the option is still available
 
@@ -770,7 +770,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
-There is a lot of misleading and inaccurate information regarding this topic polluting the internet. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, frame rate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
+There is a lot of misleading and inaccurate information regarding this topic polluting the internet. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
 
 - Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
 
@@ -817,39 +817,47 @@ This step isn't required, but can help to justify unexplained performance issues
 
 ## Configuring Applications
 
-Install any programs and configure your real-time applications to prepare us for the next steps.
+Install any programs and configure your real-time applications to prepare us for the steps below.
 
-- Use [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform)
+### NVIDIA Reflex
 
-- Cap your frame rate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ). Cap at your minimum fps threshold for increased smoothness and ensure the GPU isn't maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
+Consider using [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform).
+
+### Framerate Limit
+
+- Cap your framerate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ)
 
     - See [FPS Cap Calculator](https://boringboredom.github.io/tools/#/FPSCap)
 
-    - Capping your frame rate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience as it utilizes [busy-wait](https://en.wikipedia.org/wiki/Busy_waiting) which offers higher precision than 100% passive-waiting but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) and potentially greater CPU overhead. Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` from running which wastes resources
+- Choose a value that is close to the minimum fps threshold for increased smoothness
 
-- Configure present mode
+- Ensure that the GPU isn't maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
 
-    - Always check whether your real-time application is using the desired present mode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal
+- Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience as it utilizes [busy-wait](https://en.wikipedia.org/wiki/Busy_waiting) which offers higher precision than 100% passive-waiting but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) and potentially greater CPU overhead. Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` from running which wastes resources
 
-    - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try running the command below in CMD and reboot
+### Presentation Mode
 
-        ```bat
-        reg add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
-        ```
+- Always verify whether your real-time application is using the desired presentation mode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal
 
-    - If you are stuck with ``Hardware Composed: Independent Flip``, try running the command below to disable MPOs in CMD and reboot
+- Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try running the command below in CMD and reboot
 
-        ```bat
-        reg add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
-        ```
+    ```bat
+    reg add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
+    ```
 
-- Configuring QoS policies
+- If you are stuck with ``Hardware Composed: Independent Flip``, try running the command below to disable MPOs in CMD and reboot
 
-    - This allows Windows to prioritize packets of an application
+    ```bat
+    reg add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "5" /f
+    ```
 
-    - See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
+### QoS Policies
 
-        - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
+Allows Windows to prioritize packets of an application.
+
+- See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
+
+    - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
 ## Cleanup
 
