@@ -311,8 +311,6 @@ These are runtimes that are dependencies of applications worldwide.
 
 - [.NET 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) (ships with Windows 10 1909+)
 
-- [WebView](https://developer.microsoft.com/en-us/microsoft-edge/webview2)
-
 - [DirectX](https://www.microsoft.com/en-gb/download/details.aspx?id=8109)
 
 ## Configure the Graphics Driver
