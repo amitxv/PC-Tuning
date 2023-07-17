@@ -2,13 +2,13 @@
 
 ## Configure Partitions
 
-Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate environments for work/bloatware and your real-time application. This way you will not be forced to install bloatware on the same partition where you will be using your real-time application. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in disk management which will create unallocated space for the new operating system to be installed to.
+Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate environments for work/bloatware and your real-time application. This way you will not be forced to install bloatware on the same partition where you will be using your real-time application. You can do this by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) in Disk Management which will create unallocated space for installing the new operating system.
 
 ## What Version of Windows Should You Use?
 
 - Generally, older versions of Windows are superior for real-time tasks as the concern for power efficiency and security is heightened after each edition release. For this reason, Windows 7 is the preferable choice but lacks driver support for modern hardware and developers are increasingly dropping support for legacy operating systems
 
-- Earlier versions of Windows lack anti-cheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See a table below of the minimum version required to install drivers for a given GPU as of July 2023
+- Earlier versions of Windows lack anti-cheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See the table below of the minimum version required to install drivers for a given GPU as of July 2023
 
     |GPU|Minimum Windows Version|
     |---|---|
@@ -28,7 +28,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See the [Configuring Applications](/docs/post-install.md#configuring-applications) section for more information
 
-- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which aren't Windows 11+ or server 2022+
+- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds released after Windows 10 2004 which aren't Windows 11+ or Server 2022+
 
 - As of May 2023, Windows 11 limits the message rate of background raw input listeners
 
@@ -48,7 +48,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Download a live Linux distribution of your choice and move the ISO into the USB storage in File Explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 
-    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#removing-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
+    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#removing-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux, however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
 
 ## Boot Into the ISO
 

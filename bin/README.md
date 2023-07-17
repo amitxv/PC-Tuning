@@ -1,4 +1,4 @@
-# Acknowledgements
+# Acknowledgments
 
 The software listed below is included in the ``bin`` folder.
 

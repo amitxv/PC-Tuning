@@ -15,7 +15,7 @@ Download the latest game ready (not security update) driver using the [advanced 
     setup.exe
     ```
 
-- Remove the following consecutive lines from ``setup.cfg`` (near the bottom):
+- Remove the following lines from ``setup.cfg``:
 
     ```
     <file name="${{EulaHtmlFile}}"/>
