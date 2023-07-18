@@ -22,7 +22,7 @@ Determine what services are dependencies of the functionality that is broken, th
 
     <summary>Example</summary>
 
-    - An example of what the beginning of what the ``Services-Enable.bat`` script could look like:
+    - An example of what the beginning of the ``Services-Enable.bat`` script could look like:
 
         ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}" /v "LowerFilters" /t REG_MULTI_SZ /d "EhStorClass" /f
@@ -47,7 +47,7 @@ Determine what services are dependencies of the functionality that is broken, th
 
     </details>
 
-1. Copy the lines that enable the next 10 services to the ``Debug-Services.bat`` script
+1. Copy the lines that enable the next 10 services from the ``Services-Enable.bat`` script to the ``Debug-Services.bat`` script
 
 1. Run the ``Debug-Services.bat`` script with NSudo and restart your PC
 
