@@ -877,8 +877,6 @@ Allows Windows to prioritize packets of an application.
 
     - ``"%userprofile%\Downloads"``
 
-- Clear the ``PATH`` user environment variable of locations pointing to Windows bloatware folders
-
 - Configure Disk Cleanup
 
     - Open CMD and enter the command below, tick all the boxes except ``DirectX Shader Cache``, press ``OK``
