@@ -620,11 +620,11 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 1. If you haven't disabled services at this stage, run the ``Services-Disable.bat`` script
 
-2. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
+1. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
 
-3. **DO NOT** disable any devices with a yellow icon because these are the devices that are being handled by disabling services
+1. **DO NOT** disable any devices with a yellow icon because these are the devices that are being handled by disabling services
 
-4. Navigate to ``View -> Devices by connection``
+1. Navigate to ``View -> Devices by connection``
 
     - Disable any PCIe, SATA, NVMe and XHCI controllers with nothing connected to them
 
@@ -638,19 +638,19 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - Disable everything that isn't the GPU on the same PCIe port
 
-5. Navigate to ``View -> Resources by connection``
+1. Navigate to ``View -> Resources by connection``
 
     - Disable any unneeded devices that are using an IRQ or I/O resources, always ask if unsure and take your time on this step
 
     - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate and unneeded devices in case you accidentally miss any with the confusing Device Manager tree structure
 
-6. Run the ``Services-Enable.bat`` script
+1. Run the ``Services-Enable.bat`` script
 
-7. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
+1. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
 
-8. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and aren't due to services being disabled
+1. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and aren't due to services being disabled
 
-9. Optionally use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
+1. Optionally use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
 
 ## Disable Driver power-saving
 
