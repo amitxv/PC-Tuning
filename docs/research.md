@@ -1,6 +1,6 @@
 # Research
 
-#### How can you verify if a DSCP QoS policy is working?
+## How can you verify if a DSCP QoS policy is working?
 
 <details>
 
@@ -24,7 +24,7 @@
 
 ---
 
-#### What TscSyncPolicy does Windows use by default?
+## What TscSyncPolicy does Windows use by default?
 
 <details>
 
@@ -69,7 +69,7 @@ In conclusion, Windows uses the default value, not enhanced or legacy. Although,
 
 ---
 
-#### How many RSS Queues do you need?
+## How many RSS Queues do you need?
 
 <details>
 
@@ -94,9 +94,9 @@ Conclusion: During online matches, at most two RSS queues/CPUs are being utilize
 
 ---
 
-#### Win32PrioritySeparation
+## Win32PrioritySeparation
 
-- #### The truth behind ambiguous values
+- ### The truth behind ambiguous values
 
     <details>
 
@@ -167,7 +167,7 @@ Conclusion: During online matches, at most two RSS queues/CPUs are being utilize
 
     </details>
 
-- #### No foreground boost may be superior
+- ### No foreground boost may be superior
 
     <details>
 
@@ -257,7 +257,7 @@ Conclusion: During online matches, at most two RSS queues/CPUs are being utilize
 
 ---
 
-#### Microsoft USB driver latency penalty
+## Microsoft USB driver latency penalty
 
 <details>
 
@@ -266,11 +266,11 @@ Conclusion: During online matches, at most two RSS queues/CPUs are being utilize
 
 On a stock Win10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers.
 
-#### ``Wdf01000.sys``
+## ``Wdf01000.sys``
 
 <img src="/media/wdf01000-usb-xperf-report.png" width="500">
 
-#### ``amdxhc31.sys (vendor USB drivers)``
+## ``amdxhc31.sys (vendor USB drivers)``
 
 <img src="/media/amdxhc31-usb-xperf-report.png" width="500">
 
@@ -280,7 +280,7 @@ Excluding benchmark variation, ISR/DPC count and ISR latency is identical. Howev
 
 ---
 
-#### Fixing timing precision in Windows after "The Great Rule Change"
+## Fixing timing precision in Windows after "The Great Rule Change"
 
 <details>
 
@@ -422,7 +422,7 @@ Resolution: 0.500000ms, Sleep(1) slept 1.494400ms (delta: 0.494400)
 
 ---
 
-#### Micro-adjusting timer resolution for higher precision
+## Micro-adjusting timer resolution for higher precision
 
 <details>
 
@@ -494,7 +494,7 @@ Despite 0.500ms being a higher resolution than 0.507ms, it offers worse precisio
 
 ---
 
-#### What is identity scaling and how can you use it?
+## What is identity scaling and how can you use it?
 
 <details>
 
@@ -614,7 +614,7 @@ Scaling Mode: 2
 
 <!-- ---
 
-#### Title
+## Title
 
 <details>
 
