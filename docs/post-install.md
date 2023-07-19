@@ -616,6 +616,8 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
 
 - If desired, you can use [ServiWin](https://www.nirsoft.net/utils/serviwin.html) to check for residual drivers and possibly create an issue on the repository to let me know that a given driver should be disabled
 
+- Something not working after disabling services but works once services are re-enabled? See [docs/debug-services.md](/docs/debug-services.md)
+
 ## Configure Device Manager
 
 The section is directly related to the [Configure Services and Drivers](#configure-services-and-drivers) section. The methodology below will ensure maximum compatibility while services are enabled because devices with an associated driver will be toggled in the ``Services-Disable.bat`` script which means we do not need to permanently disable them.
