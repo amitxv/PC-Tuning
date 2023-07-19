@@ -734,11 +734,11 @@ Windows schedules interrupts, DPCs, threads and more on CPU 0 for several module
 
 ### XHCI Controller
 
-[Mouse Tester](https://github.com/amitxv/MouseTester) can be used to compare polling variation with the XHCI controller assigned to different CPUs. Ideally, this should be benchmarked under load as idle benchmarks may be misleading
+[Mouse Tester](https://github.com/amitxv/MouseTester) can be used to compare polling variation with the XHCI controller assigned to different CPUs. Ideally, this should be benchmarked under load as idle benchmarks may be misleading.
 
 ### GPU and DirectX Graphics Kernel
 
-[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU-related modules are assigned to
+[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU-related modules are assigned to.
 
 ### Network Interface Card
 
