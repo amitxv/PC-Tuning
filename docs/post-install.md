@@ -223,6 +223,18 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - To remove the user password, enter your current password and leave the new/confirm password fields blank in ``User Accounts`` by typing ``control userpasswords`` in ``Win+R``
 
+## Install Runtimes
+
+These are runtimes that are dependencies of applications worldwide.
+
+- [Visual C++ Redistributable](https://github.com/abbodi1406/vcredist)
+
+- [.NET 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) (ships with Windows 10 1909+)
+
+- [WebView](https://developer.microsoft.com/en-us/microsoft-edge/webview2)
+
+- [DirectX](https://www.microsoft.com/en-gb/download/details.aspx?id=8109)
+
 ## Disable Features
 
 Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``.
@@ -235,23 +247,23 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
     - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` and enable ``Wireless LAN Service``
 
-## Remove Chromium Microsoft Edge and OneDrive
+## Remove Bloatware Natively
 
-Open CMD and enter the commands below. The legacy version of Microsoft Edge will be removed in a later step if it is present.
-
-- Microsoft Edge
-
-    ```bat
-    if exist "C:\Program Files (x86)\Microsoft\Edge\Application" (for /f "delims=" %a in ('where /r "C:\Program Files (x86)\Microsoft\Edge\Application" *setup.exe*') do ("%a" --uninstall --system-level --verbose-logging --force-uninstall))
-    ```
-
-- OneDrive
+- Open CMD and enter the command below to uninstall OneDrive
 
     ```bat
     for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall)) && reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
     ```
 
-## Remove Bloatware Natively
+- Disable Microsoft Edge
+
+    - Download [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) and navigate to the ``Everything`` section then search for *"edge"*. Disable everything that shows up
+
+    - Open CMD and enter the command below to remove all related shortcuts
+
+        ```bat
+        for /f "delims=" %a in ('where /r C:\ *edge.lnk*') do (del /f /q "%a")
+        ```
 
 - Open PowerShell and enter the command below to remove all Appx packages (Windows 8+)
 
@@ -277,7 +289,7 @@ Open CMD and enter the commands below. The legacy version of Microsoft Edge will
 
 - Restart your PC once to apply the changes above (do not boot into Linux without a full restart beforehand)
 
-## Removing Bloatware with Linux
+## Remove Bloatware with Linux
 
 As mentioned previously, the instructions below are specific to Linux Mint. If you are using another distro, interpret the steps below and follow along accordingly.
 
@@ -302,16 +314,6 @@ As mentioned previously, the instructions below are specific to Linux Mint. If y
 ## Install 7-Zip
 
 Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Zip\7zFM.exe`` then navigate ``Tools -> Options`` and associate 7-Zip with all file extensions by clicking the ``+`` button. You may need to click it twice to override existing associated extensions.
-
-## Install Runtimes
-
-These are runtimes that are dependencies of applications worldwide.
-
-- [Visual C++ Redistributable](https://github.com/abbodi1406/vcredist)
-
-- [.NET 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) (ships with Windows 10 1909+)
-
-- [DirectX](https://www.microsoft.com/en-gb/download/details.aspx?id=8109)
 
 ## Configure the Graphics Driver
 
