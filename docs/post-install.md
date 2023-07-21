@@ -770,7 +770,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 - Reserving hyper-threaded CPUs
 
-- Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-gpu-core.png)
+- Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
