@@ -153,6 +153,8 @@ C:\bin\scripts\install-firefox.ps1
 
 - Optionally configure and clean up the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
+- Ensure to configure file extensions and the default browser in Windows settings
+
 ## Disable Residual Scheduled Tasks
 
 Open PowerShell and enter the command below. Ignore any errors.
@@ -257,7 +259,15 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
 - Disable Microsoft Edge
 
+    - The browser should be disabled instead of uninstalled to retain the WebView runtime
+
     - Download [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) and navigate to the ``Everything`` section then search for *"edge"*. Disable everything that shows up
+
+    - Updating the browser will revert some changes made in the previous step. You can ensure that it does not update if it is opened accidentally with the command below
+
+        ```bat
+        rd /s /q "C:\Program Files (x86)\Microsoft\EdgeUpdate"
+        ```
 
     - Open CMD and enter the command below to remove all related shortcuts
 
