@@ -817,7 +817,7 @@ For example, a mouse with a 1kHz polling rate will report data every 1ms. While 
 
 - In some cases, the interrupter index can change after a reboot meaning the interrupter address will become invalid if it is hardcoded. To work around this, you can simply disable IMOD for all interrupters by running the script below at startup. Type ``shell:startup`` in ``Win+R`` then place the script in the folder
 
-    - See [XHCI-IMOD-Interval.ps1](XHCI-IMOD-Interval.ps1 )
+    - See [XHCI-IMOD-Interval.ps1](https://gist.github.com/amitxv/4fe34e139f0aec681a6122f39757d86e)
 
 ## Configure Control Panel
 
