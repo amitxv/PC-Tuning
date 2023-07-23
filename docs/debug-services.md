@@ -55,10 +55,12 @@ Determine what services are dependencies of the functionality that is broken, th
 
 1. Disable the last 10 services in the ``Debug-Services.bat`` individually by changing the start value to 4 then restart your PC. Keep repeating until the functionality breaks again
 
-1. Now that you have identified which service breaks the functionality, try to re-enable it. If you can reproduce the functionality breaking while the service is disabled and works with it enabled, make a note of this service and continue to step 10
+1. Now that you have identified which service breaks the functionality, try to re-enable it. If you can reproduce the functionality breaking while the service is disabled and works with it enabled, make a note of this service and continue to the next step
+
+1. Delete ``Debug-Services.bat`` as it is no longer required
 
 1. The service's dependencies must also be enabled if there are any. For user-mode services, you can use the dependency tree by typing ``services.msc`` in ``Win+R`` then navigating to ``Properties -> Dependencies`` of a service. Kernel-mode services are a bit more tedious as a dependency tree is not available. You will have to manually search for them. Note down all the dependencies
 
-1. Report all the services that you noted down by posting an [issue](https://github.com/amitxv/PC-Tuning/issues) describing what functionality these fixed. Meanwhile, you can change the start values of all the services that were noted down in the ``Services-Disable.bat`` script. Get the default start value for a given service from the ``Services-Enable.bat`` script
+1. Get the default start value for each service that you noted down from the ``Services-Enable.bat`` script then edit the start value in the ``Services-Disable.bat`` script for the corresponding service. Run the ``Services-Disable.bat`` script with NSudo to check whether the functionality is working. If it is not working, return to step 1 and repeat the entire process with the newly edited/latest ``Services-Disable.bat`` script. This is because a service that is required for the functionality might not have any service dependencies
 
-1. Delete ``Debug-Services.bat`` as it is no longer required
+1. Report all the services that you noted down by posting an [issue](https://github.com/amitxv/PC-Tuning/issues) describing what functionality was fixed by enabling the noted services

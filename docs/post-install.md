@@ -257,7 +257,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
     for %a in ("SysWOW64" "System32") do (if exist "%windir%\%~a\OneDriveSetup.exe" ("%windir%\%~a\OneDriveSetup.exe" /uninstall)) && reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
     ```
 
-- Disable Microsoft Edge
+- Disable Chromium Microsoft Edge
 
     - The browser should be disabled instead of uninstalled to retain the WebView runtime
 
