@@ -815,6 +815,10 @@ For example, a mouse with a 1kHz polling rate will report data every 1ms. While 
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f
     ```
 
+- In some cases, the interrupter index can change after a reboot meaning the interrupter address will become invalid if it is hardcoded. To work around this, you can simply disable IMOD for all interrupters by running the script below at startup. Type ``shell:startup`` in ``Win+R`` then place the script in the folder
+
+    - See [XHCI-IMOD-Interval.ps1](XHCI-IMOD-Interval.ps1 )
+
 ## Configure Control Panel
 
 It isn't a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
