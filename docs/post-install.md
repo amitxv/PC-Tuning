@@ -473,12 +473,6 @@ Open CMD and enter the commands below.
 
 Open CMD and enter the commands below.
 
-- Disable the boot manager timeout when dual booting (does not affect single boot times)
-
-    ```bat
-    bcdedit /timeout 0
-    ```
-
 - [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) is set to ``Turn on for essential Windows programs and services only`` by default. However, DEP can be completely disabled with the command below but a minority of anti-cheats require DEP to be left on the default setting. Do not change if unsure
 
     ```bat
