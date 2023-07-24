@@ -15,4 +15,6 @@ rm -rf Windows/SystemApps/!("ShellExperienceHost_cw5n1h2txyewy"|"Microsoft.UI.Xa
 rm -rf "Windows/System32/smartscreen.exe"
 rm -rf "Windows/System32/mobsync.exe"
 
+echo info: done
+
 exit 0
