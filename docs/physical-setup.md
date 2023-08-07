@@ -2,15 +2,15 @@
 
 ## General
 
+- See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
+
+- See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
+
 - An SSD or NVMe is strongly recommended due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
 
 - Assess the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
 
 - Update the firmware for devices such as storage, NIC, peripherals and more
-
-- See [Avoid Multi-CCX Ryzen CPUs (1XXX, 2XXX, 3XXX, 59XX) | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
-
-- See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
 - Avoid single-channel and mismatching RAM. Refer to the motherboard manual to ensure that they are in the correct slots. Consider the memory trace layout when determining the amount of sticks to use
 
