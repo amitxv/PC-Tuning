@@ -14,7 +14,7 @@
 
 - Avoid single-channel and mismatching RAM. Refer to the motherboard manual to ensure that they are in the correct slots. Consider the memory trace layout when determining the amount of sticks to use
 
-- Favor PCIe ports that go straight to the CPU rather than PCH. This typically applies to M.2, NVMe and GPUs. Beware of limitations with the amount of lanes available
+- Favor PCIe ports that go straight to the CPU rather than PCH, this typically applies to M.2, NVMe and GPUs. This can be determined with the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). Beware of limitations with the amount of lanes available.
 
 - Ensure that your PCIe devices under the ``PCIe Bus`` category are running at their rated specification such as ``x16 3.0`` in [HWiNFO](https://www.hwinfo.com). The current link width/speed of the device should match the maximum supported
 
