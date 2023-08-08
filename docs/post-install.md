@@ -660,7 +660,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 1. Optionally use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
 
-## Disable Driver power-saving
+## Disable Driver Power-Saving
 
 Open PowerShell and enter the command below to disable power-saving on devices in Device Manager. Avoid re-plugging devices as the power-saving settings will get restored
 
