@@ -506,8 +506,6 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 <summary>Reasons not to use Task Manager</summary>
 
-- It relies on a kernel mode driver to operate which may introduce additional overhead
-
 - Does not display the process tree
 
 - On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the ``disable idle`` power setting results in 100% CPU utilization on Windows 8+
