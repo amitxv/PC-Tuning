@@ -853,10 +853,14 @@ Consider using [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-
 
 - Always verify whether your real-time application is using the desired presentation mode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal
 
-- Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try running the command below in CMD and reboot
+- Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try running the commands below in CMD and reboot. These registry keys are accessed by the game and Windows upon launch
 
     ```bat
     reg add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f
+    ```
+
+    ```bat
+    reg add "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_FSEBehavior" /t REG_DWORD /d "2" /f
     ```
 
 - If you are stuck with ``Hardware Composed: Independent Flip``, try running the command below to disable MPOs in CMD and reboot
