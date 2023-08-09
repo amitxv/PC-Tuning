@@ -60,6 +60,10 @@
 
     - See [What Version of Windows Should You Use?](/docs/pre-install.md#what-version-of-windows-should-you-use)
 
+- Avoid a multi-monitor setup as there is the potential for greater processing overhead
+
+    - See [Extra Monitors DO Hurt Your Gaming Performance | Linus Tech Tips](https://www.youtube.com/watch?v=5wBxYQdN96s)
+
 ## Cooling
 
 - Remove the side panels from your case or consider an open-bench setup
