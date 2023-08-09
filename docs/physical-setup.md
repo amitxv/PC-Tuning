@@ -46,6 +46,8 @@
 
 - Clean the pins and connectors of components. Use compressed air to remove dust from slots before installing components such as PCIe, NVMe, RAM and more
 
+    - See [Cleaning contacts on RAM Memory and Graphics Card | zodox](https://www.youtube.com/watch?v=OTrzzC10Scg)
+
 - If you aren't already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup. GPT/UEFI is recommended for most people
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
