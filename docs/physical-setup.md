@@ -30,6 +30,8 @@
 
 - An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
+- If you have more than one onboard Ethernet NIC, consider using the one that supports MSI-X as it is required [for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). This can be achieved by plugging the Ethernet cable into the corresponding port on the motherboard
+
 - Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets
 
     - See [Bufferbloat and Internet Speed Test](https://www.waveform.com/tools/bufferbloat)
