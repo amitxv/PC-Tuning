@@ -184,7 +184,7 @@
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough CPUs for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per CPU increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). [Disabling HT/SMT has the additional benefit of doubling (in case of 2-way SMT) the effective L1 and L2 cache available to a thread](https://rigtorp.se/low-latency-guide) along with increased overclocking potential due to lower temperatures. A similar concept can be applied to Intel's E-Cores (efficiency cores)
 
-- Limit C-States, P-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
+- Limit C-States, P-States, T-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
 
     - Verify C-State residency with [HWiNFO](https://www.hwinfo.com)
 
