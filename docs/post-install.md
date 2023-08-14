@@ -143,7 +143,7 @@ slmgr /ato
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip-hash-check`` to the end of the command.
+A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip_hash_check`` to the end of the command.
 
 ```powershell
 C:\bin\scripts\install-firefox.ps1
