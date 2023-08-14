@@ -236,6 +236,8 @@
 
     - See [Ultimate fan speed curve (by KGCT, iteration 1)](https://imgur.com/a/2UDYXp0)
 
+- When overclocking, you may be required to raise various power limits if the default limits are exceeded
+
 - Backup BIOS by saving the current settings to a profile as clearing CMOS will wipe all settings if you need to do so while overclocking
 
 ## Stability, Hardware Clocking and Thermal Performance
