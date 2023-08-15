@@ -10,7 +10,6 @@ Add-Type -AssemblyName System.Web.Extensions
 $web_client = New-Object System.Net.WebClient
 $serializer = New-Object System.Web.Script.Serialization.JavaScriptSerializer
 $hash_algorithm = New-Object -TypeName System.Security.Cryptography.SHA512CryptoServiceProvider;
-$hash = [System.BitConverter]::ToString($hash_algorithm.ComputeHash([System.IO.File]::ReadAllBytes($file)))
 
 function Convert-To-Json($item) {
     return $serializer.Serialize($item)
