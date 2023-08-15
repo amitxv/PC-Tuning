@@ -17,6 +17,7 @@ function Convert-To-Json($item) {
 }
 
 function Get-SHA512($file) {
+    $hash = [System.BitConverter]::ToString($hash_algorithm.ComputeHash([System.IO.File]::ReadAllBytes($file)))
     $ret = @{"Algorithm" = "SHA512"
         "Path"           = $file
         "Hash"           = $hash.Replace("-", "")
