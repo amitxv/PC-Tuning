@@ -300,6 +300,8 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
     - [PorteusLinpack Bootable by SlovenianSlobodan#9859](https://drive.google.com/file/d/1g6hY_klVOyd2FQy0Ozit2aFrEyuC4r48/view?usp=sharing)
 
+        - Login is root, password is toor
+
         - The default config is 100 trials of 10 GB problem size. To customize the config, type ``vi lininput_xeon64``. See [this video](https://www.youtube.com/watch?v=vo2FXvPkcEA) for a basic overview of the vi editor
 
         - Use the [sample config](https://raw.githubusercontent.com/BoringBoredom/Linpack-Extended/master/dependencies/linpack/misc/lininput_xeon64) as an example to chain multiple tests
