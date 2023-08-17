@@ -19,19 +19,19 @@ The guidance is currently updated and has been tested on client and server editi
 - Any live Linux distribution
 - Familiarity with navigating directories in CLI
 
-## Physical Setup
+## 1. Physical Setup
 
 - See [docs/physical-setup.md](/docs/physical-setup.md)
 
-## Pre-Install Instructions
+## 2. Pre-Install Instructions
 
 - See [docs/pre-install.md](/docs/pre-install.md)
 
-## Post-Install Instructions
+## 3. Post-Install Instructions
 
 - See [docs/post-install.md](/docs/post-install.md)
 
-## Research
+## 4. Research
 
 - See [docs/research.md](/docs/research.md)
 
