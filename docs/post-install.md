@@ -263,7 +263,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
     - Download [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) and navigate to the ``Everything`` section then search for *"edge"*. Disable everything that shows up
 
-    - Updating the browser will revert some changes made in the previous step. You can ensure that it does not update if it is opened accidentally with the command below
+    - Updating the browser will revert some changes made in the previous step. You can ensure that it does not update if it is opened accidentally with the command below. Ensure that there aren't any hidden Microsoft Edge process running in Task Manager
 
         ```bat
         rd /s /q "C:\Program Files (x86)\Microsoft\EdgeUpdate"
