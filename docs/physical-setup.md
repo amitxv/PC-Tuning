@@ -118,6 +118,9 @@
 
     - Some motherboards have the High Definition Audio controller (motherboard audio) linked to the XHCI controller
 
+> [!NOTE]
+> Take a note of any BIOS related changes as they might be reset in the first few steps of the [BIOS](#bios) section.
+
 ## Configure USB Port Layout
 
 - Favor the first few ports on the desired XHCI controller. Some of them may not be physically accessible which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports, avoid companion ports (indicated in the right section of the program) and [internal headers](/media/xhci-internal-headers.png) as the data must go through hubs
