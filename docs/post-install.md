@@ -813,6 +813,8 @@ For example, a mouse with a 1kHz polling rate will report data every 1ms. While 
     PowerShell C:\XHCI-IMOD-Interval.ps1
     ```
 
+- To determine whether changing the IMOD interval is taking effect, you can temporarily set the interval to ``0xFA00`` (62.5Hz). If the mouse cursor is visibly stuttering upon movement, then the changes are successfully taking effect
+
 ## Configure Control Panel
 
 It isn't a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
