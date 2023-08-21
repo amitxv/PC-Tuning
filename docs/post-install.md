@@ -12,16 +12,6 @@
 
 - See [media/oobe-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows10+-example.mp4)
 
-## Visual Cleanup
-
-Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and start menu.
-
-- See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows7-example.mp4)
-
-- See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows8-example.mp4)
-
-- See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
-
 ## Disable Tamper Protection (Windows 10 1909+)
 
 Disable Tamper protection through Windows Defender then restart your PC. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
@@ -100,6 +90,16 @@ C:\bin\scripts\apply-registry.ps1 -winver <option>
 - Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
 
 - After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
+
+## Visual Cleanup
+
+Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and start menu.
+
+- See [media/visual-cleanup-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows7-example.mp4)
+
+- See [media/visual-cleanup-windows8-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows8-example.mp4)
+
+- See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
 ## Install Drivers
 
