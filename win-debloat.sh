@@ -1,4 +1,5 @@
 cd "$(dirname "$0")"
+shopt -s extglob
 
 if ! [[ -d "Program Files" && -d "Windows/System32" ]]
 then
