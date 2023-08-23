@@ -12,13 +12,13 @@ Determine what services are dependencies of the functionality that is broken, th
 
 1. If you haven't disabled services at this stage, run the ``Services-Disable.bat`` script
 
-1. Open the ``Services-Enable.bat`` script in a text editor
+2. Open the ``Services-Enable.bat`` script in a text editor
 
-1. Create a new script named ``Debug-Services.bat``
+3. Create a new script named ``Debug-Services.bat``
 
-1. Copy the line that sets the ``HIVE`` variable to the ``Debug-Services.bat`` script. It is ``set "HIVE=SYSTEM\CurrentControlSet"`` by default for all systems
+4. Copy the line that sets the ``HIVE`` variable to the ``Debug-Services.bat`` script. It is ``set "HIVE=SYSTEM\CurrentControlSet"`` by default for all systems
 
-1. If you have any lines that change the ``LowerFilters`` and/or ``UpperFilters`` registry keys, you will need to handle those first, otherwise, you can continue to step 5. Copy those lines and the line that changes the ``Start`` value for the driver in the filter to the ``Debug-Services.bat`` script
+5. If you have any lines that change the ``LowerFilters`` and/or ``UpperFilters`` registry keys, you will need to handle those first, otherwise, you can continue to step 6. Copy those lines and the line that changes the ``Start`` value for the driver in the filter to the ``Debug-Services.bat`` script
 
     <details>
 
@@ -49,20 +49,20 @@ Determine what services are dependencies of the functionality that is broken, th
 
     </details>
 
-1. Copy the lines that enable the next 10 services from the ``Services-Enable.bat`` script to the ``Debug-Services.bat`` script
+6. Copy the lines that enable the next 10 services from the ``Services-Enable.bat`` script to the ``Debug-Services.bat`` script
 
-1. Run the ``Debug-Services.bat`` script with NSudo and restart your PC
+7. Run the ``Debug-Services.bat`` script with NSudo and restart your PC
 
-1. Test the functionality. If it is **NOT** working then return to step 5, otherwise, continue to step 8
+8. Test the functionality. If it is **NOT** working then return to step 6, otherwise, continue to step 9
 
-1. Disable the last 10 services in the ``Debug-Services.bat`` individually by changing the start value to 4 then restart your PC. You will need to check whether it is even possible to disable each service by checking whether it is not 4 in ``Services-Disable.bat``. If it is 4, then you can safely disable it however, if it is not 4, do not disable the service under any circumstances otherwise you may BSOD. Keep repeating until the functionality breaks again
+9. Disable the last 10 services in the ``Debug-Services.bat`` individually by changing the start value to 4 then restart your PC. You will need to check whether it is even possible to disable each service by checking whether it is not 4 in ``Services-Disable.bat``. If it is 4, then you can safely disable it however, if it is not 4, do not disable the service under any circumstances otherwise you may BSOD. Keep repeating until the functionality breaks again
 
-1. Now that you have identified which service breaks the functionality, try to re-enable it. If you can reproduce the functionality breaking while the service is disabled and works with it enabled, make a note of this service and continue to the next step
+10. Now that you have identified which service breaks the functionality, try to re-enable it. If you can reproduce the functionality breaking while the service is disabled and works with it enabled, make a note of this service and continue to the next step
 
-1. Delete ``Debug-Services.bat`` as it is no longer required
+11. Delete ``Debug-Services.bat`` as it is no longer required
 
-1. The service's dependencies must also be enabled if there are any. For user-mode services, you can use the dependency tree by typing ``services.msc`` in ``Win+R`` then navigating to ``Properties -> Dependencies`` of a service. Kernel-mode services are a bit more tedious as a dependency tree is not available. You will have to manually search for them. Note down all the dependencies
+12. The service's dependencies must also be enabled if there are any. For user-mode services, you can use the dependency tree by typing ``services.msc`` in ``Win+R`` then navigating to ``Properties -> Dependencies`` of a service. Kernel-mode services are a bit more tedious as a dependency tree is not available. You will have to manually search for them. Note down all the dependencies
 
-1. Get the default start value for each service that you noted down from the ``Services-Enable.bat`` script then edit the start value in the ``Services-Disable.bat`` script for the corresponding service. Run the ``Services-Disable.bat`` script with NSudo to check whether the functionality is working. If it is not working, return to step 1 and repeat the entire process with the newly edited/latest ``Services-Disable.bat`` script. This is because a service that is required for the functionality might not have any service dependencies
+13. Get the default start value for each service that you noted down from the ``Services-Enable.bat`` script then edit the start value in the ``Services-Disable.bat`` script for the corresponding service. Run the ``Services-Disable.bat`` script with NSudo to check whether the functionality is working. If it is not working, return to step 1 and repeat the entire process with the newly edited/latest ``Services-Disable.bat`` script. This is because a service that is required for the functionality might not have any service dependencies
 
-1. Report all the services that you noted down by posting an [issue](https://github.com/amitxv/PC-Tuning/issues) describing what functionality was fixed by enabling the noted services
+14. Report all the services that you noted down by posting an [issue](https://github.com/amitxv/PC-Tuning/issues) describing what functionality was fixed by enabling the noted services
