@@ -181,7 +181,7 @@
 
 - Motherboard vendors hide/lock a lot of useful settings so that they aren't visible to a regular user. For clarification, unlocking BIOS corresponds to making hidden settings accessible and visible
 
-    - On some boards, you can enable ``Hidden OC Item`` or ``Hide Item`` to unlock BIOS if present
+    - On some boards, you can toggle ``Hidden OC Item`` or ``Hide Item`` to unlock BIOS if present
 
     - The easiest approach to take is to change the access levels within the BIOS using [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) or AMIBCP then flash it
 
