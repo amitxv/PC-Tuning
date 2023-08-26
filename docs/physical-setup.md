@@ -275,15 +275,15 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
     - See [Why Vdroop is good for overclocking and taking a look at Gigabyte's Override Vcore mode | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=zqvNkh4TVw8)
 
-- Set a static all-core core/uncore frequency and voltage for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions
-
 - Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many subtimings nor does it guarantee stability
 
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
     - See [KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT](https://github.com/KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT)
 
-- The previous two bullet points (core/uncore/memory) affect each other in terms of stability which means you should re-test each component after tinkering with the other
+- Configure static all-core frequencies and voltages for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions
+
+- The previous two bullet points affect each other in terms of stability which means you should re-test each component after tinkering with the other
 
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
