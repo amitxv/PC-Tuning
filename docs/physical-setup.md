@@ -324,6 +324,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
     - GFLOP variation should be minimal
 
 - [Prime95](https://www.mersenne.org/download)
+
 - [y-cruncher](http://www.numberworld.org/y-cruncher)
 
 - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
@@ -337,6 +338,10 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
 
 - [OCCT](https://www.ocbase.com)
+
+- [memtest_vulkan](https://github.com/GpuZelenograd/memtest_vulkan)
+
+- [OCCT](https://www.ocbase.com) VRAM + [Prime95](https://www.mersenne.org/download) Large FFT - FCLK stability
 
 ---
 
