@@ -185,7 +185,7 @@
 
     - The easiest approach to take is to change the access levels within the BIOS using [UEFI-Editor](https://github.com/BoringBoredom/UEFI-Editor#usage-guide) or AMIBCP then flash it
 
-    - For changing hidden settings without flashing a modded BIOS, you can start by configuring what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) to change the hidden settings
+    - For changing hidden settings without flashing a modded BIOS, you can start by configuring what is already accessible then use [GRUB](https://github.com/BoringBoredom/UEFI-Editor#how-to-change-hidden-settings-without-flashing-a-modded-bios) or [SCEWIN](https://github.com/amitxv/SCEWIN) to change the hidden settings
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough CPUs for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per CPU increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). [Disabling HT/SMT has the additional benefit of doubling (in case of 2-way SMT) the effective L1 and L2 cache available to a thread](https://rigtorp.se/low-latency-guide) along with increased overclocking potential due to lower temperatures. A similar concept can be applied to Intel's E-Cores (efficiency cores)
 
