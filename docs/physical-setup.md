@@ -315,6 +315,8 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
         - To access sensors while the test is running, press ``Ctrl+Alt+F2`` to switch to TTY 2 then type ``./sensors``. Use ``Ctrl+Alt+F1`` to switch back to TTY 1 to view the output of the test
 
+        - ``lin_xeon64.txt`` is overwritten with the results. Use ``vi lin_xeon64.txt`` to open it in the vi editor so that you can freely scroll through the trials
+
     - [Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme) - Outdated binaries
 
     - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
