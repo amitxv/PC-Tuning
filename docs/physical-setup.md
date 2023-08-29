@@ -14,7 +14,7 @@
 
 - Avoid single-channel and mismatching RAM. Refer to the motherboard manual to ensure that they are in the correct slots. Consider the memory trace layout when determining the amount of sticks to use
 
-- Favor PCIe ports that go straight to the CPU rather than PCH, this typically applies to M.2, NVMe and GPUs. This can be determined with the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). Beware of limitations with the amount of lanes available.
+- Favor PCIe ports that go straight to the CPU rather than PCH, this typically applies to M.2, NVMe and GPUs. This can be determined with the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). Beware of limitations with the amount of lanes available
 
 - Ensure that your PCIe devices under the ``PCIe Bus`` category are running at their rated specification such as ``x16 3.0`` in [HWiNFO](https://www.hwinfo.com). The current link width/speed of the device should match the maximum supported
 
@@ -149,7 +149,7 @@
 
     - See [OpenRGB](https://openrgb.org)
 
-- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is problematic and may be due to several variables such as the device itself, cable, power issues, hardware, operating system and more. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz).
+- Use [Mouse Tester](https://github.com/amitxv/MouseTester) to check whether each poll contains data. As an example, if the interval is spiking to 2ms (500Hz) or higher from 1ms (1kHz), this is problematic and may be due to several variables such as the device itself, cable, power issues, hardware, operating system and more. You may need to lower or disable the XHCI interrupt moderation interval when using a device with a high polling rate (8kHz)
 
     - See [XHCI Interrupt Moderation (IMOD)](/docs/post-install.md#xhci-interrupt-moderation-imod)
 
