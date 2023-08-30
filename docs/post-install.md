@@ -734,9 +734,9 @@ Windows schedules interrupts, DPCs, threads and more on CPU 0 for several module
 
 - Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in Device Manager
 
-### XHCI Controller
+### XHCI and Audio Controller
 
-[Mouse Tester](https://github.com/amitxv/MouseTester) can be used to compare polling variation with the XHCI controller assigned to different CPUs. Ideally, this should be benchmarked under load as idle benchmarks may be misleading.
+The XHCI and audio controller related modules generate a substantial amount of interrupts upon interaction respective of the relevant device. Isolating the related modules to an underutilized CPU is beneficial for reducing contention.
 
 ### GPU and DirectX Graphics Kernel
 
