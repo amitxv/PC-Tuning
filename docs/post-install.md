@@ -189,7 +189,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 - Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
-    - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary I/O
+    - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary I/O unless you run out of RAM
 
     - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable
 
