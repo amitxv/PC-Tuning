@@ -20,6 +20,8 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - NVIDIA DCH drivers are [supported on Windows 10 1803+](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq)
 
+- Windows 10 1809+ is required for Ray Tracing on NVIDIA GPUs
+
 - Microsoft implemented a fixed 10MHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier, but many users across the internet reported worse performance
 
 - Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png)
