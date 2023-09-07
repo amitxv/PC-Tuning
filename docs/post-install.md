@@ -650,11 +650,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - If there are multiple of the same devices, and you are unsure which one is in use, refer back to the tree structure in ``View -> Devices by connection``. Remember that a single device can use many resources. You can also use [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) to check for duplicate and unneeded devices in case you accidentally miss any with the confusing Device Manager tree structure
 
-1. Run the ``Services-Enable.bat`` script
-
-1. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
-
-1. Now you **CAN** disable devices with a yellow icon because these are devices that genuinely have errors and aren't due to services being disabled
+1. Run the ``Services-Enable.bat`` script to continue with the next steps
 
 1. Optionally use [DeviceCleanup](https://www.uwe-sieber.de/files/DeviceCleanup.zip) to remove hidden devices
 
