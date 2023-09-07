@@ -127,7 +127,7 @@
 
 - Favor the first few ports on the desired XHCI controller. Some of them may not be physically accessible which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports, avoid companion ports (indicated in the right section of the program) and [internal headers](/media/xhci-internal-headers.png) as the data must go through hubs
 
-    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to an ``Internal PCIe Bridge`` which is also labeled with the CPU architecture
+    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to an ``Internal PCIe Bridge X to bus`` which is also labeled with the CPU architecture
 
         - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
