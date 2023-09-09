@@ -267,8 +267,6 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Monitor WHEAs. [HWiNFO](https://www.hwinfo.com) has an error count
 
-- Disable the paging file and use safe mode for stress-testing, preferably on a throwaway operating system in case it becomes corrupted
-
 - Configure load-line calibration. Opinionated setting, mentioning for awareness. This isn't a recommendation for what mode to use
 
     - See [Vdroop setting and it’s impact on CPU operation](https://xdevs.com/guide/e399ocg/#vdroop)
