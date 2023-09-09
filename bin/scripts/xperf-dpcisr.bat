@@ -17,8 +17,8 @@ if %err% == 1 (
     exit /b 1
 )
 
-set "record_delay=0"
-set "record_duration=1"
+set "record_delay=3"
+set "record_duration=5"
 set "trace=C:\trace.etl"
 set "report=C:\report.txt"
 
