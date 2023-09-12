@@ -60,6 +60,8 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 For the next steps, you are required to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from installing unwanted updates and drivers.
 
+As a reminder, your NIC driver may not be packaged with Windows so either download them now and store it offline on the USB or be prepared to download them from another device or dual boot.
+
 ### Install using a USB storage device
 
 - Move your Windows ISO into the USB storage in File Explorer (where the Linux ISO is also located)
