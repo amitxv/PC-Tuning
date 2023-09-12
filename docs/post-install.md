@@ -1,5 +1,8 @@
 # Post-Install Instructions
 
+> [!IMPORTANT]
+> This section is not designed to be followed on existing Windows installations. At this stage, you should be booted into the ISO you created with the steps in [docs/building.md](/docs/building.md). If you have no idea what this means, go back to [docs/pre-install.md](/docs/pre-install.md) and follow the instructions from start to finish.
+
 ## OOBE Setup
 
 - Windows Server will force you to enter a complex password which we will remove in a few steps later
