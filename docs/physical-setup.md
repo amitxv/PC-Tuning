@@ -341,8 +341,6 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - [memtest_vulkan](https://github.com/GpuZelenograd/memtest_vulkan)
 
-- [OCCT](https://www.ocbase.com) VRAM + [Prime95](https://www.mersenne.org/download) Large FFT - FCLK stability
-
 ---
 
 Continue to [docs/pre-install.md](/docs/pre-install.md).
