@@ -6,8 +6,6 @@
 
 - [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) - Install Deployment Tools
 
-- [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) - Place the binary in PATH (for example ``C:\Windows``)
-
 ## Download Stock ISOs
 
 Ensure to cross-check the hashes for the ISO to verify that it is genuine and not corrupted (not required when building an ISO from UUP dump). Use the command ``certutil -hashfile <file>`` to get the hash of the ISO.
@@ -107,7 +105,6 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
     if exist "%EXTRACTED_ISO%\sources\install.wim" (echo true) else (echo false)
     if exist "%MOUNT_DIR%" (echo true) else (echo false)
     if exist "%OSCDIMG%" (echo true) else (echo false)
-    where win-wallpaper.exe > nul 2>&1 && echo true || echo false
     ```
 
 ## Remove Non-Essential Editions
@@ -140,9 +137,9 @@ Mount the ISO with the command below.
 DISM /Mount-Wim /WimFile:"%EXTRACTED_ISO%\sources\install.wim" /Index:1 /MountDir:"%MOUNT_DIR%"
 ```
 
-## Replace Wallpapers
+## Replace Wallpapers (Optional)
 
-Run the command below to replace all backgrounds and user profile pictures with solid black images. Use the ``--win7`` argument if building a Windows 7 ISO.
+To replace all backgrounds and user profile pictures with solid black images, download [win-wallpaper](https://github.com/amitxv/win-wallpaper/releases) and place the binary in PATH (e.g. ``C:\Windows``) then run the command below. Append ``--win7`` if you are building a Windows 7 ISO.
 
 ```bat
 win-wallpaper.exe --dir "%MOUNT_DIR%" --rgb #000000 --offline
