@@ -26,7 +26,7 @@ echo info: starting in %record_delay%s
 timeout -t %record_delay% > nul 2>&1
 
 echo info: recording for %record_duration%s
-wpr -start Registry
+wpr -start GeneralProfile
 timeout -t %record_duration% > nul 2>&1
 
 echo info: saving %trace%
