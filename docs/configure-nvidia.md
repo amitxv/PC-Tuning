@@ -92,8 +92,10 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
 ## Configure NVIDIA Inspector
 
-During CUDA workloads, the memory clock frequency will downclock to P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps. For this reason, you should disable ``CUDA - Force P2 State``. [SILK Smoothness](https://www.avsim.com/forums/topic/552651-nvidia-setting-silk-smoothness) along with Enable Ansel can also be disabled as [it is injected in all games by the display drivers, regardless if the game supports Ansel or not](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel). This might cause conflicts with third-party tools or injectors.
-
-- See [media/CUDA-force-p2-state-analysis](/media/cuda-force-p2-state-analysis.png)
-
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)
+
+- Disable ``Enable Ansel`` as [it is injected in all games by the display drivers, regardless if the game supports Ansel or not](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel) which may cause conflicts with third-party tools or injectors
+
+- Disable ``CUDA - Force P2 State`` to prevent the memory clock frequency from downclocking during CUDA workloads as it enters P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps
+
+    - See [media/CUDA-force-p2-state-analysis](/media/cuda-force-p2-state-analysis.png)
