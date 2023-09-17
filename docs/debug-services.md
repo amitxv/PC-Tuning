@@ -18,21 +18,17 @@ Determine what services are dependencies of the functionality that is broken, th
 
 4. Copy the line that sets the ``HIVE`` variable to the ``Debug-Services.bat`` script. It is ``set "HIVE=SYSTEM\CurrentControlSet"`` by default for all systems
 
-5. If you have any lines that change the ``LowerFilters`` and/or ``UpperFilters`` registry keys, you will need to handle those first, otherwise, you can continue to step 6. Copy those lines and the line that changes the ``Start`` value for the driver in the filter to the ``Debug-Services.bat`` script
+5. If you have any lines that change the ``LowerFilters`` and/or ``UpperFilters`` registry keys, you will need to handle those first, otherwise, you can continue to step 6. Copy those lines and the line that changes the ``Start`` value for each driver in the filter to the ``Debug-Services.bat`` script
 
     <details>
 
     <summary>Example</summary>
 
-    - An example of what the beginning of the ``Services-Enable.bat`` script could look like:
+    - An example of what the filters part of the ``Services-Enable.bat`` script could look like:
 
         ```bat
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}" /v "LowerFilters" /t REG_MULTI_SZ /d "EhStorClass" /f
         reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "LowerFilters" /t REG_MULTI_SZ /d "fvevol\0iorate\0rdyboost" /f
-        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\AarSvc" /v "Start" /t REG_DWORD /d "3" /f
-        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\acpipagr" /v "Start" /t REG_DWORD /d "3" /f
-        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\afunix" /v "Start" /t REG_DWORD /d "1" /f
-        reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\ahcache" /v "Start" /t REG_DWORD /d "1" /f
         ...
         ```
 
