@@ -1,7 +1,7 @@
 # Post-Install Instructions
 
 > [!IMPORTANT]
-> This section is not designed to be followed on existing Windows installations. At this stage, you should be booted into the ISO that you created with the steps in [docs/building.md](building.md). If you have no idea what this means, then go back to [docs/pre-install.md](pre-install.md) and follow the instructions from start to finish.
+> This section is not designed to be followed on existing Windows installations. At this stage, you should be booted into the ISO that you created with the steps in [docs/pre-install.md](pre-install.md). If you have no idea what this means, then go back to the pre-install instructions in the document linked above and follow the instructions from start to finish.
 
 ## OOBE Setup
 
