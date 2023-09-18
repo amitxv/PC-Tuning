@@ -153,8 +153,6 @@
 
     - See [XHCI Interrupt Moderation (IMOD)](/docs/post-install.md#xhci-interrupt-moderation-imod)
 
-- Use a [lint roller](https://www.ikea.com/us/en/p/baestis-lint-roller-gray-90425626) to remove dirt and debris from your mouse pad
-
 - Use an [air dust blower](https://www.amazon.com/s?k=air+dust+blower) to remove dirt and debris from the mouse sensor lens
 
 - Factory reset your monitor and reconfigure the settings. Avoid post-processing effects and set overdrive/AMA to an acceptably high setting [as it reduces latency](https://twitter.com/CaIypto/status/1464236780190851078) but comes with a penalty of additional overshoot
