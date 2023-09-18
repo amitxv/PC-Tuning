@@ -755,6 +755,12 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
     ```
 
+- Open PowerShell as administrator and enter the command below to check whether the RSS indirection table is correctly populated
+
+    ```powershell
+    Get-NetAdapterRss
+    ```
+
 ### Reserved CPU Sets (Windows 10+)
 
 [ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, reduce jitter and allows time-sensitive modules to get the CPU time they require.
