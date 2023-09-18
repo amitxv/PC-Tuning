@@ -775,7 +775,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
-There is a lot of misleading and inaccurate information regarding this topic polluting the internet. Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
+Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
 
 - Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
 
