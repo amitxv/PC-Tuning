@@ -96,6 +96,14 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
 - Disable ``Enable Ansel`` as [it is injected in all games by the display drivers, regardless if the game supports Ansel or not](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel) which may cause conflicts with third-party tools or injectors
 
+- If applicable, you can experiment with forcing Resizable BAR on unsupported games for a [potential performance improvement](https://www.youtube.com/watch?v=ZTOtqWTFSK8) by toggling the options below
+
+    - rBAR - Feature
+
+    - rBAR - Options
+
+    - rBAR - Size Limit
+
 - Disable ``CUDA - Force P2 State`` to prevent the memory clock frequency from downclocking during CUDA workloads as it enters P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps
 
     - See [media/CUDA-force-p2-state-analysis](/media/cuda-force-p2-state-analysis.png)
