@@ -253,7 +253,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Try not to leave voltage settings on automatic due to potential overvolting
 
-- Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [MLC](https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html) (run as administrator to disable prefetching and ensure that the ``mlcdrv.sys`` driver is loaded)
+- Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [Intel Memory Latency Checker](https://amitxv.github.io/IMLC-Analyzer)
 
 - There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
 
