@@ -775,8 +775,6 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 - Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. Then the user may explicitly define what will be scheduled on the P-Cores
 
-- Reserving hyper-threaded CPUs
-
 - Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
