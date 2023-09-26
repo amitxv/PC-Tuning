@@ -854,7 +854,7 @@ Consider using [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-
 
 ### Presentation Mode
 
-- Always verify whether your real-time application is using the desired presentation mode with PresentMon. ``Hardware: Legacy Flip`` and ``Hardware: Independent Flip`` are optimal
+- Always verify whether your real-time application is using the desired presentation mode with PresentMon
 
 - Assuming the ``Disable fullscreen optimizations`` checkbox is ticked, and you are having trouble with using ``Hardware: Legacy Flip``, try running the commands below in CMD and reboot. These registry keys are accessed by the game and Windows upon launch
 
