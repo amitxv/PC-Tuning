@@ -159,7 +159,7 @@ Remove every edition except the desired edition by retrieving the indexes of eve
 
     - Server editions: Standard (Desktop Experience)
 
-- Get all available editions and indexes
+- Get all available editions and their corresponding indexes
 
     ```bat
     DISM /Get-WimInfo /WimFile:"%EXTRACTED_ISO%\sources\install.wim"
@@ -330,11 +330,19 @@ As a reminder, your NIC driver may not be packaged with Windows so either downlo
 
 - Create a new partition by [shrinking a volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/shrink-a-basic-volume) if you haven't already, then assign the newly created unallocated space a drive letter
 
-- Extract the ISO if required then run the command below to apply the image. Replace ``<path\to\wim>`` with the path to the ``install.wim`` or ``install.esd`` and replace ``<drive letter>`` with the drive letter you assigned in the previous step. For example, ``C:\en_windows_8_1_x64_dvd_2707217\sources\install.wim`` and ``D:``
+- Extract the ISO if required then run the command below to apply the image. Replace ``<path\to\wim>`` with the path to the ``install.wim`` or ``install.esd``
 
-    ```bat
-    DISM /Apply-Image /ImageFile:<path\to\wim> /Index:1 /ApplyDir:<drive letter>
-    ```
+    - Get all available editions and their corresponding indexes
+
+        ```bat
+        DISM /Get-WimInfo /WimFile:<path\to\wim>
+        ```
+
+    - Apply image.  Replace ``<index>`` with the index of the desired edition and ``<drive letter>`` with the drive letter you assigned in the previous step for the image to be mounted on (e.g. ``1`` and ``D:``)
+
+        ```bat
+        DISM /Apply-Image /ImageFile:<path\to\wim> /Index:<index> /ApplyDir:<drive letter>
+        ```
 
 - Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory. For example ``D:\Windows``
 
