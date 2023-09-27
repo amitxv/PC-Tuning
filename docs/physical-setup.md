@@ -169,6 +169,8 @@
 
     - Requires GPT/UEFI
 
+    - Requires ``Above 4G Decoding`` to be enabled
+
     - Consider using [ReBarUEFI](https://github.com/xCuri0/ReBarUEFI) to enable it on unsupported systems
 
     - Verify Resizable BAR status with [GPU-Z](https://www.techpowerup.com/gpuz)
