@@ -252,7 +252,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
     - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` and enable ``Wireless LAN Service``
 
-## Remove Bloatware Natively
+## Handle Bloatware Natively
 
 - Open CMD and enter the command below to uninstall OneDrive
 
@@ -302,7 +302,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
 - Restart your PC once to apply the changes above (do not boot into Linux without a full restart beforehand)
 
-## Remove Bloatware with Linux
+## Handle Bloatware with Linux
 
 As mentioned previously, the instructions below are specific to Linux Mint. If you are using another distro, interpret the steps below and follow along accordingly.
 

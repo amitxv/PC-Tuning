@@ -301,7 +301,7 @@ This step isn't required if you are [installing using DISM Apply-Image (without 
 
 - Download a live Linux distribution of your choice and move the ISO into the USB storage in File Explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
 
-    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#removing-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux, however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
+    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#handle-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux, however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
 
 ## Boot Into the ISO
 
