@@ -27,6 +27,8 @@ This is required to execute the scripts within the repository. Open PowerShell a
 Set-ExecutionPolicy Unrestricted
 ```
 
+<!-- NOTE TO SELF: Check Windows Defender UI for new options before merging registry files as the UI will become inaccessible -->
+
 ## Merge the Registry Files
 
 <details>
