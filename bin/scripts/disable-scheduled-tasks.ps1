@@ -55,7 +55,7 @@ function main() {
         "defender"
     )
 
-    Write-Host "info: this may take a while..."
+    Write-Host "info: please wait..."
 
     $scheduled_tasks = schtasks /query /fo list
     $task_names = [System.Collections.ArrayList]@()
