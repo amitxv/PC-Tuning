@@ -81,6 +81,8 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - ISO Sources:
 
+    - [os.click](https://os.click)
+
     - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk)
 
     - [Adguard File List](https://files.rg-adguard.net)
