@@ -346,7 +346,7 @@ As a reminder, your NIC driver may not be packaged with Windows so either downlo
         DISM /Apply-Image /ImageFile:<path\to\wim> /Index:<index> /ApplyDir:<drive letter>
         ```
 
-- Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory. For example ``D:\Windows``
+- Create the boot entry with the command below. Replace ``<windir>`` with the path to the mounted ``Windows`` directory (e.g. ``D:\Windows``)
 
     ```bat
     bcdboot <windir>
