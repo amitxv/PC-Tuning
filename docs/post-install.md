@@ -87,6 +87,8 @@ Changes made with ``-ui_cleanup``:
     C:\bin\scripts\apply-registry.ps1 -winver <option>
     ```
 
+- Append the ``-ui_cleanup`` argument to clean up the interface further
+
 - If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+) or reboot (or both) then try and execute the command again
 
 - Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
