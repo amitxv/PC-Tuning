@@ -833,13 +833,15 @@ It isn't a bad idea to skim through both the legacy and immersive control panel 
 
 ## Analyze Event Viewer
 
-This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section (along with the solution).
+This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
 
-- The ``Services-Disable.bat`` script disables logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to 3 and 2 respectively
+- Depending on your configuration, the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section may have disabled logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to their default values which can be found in the ``Services-Enable.bat`` script. Make a note of what the values currently are so that you can restore them later
+
+- Merge the ``ets-enable.reg`` file that was generated in the [Configure Event Trace Sessions](#configure-event-trace-sessions) section as it is required for event logging
 
 - After running the script, use your PC normally for a while then open event viewer by typing ``eventvwr.msc`` in ``Win+R``. Inspect each section for errors and investigate how they can be solved
 
-- Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to 4 in the ``Services-Disable.bat`` script
+- Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to their previous value in the ``Services-Disable.bat`` script
 
 ## Configuring Applications
 
