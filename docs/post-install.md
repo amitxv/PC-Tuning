@@ -668,10 +668,10 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 ## Disable Driver Power-Saving
 
-Open PowerShell and enter the command below to disable power-saving on devices in Device Manager. Avoid re-plugging devices as the power-saving settings will get restored
+Open PowerShell and enter the command below to disable power-saving on devices in Device Manager (ignore errors). Avoid re-plugging devices as the power-saving settings will get restored.
 
 ```powershell
-C:\bin\scripts\disable-pnp-powersaving.ps1
+Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }
 ```
 
 ## Configure Event Trace Sessions
