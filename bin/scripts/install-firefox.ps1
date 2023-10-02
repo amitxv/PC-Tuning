@@ -2,7 +2,8 @@ param(
     [switch]$force,
     [switch]$skip_hash_check,
     [switch]$developer_edition,
-    [string]$lang = "en-GB"
+    [string]$lang = "en-GB",
+    [string]$version
 )
 
 Add-Type -AssemblyName System.Web.Extensions
@@ -84,19 +85,22 @@ function main() {
     $setup_file = "$Env:temp\FirefoxSetup.exe"
 
     if ($developer_edition) {
-        $product = "-devedition"
+        $product = "devedition/"
         $folder_name = "Firefox Developer Edition"
         $remote_version = $firefox["FIREFOX_DEVEDITION"]
-        $hash_source = "https://ftp.mozilla.org/pub/devedition/releases/$remote_version/SHA512SUMS"
     } else {
         $product = ""
         $folder_name = "Mozilla Firefox"
         $remote_version = $firefox["LATEST_FIREFOX_VERSION"]
-        $hash_source = "https://ftp.mozilla.org/pub/firefox/releases/$remote_version/SHA512SUMS"
     }
 
-    $download_url = "https://download.mozilla.org/?product=firefox$product-latest-ssl&os=win64&lang=$lang"
+    if ($version) {
+        $remote_version = $version
+    }
+
+    $download_url = "http://releases.mozilla.org/pub/${product}firefox/releases/$remote_version/win64/$lang/Firefox%20Setup%20$remote_version.exe"
     $install_dir = "C:\Program Files\$folder_name"
+    $hash_source = "https://ftp.mozilla.org/pub/${product}firefox/releases/$remote_version/SHA512SUMS"
 
     # check if currently installed version is already latest
     if (Test-Path "$install_dir\firefox.exe" -PathType Leaf) {
