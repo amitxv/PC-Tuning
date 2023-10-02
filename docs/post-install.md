@@ -65,6 +65,7 @@ Set-ExecutionPolicy Unrestricted
 |Enable The Legacy Photo Viewer|Alternative option for viewing photos as the Windows Photos app is removed in the Appx removal step|
 |Disable Hibernation|Eliminates the need for a hibernation file. It is recommended to shut down instead|
 |Disable Remote Assistance|Security risk|
+|Show File Extensions|Security risk|
 |Allocate Processor Resources Primarily To Programs|On client editions of Windows, this has no effect but is changed to ensure consistency between all editions including Windows Server|
 |Disable Program Compatibility Assistant|Prevent Windows applying changes anonymously after running troubleshooters|
 |Disable Pointer Acceleration|Ensures one-to-one mouse response for games that do not subscribe to raw input events|
