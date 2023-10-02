@@ -15,10 +15,6 @@
 
 - See [media/oobe-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows10+-example.mp4)
 
-## Disable Tamper Protection (Windows 10 1909+)
-
-Disable Tamper protection through Windows Defender then restart your PC. This step is a prerequisite of the [Merge the Registry Files](#merge-the-registry-files) step to circumvent permission errors.
-
 ## Unrestricted PowerShell Execution Policy
 
 This is required to execute the scripts within the repository. Open PowerShell as administrator and enter the command below.
@@ -85,13 +81,13 @@ Changes made with ``-ui_cleanup``:
 
 </details>
 
-Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
+- Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
 
-Append the ``-ui_cleanup`` argument to clean up the interface further.
+    ```powershell
+    C:\bin\scripts\apply-registry.ps1 -winver <option>
+    ```
 
-```powershell
-C:\bin\scripts\apply-registry.ps1 -winver <option>
-```
+- If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+) or reboot (or both) then try and execute the command again
 
 - Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
 
