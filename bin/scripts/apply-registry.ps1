@@ -1,6 +1,5 @@
 param(
-    [Parameter(Mandatory = $true)]
-    [ValidateSet(7, 8, 10, 11)]
+    [Parameter(Mandatory = $true)][ValidateSet(7, 8, 10, 11)]
     [int]$winver,
     [switch]$ui_cleanup
 )

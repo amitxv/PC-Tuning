@@ -1,3 +1,7 @@
+param(
+    [switch]$enable
+)
+
 function main() {
     $power_device_enable = Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi
     $usb_devices = @("Win32_USBController", "Win32_USBControllerDevice", "Win32_USBHub")
@@ -8,7 +12,7 @@ function main() {
             foreach ($hub in Get-WmiObject $device) {
                 $pnp_id = $hub.PNPDeviceID
                 if ($instance_name -like "*$pnp_id*") {
-                    $power_device.enable = $False
+                    $power_device.enable = $enable
                     $power_device.psbase.put()
                 }
             }
