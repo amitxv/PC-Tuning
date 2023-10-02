@@ -34,6 +34,10 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See [DirectStorage Compatibility](https://devblogs.microsoft.com/directx/directstorage-developer-preview-now-available)
 
+- Windows 10 2004+ is required for Hardware Accelerated GPU Scheduling
+
+    - See [Hardware Accelerated GPU Scheduling](https://devblogs.microsoft.com/directx/hardware-accelerated-gpu-scheduling)
+
 - Windows 11+ has an updated scheduler for Intel 12th Gen CPUs and above
 
     - See [Thread Director: Windows 11 Does It Best](https://www.anandtech.com/show/16959/intel-innovation-alder-lake-november-4th/3)
