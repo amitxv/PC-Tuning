@@ -30,7 +30,9 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png)
 
-- DirectStorage requires Windows 10 1909+
+- DirectStorage requires Windows 10 1909+ but according to the article below "*games running on Windows 11 benefit further from new storage stack optimizations*"
+
+    - See [DirectStorage Compatibility](https://devblogs.microsoft.com/directx/directstorage-developer-preview-now-available)
 
 - Windows 11+ has an updated scheduler for Intel 12th Gen CPUs and above
 
