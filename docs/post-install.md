@@ -302,6 +302,10 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
         - In the ``Apps -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
 
+    - Both:
+
+        - In the start menu, *uninstall* the residual links for applications. Keep in mind that these applications aren't actually installed, they get installed only if the user clicks on them so do not accidentally click on them
+
 - Restart your PC once to apply the changes above (do not boot into Linux without a full restart beforehand)
 
 ## Handle Bloatware with Linux
