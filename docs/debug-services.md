@@ -51,7 +51,7 @@ Determine what services are dependencies of the functionality that is broken, th
 
 8. Test the functionality. If it is **NOT** working then return to step 6, otherwise, continue to step 9
 
-9. Disable the last 10 services in the ``Debug-Services.bat`` individually by changing the start value to 4 then restart your PC. You will need to check whether it is even possible to disable each service by checking whether it is not 4 in ``Services-Disable.bat``. If it is 4, then you can safely disable it however, if it is not 4, do not disable the service under any circumstances otherwise you may BSOD. Keep repeating until the functionality breaks again
+9. Disable the last 10 services in the ``Debug-Services.bat`` individually by changing the start value to 4 then restart your PC. You will need to check whether it is even possible to disable each service by checking whether it is not 4 in ``Services-Disable.bat``. If it is 4, then you can safely disable it however, if it is not 4, do not disable the service under any circumstances otherwise you may BSOD. Keep repeating until the functionality breaks again. I would recommend deleting the lines for services that you can not disable
 
 10. Now that you have identified which service breaks the functionality, try to re-enable it. If you can reproduce the functionality breaking while the service is disabled and works with it enabled, make a note of this service and continue to the next step
 
