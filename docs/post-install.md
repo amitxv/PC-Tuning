@@ -668,7 +668,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 ## Disable Driver Power-Saving
 
-Open PowerShell and enter the command below to disable power-saving on devices in Device Manager (ignore errors). Avoid re-plugging devices as the power-saving settings will get restored.
+Open PowerShell and enter the command below to disable the ``Allow the computer to turn off this device to save power`` option for all applicable devices in Device Manager. Re-plugging devices may cause this option to re-enable so either avoid doing so, run this command again or create a script to execute the command each time at startup by creating a shortcut in ``shell:startup`` as a precautionary measure.
 
 ```powershell
 Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }
