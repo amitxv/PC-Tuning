@@ -289,21 +289,21 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
 - Windows 10+ Only:
 
-    - Windows 10:
+    - In the start menu, *uninstall* the residual links for applications. Keep in mind that these applications aren't actually installed, they get installed only if the user clicks on them so do not accidentally click on them
+
+    - Disable background apps in ``Privacy -> Background Apps`` by pressing ``Win+I``
+
+    - Windows 10 Only:
 
         - Uninstall bloatware in ``Apps -> Apps and Features`` by pressing ``Win+I``
 
         - In the ``Optional features`` section, uninstall everything apart from ``Microsoft Paint``, ``Notepad`` and ``WordPad`` if applicable (these do not exist in earlier Windows 10 versions)
 
-    - Windows 11:
+    - Windows 11 Only:
 
         - Uninstall bloatware in ``Apps -> Installed apps`` by pressing ``Win+I``
 
         - In the ``Apps -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
-
-    - Both:
-
-        - In the start menu, *uninstall* the residual links for applications. Keep in mind that these applications aren't actually installed, they get installed only if the user clicks on them so do not accidentally click on them
 
 - Restart your PC once to apply the changes above (do not boot into Linux without a full restart beforehand)
 
