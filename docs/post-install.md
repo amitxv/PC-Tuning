@@ -67,6 +67,7 @@ Set-ExecutionPolicy Unrestricted
 |Disable Pointer Acceleration|Ensures one-to-one mouse response for games that do not subscribe to raw input events|
 |Disable Windows Error Reporting|Telemetry|
 |Disable Typing Insights|Telemetry|
+|Do Not Let Apps Run In the Background|Disabled via policies as the option is not available in the interface on Windows 11|
 
 Changes made with ``-ui_cleanup``:
 
@@ -290,8 +291,6 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 - Windows 10+ Only:
 
     - In the start menu, *uninstall* the residual links for applications. Keep in mind that these applications aren't actually installed, they get installed only if the user clicks on them so do not accidentally click on them
-
-    - Disable background apps in ``Privacy -> Background Apps`` by pressing ``Win+I``
 
     - Windows 10 Only:
 
