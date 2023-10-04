@@ -16,7 +16,7 @@ Determine what services are dependencies of the functionality that is broken, th
 
 3. Create a new script named ``Debug-Services.bat``
 
-4. Copy the line that sets the ``HIVE`` variable to the ``Debug-Services.bat`` script. It is ``set "HIVE=SYSTEM\CurrentControlSet"`` by default for all systems
+4. Copy the line that sets the ``HIVE`` variable (it is ``set "HIVE=SYSTEM\CurrentControlSet"`` by default for all systems) and the lines that rename binaries if you have any (these lines begin with ``REN``) to the ``Debug-Services.bat`` script
 
 5. If you have any lines that change the ``LowerFilters`` and/or ``UpperFilters`` registry keys, you will need to handle those first, otherwise, you can continue to step 6. Copy those lines and the line that changes the ``Start`` value for each driver in the filter to the ``Debug-Services.bat`` script
 
