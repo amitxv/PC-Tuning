@@ -12,6 +12,18 @@ This repository may contain information similar to those of the projects listed 
 
 The guidance is currently updated and has been tested on client and server editions of Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues). Users are expected to follow the guidance in the order listed below starting with [Physical Setup](#physical-setup) through to [Post-Install Instructions](#post-install-instructions).
 
+## Staying Informed
+
+The contents and information included in this repository will inevitably change over time. To stay up to date, I would recommend the steps below.
+
+1. Take a note of the 7 digit SHA code in the [latest commit](https://github.com/amitxv/PC-Tuning/commit/main) (e.g. ``2428150``)
+
+2. To compare changes with the current branch, use the URL below (replace the example ``2428150`` with the SHA code obtained in step 1)
+
+    <https://github.com/amitxv/PC-Tuning/compare/2428150..main>
+
+3. After you have finished comparing changes, follow step 1 again to make note of the latest commit then repeat whenever you would like to see what has changed since your last review
+
 ## Requirements
 
 - USB Storage Device (8 GB minimum)
