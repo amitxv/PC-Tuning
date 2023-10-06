@@ -103,7 +103,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - [Fido](https://github.com/pbatard/Fido)
 
-    - [UUP dump](https://www.uupdump.cn) (Windows 10 1709+)
+    - [UUP dump](https://www.uupdump.cn/?lang=en-us) (Windows 10 1709+)
         <details>
         <summary>Instructions</summary>
 
