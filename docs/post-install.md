@@ -52,7 +52,6 @@ Set-ExecutionPolicy Unrestricted
 |Restore Old Context Menu|Intrusive|
 |Disable Fault Tolerant Heap|Prevents Windows autonomously applying mitigations to prevent future crashes on a per-application basis|
 |Disable GameBarPresenceWriter|Runs constantly and wastes resources despite disabling Game Bar|
-|Disable Language Bar|Accidentally opens on occasions which is intrusive for most people|
 |Disable Telemetry|Telemetry|
 |Disable Notifications Network Usage|Polls constantly and wastes resources|
 |Reserve 10% of CPU Resources for Low-Priority Tasks Instead of The Default 20%|On an optimized system with few background tasks, it is desirable to allocate most of the CPU time to the foreground process|
@@ -133,6 +132,8 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 - Windows 10+ Only
 
     - Configure settings in ``Time & Language`` by pressing ``Win+I``
+
+        - If you intend to exclusively use one language and keyboard layout, ensure that is the case in actuality so that you don't need to toggle the language bar hotkeys which can become intrusive otherwise
 
 ## Activate Windows
 

@@ -64,16 +64,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
 
-; disable language bar
-
-[HKEY_CURRENT_USER\Keyboard Layout\Toggle]
-"Layout Hotkey"="3"
-"Language Hotkey"="3"
-"Hotkey"="3"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\CTF\LangBar]
-"ShowStatus"=dword:00000003
-
 ; disable customer experience improvement program
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\Windows]
