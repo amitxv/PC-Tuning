@@ -145,7 +145,7 @@
 
     - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide)
 
-- USB output is limited to ~7A and RGB requires unnecessary power. Turn off lighting effects or strip the LED from the peripheral as [running an RGB effect/animation can take a great toll on the MCU and will delay other processes](https://blog.wooting.nl/what-influences-keyboard-speed)
+- USB output is limited to ~7A and RGB requires unnecessary power. Turn off lighting effects or strip the LED from the peripheral as [running an RGB effect/animation can take a great toll on the MCU and will delay other processes](https://wooting.io/post/what-influences-keyboard-speed)
 
     - See [OpenRGB](https://openrgb.org)
 
