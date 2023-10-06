@@ -634,6 +634,8 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
     service-list-builder.exe --config C:\bin\minimal-services.ini
     ```
 
+    - If you would like to rebuild the scripts, ensure to run the generated ``Services-Enable.bat`` script beforehand as the tool relies on the current state of services for building future scripts
+
 - If desired, you can use [ServiWin](https://www.nirsoft.net/utils/serviwin.html) to check for residual drivers and possibly create an issue on the repository to let me know that a given driver should be disabled
 
 - Something not working after disabling services but works once services are re-enabled? See [docs/debug-services.md](/docs/debug-services.md)
