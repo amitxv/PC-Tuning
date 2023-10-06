@@ -78,7 +78,7 @@ In conclusion, Windows uses the default value, not enhanced or legacy. Although,
 
 [Receive side scaling (RSS) is a network driver technology that enables the efficient distribution of network receive processing across multiple CPUs in multiprocessor systems](https://docs.microsoft.com/en-us/windows-hardware/drivers/network/introduction-to-receive-side-scaling). The amount you should use or need depends on your typical network load. In server environments, a large amount of RSS queues is desirable as receive processing delays will be reduced and ensures that no CPU is heavily loaded. The same concept can be applied to games however the network load differs significantly making it an invalid comparison, so I decided to carry out some experiments myself.
 
-I simulated Valorant's network traffic in iperf using two machines (~300kb/s receive in deathmatch) and monitored the network driver's activity in xperf. Please note that RssBaseProcessor is set to 0, so theoretically, CPU 0 and CPU 1 should be handling DPCs/ISRs for ndis.sys.
+I simulated Valorant's network traffic in iperf using two machines (~300kb/s receive in deathmatch) and monitored the network driver's activity in xperf. Please note that RssBaseProcessor is set to 0, so theoretically, CPU 0 and CPU 1 should be handling DPCs/ISRs for the network driver.
 
 <img src="/media/300kbps-ndis-xperf-report.png" width="500">
 
@@ -86,7 +86,7 @@ I noticed that despite having RSS queues set to 2, only CPU 1 was primarily hand
 
 <img src="/media/1gbps-ndis-xperf-report.png" width="500">
 
-As expected, this scenario demonstrates that both CPU 0 and CPU 1 are handling DPCs/ISRs for ndis.sys.
+As expected, this scenario demonstrates that both CPU 0 and CPU 1 are handling DPCs/ISRs for the network driver.
 
 Conclusion: During online matches, at most two RSS queues/CPUs are being utilized. However, there is no harm in using more than two, but it is important to be aware of the information above as people reserve consecutive CPUs specifically for the network driver when those CPUs could better be used for another driver or a real-time application. The amount of RSS queues a network adapter has may also determine the quality of the hardware, but this is yet to be explored but something to keep in mind.
 
