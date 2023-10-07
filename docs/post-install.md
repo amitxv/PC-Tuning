@@ -161,6 +161,8 @@ C:\bin\scripts\install-firefox.ps1
 
 - Ensure to configure file extensions and the default browser in Windows settings
 
+- As updates are disabled, auto-update capabilities are not available. You can create a shortcut to the script by typing ``shell:startup`` in ``Win+R`` to check for updates when Windows starts
+
 ## Disable Residual Scheduled Tasks
 
 Open PowerShell and enter the command below. Ignore any errors.
