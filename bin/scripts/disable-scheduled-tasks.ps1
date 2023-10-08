@@ -20,7 +20,6 @@ function main() {
 
     $wildcards = @(
         "update",
-        "maps",
         "helloface",
         "customer experience improvement program",
         "microsoft compatibility appraiser",
@@ -30,13 +29,7 @@ function main() {
         "chkdsk",
         "data integrity scan",
         "defrag",
-        "diskcleanup",
-        "diskfootprint",
         "languagecomponentsinstaller",
-        "memorydiagnostic",
-        "registry",
-        "time synchronization",
-        "time zone",
         "upnp",
         "windows filtering platform",
         "tpm",
@@ -48,11 +41,12 @@ function main() {
         "diagnosis",
         "file history",
         "bgtaskregistrationmaintenancetask",
-        "autochk\\proxy",
+        "autochk\proxy",
         "siuf",
         "device information",
         "edp policy manager",
-        "defender"
+        "defender",
+        "marebackup"
     )
 
     Write-Host "info: please wait..."
@@ -67,7 +61,7 @@ function main() {
     }
 
     foreach ($wildcard in $wildcards) {
-        Write-Host "info: searching for $wildcard"
+        Write-Host "info: searching for $($wildcard)"
         foreach ($task in $task_names) {
             if ($task.contains($wildcard)) {
                 if ((Toggle-Task -task $task -enable $false) -ne 0) {
