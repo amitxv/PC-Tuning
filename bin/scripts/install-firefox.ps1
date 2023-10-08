@@ -107,7 +107,7 @@ function main() {
         $local_version = ([string](& "$install_dir\firefox.exe" --version | more)).Split()[2]
 
         if ($local_version -eq $remote_version) {
-            Write-Host "info: $folder_name $remote_version already installed"
+            Write-Host "info: $($folder_name) $($remote_version) already installed"
 
             if ($force) {
                 Write-Host "warning: -force specified, proceeding anyway"
@@ -204,7 +204,7 @@ lockPref(`"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features`",
     [System.IO.File]::WriteAllText("$install_dir\defaults\pref\autoconfig.js", ($autoconfig), [System.Text.Encoding]::ASCII)
     Set-Content -Path "$install_dir\firefox.cfg" -Value ($firefox_config)
 
-    Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$remote_version/releasenotes"
+    Write-Host "info: release notes: https:/www.mozilla.org/en-US/firefox/$($remote_version)/releasenotes"
 
     return 0
 }

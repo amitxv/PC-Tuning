@@ -53,7 +53,7 @@ function main() {
         return 1
     }
 
-    Write-Host "info: successfully applied registry settings for windows $winver"
+    Write-Host "info: successfully applied registry settings for windows $($winver)"
     return 0
 }
 
