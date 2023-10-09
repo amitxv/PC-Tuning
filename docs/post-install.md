@@ -483,7 +483,7 @@ Open CMD and enter the commands below.
     powercfg /setacvalueindex scheme_current 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 0
     ```
 
-- Disable CPU parking
+- Processor performance core parking min cores - 100
 
     - According to Microsoft's documentation, [CPU parking is disabled by default in the High Performance power scheme](https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/hardware/power/power-performance-tuning#using-power-plans-in-windows-server) but on Windows 11+ with modern CPUs, parking is overridden and enabled. Apart from parking intended to be a power saving feature, videos such as [this](https://www.youtube.com/watch?v=2yOYfT_r0xI) and [this](https://www.youtube.com/watch?v=gyg7Gm7aN2A) explain that it is the desired behavior for correct thread scheduling which is probably fine for the average user, but they do not account for the latency penalty of unparking cores (as with C-State transitions) along with kernel-mode activity (interrupts, DPCs). In terms of per-CPU scheduling, you can easily achieve the same outcome by managing per-CPU load manually (e.g. pin the real-time application to a [single CCX/CCD](https://hwbusters.com/cpu/amd-ryzen-9-7950x3d-cpu-review-performance-thermals-power-analysis/2) or P-Cores) by configuring affinities with the advantage being no overhead from chipset drivers and Xbox processes constantly running in the background forcing unnecessary context switches. See the [Per-CPU Scheduling](#per-cpu-scheduling) section for more information
 
