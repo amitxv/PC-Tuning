@@ -740,62 +740,6 @@ Open CMD and enter the commands below.
 
     - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
-## Per-CPU Scheduling
-
-Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such as servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
-
-- Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally, verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
-
-    - See [bin/scripts/xperf-dpcisr.bat](/bin/scripts/xperf-dpcisr.bat)
-
-- Ensure that the [corresponding DPC for an ISR is processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence. This is usually not a problem with MSI-X devices
-
-- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in Device Manager
-
-### XHCI and Audio Controller
-
-The XHCI and audio controller related modules generate a substantial amount of interrupts upon interaction respective of the relevant device. Isolating the related modules to an underutilized CPU is beneficial for reducing contention.
-
-### GPU and DirectX Graphics Kernel
-
-[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU-related modules are assigned to.
-
-### Network Interface Card
-
-[The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the NIC driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
-
-The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct NIC. Keep in mind that the amount of RSS queues determines the amount of consecutive CPUs that the network driver is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
-
-- See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
-
-- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
-
-    ```bat
-    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
-    ```
-
-- Open PowerShell as administrator and enter the command below to check whether the RSS indirection table is correctly populated
-
-    ```powershell
-    Get-NetAdapterRss
-    ```
-
-### Reserved CPU Sets (Windows 10+)
-
-[ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, reduce jitter and allows time-sensitive modules to get the CPU time they require.
-
-- As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs.
-
-- Ensure that you have enough cores to run your real-time application on and aren't reserving too many CPUs to the point where isolating modules does not yield real-time performance
-
-- As CPU sets are considered soft policies, the configuration isn't guaranteed. A CPU-intensive process such as a stress-test will utilize the reserved cores if required
-
-#### Potential Use Cases
-
-- Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. Then the user may explicitly define what will be scheduled on the P-Cores
-
-- Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
-
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
 Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
@@ -904,6 +848,62 @@ Allows Windows to prioritize packets of an application.
 - See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
 
     - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
+
+## Per-CPU Scheduling
+
+Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such as servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
+
+- Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally, verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
+
+    - See [bin/scripts/xperf-dpcisr.bat](/bin/scripts/xperf-dpcisr.bat)
+
+- Ensure that the [corresponding DPC for an ISR is processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence. This is usually not a problem with MSI-X devices
+
+- Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in Device Manager
+
+### XHCI and Audio Controller
+
+The XHCI and audio controller related modules generate a substantial amount of interrupts upon interaction respective of the relevant device. Isolating the related modules to an underutilized CPU is beneficial for reducing contention.
+
+### GPU and DirectX Graphics Kernel
+
+[AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU-related modules are assigned to.
+
+### Network Interface Card
+
+[The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the NIC driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
+
+The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct NIC. Keep in mind that the amount of RSS queues determines the amount of consecutive CPUs that the network driver is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
+
+- See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
+
+- See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
+
+    ```bat
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000" /v "*RssBaseProcNumber" /t REG_SZ /d "2" /f
+    ```
+
+- Open PowerShell as administrator and enter the command below to check whether the RSS indirection table is correctly populated
+
+    ```powershell
+    Get-NetAdapterRss
+    ```
+
+### Reserved CPU Sets (Windows 10+)
+
+[ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, reduce jitter and allows time-sensitive modules to get the CPU time they require.
+
+- As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs.
+
+- Ensure that you have enough cores to run your real-time application on and aren't reserving too many CPUs to the point where isolating modules does not yield real-time performance
+
+- As CPU sets are considered soft policies, the configuration isn't guaranteed. A CPU-intensive process such as a stress-test will utilize the reserved cores if required
+
+#### Potential Use Cases
+
+- Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. Then the user may explicitly define what will be scheduled on the P-Cores
+
+- Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
 
 ## Cleanup
 
