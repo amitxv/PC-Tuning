@@ -107,6 +107,10 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 ## Install Drivers
 
+- Chipset drivers are typically not required but if they are, their functionality can most likely be replicated manually with the advantage being no overhead from the drivers constantly running and forcing unnecessary context switches. An example of this would be the AMD chipset drivers used to manage per-CPU load for scheduling threads on the [V-Cache CCX/CCD](https://hwbusters.com/cpu/amd-ryzen-9-7950x3d-cpu-review-performance-thermals-power-analysis/2) which can easily be achieved manually as described in the [Per-CPU Scheduling](#per-cpu-scheduling) section
+
+    - See [Chipset Device "Drivers" (= INF files)](https://winraid.level1techs.com/t/intel-chipset-device-drivers-inf-files/30920)
+
 - GPU drivers will be installed in a later step so do not install them at this stage
 
 - You can find drivers by searching for drivers that are compatible with your device's HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in Device Manager for a given device
