@@ -1,6 +1,6 @@
 # Configure the AMD Driver
 
-Disclaimer: I no longer own an AMD GPU meaning this section may be incomplete/unmaintained.
+Disclaimer: I no longer own an AMD GPU meaning this section may be incomplete/unmaintained. For this reason, you can visit the AMD GPUs section in [Calypto's Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4).
 
 ## Strip and Install the Driver
 
