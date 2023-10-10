@@ -758,7 +758,7 @@ Raising the timer resolution helps with precision where constant sleeping or pac
 
 - Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
 
-- The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ with the registry key below as explained in depth [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). In terms of the global behavior, you should have already chosen an appropriate Windows version after going through the [What Version of Windows Should You Use?](/docs/pre-install.md#what-version-of-windows-should-you-use) section. As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel mode driver which is a topic for another day)
+- The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ with the registry key below as explained in depth [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). In terms of the global behavior, you should have already chosen an appropriate Windows version after going through the [What Version of Windows Should You Use?](/docs/pre-install.md#what-version-of-windows-should-you-use) section. As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel-mode driver which is a topic for another day)
 
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
@@ -863,7 +863,9 @@ Allows Windows to prioritize packets of an application.
 
 ## Per-CPU Scheduling
 
-Windows schedules interrupts, DPCs, threads and more on CPU 0 for several modules and processes by default. In any case, scheduling many tasks on a single CPU will have adverse effects including additional overhead and increased jitter due to them competing for CPU time. To alleviate this, users can configure affinities and other policies to isolate given modules from user and kernel-level disturbances such as servicing time-sensitive modules on other underutilized CPUs instead of clumping everything on a single CPU.
+### Kernel-Mode (Interrupts, DPCs and more)
+
+Windows schedules interrupts and DPCs on CPU 0 for several modules by default. In any case, scheduling many tasks on a single CPU can introduce additional overhead and increased jitter due to them competing for CPU time. To alleviate this, affinities can be configured to isolate given modules from disturbances including servicing time-sensitive modules on underutilized CPUs instead of clumping everything on a single CPU.
 
 - Use the xperf DPC/ISR report to analyze which CPUs kernel-mode modules are being serviced on. You can not manage affinities if you do not know what is running and which CPU(s) they are running on, the same applies to user-mode threads. Additionally, verify whether interrupt affinity policies are performing as expected by analyzing per-CPU usage for the module in question while the device is busy
 
@@ -873,15 +875,15 @@ Windows schedules interrupts, DPCs, threads and more on CPU 0 for several module
 
 - Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in Device Manager
 
-### XHCI and Audio Controller
+#### XHCI and Audio Controller
 
 The XHCI and audio controller related modules generate a substantial amount of interrupts upon interaction respective of the relevant device. Isolating the related modules to an underutilized CPU is beneficial for reducing contention.
 
-### GPU and DirectX Graphics Kernel
+#### GPU and DirectX Graphics Kernel
 
 [AutoGpuAffinity](https://github.com/amitxv/AutoGpuAffinity) can be used to benchmark the most performant CPUs that the GPU-related modules are assigned to.
 
-### Network Interface Card
+#### Network Interface Card
 
 [The network interface controller must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the network interface controller driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
 
@@ -903,7 +905,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 ### Reserved CPU Sets (Windows 10+)
 
-[ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, reduce jitter and allows time-sensitive modules to get the CPU time they require.
+[ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, jitter and allows time-sensitive modules to get the CPU time they require.
 
 - As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs.
 
