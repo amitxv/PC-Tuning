@@ -8,7 +8,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Generally, older versions of Windows are superior for real-time tasks as the concern for power efficiency and security is heightened after each edition release. For this reason, Windows 7 is the preferable choice but lacks driver support for modern hardware and developers are increasingly dropping support for legacy operating systems
 
-- Earlier versions of Windows lack anti-cheat (due to lack of security updates) and driver support (commonly GPU, NIC), so some users are forced to use newer builds. See the table below of the minimum version required to install drivers for a given GPU as of July 2023
+- Earlier versions of Windows lack anti-cheat (due to lack of security updates) and driver support (commonly GPU, network interface controller), so some users are forced to use newer builds. See the table below of the minimum version required to install drivers for a given GPU as of July 2023
 
     |GPU|Minimum Windows Version|
     |---|---|
@@ -322,7 +322,7 @@ This step isn't required if you are [installing using DISM Apply-Image (without 
 
 For the next steps, you are required to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from installing unwanted updates and drivers.
 
-As a reminder, your NIC driver may not be packaged with Windows so either download them now and store it offline on the USB or be prepared to download them from another device or dual boot.
+As a reminder, your network interface controller driver may not be packaged with Windows so either download them now and store it offline on the USB or be prepared to download them from another device or dual boot.
 
 ### Install using a USB storage device
 

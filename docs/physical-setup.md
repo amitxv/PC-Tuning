@@ -10,7 +10,7 @@
 
 - Assess the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
 
-- Update the firmware for devices such as storage, NIC, peripherals and more
+- Update the firmware for devices such as storage, network interface controller, peripherals and more
 
 - Avoid single-channel and mismatching RAM. Refer to the motherboard manual to ensure that they are in the correct slots. Consider the memory trace layout when determining the amount of sticks to use
 
@@ -30,7 +30,7 @@
 
 - An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
-- If you have more than one onboard Ethernet NIC, consider using the one that supports MSI-X as it is required [for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). This can be achieved by plugging the Ethernet cable into the corresponding port on the motherboard
+- If you have more than one onboard Ethernet network interface controller, consider using the one that supports MSI-X as it is required [for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). This can be achieved by plugging the Ethernet cable into the corresponding port on the motherboard
 
 - Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets
 
@@ -100,7 +100,7 @@
 
 - Use an M.2/NVMe heat sink
 
-- Mount a fan over VRMs, CPU backplate, storage devices, PCH, NIC and other hot spots
+- Mount a fan over VRMs, CPU backplate, storage devices, PCH, network interface controller and other hot spots
 
 - Replace stock thermal pads with higher-quality ones
 

@@ -119,9 +119,9 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - It is recommended to update and install the following:
 
-    - NIC
+    - Network Interface Controller
 
-        - If you do not have internet access at this stage, you will need to download your NIC drivers from another device or dual boot as they may not be packaged at all in some versions of Windows
+        - If you do not have internet access at this stage, you will need to download your network interface controller drivers from another device or dual boot as they may not be packaged at all in some versions of Windows
 
     - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
 
@@ -883,9 +883,9 @@ The XHCI and audio controller related modules generate a substantial amount of i
 
 ### Network Interface Card
 
-[The NIC must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the NIC driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
+[The network interface controller must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the network interface controller driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
 
-The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct NIC. Keep in mind that the amount of RSS queues determines the amount of consecutive CPUs that the network driver is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
+The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct network interface controller. Keep in mind that the amount of RSS queues determines the amount of consecutive CPUs that the network driver is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
 
 - See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
