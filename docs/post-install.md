@@ -261,6 +261,16 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
     - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` and enable ``Wireless LAN Service``
 
+## Manage Appx Packages (Windows 8+)
+
+- Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you do not need
+
+- Windows still attempts to open the Xbox Game Bar despite removing it. Disabling it in settings resolves this but there is no option to in the UI to do so properly on Windows 11+. Open CMD and enter the command below to disable Game Bar
+
+    ```bat
+    reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
+    ```
+
 ## Handle Bloatware Natively
 
 - Open CMD and enter the command below to uninstall OneDrive
@@ -285,18 +295,6 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
         ```bat
         for /f "delims=" %a in ('where /r C:\ *edge.lnk*') do (del /f /q "%a")
-        ```
-
-- Open PowerShell and enter the command below to remove all Appx packages (Windows 8+)
-
-    ```powershell
-    Get-AppxPackage | Remove-AppxPackage -ErrorAction SilentlyContinue
-    ```
-
-    - Windows still attempts to open the Xbox Game Bar despite removing it. Disabling it in settings resolves this but there is no option to in the UI to do so properly on Windows 11+. Open CMD and enter the command below to disable Game Bar
-
-        ```bat
-        reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
         ```
 
 - Uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
