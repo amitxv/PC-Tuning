@@ -153,7 +153,7 @@ slmgr /ato
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip_hash_check`` to the end of the command. 115.0 is the last version to support Windows 8 and below so ``-version 115.0`` is required.
+A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip_hash_check`` to the end of the command. 115.0 is the last version to support Windows 8 and below so ``-version 115.0`` may be required. Using an outdated browser is not recommended.
 
 ```powershell
 C:\bin\scripts\install-firefox.ps1
