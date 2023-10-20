@@ -163,6 +163,8 @@ C:\bin\scripts\install-firefox.ps1
 
 - Optionally configure and clean up the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
 
+- A less privacy-focused alternative for the Arkenfox user.js, [Betterfox](https://github.com/yokoffing/Betterfox) is also available for users who don't wish to spend time debugging potential issues with Arkenfox
+
 - Ensure to configure file extensions and the default browser in Windows settings
 
 - As updates are disabled, auto-update capabilities are not available. You can create a shortcut to the script by typing ``shell:startup`` in ``Win+R`` to check for updates when Windows starts
