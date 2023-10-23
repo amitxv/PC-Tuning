@@ -913,7 +913,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 There are several methods to set affinities for processes. One of which is Task Manager but only persists until the process is closed. A more popular and permanent solution is [Process Lasso](https://bitsum.com) which allows the configuration to be saved, however a process must run continually in the background which introduces minor overhead. To work around this, you can simply launch the application with a specified CPU affinity which eliminates the requirement of programs such as Process Lasso for affinity management.
 
-- Use the [CPU Affinity Mask Calculator](https://bitsum.com/tools/cpu-affinity-calculator) to determine the desired hexal affinity bitmask. As an example, the command below starts ``notepad.exe`` with an affinity of CPU 1 and CPU 2 which will reflect in Task Manager. This command can be placed in a batch script for easy access
+- Use the [CPU Affinity Mask Calculator](https://bitsum.com/tools/cpu-affinity-calculator) to determine the desired hexal affinity bitmask. As an example, the command below starts ``notepad.exe`` with an affinity of CPU 1 and CPU 2 which will reflect in Task Manager. This command can be placed in a batch script for easy access and must be used each time to start the desired application with the specified affinity
 
     ```bat
     start /affinity 0x6 notepad.exe
