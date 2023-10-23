@@ -909,6 +909,22 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
     Get-NetAdapterRss
     ```
 
+### User-Mode (Processes, Threads)
+
+There are several methods to set affinities for processes. One of which is Task Manager but only persists until the process is closed. A more popular and permanent solution is [Process Lasso](https://bitsum.com) which allows the configuration to be saved, however a process must run continually in the background which introduces minor overhead. To work around this, you can simply launch the application with a specified CPU affinity which eliminates the requirement of programs such as Process Lasso for affinity management.
+
+- Use the [CPU Affinity Mask Calculator](https://bitsum.com/tools/cpu-affinity-calculator) to determine the desired hexal affinity bitmask. As an example, the command below starts ``notepad.exe`` with an affinity of CPU 1 and CPU 2 which will reflect in Task Manager. This command can be placed in a batch script for easy access
+
+    ```bat
+    start /affinity 0x6 notepad.exe
+    ```
+
+- In some cases, process can be protected so specifying the affinity may fail. To work around this, you can try specifying the affinity for the parent processes which will cause the child process to inherit the affinity when spawned. As an example, a game launcher is usually the parent process of a game. [Process Explorer's](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer) process tree can be used to identify parent and child processes
+
+    - [Process Hacker](https://processhacker.sourceforge.io) and [WindowsD](https://github.com/katlogic/WindowsD) can bypass several process-level protections through exploits but is not advised as they interfere with anticheats.
+
+- For modern Intel and AMD (3D V-Cache) systems, this step is especially required so read carefully. The points regarding manually managing per-CPU load in the [Install Drivers](#install-drivers) and [Configure Power Options](#configure-power-options) sections will be discussed in the current and next section. [ReservedCpuSets](#potential-use-cases) will be used as a technique to manually accomplish what the chipset drivers and default power options try to do out of the box. The advantages of manual management have already been discussed in the mentioned sections (minimizing overhead)
+
 ### Reserved CPU Sets (Windows 10+)
 
 [ReservedCpuSets](https://github.com/amitxv/ReservedCpuSets) can be used to prevent Windows routing interrupts and scheduling tasks on specific CPUs. As mentioned previously, isolating modules from user and kernel-level disturbances helps reduce contention, jitter and allows time-sensitive modules to get the CPU time they require.
@@ -921,7 +937,7 @@ The command below can be used to configure RSS base CPU. Ensure to change the dr
 
 #### Potential Use Cases
 
-- Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. Then the user may explicitly define what will be scheduled on the P-Cores
+- Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. On modern AMD systems, this correlates to reserving the 3D V-Cache CCX/CCDs. With this approach you can explicitly define what will be scheduled on the P-Cores and V-Cache CCX/CCDs, which would be the time-sensitive processes and modules
 
 - Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
 
