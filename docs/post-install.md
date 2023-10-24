@@ -501,6 +501,49 @@ Open CMD and enter the commands below.
         powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 0cc5b647-c1df-4637-891a-dec35c318583 100
         ```
 
+- Processor performance time check interval - 5000
+
+    - There are a handful of ntoskrnl power management DPCs that are scheduled at a periodic interval to re-evaluate P-States and parked cores. With a static CPU frequency and core parking disabled, these checks become obsolete thus unnecessary DPCs get scheduled. The ``Processor performance time check interval`` setting controls how often these checks are taken place so increasing the setting's value can reduce CPU overhead as significantly fewer DPCs are scheduled. For reference and at the time of checking, the Power Saver, Balanced, High performance power schemes have a default value of 200, 15 and 15 respectively. 5000 is the maximum accepted value. Of course, if a dynamic CPU frequency is used (e.g.  Precision Boost Overdrive, Turbo Boost) and parking is enabled, the effects of increasing this value should be evaluated as cores may not be able to boost their frequency in response to workloads as the OS is evaluating the current scenario less often
+
+        <table style="text-align: center;">
+            <tr>
+                <td rowspan="2">DPC Function</td>
+                <td colspan="2">Average DPC Rate</td>
+                <td colspan="2">Total DPCs</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>200</td>
+                <td>15</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>ntoskrnl!PpmPerfAction</td>
+                <td>15.45Hz</td>
+                <td>3.07Hz</td>
+                <td>311</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>ntoskrnl!PpmCheckRun</td>
+                <td>12.99Hz</td>
+                <td>2.29Hz</td>
+                <td>262</td>
+                <td>46</td>
+            </tr>
+            <tr>
+                <td>ntoskrnl!PpmCheckPeriodicStart</td>
+                <td>60.39Hz</td>
+                <td>4.99Hz</td>
+                <td>1213</td>
+                <td>100</td>
+            </tr>
+        </table>
+
+        ```bat
+        powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 4d2b0152-7d5c-498b-88e2-34345392a2c5 5000
+        ```
+
 - Set the active scheme as the current scheme
 
     ```bat
