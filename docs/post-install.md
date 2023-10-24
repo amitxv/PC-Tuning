@@ -921,7 +921,7 @@ There are several methods to set affinities for processes. One of which is Task 
 
 - In some cases, process can be protected so specifying the affinity may fail. To work around this, you can try specifying the affinity for the parent processes which will cause the child process to inherit the affinity when spawned. As an example, a game launcher is usually the parent process of a game. [Process Explorer's](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer) process tree can be used to identify parent and child processes
 
-    - [Process Hacker](https://processhacker.sourceforge.io) and [WindowsD](https://github.com/katlogic/WindowsD) can bypass several process-level protections through exploits but is not advised as they interfere with anticheats.
+    - [Process Hacker](https://processhacker.sourceforge.io) and [WindowsD](https://github.com/katlogic/WindowsD) can bypass several process-level protections through exploits but is not advised as they interfere with anticheats
 
 - For modern Intel and AMD (3D V-Cache) systems, this step is especially required so read carefully. The points regarding manually managing per-CPU load in the [Install Drivers](#install-drivers) and [Configure Power Options](#configure-power-options) sections will be discussed in the current and next section. [ReservedCpuSets](#potential-use-cases) will be used as a technique to manually accomplish what the chipset drivers and default power options try to do out of the box. The advantages of manual management have already been discussed in the mentioned sections (minimizing overhead). Ideally with these modern CPUs, scheduling your real-time application on the P-Cores/3D V-Cache CCX/CCDs are desirable
 
