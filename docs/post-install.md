@@ -508,35 +508,43 @@ Open CMD and enter the commands below.
         <table style="text-align: center;">
             <tr>
                 <td rowspan="2">DPC Function</td>
-                <td colspan="2">Average DPC Rate</td>
-                <td colspan="2">Total DPCs</td>
+                <td colspan="3">Average DPC Rate</td>
+                <td colspan="3">Total DPCs</td>
             </tr>
             <tr>
                 <td>15</td>
                 <td>200</td>
+                <td>5000</td>
                 <td>15</td>
                 <td>200</td>
+                <td>5000</td>
             </tr>
             <tr>
                 <td>ntoskrnl!PpmPerfAction</td>
                 <td>15.45Hz</td>
                 <td>3.07Hz</td>
+                <td>N/A</td>
                 <td>311</td>
                 <td>60</td>
+                <td>1</td>
             </tr>
             <tr>
                 <td>ntoskrnl!PpmCheckRun</td>
                 <td>12.99Hz</td>
                 <td>2.29Hz</td>
+                <td>N/A</td>
                 <td>262</td>
                 <td>46</td>
+                <td>1</td>
             </tr>
             <tr>
                 <td>ntoskrnl!PpmCheckPeriodicStart</td>
                 <td>60.39Hz</td>
                 <td>4.99Hz</td>
+                <td>0.2Hz</td>
                 <td>1213</td>
                 <td>100</td>
+                <td>4</td>
             </tr>
         </table>
 
