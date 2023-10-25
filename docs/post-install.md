@@ -849,7 +849,9 @@ This step isn't required, but can help to justify unexplained performance issues
 
 ## Configuring Applications
 
-Install any programs and configure your real-time applications to prepare us for the steps below.
+- Install any programs and configure your real-time applications to prepare us for the final steps
+
+- If applicable, favor portable editions of programs as installers tend to leave bloatware behind even after uninstalling them
 
 ### NVIDIA Reflex
 
