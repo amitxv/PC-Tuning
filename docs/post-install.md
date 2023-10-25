@@ -809,25 +809,6 @@ Open CMD and enter the commands below.
 
     - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
-## Raise the Clock Interrupt Frequency (Timer Resolution)
-
-Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
-
-- Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
-
-- The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ with the registry key below as explained in depth [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). In terms of the global behavior, you should have already chosen an appropriate Windows version after going through the [What Version of Windows Should You Use?](/docs/pre-install.md#what-version-of-windows-should-you-use) section. As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel-mode driver which is a topic for another day)
-
-    ```
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
-    "GlobalTimerResolutionRequests"=dword:00000001
-    ```
-
-- Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution which results in unexpected behavior
-
-- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load as idle benchmarks may be misleading
-
-    - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
-
 ## XHCI Interrupt Moderation (IMOD)
 
 On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. This means that after an interrupt has been generated, the XHCI controller waits for the specified interval for more data to arrive before generating another interrupt which reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same XHCI controller.
@@ -991,6 +972,25 @@ There are several methods to set affinities for processes. One of which is Task 
 - Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. On modern AMD systems, this correlates to reserving the 3D V-Cache CCX/CCDs. With this approach you can explicitly define what will be scheduled on the P-Cores and V-Cache CCX/CCDs, which would be the time-sensitive processes and modules
 
 - Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
+
+## Raise the Clock Interrupt Frequency (Timer Resolution)
+
+Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. Below is a list of bullet points highlighting key information regarding the topic.
+
+- Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
+
+- The implementation of timer resolution changed in Windows 10 2004+ so that the calling process does not affect the system on a global level but can be restored on Windows Server and Windows 11+ with the registry key below as explained in depth [here](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). In terms of the global behavior, you should have already chosen an appropriate Windows version after going through the [What Version of Windows Should You Use?](/docs/pre-install.md#what-version-of-windows-should-you-use) section. As long as the process that requires high precision is calling for a higher resolution, this does not matter. Although, it limits us from raising the resolution beyond 1ms (unless you have a kernel-mode driver which is a topic for another day)
+
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
+    "GlobalTimerResolutionRequests"=dword:00000001
+    ```
+
+- Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution which results in unexpected behavior
+
+- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load as idle benchmarks may be misleading
+
+    - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
 ## Cleanup
 
