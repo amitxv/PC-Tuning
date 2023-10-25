@@ -38,7 +38,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See [Hardware Accelerated GPU Scheduling](https://devblogs.microsoft.com/directx/hardware-accelerated-gpu-scheduling)
 
-- Windows 11+ has an updated scheduler for Intel 12th Gen CPUs and above
+- Windows 11+ has an updated scheduler for Intel 12th Gen CPUs and above but the behavior can easily be replicated manually on any Windows version. See the [Per-CPU Scheduling](/docs/post-install.md#per-cpu-scheduling) section for more information
 
     - See [Thread Director: Windows 11 Does It Best](https://www.anandtech.com/show/16959/intel-innovation-alder-lake-november-4th/3)
 

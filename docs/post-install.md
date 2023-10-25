@@ -955,7 +955,7 @@ There are several methods to set affinities for processes. One of which is Task 
 
     - [Process Hacker](https://processhacker.sourceforge.io) and [WindowsD](https://github.com/katlogic/WindowsD) can bypass several process-level protections through exploits but is not advised as they interfere with anticheats
 
-- For modern Intel and AMD (3D V-Cache) systems, this step is especially required so read carefully. The points regarding manually managing per-CPU load in the [Install Drivers](#install-drivers) and [Configure Power Options](#configure-power-options) sections will be discussed in the current and next section. [ReservedCpuSets](#potential-use-cases) will be used as a technique to manually accomplish what the chipset drivers and default power options try to do out of the box. The advantages of manual management have already been discussed in the mentioned sections (minimizing overhead). Ideally with these modern CPUs, scheduling your real-time application on the P-Cores/3D V-Cache CCX/CCDs are desirable
+- For modern Intel and AMD (3D V-Cache) systems, this step is especially required so read carefully. The points regarding manually managing per-CPU load in the [Install Drivers](#install-drivers) and [Configure Power Options](#configure-power-options) sections will be discussed in the current and next section. [ReservedCpuSets](#use-cases) will be used as a technique to manually accomplish what the chipset drivers and default power options try to do out of the box. The advantages of manual management have already been discussed in the mentioned sections (minimizing overhead)
 
 ### Reserved CPU Sets (Windows 10+)
 
@@ -967,9 +967,9 @@ There are several methods to set affinities for processes. One of which is Task 
 
 - As CPU sets are considered soft policies, the configuration isn't guaranteed. A CPU-intensive process such as a stress-test will utilize the reserved cores if required
 
-#### Potential Use Cases
+#### Use Cases
 
-- Reserving all CPUs except a few for time-insensitive processes such as background tasks. On modern Intel systems, this could mean reserving P-Cores (performance cores) so that Windows schedules tasks on E-Cores (efficiency cores) by default. On modern AMD systems, this correlates to reserving the 3D V-Cache CCX/CCDs. With this approach you can explicitly define what will be scheduled on the P-Cores and V-Cache CCX/CCDs, which would be the time-sensitive processes and modules
+- Hinting to the OS to schedule tasks on a group of CPUs. An example of this with modern platforms could be reserving E-Cores (efficiency cores) or either CCX/CCDs so that tasks are scheduled on P-Cores (performance cores) or other CCX/CCDs by default. With this approach, you can explicitly enforce background and unimportant tasks to be scheduled on the reserved CPUs. Note that this is purely an example and the logic can be flipped, but some latency-sensitive processes and modules are protected so affinity policies may fail which is a major limitation. See the [User-Mode (Processes, Threads)](#user-mode-processes-threads) section for more information. There are several possibilities and trade-offs to consider
 
 - Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
 
