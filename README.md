@@ -1,8 +1,9 @@
 # PC-Tuning
-
-[![Discord](https://discordapp.com/api/guilds/994887453599076422/widget.png?style=shield)](https://discord.com/invite/yrAnChXXZw)
-
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/amitxv)
+<a href="https://discord.com/invite/yrAnChXXZw">
+  <img src="https://discordapp.com/api/guilds/994887453599076422/widget.png?style=shield" alt="Discord" width="120"/></a>
+<a href="https://www.buymeacoffee.com/amitxv">
+  <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy me a coffee" width="95"/>
+</a>
 
 ## Rationale
 
