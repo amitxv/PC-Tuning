@@ -173,7 +173,7 @@ function main() {
                 DisableAppUpdate     = $true
                 OverrideFirstRunPage = ""
                 Extensions           = @{
-                    Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi")
+                    Install = @("https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/11423598-latest.xpi", "https://addons.mozilla.org/firefox/downloads/file/4177101/fastforwardteam-0.2334.xpi")
                 }
             }
         })
