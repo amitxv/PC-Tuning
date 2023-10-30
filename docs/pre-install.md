@@ -132,6 +132,12 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
+- Run the command below. If an error occurs, re-open CMD with administrator privileges however if nothing is shown in the output, continue as normal
+
+    ```bat
+    DISM > nul 2>&1 || echo error: administrator privileges required
+    ```
+
 - Extract the contents of the ISO to a directory of your choice then assign it to the ``EXTRACTED_ISO`` variable. In the example below, I'm using ``C:\en_windows_7_professional_with_sp1_x64_dvd_u_676939``
 
     ```bat
