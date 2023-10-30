@@ -99,7 +99,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - [Adguard File List](https://files.rg-adguard.net)
 
-    - [Microsoft Software Download Listing](https://ave9858.github.io/msdl)
+    - [Microsoft Software Download Listing](https://massgrave.dev/msdl)
 
     - [Fido](https://github.com/pbatard/Fido)
 
