@@ -92,8 +92,6 @@
 
     - See [Stop Doing It Wrong: How to Kill Your CPU Cooler | Gamers Nexus](https://www.youtube.com/watch?v=BbGomv195sk)
 
-    - See [media/aio-orientation.png](/media/aio-orientation.png)
-
 - Use non-RGB fans with a high static pressure
 
     - See [PC Fans | Calypto](https://docs.google.com/spreadsheets/d/1AydYHI_M6ov9a3OgVuYXhLEGps0J55LniH9htAHy2wU)
