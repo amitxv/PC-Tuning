@@ -16,9 +16,11 @@
 
 - Press F5 to start logging. After 30 seconds or so press F7 to stop the log
 
-- In the left-hand pane, click on the process name and click on a packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame
+- In the left-hand pane, click on the process name and click on a packet header. Expand the packet info under the frame details and finally expand the Ipv4 subcategory. This will reveal the current DSCP value of each frame as shown below
 
-    <img src="/media/network-monitor-dscp-value.png" width="400">
+    ```
+    DifferentiatedServices Field: DSCP: 46, ECN: 0
+    ```
 
 </details>
 
