@@ -46,6 +46,10 @@
 
 - Favor short and shielded cables
 
+- Clean dust from components and heat sinks as they have the potential to cause short circuits and reduce airflow
+
+    - See [Dust: The Computer Killer](https://www.armagard.co.uk/articles/dust-computer-killer.html)
+
 - Clean the pins and connectors of components. Use compressed air to remove dust from slots before installing components such as PCIe, NVMe, RAM and more
 
     - See [Cleaning contacts on RAM Memory and Graphics Card | zodox](https://www.youtube.com/watch?v=OTrzzC10Scg)
