@@ -725,10 +725,6 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - Disable any PCIe, SATA, NVMe and XHCI controllers with nothing connected to them
 
-    - Unnecessary HID devices can be disabled, but mouse software will not work
-
-        - See [media/hid-devices-example.png](/media/hid-devices-example.png)
-
     - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
 
     - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power-saving features. Disable the power-saving option in the ``Power Management`` section
