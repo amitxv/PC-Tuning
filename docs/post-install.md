@@ -121,7 +121,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - Network Interface Controller
 
-        - If you do not have internet access at this stage, you will need to download your network interface controller drivers from another device or dual boot as they may not be packaged at all in some versions of Windows
+        - If you do not have internet access at this stage, you will need to download your network interface controller drivers from another device or dual-boot as they may not be packaged at all in some versions of Windows
 
     - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
 
@@ -335,7 +335,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
     taskkill /f /im smartscreen.exe && del /f /q C:\Windows\System32\smartscreen.exe
     ```
 
-- You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository to let me know that it should be removed
+- You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository so that it can be reviewed
 
 ## Install 7-Zip
 
@@ -382,26 +382,6 @@ You may have already found a stable overclock for your display in the [Physical 
 ## Install Open-Shell (Windows 8+)
 
 - Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the ``Open-Shell Menu``
-
-- Settings I personally use as per section:
-
-    - Skin
-
-        - Midnight
-
-        - Show user picture - Disable
-
-        - Transparency level - Opaque
-
-    - Main Menu
-
-        - Show recent or frequent programs - Don't show
-
-        - Enable hybrid shutdown - Disable
-
-    - General Behavior
-
-        - Check for Windows updates on shutdown - Disable
 
 - Windows 8 Only:
 
@@ -554,7 +534,7 @@ Open CMD and enter the commands below.
     bcdedit /set nx AlwaysOff
     ```
 
-- Configure the operating system name, I usually set it to whatever Windows version I'm using such as ``Windows 10 1803``
+- Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting
 
     ```bat
     bcdedit /set {current} description "OS_NAME"
@@ -661,8 +641,6 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Set the option in the communications tab to Do nothing
 
-- I also like to set the sound scheme to no sounds in the sounds tab
-
 - Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to the CPU not being able to keep up under load
 
     - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs
@@ -693,7 +671,7 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
 
     - If you would like to rebuild the scripts, ensure to run the generated ``Services-Enable.bat`` script beforehand as the tool relies on the current state of services for building future scripts
 
-- If desired, you can use [ServiWin](https://www.nirsoft.net/utils/serviwin.html) to check for residual drivers and possibly create an issue on the repository to let me know that a given driver should be disabled
+- If desired, you can use [ServiWin](https://www.nirsoft.net/utils/serviwin.html) to check for residual drivers and possibly create an issue on the repository so that it can be reviewed
 
 - Something not working after disabling services but works once services are re-enabled? See [docs/debug-services.md](/docs/debug-services.md)
 
@@ -819,7 +797,7 @@ It isn't a bad idea to skim through both the legacy and immersive control panel 
 
 ## Analyze Event Viewer
 
-This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method I used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
+This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method that was used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
 
 - Depending on your configuration, the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section may have disabled logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to their default values which can be found in the ``Services-Enable.bat`` script. Make a note of what the values currently are so that you can restore them later
 

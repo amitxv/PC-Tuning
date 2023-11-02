@@ -14,7 +14,7 @@ The guidance is currently updated and has been tested on client and server editi
 
 ## Staying Informed
 
-The contents and information included in this repository will inevitably change over time. To stay up to date, I would recommend reviewing what has changed once in a while. At the time of reviewing, take a note of the 7 digit SHA code in the [latest commit](https://github.com/amitxv/PC-Tuning/commit/main) (e.g. ``2428150``) then use the URL below as an example to compare what has changed since the noted commit.
+The contents and information included in this repository will inevitably change over time. To stay up to date, it is recommend to review what has changed once in a while. At the time of reviewing, take a note of the 7 digit SHA code in the [latest commit](https://github.com/amitxv/PC-Tuning/commit/main) (e.g. ``2428150``) then use the URL below as an example to compare what has changed since the noted commit.
 
 <https://github.com/amitxv/PC-Tuning/compare/2428150..main>
 
