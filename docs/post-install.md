@@ -105,18 +105,6 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
 - See [media/visual-cleanup-windows10+-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/visual-cleanup-windows10+-example.mp4)
 
-## Disable Features
-
-Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``.
-
-- See [media/windows7-features-example.png](/media/windows7-features-example.png)
-
-- See [media/windows8+-features-example.png](/media/windows8+-features-example.png)
-
-- See [media/windows-server-features-example.png](/media/windows-server-features-example.png)
-
-    - To enable Wi-Fi, navigate to ``Manage -> Add Roles and Features`` and enable ``Wireless LAN Service``
-
 ## Install Drivers
 
 - Chipset drivers are typically not required but if they are, their functionality can most likely be replicated manually with the advantage being no overhead from the drivers constantly running and forcing unnecessary context switches. An example of this would be the AMD chipset drivers used to manage per-CPU load for scheduling threads on the [V-Cache CCX/CCD](https://hwbusters.com/cpu/amd-ryzen-9-7950x3d-cpu-review-performance-thermals-power-analysis/2) which can easily be achieved manually as described in the [Per-CPU Scheduling](#per-cpu-scheduling) section
@@ -262,6 +250,16 @@ These are runtimes that are dependencies of applications worldwide.
 - [WebView](https://developer.microsoft.com/en-us/microsoft-edge/webview2)
 
 - [DirectX](https://www.microsoft.com/en-gb/download/details.aspx?id=8109)
+
+## Disable Features
+
+Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``.
+
+- See [media/windows7-features-example.png](/media/windows7-features-example.png)
+
+- See [media/windows8+-features-example.png](/media/windows8+-features-example.png)
+
+- See [media/windows-server-features-example.png](/media/windows-server-features-example.png)
 
 ## Manage Appx Packages (Windows 8+)
 
