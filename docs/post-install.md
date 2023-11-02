@@ -45,7 +45,7 @@ Set-ExecutionPolicy Unrestricted
 |Disable Automatic Maintenance|Intrusive|
 |Remove 3D Objects from Explorer Pane|Intrusive|
 |Disable UAC|Eliminates intrusive UAC prompt but reduces security as all processes are run with Administrator privileges by default|
-|Disable Fast Startup|Interferes with shutting down and is required for making changes to the file system offline within the Linux debloating steps|
+|Disable Fast Startup|Interferes with shutting down|
 |Disable Sign-In and Lock Last Interactive User After a Restart|Intrusive|
 |Disable Suggestions In The Search Box and In Search Home|Telemetry and intrusive|
 |Disable Powershell Telemetry|Telemetry|
@@ -285,7 +285,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
     reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
     ```
 
-## Handle Bloatware Natively
+## Handle Bloatware
 
 - Open CMD and enter the command below to uninstall OneDrive
 
@@ -329,26 +329,10 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
         - In the ``Apps -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
 
-- Restart your PC once to apply the changes above (do not boot into Linux without a full restart beforehand)
+- ``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD with ``C:\bin\NSudo.exe`` and enter the command below to remove the binary
 
-## Handle Bloatware with Linux
-
-As mentioned previously, the instructions below are specific to Linux Mint. If you are using another distro, interpret the steps below and follow along accordingly.
-
-- Boot into Ventoy on your USB in BIOS and select the Linux ISO
-
-- Open the File Explorer which is pinned to the taskbar and navigate to the volume Windows is installed on. You can identify this by finding the volume where the ``win-debloat.sh`` is located
-
-- Right-click an empty space and select ``Open in Terminal`` to open a terminal window in the current directory. Use the command below to run the script
-
-    ```bash
-    sudo bash win-debloat.sh
-    ```
-
-- Once finished, use the command below to reboot
-
-    ```bash
-    reboot
+    ```bat
+    taskkill /f /im smartscreen.exe && del /f /q C:\Windows\System32\smartscreen.exe
     ```
 
 - You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository to let me know that it should be removed

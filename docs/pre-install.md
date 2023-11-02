@@ -314,16 +314,6 @@ This step isn't required if you are [installing using DISM Apply-Image (without 
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"Final" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\Final.iso"
 ```
 
-## Prepare the USB
-
-- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it isn't enabled in BIOS, then select your USB storage and click install
-
-    - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
-
-- Download a live Linux distribution of your choice and move the ISO into the USB storage in File Explorer. I will be using [Linux Mint Xfce Edition](https://www.linuxmint.com/download.php)
-
-    - Linux is required for removing bloatware offline in the [Removing Bloatware with Linux](/docs/post-install.md#handle-bloatware-with-linux) step. The instructions could be interpreted to use other tools without the need for bootable Linux, however, I have found this to be the best method to achieve the same goal with the least amount of steps due to permission errors with TrustedInstaller and handles open in the kernel
-
 ## Boot Into the ISO
 
 For the next steps, you are required to disconnect the Ethernet cable and not be connected to the internet. This will allow us to bypass the forced Microsoft login during OOBE and will prevent Windows from installing unwanted updates and drivers.
@@ -332,7 +322,11 @@ As a reminder, your network interface controller driver may not be packaged with
 
 ### Install using a USB storage device
 
-- Move your Windows ISO into the USB storage in File Explorer (where the Linux ISO is also located)
+- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it isn't enabled in BIOS, then select your USB storage and click install
+
+    - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
+
+- Move your Windows ISO into the USB storage in File Explorer
 
 - Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual
 

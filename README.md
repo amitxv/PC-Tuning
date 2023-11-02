@@ -37,13 +37,6 @@ Before diving into the main content, is important to learn and understand how to
 - **[Frame-Time-Analysis](https://github.com/BoringBoredom/Frame-Time-Analysis)** - Analyze CSV data logged by the programs mentioned above including 1%, 0.1% lows metrics
 - **[Reflex Latency Analyzer Grapher](https://boringboredom.github.io/tools/#/RLA)** - Analyze latency results from RLA and FrameView
 
-## Requirements
-
-- USB Storage Device (8 GB minimum)
-- [Ventoy](https://github.com/ventoy/Ventoy/releases)
-- Any live Linux distribution
-- Familiarity with navigating directories in CLI
-
 ## 1. Physical Setup
 
 - See [docs/physical-setup.md](/docs/physical-setup.md)
