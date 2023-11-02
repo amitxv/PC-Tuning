@@ -267,6 +267,10 @@ These are runtimes that are dependencies of applications worldwide.
 
 - Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you do not need
 
+- Microsoft Store:
+
+    - ``Microsoft.WindowsStore``
+
 - Required packages for Xbox Game Pass:
 
     - ``Microsoft.XboxIdentityProvider``
