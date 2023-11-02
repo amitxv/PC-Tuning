@@ -286,7 +286,10 @@ DISM /Unmount-Wim /MountDir:"%MOUNT_DIR%" /Commit && rd /s /q "%MOUNT_DIR%"
 
 ## Replace Windows 7 Boot Wim (Windows 7)
 
-This step isn't required if you are [installing using DISM Apply-Image (without a USB storage device)](#install-using-dism-apply-image-without-a-usb-storage-device). As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we haven't yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim`` which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim`` which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
+> [!NOTE]
+> This step isn't required if you are [installing using DISM Apply-Image (without a USB storage device)](#install-using-dism-apply-image-without-a-usb-storage-device).
+
+ As you are aware, Windows 7 lacks driver support for modern hardware, and you should have already integrated drivers into the ``install.wim``. However, we haven't yet touched the ``boot.wim`` (installer). We could integrate the same drivers into the ``boot.wim`` as we did before. However, this may still lead to a problematic installation. Instead, we can use the Windows 10 ``boot.wim`` which already has modern hardware support to install our Windows 7 ``install.wim``. For this to work properly, you should only have one edition of Windows 7 in your ``install.wim`` which should already be done in the [Remove Non-Essential Editions](#remove-non-essential-editions) section.
 
 - Download the [latest Windows 10 ISO that matches your Windows 7 ISO's language](https://www.microsoft.com/en-us/software-download/windows10) and extract it, It is recommended to rename the extracted folder to avoid confusion. In the examples below, it is extracted it to ``C:\Win10_ISO``
 
@@ -308,7 +311,10 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Sourc
 
 ## Convert to ISO
 
-This step isn't required if you are [installing using DISM Apply-Image (without a USB storage device)](#install-using-dism-apply-image-without-a-usb-storage-device). Use the command below to pack the extracted contents back to a single ISO which will be created on the desktop.
+> [!NOTE]
+> This step isn't required if you are [installing using DISM Apply-Image (without a USB storage device)](#install-using-dism-apply-image-without-a-usb-storage-device).
+
+ Use the command below to pack the extracted contents back to a single ISO which will be created in the ``C:\`` drive.
 
 ```bat
 "%OSCDIMG%" -m -o -u2 -udfver102 -l"Final" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "C:\Final.iso"
