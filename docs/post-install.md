@@ -91,7 +91,7 @@ Changes made with ``-ui_cleanup``:
 
 - If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+) or reboot (or both) then try and execute the command again
 
-- Ensure that the script prints a "successfully applied" message to the console, if it has not then PowerShell was probably not opened with administrator privileges and the registry files were not successfully merged
+- Ensure that the script prints a "successfully applied" message to the console, if it does not then the registry files were not successfully merged
 
 - After and only after a restart, you can establish an internet connection as the Windows update policies will take effect
 
