@@ -311,7 +311,7 @@ DISM /Export-Image /SourceImageFile:"%EXTRACTED_ISO%\sources\install.wim" /Sourc
 This step isn't required if you are [installing using DISM Apply-Image (without a USB storage device)](#install-using-dism-apply-image-without-a-usb-storage-device). Use the command below to pack the extracted contents back to a single ISO which will be created on the desktop.
 
 ```bat
-"%OSCDIMG%" -m -o -u2 -udfver102 -l"Final" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "%userprofile%\Desktop\Final.iso"
+"%OSCDIMG%" -m -o -u2 -udfver102 -l"Final" -bootdata:2#p0,e,b"%EXTRACTED_ISO%\boot\etfsboot.com"#pEF,e,b"%EXTRACTED_ISO%\efi\microsoft\boot\efisys.bin" "%EXTRACTED_ISO%" "C:\Final.iso"
 ```
 
 ## Boot Into the ISO
