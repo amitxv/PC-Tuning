@@ -351,8 +351,6 @@ Download and install [7-Zip](https://www.7-zip.org). Open ``C:\Program Files\7-Z
 
 If you use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards), download and install it.
 
-- Set ``Check for available product updates`` to ``never`` in ``Settings -> General``
-
 - It is recommended to configure a static fan speed as using the fan curve feature requires the program to run continually
 
 - To automatically load profile 1 (as an example) and exit, type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
