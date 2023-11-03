@@ -859,7 +859,7 @@ Allows Windows to prioritize packets of an application.
 
 - See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
 
-    - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
+- See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
 ## Per-CPU Scheduling
 
