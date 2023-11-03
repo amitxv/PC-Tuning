@@ -691,7 +691,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
     - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
 
-    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power-saving features. Disable the power-saving option in the ``Power Management`` section
+    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power-saving features
 
     - Disable everything that isn't the GPU on the same PCIe port
 
