@@ -332,7 +332,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 - ``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD with ``C:\bin\NSudo.exe`` and enter the command below to remove the binary
 
     ```bat
-    taskkill /f /im smartscreen.exe && del /f /q C:\Windows\System32\smartscreen.exe
+    taskkill /f /im smartscreen.exe > nul 2>&1 & del /f /q C:\Windows\System32\smartscreen.exe
     ```
 
 - You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository so that it can be reviewed
