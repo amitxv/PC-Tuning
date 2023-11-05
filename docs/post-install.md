@@ -385,6 +385,12 @@ You may have already found a stable overclock for your display in the [Physical 
 
 - Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the ``Open-Shell Menu``
 
+- Settings:
+
+    - General Behavior
+
+        - Check for Windows updates on shutdown - Disable
+
 - Windows 8 Only:
 
     - Open ``"C:\Program Files\Open-Shell\Start Menu Settings.lnk"``, enable ``Show all settings`` then navigate to the Windows 8 Settings section and set ``Disable active corners`` to ``All``
