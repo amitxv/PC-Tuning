@@ -2,7 +2,7 @@
 
 ## The problem
 
-With the scripts build in the [Configure Services and Drivers](/docs/post-install.md#configure-services-and-drivers) section using [service-list-builder](https://github.com/amitxv/service-list-builder), some specific functionality is broken after running the ``Services-Disable.bat`` script but works as intended after running the ``Services-Enable.bat`` script.
+With the scripts built in the [Configure Services and Drivers](/docs/post-install.md#configure-services-and-drivers) section using [service-list-builder](https://github.com/amitxv/service-list-builder), some specific functionality is broken after running the ``Services-Disable.bat`` script but works as intended after running the ``Services-Enable.bat`` script.
 
 ## The solution
 
