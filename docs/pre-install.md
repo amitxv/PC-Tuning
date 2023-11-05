@@ -16,7 +16,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
     |NVIDIA 16, 20 series|Win7, Win8, Win10 1709+|
     |NVIDIA 30 series|Win7, Win10 1803+|
     |NVIDIA 40 series|Win10 1803+|
-    |AMD|Newer drivers supposedly require 1709?|
+    |AMD|Refer to driver support page|
 
 - NVIDIA DCH drivers are [supported on Windows 10 1803+](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq)
 
