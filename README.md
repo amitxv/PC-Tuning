@@ -10,7 +10,7 @@ Windows is notorious for its ever-growing bloatware, third-party telemetry, exce
 
 This repository may contain information similar to those of the projects listed in the [Further Reading](#further-reading) section, however, it isn't my intention to directly copy from them.
 
-The guidance is currently updated and has been tested on client and server editions of Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues). Users are expected to follow the guidance in the order listed below starting with [Physical Setup](#1-physical-setup) through to [Post-Install Instructions](#3-post-install-instructions).
+The guidance is currently updated and has been tested on client and server editions of Windows 7 through to Windows 11 (x64). See a full list of [issues](https://github.com/amitxv/PC-Tuning/issues). Users are expected to follow the guidance in the order listed below, starting with [Physical Setup](#1-physical-setup) through to [Post-Install Instructions](#3-post-install-instructions).
 
 ## Staying Informed
 
@@ -20,7 +20,7 @@ The contents and information included in this repository will inevitably change 
 
 ## Benchmarking
 
-Before diving into the main content, is important to learn and understand how to benchmark properly and what the appropriate tools for a given task are as you will need to carry out your own experiments throughout the guide to assist in decision-making (e.g. settings to use, verify performance scaling) rather than blindly applying settings. A non-exhaustive list of factors to consider are noted below.
+Before diving into the main content, it is important to learn and understand how to benchmark properly and what the appropriate tools for a given task are as you will need to carry out your own experiments throughout the guide to assist in decision-making (e.g. settings to use, verify performance scaling) rather than blindly applying settings. A non-exhaustive list of factors to consider are noted below.
 
 - **Controlled Environment** - Create a controlled and consistent testing environment to minimize the influence of external factors affecting the results. (e.g. close background programs)
 - **Variables** - Identify and control both independent (manipulated) and dependent (measured) variables in your experiment (e.g. don't change more than one variable at once)
