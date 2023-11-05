@@ -13,7 +13,7 @@
 
 - Extract ``XXXX_INF\ccc2_install.exe`` with 7-Zip and run ``CN\cnext\cnext64\ccc-next64.msi`` to install the Radeon software control panel
 
-- Download [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) and navigate to the ``Everything`` section then disable necessary AMD entries such as ``AMD Crash Defender``, ``AMD External Events Utility`` (required for VRR) and more. Ensure not to disable the core kernel-mode driver or other important components
+- Download [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) and navigate to the ``Everything`` section, then disable necessary AMD entries such as ``AMD Crash Defender``, ``AMD External Events Utility`` (required for VRR) and more. Ensure not to disable the core kernel-mode driver or other important components
 
 ## Configure AMD Control Panel
 
