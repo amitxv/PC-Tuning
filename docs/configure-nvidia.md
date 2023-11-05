@@ -72,7 +72,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
     - Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
 
-    - Ensure that settings aren't being overridden for programs in the ``Program Settings`` tab such as Image Sharpening for some EAC games
+    - Ensure that settings aren't being overridden for programs in the ``Program Settings`` tab, such as Image Sharpening for some EAC games
 
 - Configure the following in the ``Change resolution`` page:
 
