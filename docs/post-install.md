@@ -994,14 +994,6 @@ Raising the timer resolution helps with precision where constant sleeping or pac
     defrag -c -h -o -$
     ```
 
-- Reset Firewall rules
-
-    - Open CMD and enter the commands below
-
-        ```bat
-        reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
-        ```
-
 ## Final Thoughts and Tips
 
 - Avoid applying random changes and tweaks, using all-in-one solution programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
