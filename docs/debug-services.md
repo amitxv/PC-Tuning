@@ -51,7 +51,7 @@ Determine what services are dependencies of the functionality that is broken, th
 
 8. Test the functionality. If it is **NOT** working then return to step 6, otherwise, continue to step 9
 
-9. Disable the last 10 services in the ``Debug-Services.bat`` individually by changing the start value to 4 then restart your PC. You will need to check whether it is even possible to disable each service by checking whether it is not 4 in ``Services-Disable.bat``. If it is 4, then you can safely disable it however, if it is not 4, do not disable the service under any circumstances otherwise you may BSOD. Keep repeating until the functionality breaks again. It is recommended to delete the lines for services that you can not disable
+9. Disable the last 10 services in the ``Debug-Services.bat`` individually by changing the start value to 4 then restart your PC. You will need to check whether it is even possible to disable each service by checking whether it is not 4 in ``Services-Disable.bat``. If it is 4, then you can safely disable it however, if it is not 4, do not disable the service under any circumstances, otherwise you may BSOD. Keep repeating until the functionality breaks again. It is recommended to delete the lines for services that you can not disable
 
 10. Now that you have identified which service breaks the functionality, try to re-enable it. If you can reproduce the functionality breaking while the service is disabled and works with it enabled, make a note of this service and continue to the next step
 
@@ -59,6 +59,6 @@ Determine what services are dependencies of the functionality that is broken, th
 
 12. The service's dependencies must also be enabled if there are any. For user-mode services, you can use the dependency tree by typing ``services.msc`` in ``Win+R`` then navigating to ``Properties -> Dependencies`` of a service. Kernel-mode services are a bit more tedious as a dependency tree is not available. You will have to manually search for them. Note down all the dependencies
 
-13. Get the default start value for each service that you noted down from the ``Services-Enable.bat`` script then edit the start value in the ``Services-Disable.bat`` script for the corresponding service. Run the ``Services-Disable.bat`` script with NSudo to check whether the functionality is working. If it is not working, return to step 1 and repeat the entire process with the newly edited/latest ``Services-Disable.bat`` script. This is because a service that is required for the functionality might not have any service dependencies
+13. Get the default start value for each service that you noted down from the ``Services-Enable.bat`` script, then edit the start value in the ``Services-Disable.bat`` script for the corresponding service. Run the ``Services-Disable.bat`` script with NSudo to check whether the functionality is working. If it is not working, return to step 1 and repeat the entire process with the newly edited/latest ``Services-Disable.bat`` script. This is because a service that is required for the functionality might not have any service dependencies
 
 14. Report all the services that you noted down by posting an [issue](https://github.com/amitxv/PC-Tuning/issues) describing what functionality was fixed by enabling the noted services
