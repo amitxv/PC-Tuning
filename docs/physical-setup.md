@@ -6,6 +6,8 @@
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
 
+- Always favor wired over cordless as wireless devices tend to implement aggressive power-saving for a longer battery life along with the downside of excessive interference
+
 - An SSD or NVMe is strongly recommended due to the unreliability, degraded performance and excessive interference of HDDs. Ensure that there is always a sufficient amount of free space as [SSDs slow down as they are filled up](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up)
 
 - Assess the general condition of storage devices with [CrystalDiskInfo](https://crystalmark.info/en/software/crystaldiskinfo) and [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark). When purchasing a new drive, check the total host read/writes to determine whether it is unused
@@ -40,11 +42,11 @@
 
     - See [What Can I Do About Bufferbloat?](https://www.bufferbloat.net/projects/bloat/wiki/What_can_I_do_about_Bufferbloat)
 
-- Avoid daisy-chaining power cables anywhere
+- Avoid daisy-chaining power cables anywhere in your setup
 
 - Tape the end of loose power cables to reduce the risk of short-circuiting components
 
-- Favor short and shielded cables
+- Favor shielded cables and avoid unnecessarily long ones
 
 - Clean dust from components and heat sinks as they have the potential to cause short circuits and reduce airflow
 
@@ -80,13 +82,15 @@
 
 - Use a contact frame if your CPU/socket is affected by ILM issues
 
+    - See [Investigating Intel's CPU Socket Problems | Thermal Grizzly Contact Frame Benchmark | Gamers Nexus](https://www.youtube.com/watch?v=Ysb25vsNBQI)
+
 - Check for contact patches on the IHS/Die and cold plate
 
 - Use high-quality thermal paste
 
     - See [Best Thermal Paste for CPUs](https://www.tomshardware.com/best-picks/best-thermal-paste)
 
-- Avoid tower and air coolers due to limited cooling potential and lack of space for fans to cool other components
+- Avoid tower and air coolers due to limited cooling potential and lack of space for fans to cool other components such as RAM and VRMs
 
 - Mount your AIO cooler properly
 
@@ -108,13 +112,11 @@
 
 - Repaste GPU due to factory application of thermal paste often being inadequate and replace the stock fans with higher quality ones
 
-- Consider replacing the stock PSU fan and connecting it to a motherboard fan header or hub
+- Consider replacing the stock PSU fan and connecting it to a motherboard fan header for potentially greater efficiency. Most modern PSUs ship with a zero-rpm mode
 
 ## Minimize Interference
 
 - Move devices that produce interference such as radios, cell phones, routers and more away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
-
-- Always favor wired over cordless. Wireless devices also tend to implement aggressive power-saving for a longer battery life
 
 - Ensure that there is a moderate amount of space between all cables to reduce the risk of [coupling](https://en.wikipedia.org/wiki/Coupling_(electronics))
 
@@ -191,7 +193,7 @@
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough CPUs for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per CPU increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Disabling HT/SMT has the additional benefit of increased overclocking potential due to lower temperatures in which, a similar concept can be applied to Intel's E-Cores (efficiency cores)
 
-- Limit C-States, P-States, T-States and S-States to the minimum or disable them completely. It is a source of jitter due to the process of state transition
+- Limit C-States, P-States, T-States and S-States to the minimum or disable them completely. [It is a source of jitter due to the process of state transition and accounts for 10s to 100s of microseconds](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-2-tuning-applications.html)
 
     - Verify C-State residency with [HWiNFO](https://www.hwinfo.com)
 
