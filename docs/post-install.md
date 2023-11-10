@@ -937,6 +937,9 @@ There are several methods to set affinities for processes. One of which is Task 
 
 - As CPU sets are considered soft policies, the configuration isn't guaranteed. A CPU-intensive process such as a stress-test will utilize the reserved cores if required
 
+> [!IMPORTANT]
+> Unexpected behavior occurs when a process affinity is set to reserved and unreserved CPUs. Ensure to set the affinity to either reserved or unreserved CPUs, not a combination of both. See [here](https://github.com/amitxv/ReservedCpuSets/issues/2#issuecomment-1805837921) for more information.
+
 #### Use Cases
 
 - Hinting to the OS to schedule tasks on a group of CPUs. An example of this with modern platforms could be reserving E-Cores (efficiency cores) or either CCX/CCDs so that tasks are scheduled on P-Cores (performance cores) or other CCX/CCDs by default. With this approach, you can explicitly enforce background and unimportant tasks to be scheduled on the reserved CPUs. Note that this is purely an example and the logic can be flipped, but some latency-sensitive processes and modules are protected so affinity policies may fail which is a major limitation. See the [User-Mode (Processes, Threads)](#user-mode-processes-threads) section for more information. There are several possibilities and trade-offs to consider
