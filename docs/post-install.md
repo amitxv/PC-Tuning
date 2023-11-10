@@ -171,7 +171,7 @@ C:\bin\scripts\install-firefox.ps1
 
 - Ensure to configure file extensions and the default browser in Windows settings
 
-- As updates are disabled, auto-update capabilities are not available. You can create a shortcut to the script by typing ``shell:startup`` in ``Win+R`` to check for updates when Windows starts
+- As updates are disabled, auto-update capabilities are not available. You can create a shortcut to the script by typing ``shell:startup`` in ``Win+R`` to check for updates when Windows starts. Set the window style of the shortcut to minimized
 
 ## Disable Residual Scheduled Tasks
 
@@ -791,7 +791,7 @@ For example, a mouse with a 1kHz polling rate will report data every 1ms. While 
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f
     ```
 
-- In some cases, the interrupter index can change after a reboot meaning the address will become invalid if it is hard-coded. To work around this, you can simply disable IMOD for all interrupters by placing the [XHCI-IMOD-Interval.ps1](https://gist.github.com/amitxv/4fe34e139f0aec681a6122f39757d86e) script somewhere safe and creating a shortcut in ``shell:startup`` with the target below
+- In some cases, the interrupter index can change after a reboot meaning the address will become invalid if it is hard-coded. To work around this, you can simply disable IMOD for all interrupters by placing the [XHCI-IMOD-Interval.ps1](https://gist.github.com/amitxv/4fe34e139f0aec681a6122f39757d86e) script somewhere safe and creating a shortcut in ``shell:startup`` with the target below. Set the window style of the shortcut to minimized
 
     ```
     PowerShell C:\XHCI-IMOD-Interval.ps1
