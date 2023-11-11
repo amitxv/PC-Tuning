@@ -115,7 +115,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - See [Chipset Device "Drivers" (= INF files)](https://winraid.level1techs.com/t/intel-chipset-device-drivers-inf-files/30920)
 
-- GPU drivers will be installed in a later step so do not install them at this stage
+- GPU drivers will be installed in the [Configure the Graphics Driver](#configure-the-graphics-driver) section so do not install them at this stage
 
 - You can find drivers by searching for drivers that are compatible with your device's HWID. See [media/device-hwid-example.png](/media/device-hwid-example.png) in regard to finding your HWID in Device Manager for a given device
 
