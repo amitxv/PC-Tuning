@@ -91,7 +91,7 @@ function main() {
         $remote_version = $firefox["FIREFOX_DEVEDITION"]
     } elseif ($enterprise_edition) {
         $product = ""
-        $folder_name = "Firefox Developer Edition"
+        $folder_name = "Mozilla Firefox"
         $remote_version = $firefox["FIREFOX_ESR"]
     } else {
         $product = ""
