@@ -14,8 +14,8 @@ function Apply-Registry($file_path) {
         return 1
     }
 
-    $user_merge_result = (Start-Process "reg.exe" -ArgumentList "import $file_path" -PassThru -Wait -WindowStyle Hidden).ExitCode
-    $trustedinstaller_merge_result = [int](C:\bin\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $file_path > nul 2>&1 && echo 0 || echo 1")
+    $user_merge_result = (Start-Process "reg.exe" -ArgumentList "import $($file_path)" -PassThru -Wait -WindowStyle Hidden).ExitCode
+    $trustedinstaller_merge_result = [int](C:\bin\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $($file_path) > nul 2>&1 && echo 0 || echo 1")
 
     return $user_merge_result -band $trustedinstaller_merge_result
 }
@@ -32,7 +32,7 @@ function main() {
 
     foreach ($file in @("7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg", "ui_cleanup.reg")) {
         $file_name = $file.replace(".reg", "")
-        $file = "C:\bin\registry\$file"
+        $file = "C:\bin\registry\$($file)"
         $is_successful = 0
 
         if ($file_name -eq "ui_cleanup") {
