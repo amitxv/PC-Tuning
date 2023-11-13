@@ -203,15 +203,13 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         DISM /Online /Set-ReservedStorageState /State:Disabled
         ```
 
-- Disable all messages in ``Change Security and Maintenance settings`` by typing ``wscui.cpl`` in ``Win+R``
-
 - Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
     - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary I/O unless you run out of RAM
 
     - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable
 
-- Allow users full control of the ``C:\`` directory to resolve xperf ETL processing
+- Allow users full control of the ``C:\`` directory to resolve errors when writing to a file in the drive
 
     - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
 
