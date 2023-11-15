@@ -31,20 +31,20 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
-<details>
+<details open>
 <br>
 <summary>What do the registry files do and modify?</summary>
 
 |Modification|Justification|
 |---|---|
 |Disable Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
-|Disable Sticky Keys|Intrusive|
+|Disable Sticky Keys|Intrusive in applications that utilize the Shift key for controls|
 |Disable Search The Web or Display Web Results In Search|Telemetry|
 |Disable Transparency|[Wastes resources](/media/transparency-effects-benchmark.png)|
 |Disable Corner Navigation|Intrusive|
-|Prevent Windows Marking File Attachments With Information About Their Zone of Origin|Intrusive|
-|Disable Windows Defender|Security and performance are generally mutually exclusive|
-|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable drivers. Security and performance are generally mutually exclusive|
+|Prevent Windows Marking File Attachments With Information About Their Zone of Origin|Intrusive as downloaded files are constantly required to be unblocked|
+|Disable Windows Defender|Excessive CPU overhead and [interferes with the CPU operating in C-State 0](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix)|
+|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers|
 |Disable Customer Experience Improvement Program|Telemetry|
 |Disable Automatic Maintenance|Intrusive|
 |Remove 3D Objects from Explorer Pane|Intrusive|
@@ -175,7 +175,7 @@ C:\bin\scripts\install-firefox.ps1
 
 ## Disable Residual Scheduled Tasks
 
-Open PowerShell and enter the command below. Ignore any errors.
+Open PowerShell and enter the command below to disable various scheduled tasks. This is useful if you would like finer control as to what runs on your OS in the background. Ignore any errors.
 
 ```powershell
 C:\bin\scripts\disable-scheduled-tasks.ps1
@@ -197,7 +197,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
         ```
 
-    - Disable reserved storage (Windows 10 1903+)
+    - Disable [reserved storage](https://support.microsoft.com/en-us/windows/how-reserved-storage-works-in-windows-5bc98443-0711-8038-4621-6a18ddc904f2) (Windows 10 1903+)
 
         ```bat
         DISM /Online /Set-ReservedStorageState /State:Disabled
@@ -267,7 +267,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
 - Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you do not need
 
-- Microsoft Store:
+- Required packages for Microsoft Store:
 
     - ``Microsoft.WindowsStore``
 
@@ -747,11 +747,13 @@ Open CMD and enter the commands below.
 
 - Disables the creation of 8.3 character-length file names on FAT- and NTFS-formatted volumes
 
-    ```bat
-    fsutil behavior set disable8dot3 1
-    ```
+    - See [Should you disable 8dot3 for performance and security?](https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security)
 
-- Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume
+        ```bat
+        fsutil behavior set disable8dot3 1
+        ```
+
+- Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume. [Disabling the Last Access Time feature improves the speed of file and directory access](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior#remarks).
 
     ```bat
     fsutil behavior set disablelastaccess 1

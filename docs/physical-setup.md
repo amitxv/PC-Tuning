@@ -2,6 +2,8 @@
 
 ## General
 
+- Typically, you should re-install Windows after major hardware swaps (e.g. motherboard, CPU, platform, chipsets)
+
 - See [Avoid Multi-CCX Ryzen CPUs | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
 
 - See [Low Latency Hardware | Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit#bookmark=kix.alwwrke7e395)
@@ -32,7 +34,7 @@
 
 - An Ethernet cable is strongly recommended due to the unreliability, degraded performance and excessive interference of wireless connections
 
-- If you have more than one onboard Ethernet network interface controller, consider using the one that supports MSI-X as it is required [for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). This can be achieved by plugging the Ethernet cable into the corresponding port on the motherboard
+- If you have more than one onboard Ethernet network interface controller, consider using the one that supports MSI-X by checking in [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) as it is required [for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). This can be achieved by plugging the Ethernet cable into the corresponding port on the motherboard
 
 - Measure and minimize bufferbloat as it is a cause of high latency and jitter in packet-switched networks caused by excess buffering of packets
 
@@ -86,7 +88,7 @@
 
 - Check for contact patches on the IHS/Die and cold plate
 
-- Use high-quality thermal paste
+- Use high-quality TIM (thermal interface material) and an adequate amount upon application
 
     - See [Best Thermal Paste for CPUs](https://www.tomshardware.com/best-picks/best-thermal-paste)
 
@@ -102,7 +104,7 @@
 
 - Ensure not to overload the motherboard fan header, especially if you are using splitters
 
-- Remove the heat sink from your RAM and mount a fan over it using cable ties
+- Remove the heat sink from your RAM and get creative with mounting a fan over it (e.g. using cable ties)
 
 - Use an M.2/NVMe heat sink
 
@@ -193,7 +195,7 @@
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough CPUs for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per CPU increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Disabling HT/SMT has the additional benefit of increased overclocking potential due to lower temperatures in which, a similar concept can be applied to Intel's E-Cores (efficiency cores)
 
-- Limit C-States, P-States, T-States and S-States to the minimum or disable them completely. [It is a source of jitter due to the process of state transition and accounts for 10s to 100s of microseconds](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-2-tuning-applications.html)
+- Limit C-States, P-States, T-States, S-States, D-States and hibernation to the minimum or disable them completely. [It is a source of jitter due to the process of state transition and accounts for 10s to 100s of microseconds](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-2-tuning-applications.html)
 
     - Verify C-State residency with [HWiNFO](https://www.hwinfo.com)
 
@@ -203,7 +205,7 @@
 
     - Verify Virtualization/SVM status in Task Manager
 
-- Disable all power-saving features such as [Active State Power Management](https://en.wikipedia.org/wiki/Active_State_Power_Management), [Aggressive Link Power Management](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), PCIe Clock Gating and more. Search the internet if you are unsure whether a given setting is power-saving-related
+- Disable all power-saving features such as [ASPM (Active State Power Management)](https://en.wikipedia.org/wiki/Active_State_Power_Management), [ALPM (Aggressive Link Power Management)](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), Clock Gating and more. You can also look out for options named *power management* or *power saving*. Search the internet if you are unsure whether a given setting is power-saving related
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you aren't using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
 
@@ -237,7 +239,7 @@
 
 - Disable Execute Disable Bit/NX Mode. A minority of applications (Valorant) require it to be enabled
 
-- As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep, Turbo Boost and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
+- As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
 
     - In some cases, the settings mentioned above may prevent the processor from exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
@@ -273,6 +275,8 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Configure load-line calibration. Opinionated setting, mentioning for awareness. This isn't a recommendation for what mode to use
 
+    - See [VRM Load-Line Visualized](https://elmorlabs.com/2019-09-05/vrm-load-line-visualized)
+
     - See [Vdroop setting and it’s impact on CPU operation](https://xdevs.com/guide/e399ocg/#vdroop)
 
     - See [Why Vdroop is good for overclocking and taking a look at Gigabyte's Override Vcore mode | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=zqvNkh4TVw8)
@@ -305,7 +309,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
     - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
 
-    - [PorteusLinpack Bootable by SlovenianSlobodan#9859](https://drive.google.com/file/d/1g6hY_klVOyd2FQy0Ozit2aFrEyuC4r48/view?usp=sharing)
+    - [PorteusLinpack Bootable by SlovenianSlobodan#9859](https://drive.google.com/file/d/1MgHcZIoLth-i50o8pYF8XPR1kG1pw0y3/view?usp=sharing)
 
         - Login is root, password is toor
 
