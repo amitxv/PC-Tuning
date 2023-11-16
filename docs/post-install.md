@@ -334,7 +334,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 - ``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD with ``C:\bin\NSudo.exe`` and enter the command below to remove the binary
 
     ```bat
-    taskkill /f /im smartscreen.exe > nul 2>&1 & del /f /q C:\Windows\System32\smartscreen.exe
+    taskkill /f /im smartscreen.exe > nul 2>&1 & ren C:\Windows\System32\smartscreen.exe smartscreen.exee
     ```
 
 - You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository so that it can be reviewed
@@ -404,11 +404,11 @@ You may have already found a stable overclock for your display in the [Physical 
 - Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove the CPU microcode updates
 
     ```bat
-    del /f /q C:\Windows\System32\mcupdate_GenuineIntel.dll
+    ren C:\Windows\System32\mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.dlll
     ```
 
     ```bat
-    del /f /q C:\Windows\System32\mcupdate_AuthenticAMD.dll
+    ren C:\Windows\System32\mcupdate_AuthenticAMD.dll mcupdate_AuthenticAMD.dlll
     ```
 
 - Reboot and use [InSpectre](https://www.grc.com/inspectre.htm) and [CPU-Z's](https://www.cpuid.com/softwares/cpu-z.html) validation feature to check the status after a reboot
