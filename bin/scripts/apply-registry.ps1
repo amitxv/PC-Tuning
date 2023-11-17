@@ -59,7 +59,8 @@ function main() {
     }
 
     Write-Host "$(if ($hasErrors) {"error: failed"} else {"info: succeeded"}) merging registry settings for windows $($winver)"
-    return 0
+
+    return [int]$hasErrors
 }
 
 exit main
