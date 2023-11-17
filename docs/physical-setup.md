@@ -201,7 +201,7 @@
 
     - Verify S-State status with ``powercfg /a`` in CMD
 
-- Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU (Intel VT-d/AMD-Vi)](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf)
+- Disable [Virtualization/SVM Mode](https://en.wikipedia.org/wiki/Desktop_virtualization) and [IOMMU (Intel VT-d/AMD-Vi)](https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit) if applicable as they can cause a [difference in latency for memory access](https://www.amd.com/system/files/TechDocs/56263-EPYC-performance-tuning-app-note.pdf). Virtualization also has the potential to [affect BCLK](https://linustechtips.com/topic/1479168-issue-enabling-svm-virtualization-causes-bclk-to-fluctuate-a-lot)
 
     - Verify Virtualization/SVM status in Task Manager
 
@@ -253,19 +253,19 @@
 
 ## Stability, Hardware Clocking and Thermal Performance
 
-Ensure that all of your hardware is stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. There are many tools to test different components and algorithms vary between tools which is why it is important to use a range of them for a sufficient amount of time (a non-exhaustive list of recommended tools is listed below).
+Ensure that all of your hardware is stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. The effectiveness of testing for instability varies between tools which is why it is important to use a range of them for a sufficient amount of time (a non-exhaustive list of recommended tools is listed below).
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors. A higher polling interval can help to identify sudden spikes but not transients on a microsecond scale as an example. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
 - A single error or crash is one too many
 
-- Try not to leave voltage settings on automatic due to potential overvolting
+- Consider monitoring and adjusting voltages manually where applicable due to potential overvolting
 
 - Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [Intel Memory Latency Checker](https://amitxv.github.io/IMLC-Analyzer)
 
 - There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
 
-    - An important note to make is that you can pass hours of stress-tests (RAM) but as soon as another component (GPU) begins to warm up and increase ambient temperature, you may encounter instability so ensure to cater for such scenario. Assuming a fan is mounted to blow air onto the RAM, stress-testing without a fan or reduce RPM to deliberately allow them to run warmer so that greater stability can be ensured once the fan is running at full RPM again
+    - See [RAM overclock stability and heat management | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=iCD0ih4qzHw)
 
 - Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to mimic a worst-case scenario
 
@@ -273,7 +273,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Monitor WHEAs. [HWiNFO](https://www.hwinfo.com) has an error count
 
-- Configure load-line calibration. Opinionated setting, mentioning for awareness. This isn't a recommendation for what mode to use
+- Configure load-line calibration. This isn't a recommendation for what mode to use
 
     - See [VRM Load-Line Visualized](https://elmorlabs.com/2019-09-05/vrm-load-line-visualized)
 
@@ -283,9 +283,9 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many subtimings nor does it guarantee stability
 
-    - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
-
     - See [KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT](https://github.com/KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT)
+
+    - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
 - Configure static all-core frequencies and voltages for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions
 
