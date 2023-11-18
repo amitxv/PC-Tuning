@@ -90,11 +90,11 @@ function main() {
         $folder_name = "Firefox Developer Edition"
         $remote_version = $firefox["FIREFOX_DEVEDITION"]
     } elseif ($enterprise_edition) {
-        $product = ""
+        $product = "firefox/"
         $folder_name = "Mozilla Firefox"
         $remote_version = $firefox["FIREFOX_ESR"]
     } else {
-        $product = ""
+        $product = "firefox/"
         $folder_name = "Mozilla Firefox"
         $remote_version = $firefox["LATEST_FIREFOX_VERSION"]
     }
@@ -103,9 +103,9 @@ function main() {
         $remote_version = $version
     }
 
-    $download_url = "http://releases.mozilla.org/pub/$($product)firefox/releases/$($remote_version)/win64/$($lang)/Firefox%20Setup%20$($remote_version).exe"
+    $download_url = "https://releases.mozilla.org/pub/$($product)releases/$($remote_version)/win64/$($lang)/Firefox%20Setup%20$($remote_version).exe"
     $install_dir = "C:\Program Files\$($folder_name)"
-    $hash_source = "https://ftp.mozilla.org/pub/$($product)firefox/releases/$($remote_version)/SHA512SUMS"
+    $hash_source = "https://ftp.mozilla.org/pub/$($product)releases/$($remote_version)/SHA512SUMS"
 
     # check if currently installed version is already latest
     if (Test-Path "$($install_dir)\firefox.exe" -PathType Leaf) {
