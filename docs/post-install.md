@@ -5,7 +5,7 @@
 
 ## OOBE Setup
 
-- Windows Server will force you to enter a complex password which we will remove in a few steps later
+- Windows Server will force you to enter a complex password which we can remove in a few steps later
 
 - If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection as demonstrated in the video examples below.
 
@@ -185,7 +185,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 - Open CMD and enter the commands below
 
-    - Set the maximum password age to never expire
+    - Set the maximum password age to never expire. This prevents Windows periodically asking to change or enter a password despite removing it (if applicable)
 
         ```bat
         net accounts /maxpwage:unlimited
@@ -207,7 +207,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
     - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary I/O unless you run out of RAM
 
-    - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable
+    - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable for our use case
 
 - Allow users full control of the ``C:\`` directory to resolve errors when writing to a file in the drive
 
@@ -540,10 +540,14 @@ Open CMD and enter the commands below.
     bcdedit /set nx AlwaysOff
     ```
 
-- Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting
+- Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting. The partition label can also be renamed similarly for clarity
 
     ```bat
     bcdedit /set {current} description "OS_NAME"
+    ```
+
+    ```bat
+    label C: "OS_NAME"
     ```
 
 - Windows 8+ Only
