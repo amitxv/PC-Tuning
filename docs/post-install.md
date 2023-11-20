@@ -534,6 +534,9 @@ Open CMD and enter the commands below.
 
 ## Configure the BCD Store
 
+> [!WARNING]
+> Disabling DEP may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
+
 Open CMD and enter the commands below.
 
 - [Data Execution Prevention](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention) is set to ``Turn on for essential Windows programs and services only`` by default. However, DEP can be completely disabled with the command below but a minority of anti-cheats require DEP to be left on the default setting. Do not change if unsure
@@ -541,9 +544,6 @@ Open CMD and enter the commands below.
     ```bat
     bcdedit /set nx AlwaysOff
     ```
-
-    > [!WARNING]
-    > Disabling DEP may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
 
 - Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting. The partition label can also be renamed similarly for clarity
 
