@@ -807,18 +807,6 @@ For example, a mouse with a 1kHz polling rate will report data every 1ms. While 
 
 It isn't a bad idea to skim through both the legacy and immersive control panel to ensure nothing is misconfigured.
 
-## Analyze Event Viewer
-
-This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method that was used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
-
-- Depending on your configuration, the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section may have disabled logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to their default values which can be found in the ``Services-Enable.bat`` script. Make a note of what the values currently are so that you can restore them later
-
-- Merge the ``ets-enable.reg`` file that was generated in the [Configure Event Trace Sessions](#configure-event-trace-sessions) section as it is required for event logging
-
-- After running the script, use your PC normally for a while then open event viewer by typing ``eventvwr.msc`` in ``Win+R``. Inspect each section for errors and investigate how they can be solved
-
-- Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to their previous value in the ``Services-Disable.bat`` script
-
 ## Configuring Applications
 
 - Install any programs and configure your real-time applications to prepare us for the final steps
@@ -974,6 +962,18 @@ Raising the timer resolution helps with precision where constant sleeping or pac
 - Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load as idle benchmarks may be misleading. The [micro-adjust-benchmark.ps1](https://github.com/amitxv/TimerResolution/blob/main/micro-adjust-benchmark.ps1) script can be used to automate the process.
 
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
+
+## Analyze Event Viewer
+
+This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method that was used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
+
+- Depending on your configuration, the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section may have disabled logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to their default values which can be found in the ``Services-Enable.bat`` script. Make a note of what the values currently are so that you can restore them later
+
+- Merge the ``ets-enable.reg`` file that was generated in the [Configure Event Trace Sessions](#configure-event-trace-sessions) section as it is required for event logging
+
+- After running the script, use your PC normally for a while then open event viewer by typing ``eventvwr.msc`` in ``Win+R``. Inspect each section for errors and investigate how they can be solved
+
+- Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to their previous value in the ``Services-Disable.bat`` script
 
 ## Cleanup
 
