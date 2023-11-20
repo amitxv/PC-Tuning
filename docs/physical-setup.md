@@ -239,7 +239,7 @@
 
 - Disable Execute Disable Bit/NX Mode. A minority of applications (Valorant) require it to be enabled
 
-- As we will be configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads
+- If you are configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads. [Precision Boost Overdrive](https://www.amd.com/en/support/kb/faq/cpu-pb2) for Ryzen CPUs is an alternative option to a static frequency and voltages
 
     - In some cases, the settings mentioned above may prevent the processor from exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
 
@@ -259,7 +259,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - A single error or crash is one too many
 
-- Consider monitoring and adjusting voltages manually where applicable due to potential overvolting
+- Monitoring voltages where applicable due to potential overvolting
 
 - Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [Intel Memory Latency Checker](https://amitxv.github.io/IMLC-Analyzer)
 
@@ -273,7 +273,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Monitor WHEAs. [HWiNFO](https://www.hwinfo.com) has an error count
 
-- Configure load-line calibration. This isn't a recommendation for what mode to use
+- If desired, configure load-line calibration. This isn't a recommendation for what mode to use
 
     - See [VRM Load-Line Visualized](https://elmorlabs.com/2019-09-05/vrm-load-line-visualized)
 
@@ -287,7 +287,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
     - See [integralfx/MemTestHelper](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md)
 
-- Configure static all-core frequencies and voltages for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions
+- Configure static all-core frequencies and voltages for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions. [Precision Boost Overdrive](https://www.amd.com/en/support/kb/faq/cpu-pb2) for Ryzen CPUs is an alternative option to a static frequency and voltages
 
 - The previous two bullet points affect each other in terms of stability which means you should re-test each component after tinkering with the other
 
