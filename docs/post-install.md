@@ -394,6 +394,9 @@ You may have already found a stable overclock for your display in the [Physical 
 
 ## Spectre, Meltdown and CPU Microcode
 
+> [!WARNING]
+> Disabling Spectre and Meltdown may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
+
 - Disable Spectre and Meltdown with [InSpectre](https://www.grc.com/inspectre.htm)
 
     - AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
@@ -539,6 +542,9 @@ Open CMD and enter the commands below.
     bcdedit /set nx AlwaysOff
     ```
 
+    > [!WARNING]
+    > Disabling DEP may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
+
 - Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting. The partition label can also be renamed similarly for clarity
 
     ```bat
@@ -604,6 +610,9 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 ## Disable Process Mitigations (Windows 10 1709+)
 
+> [!WARNING]
+> Disabling process mitigations may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
+
 Open CMD and enter the command below to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with ``Get-ProcessMitigation -System`` in PowerShell.
 
 ```bat
@@ -655,6 +664,9 @@ C:\bin\scripts\disable-process-mitigations.bat
     - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs
 
 ## Configure Services and Drivers
+
+> [!WARNING]
+> Using minimal services may negatively impact security. This is due to security related feature services (e.g. firewall) getting disabled although as mentioned below, this is a temporary state in which these features will only be unavailable for a limited amount of time. Users should assess the security risk involved with modifying the mentioned setting.
 
 I'm not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
