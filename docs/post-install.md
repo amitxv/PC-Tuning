@@ -48,6 +48,7 @@ Set-ExecutionPolicy Unrestricted
 |Disable Customer Experience Improvement Program|Telemetry|
 |Disable Automatic Maintenance|Intrusive|
 |Remove 3D Objects from Explorer Pane|Intrusive|
+|Disable UAC|Eliminates intrusive UAC prompt but reduces security as all processes are run with Administrator privileges by default|
 |Disable Fast Startup|Interferes with shutting down|
 |Disable Sign-In and Lock Last Interactive User After a Restart|Intrusive|
 |Disable Suggestions In The Search Box and In Search Home|Telemetry and intrusive|
