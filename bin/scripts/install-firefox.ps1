@@ -1,8 +1,6 @@
 param(
     [switch]$force,
     [switch]$skip_hash_check,
-    [switch]$developer_edition,
-    [switch]$enterprise_edition,
     [string]$lang = "en-GB",
     [string]$version
 )
@@ -85,34 +83,17 @@ function main() {
     $firefox = $serializer.DeserializeObject($response)
     $setup_file = "$($Env:temp)\FirefoxSetup.exe"
 
-    if ($developer_edition) {
-        $product = "devedition/"
-        $folder_name = "Firefox Developer Edition"
-        $remote_version = $firefox["FIREFOX_DEVEDITION"]
-    } elseif ($enterprise_edition) {
-        $product = "firefox/"
-        $folder_name = "Mozilla Firefox"
-        $remote_version = $firefox["FIREFOX_ESR"]
-    } else {
-        $product = "firefox/"
-        $folder_name = "Mozilla Firefox"
-        $remote_version = $firefox["LATEST_FIREFOX_VERSION"]
-    }
-
-    if ($version) {
-        $remote_version = $version
-    }
-
-    $download_url = "https://releases.mozilla.org/pub/$($product)releases/$($remote_version)/win64/$($lang)/Firefox%20Setup%20$($remote_version).exe"
-    $install_dir = "C:\Program Files\$($folder_name)"
-    $hash_source = "https://ftp.mozilla.org/pub/$($product)releases/$($remote_version)/SHA512SUMS"
+    $remote_version = if ($version) { $version } else { $firefox["LATEST_FIREFOX_VERSION"] }
+    $download_url = "https://releases.mozilla.org/pub/firefox/releases/$($remote_version)/win64/$($lang)/Firefox%20Setup%20$($remote_version).exe"
+    $install_dir = "C:\Program Files\Mozilla Firefox"
+    $hash_source = "https://ftp.mozilla.org/pub/firefox/releases/$($remote_version)/SHA512SUMS"
 
     # check if currently installed version is already latest
     if (Test-Path "$($install_dir)\firefox.exe" -PathType Leaf) {
-        $local_version = ([string](& "$($install_dir)\firefox.exe" --version | more)).Split()[2]
+        $local_version = (Get-Item "$($install_dir)\firefox.exe").VersionInfo.ProductVersion
 
         if ($local_version -eq $remote_version) {
-            Write-Host "info: $($folder_name) $($remote_version) already installed"
+            Write-Host "info: Mozilla Firefox $($remote_version) already installed"
 
             if ($force) {
                 Write-Host "warning: -force specified, proceeding anyway"
