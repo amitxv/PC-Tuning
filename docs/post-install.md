@@ -705,15 +705,17 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 1. Open Device Manager by typing ``devmgmt.msc`` in ``Win+R``
 
-1. **DO NOT** disable any devices with a yellow icon because these are the devices that are being handled by disabling services
+1. **DO NOT** disable any devices with a yellow icon because these are the devices that are being handled by the ``Services-Disable.bat`` script
+
+1. Navigate to ``View -> Devices by type``
+
+    - In the ``Disk drives`` category, disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
+
+    - In the ``Network adapters`` category, navigate to ``Properties -> Advanced`` and disable any power-saving features
 
 1. Navigate to ``View -> Devices by connection``
 
     - Disable any PCIe, SATA, NVMe and XHCI controllers with nothing connected to them
-
-    - Disable write-cache buffer flushing on all drives in the ``Properties -> Policies`` section
-
-    - Navigate to your ``Network adapter -> Properties -> Advanced`` and disable any power-saving features
 
     - Disable everything that isn't the GPU on the same PCIe port
 
