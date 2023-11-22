@@ -873,6 +873,10 @@ Allows Windows to prioritize packets of an application.
 
 - See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
 
+    - See [DSCP and Precedence Values](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus1000/sw/4_0/qos/configuration/guide/nexus1000v_qos/qos_6dscp_val.pdf)
+
+    - See [The QoS Expedited Forwarding (EF) Model](https://www.networkworld.com/article/761413/the-qos-expedited-forwarding-ef-model.html)
+
 - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
 ## Per-CPU Scheduling
