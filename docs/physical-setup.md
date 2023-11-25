@@ -249,11 +249,15 @@
 
 - When overclocking, you may be required to raise various power limits if the default limits are exceeded
 
-- Backup BIOS by saving the current settings to a profile as clearing CMOS will wipe all settings if you need to do so while overclocking
+- Backup BIOS by saving the current settings to a profile or export to local storage as clearing CMOS will wipe all settings if you need to do so while overclocking
+
+    - In my experience on various motherboards, loading a saved profile doesn't restore some settings after clearing CMOS. It is recommended to dump nvram using a tool such as [SCEWIN](https://github.com/amitxv/SCEWIN) so that when you restore a profile, dump nvram again then compare it to the previous/original one to see whether anything failed to restore by using a text comparison tool such as the [Notepad++ Compare plugin](https://sourceforge.net/projects/npp-compare) or [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## Stability, Hardware Clocking and Thermal Performance
 
 Ensure that all of your hardware is stable before configuring a new operating system as unstable hardware can lead to crashes, data corruption, worse performance and irreversible damage to hardware. The effectiveness of testing for instability varies between tools which is why it is important to use a range of them for a sufficient amount of time (a non-exhaustive list of recommended tools is listed below).
+
+- Save a BIOS profile before each change when overclocking such as changing CPU/RAM frequency and RAM timings so that you don't lose progress if you need to clear CMOS. Refer to the last point in the [BIOS](#bios) section regarding restoring settings properly
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors. A higher polling interval can help to identify sudden spikes but not transients on a microsecond scale as an example. Avoid running while benchmarking as it has the potential to reduce the reliability of results
 
