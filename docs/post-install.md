@@ -265,7 +265,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
 ## Manage Appx Packages (Windows 8+)
 
-- Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you do not need
+- Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you don't need (which may be everything)
 
 - Required packages for Microsoft Store:
 
