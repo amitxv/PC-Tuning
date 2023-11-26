@@ -128,6 +128,8 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 ## Prepare the Build Environment
 
+- If Windows Defender is enabled, then consider disabling real-time protection as it can slow the mounting and unmounting process or cause issues in some cases
+
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
 - Run the command below. If an error occurs, re-open CMD with administrator privileges however if nothing is shown in the output, continue as normal
