@@ -259,6 +259,8 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - It is recommended to dual-boot a fresh installation of Windows to avoid corrupting your main operating system while stress-testing and overclocking. In terms of memory stress-testing, this also allows the stress-test to use more RAM as it isn't being hogged by potential bloatware
 
+- Verify and validate changes within software to avoid unexpected results and behavior (e.g. frequency, voltages, timings)
+
 - Save a BIOS profile before each change when overclocking such as changing CPU/RAM frequency and RAM timings so that you don't lose progress if you need to clear CMOS. Refer to the last point in the [BIOS](#bios) section regarding restoring settings properly
 
 - Use [HWiNFO](https://www.hwinfo.com) to monitor system sensors. A higher polling interval can help to identify sudden spikes but not transients on a microsecond scale as an example. Avoid running while benchmarking as it has the potential to reduce the reliability of results
