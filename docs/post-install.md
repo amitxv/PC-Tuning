@@ -715,7 +715,7 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 1. Navigate to ``View -> Devices by connection``
 
-    - Disable any PCIe, SATA, NVMe and XHCI controllers with nothing connected to them
+    - Disable any PCIe, SATA, NVMe and XHCI controllers and USB hubs with nothing connected to them
 
     - Disable everything that isn't the GPU on the same PCIe port
 
