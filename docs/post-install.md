@@ -203,6 +203,22 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         DISM /Online /Set-ReservedStorageState /State:Disabled
         ```
 
+    - Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting. The partition label can also be renamed similarly for clarity
+
+        ```bat
+        bcdedit /set {current} description "OS_NAME"
+        ```
+
+        ```bat
+        label C: "OS_NAME"
+        ```
+
+    - If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below
+
+        ```bat
+        reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
+        ```
+
 - Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
     - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance`` and preferably disable the paging file for all drives to avoid unnecessary I/O unless you run out of RAM
@@ -212,12 +228,6 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 - Allow users full control of the ``C:\`` directory to resolve errors when writing to a file in the drive
 
     - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
-
-- If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below
-
-    ```bat
-    reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
-    ```
 
 - Windows 8+ Only:
 
@@ -544,16 +554,6 @@ Open CMD and enter the commands below.
 
     ```bat
     bcdedit /set nx AlwaysOff
-    ```
-
-- Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting. The partition label can also be renamed similarly for clarity
-
-    ```bat
-    bcdedit /set {current} description "OS_NAME"
-    ```
-
-    ```bat
-    label C: "OS_NAME"
     ```
 
 - Windows 8+ Only
