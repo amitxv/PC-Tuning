@@ -127,7 +127,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
         - If you do not have internet access at this stage, you will need to download your network interface controller drivers from another device or dual-boot as they may not be packaged at all in some versions of Windows
 
-    - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (both should already be installed if configuring Windows 7)
+    - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (if you are configuring Windows 7, both may have already been integrated in pre-install)
 
         - See [Microsoft USB driver latency penalty](/docs/research.md#microsoft-usb-driver-latency-penalty)
 
