@@ -235,13 +235,13 @@
 
 - Set the primary graphics to dGPU instead of iGPU if applicable
 
-- Set PCIe link speed to the maximum supported such as ``Gen 3.0``
+- Set PCIe link speed to the maximum supported such as ``Gen 3.0``. This may be represented as gigatransfers per second (GT/s)
 
 - Disable Execute Disable Bit/NX Mode. A minority of applications (Valorant) require it to be enabled
 
 - If you are configuring a static frequency/voltage for the CPU in the next section, disable dynamic frequency features such as Speed Shift, SpeedStep and set the AVX offset to 0 so that the CPU does not downclock during AVX workloads. [Precision Boost Overdrive](https://www.amd.com/en/support/kb/faq/cpu-pb2) for Ryzen CPUs is an alternative option to a static frequency and voltages
 
-    - In some cases, the settings mentioned above may prevent the processor from exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered
+    - In some cases, the settings mentioned above may prevent the processor from exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered and ensure that your CPU is able to run boost clocks in [HWiNFO](https://www.hwinfo.com)
 
 - Configure fan curves or set a static, high, noise-acceptable RPM
 
