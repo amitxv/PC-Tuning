@@ -271,11 +271,11 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [Intel Memory Latency Checker](https://amitxv.github.io/IMLC-Analyzer)
 
-- There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more
+- There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more. To apply additional stress when tuning RAM, consider turning off case fans, reducing RAM fan RPM or turning it off completely and generating extra heat (e.g. GPU load, room heaters) while stress-testing RAM
 
     - See [RAM overclock stability and heat management | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=iCD0ih4qzHw)
 
-- Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer which can be replicated with a heater to mimic a worst-case scenario
+- Avoid thermal throttling at all costs, ambient temperature will generally increase during the summer
 
     - Deliberately underclock if your cooler is inadequate. A thermally stable component with an overall lower frequency is always better and safer compared to thermal throttling at a higher frequency
 
@@ -289,7 +289,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
     - See [Why Vdroop is good for overclocking and taking a look at Gigabyte's Override Vcore mode | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=zqvNkh4TVw8)
 
-- Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many subtimings nor does it guarantee stability
+- Configure RAM frequency and timings manually [for a significant performance improvement](https://kingfaris.co.uk/blog/intel-ram-oc-impact). XMP does not tune many timings nor does it guarantee stability
 
     - See [KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT](https://github.com/KoTbelowall/INTEL-DDR4-RAM-OC-GUIDE-by-KoT)
 
@@ -297,7 +297,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Configure static all-core frequencies and voltages for the CPU. Variations in hardware clocks can introduce jitter due to the process of frequency transitions. [Precision Boost Overdrive](https://www.amd.com/en/support/kb/faq/cpu-pb2) for Ryzen CPUs is an alternative option to a static frequency and voltages
 
-- The previous two bullet points affect each other in terms of stability which means you should re-test each component after tinkering with the other
+- The previous two bullet points affect each other in terms of stability which means that your RAM overclock may become unstable after overclocking your CPU, so run RAM stress-tests again and adjust your CPU settings if required
 
 - Tune and overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
