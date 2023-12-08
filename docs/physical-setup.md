@@ -104,7 +104,7 @@
 
 - Ensure not to overload the motherboard fan header, especially if you are using splitters
 
-- Remove the heat sink from your RAM and get creative with mounting a fan over it (e.g. using cable ties)
+- Remove the heat sink from your RAM and get creative with mounting a fan (140mm recommended) over it using cable ties
 
 - Use an M.2/NVMe heat sink
 
