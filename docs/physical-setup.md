@@ -245,7 +245,7 @@
 
     - In some cases, the settings mentioned above may prevent the processor from exceeding its base frequency despite manually configuring it in BIOS. Adjust accordingly if this is encountered and ensure that your CPU is able to run boost clocks in [HWiNFO](https://www.hwinfo.com)
 
-- Configure fan curves or set a static, high, noise-acceptable RPM
+- Configure fan curves or set a static, high, noise-acceptable RPM. Set your AIO pump speed to full if applicable
 
     - See [Ultimate fan speed curve (by KGCT, iteration 1)](https://imgur.com/a/2UDYXp0)
 
