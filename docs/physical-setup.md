@@ -273,7 +273,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - Overclocking does not necessarily mean that the system will perform better due to factors such as error correction. You should verify whether whatever you are changing scales positively by adopting a systematic testing methodology in benchmarks such as [liblava](https://github.com/liblava/liblava) and [Intel Memory Latency Checker](https://amitxv.github.io/IMLC-Analyzer)
 
-- There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more. To apply additional stress when tuning RAM, consider turning off case fans, reducing RAM fan RPM or turning it off completely and generating extra heat (e.g. GPU load, room heaters) while stress-testing RAM
+- There are countless factors that contribute to stability such as temperature, power delivery, quality of hardware in general, silicon lottery and more. To apply additional stress when tuning any component (e.g. CPU, RAM, GPU), consider turning off case, RAM fans or reducing RPM along with generating extra heat (e.g. GPU load, room heaters) while stress-testing
 
     - See [RAM overclock stability and heat management | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=iCD0ih4qzHw)
 
