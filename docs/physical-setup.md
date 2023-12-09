@@ -82,9 +82,11 @@
 
 - Delid your CPU and use liquid metal for a [significant thermal improvement](https://www.youtube.com/watch?v=rUy3WcDlBXE). Direct die and lapping are also worth considering
 
-- Use a contact frame if your CPU/socket is affected by ILM issues
+- Consider contact frames and offset mounts if applicable
 
     - See [Investigating Intel's CPU Socket Problems | Thermal Grizzly Contact Frame Benchmark | Gamers Nexus](https://www.youtube.com/watch?v=Ysb25vsNBQI)
+
+    - See [Noctua Releases Offset Mounting for Improved Cooling Performance on AMD AM5 CPUs](https://noctua.at/en/noctua-releases-offset-mounting-for-improved-cooling-performance-on-amd-am5-processors)
 
 - Check for contact patches on the IHS/Die and cold plate
 
