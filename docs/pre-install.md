@@ -172,7 +172,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 ## Remove Non-Essential Editions
 
-Remove every edition except the desired edition by retrieving the indexes of every other edition and removing them with the commands below. Once completed, the only edition to exist should be the desired edition at index 1.
+Remove every edition except the desired edition by retrieving the indexes of every other edition and removing them with the commands below. Once completed, the only edition to exist should be the desired edition at index 1. Ensure that the chosen edition has group policy support as several policies are configured in later steps.
 
 - Recommended editions:
 
