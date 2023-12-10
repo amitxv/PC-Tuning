@@ -93,7 +93,7 @@ Changes made with ``-ui_cleanup``:
 
 - Append the ``-ui_cleanup`` argument to clean up the interface further
 
-- If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+) or reboot (or both) then re-execute the command
+- If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+). If that doesn't work, reboot then re-execute the command again
 
 - Ensure that the script prints a "successfully applied" message to the console, if it does not then the registry files were not successfully merged
 
