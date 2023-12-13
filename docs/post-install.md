@@ -681,14 +681,12 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
 
 - On Win10 1503 - 1703, delete the ``ErrorControl`` registry key in ``HKLM\SYSTEM\CurrentControlSet\Services\Schedule`` to prevent an unresponsive explorer shell after disabling the Task Scheduler service
 
-- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove entries with a yellow label in the ``Services`` section to prevent obsolete services from being added to the scripts that are going to be built in the next steps. Run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
-
 - Download and extract the latest [service-list-builder](https://github.com/amitxv/service-list-builder/releases) release. Open CMD and CD to the extracted folder where the executable is located
 
 - Use the command below to build the scripts in the ``build`` folder. Move the build folder somewhere safe such as ``C:\`` and do not share it with other people as it is specific to your system. Note that NSudo with the ``Enable All Privileges`` option is required to run the batch scripts
 
     ```bat
-    service-list-builder.exe --config C:\bin\minimal-services.ini
+    service-list-builder.exe C:\bin\minimal-services.ini
     ```
 
     - If you would like to rebuild the scripts, ensure to run the generated ``Services-Enable.bat`` script beforehand as the tool relies on the current state of services for building future scripts
