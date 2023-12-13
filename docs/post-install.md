@@ -277,11 +277,11 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
 - Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you don't need (which may be everything)
 
-- Required packages for Microsoft Store:
+- Required packages for Microsoft Store. It may be a suitable idea to keep this as you can download applications in the future if desired although, you can download ``.appx`` packages directly and install them manually without the store, but this may become tedious. See [here](https://superuser.com/questions/1721755/is-there-a-way-to-install-microsoft-store-exclusive-apps-without-store) for more information
 
     - ``Microsoft.WindowsStore``
 
-- Required packages for Xbox Game Pass:
+- Required packages for Xbox Game Pass
 
     - ``Microsoft.XboxIdentityProvider``
     - ``Microsoft.Xbox.TCUI``
