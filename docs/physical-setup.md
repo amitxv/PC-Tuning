@@ -345,6 +345,8 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 - [Prime95](https://www.mersenne.org/download)
 
+- [FIRESTARTER](https://github.com/tud-zih-energy/FIRESTARTER)
+
 - [y-cruncher](http://www.numberworld.org/y-cruncher)
 
 - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
