@@ -139,7 +139,7 @@
 
         - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
-- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them from interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)
+- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller to [prevent them from interfering with polling consistency](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449). Another controller may be made available by using ports connected to the USB 3.0 front panel header. Always verify with [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)
 
 ## Configure Peripherals
 
