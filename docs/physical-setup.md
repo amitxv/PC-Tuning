@@ -116,8 +116,6 @@
 
 - Repaste GPU due to factory application of thermal paste often being inadequate and replace the stock fans with higher quality ones
 
-- Consider replacing the stock PSU fan and connecting it to a motherboard fan header for potentially greater efficiency. Most modern PSUs ship with a zero-rpm mode
-
 ## Minimize Interference
 
 - Move devices that produce interference such as radios, cell phones, routers and more away from your setup as they have the potential to increase latency due to unwanted behavior of electrical components
