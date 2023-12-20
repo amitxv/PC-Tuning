@@ -39,7 +39,7 @@ Download the latest game ready (not security update) driver using the [advanced 
     ```
 
     ```bat
-    reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f
+    reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup\SendTelemetryData" /t REG_DWORD /d "0" /f
     ```
 
 ## Disable HDCP (required for DRM content)
