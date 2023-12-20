@@ -131,7 +131,9 @@
 
 ## Configure USB Port Layout
 
-- Favor the first few ports on the desired XHCI controller. Some of them may not be physically accessible which can be determined in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) with trial and error. Use the motherboard ports, avoid companion ports (indicated in the right section of the program) and [internal headers](/media/xhci-internal-headers.png) as the data must go through hubs
+- Familiarize yourself with which ports correspond to given XHCI controllers as some ports shown in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) may not be physically accessible. It is recommended to plug a device into every accessible port on your system then take note of where they appear in USB Device Tree Viewer
+
+- Favor the first few ports on the desired XHCI controller. Avoid companion ports (indicated in the right section of the program) and [internal headers](/media/xhci-internal-headers.png) as data must go through hubs
 
     - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com). It is usually the XHCI controller that is connected to an ``Internal PCIe Bridge X to bus`` which is also labeled with the CPU architecture
 
