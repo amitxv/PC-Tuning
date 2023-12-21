@@ -197,9 +197,9 @@
 
 - Disable [Hyper-Threading/Simultaneous Multithreading](https://en.wikipedia.org/wiki/Hyper-threading) if you have enough CPUs for your real-time application. This feature is beneficial for highly threaded operations such as encoding, compiling and rendering however using multiple execution threads per CPU increases contention on processor resources and is a potential [source of system latency and jitter](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-1-configuring-the-hardware.html). Disabling HT/SMT has the additional benefit of increased overclocking potential due to lower temperatures in which, a similar concept can be applied to Intel's E-Cores (efficiency cores)
 
-- Limit C-States, P-States, T-States, S-States, D-States and hibernation to the minimum or disable them completely. [It is a source of jitter due to the process of state transition and accounts for 10s to 100s of microseconds](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-2-tuning-applications.html)
+- Limit C-States (C0/C1), P-States (P0), S-States (S0), D-States (D0), T-States and hibernation to the minimum or disable them completely. [It is a source of jitter due to the process of state transition and accounts for 10s to 100s of microseconds](https://www.intel.com/content/www/us/en/developer/articles/technical/optimizing-computer-applications-for-latency-part-2-tuning-applications.html)
 
-    - Verify C-State residency with [HWiNFO](https://www.hwinfo.com)
+    - Verify C-State residency with [HWiNFO](https://www.hwinfo.com). Beware of C1E
 
     - Verify S-State status with ``powercfg /a`` in CMD
 
