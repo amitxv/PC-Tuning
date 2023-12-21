@@ -573,15 +573,7 @@ Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attach
 
 ## Replace Task Manager with Process Explorer
 
-<details>
-
-<summary>Reasons not to use Task Manager</summary>
-
-- Does not display the process tree
-
-- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the ``disable idle`` power setting results in 100% CPU utilization on Windows 8+
-
-</details>
+On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the ``disable idle`` power setting results in 100% CPU utilization on Windows 8+ in Task Manager. Furthermore, it lacks metrics such as context switches and CPU cycles delta which are expensive.
 
 - Download and extract [Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer)
 

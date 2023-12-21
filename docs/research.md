@@ -1,10 +1,19 @@
 # Research
 
+## Table of Contents
+
+- [How can you verify if a DSCP QoS policy is working?](#how-can-you-verify-if-a-dscp-qos-policy-is-working)
+- [What TscSyncPolicy does Windows use by default?](#what-tscsyncpolicy-does-windows-use-by-default)
+- [How many RSS Queues do you need?](#how-many-rss-queues-do-you-need)
+- [Win32PrioritySeparation](#win32priorityseparation)
+    - [The truth behind ambiguous values](#the-truth-behind-ambiguous-values)
+    - [No foreground boost may be superior](#no-foreground-boost-may-be-superior)
+- [Microsoft USB driver latency penalty](#microsoft-usb-driver-latency-penalty)
+- [Fixing timing precision in Windows after "The Great Rule Change"](#fixing-timing-precision-in-windows-after-the-great-rule-change)
+- [Micro-adjusting timer resolution for higher precision](#micro-adjusting-timer-resolution-for-higher-precision)
+- [What is identity scaling and how can you use it?](#what-is-identity-scaling-and-how-can-you-use-it)
+
 ## How can you verify if a DSCP QoS policy is working?
-
-<details>
-
-<summary>Read More</summary>
 
 - Download and install [Microsoft Network Monitor 3.4](https://www.microsoft.com/en-us/download/details.aspx?id=4865)
 
@@ -22,16 +31,7 @@
     DifferentiatedServices Field: DSCP: 46, ECN: 0
     ```
 
-</details>
-
----
-
 ## What TscSyncPolicy does Windows use by default?
-
-<details>
-
-<summary>Read More</summary>
-<br>
 
 After searching through the decompiled ``ntoskrnl.exe`` pseudocode in [Hex-Rays IDA](https://hex-rays.com/products/idahome), I noticed that HalpTscSyncPolicy is changed when TscSyncPolicy is configured by modifying the BCD store. Despite many claims of enhanced being the default value, there has not been evidence, so I decided to find out myself.
 
@@ -67,16 +67,7 @@ fffff802`2864a3ac  00000002
 
 In conclusion, Windows uses the default value, not enhanced or legacy. Although, the default value may correspond to another value which isn't exposed by reading the output of HalpTscSyncPolicy.
 
-</details>
-
----
-
 ## How many RSS Queues do you need?
-
-<details>
-
-<summary>Read More</summary>
-<br>
 
 [Receive side scaling (RSS) is a network driver technology that enables the efficient distribution of network receive processing across multiple CPUs in multiprocessor systems](https://docs.microsoft.com/en-us/windows-hardware/drivers/network/introduction-to-receive-side-scaling). The amount you should use or need depends on your typical network load. In server environments, a large amount of RSS queues is desirable as receive processing delays will be reduced and ensures that no CPU is heavily loaded. The same concept can be applied to games however the network load differs significantly making it an invalid comparison, so I decided to carry out some experiments myself.
 
@@ -92,179 +83,154 @@ As expected, this scenario demonstrates that both CPU 0 and CPU 1 are handling D
 
 Conclusion: During online matches, at most two RSS queues/CPUs are being utilized. However, there is no harm in using more than two, but it is important to be aware of the information above as people reserve consecutive CPUs specifically for the network driver when those CPUs could better be used for another driver or a real-time application. The amount of RSS queues a network adapter has may also determine the quality of the hardware, but this is yet to be explored but something to keep in mind.
 
-</details>
-
----
-
 ## Win32PrioritySeparation
 
-- ### The truth behind ambiguous values
+### The truth behind ambiguous values
 
-    <details>
+According to the documentation Windows allows up to 0x3F (63 decimal) because the bitmask is made up of 6-bits, so why do values above this exist? What happens if we enter a value greater than the (theoretically) maximum allowed?
 
-    <summary>Read More</summary>
-    <br>
+We can read PsPrioritySeparation and PspForegroundQuantum in a local kernel debugger such as WinDbg in real-time and use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries.
 
-    According to the documentation Windows allows up to 0x3F (63 decimal) because the bitmask is made up of 6-bits, so why do values above this exist? What happens if we enter a value greater than the (theoretically) maximum allowed?
+|PsPrioritySeparation|Foreground boost|
+|---|---|
+|2|3:1|
+|1|2:1|
+|0|1:1|
 
-    We can read PsPrioritySeparation and PspForegroundQuantum in a local kernel debugger such as WinDbg in real-time and use the quantum index provided in the Windows internals book to find out the different values it returns with different Win32PrioritySeparation entries.
+<img src="/media/w32ps-quantum-index.png" width="600">
 
-    |PsPrioritySeparation|Foreground boost|
-    |---|---|
-    |2|3:1|
-    |1|2:1|
-    |0|1:1|
+Demonstration with the Windows default, 0x2 (2 decimal)
 
-    <img src="/media/w32ps-quantum-index.png" width="600">
+```
+lkd> dd PsPrioritySeparation L1
+fffff802`3a6fc5c4  00000002
 
-    Demonstration with the Windows default, 0x2 (2 decimal)
+lkd> db PspForegroundQuantum L3
+fffff802`3a72e874  06 0c 12
+```
 
-    ```
-    lkd> dd PsPrioritySeparation L1
-    fffff802`3a6fc5c4  00000002
+PspForegroundQuantum returns the values in hexadecimal, so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by Microsoft, so now lets try an ambiguous value.
 
-    lkd> db PspForegroundQuantum L3
-    fffff802`3a72e874  06 0c 12
-    ```
+``0xffff3f91 (4294918033 decimal)``
 
-    PspForegroundQuantum returns the values in hexadecimal, so we need to convert it to decimal in order to use the tables correctly. ``06 0c 12`` is equivalent to ``6 12 18`` and PsPrioritySeparation returns ``2``. In the tables, this corresponds to short, variable, 3:1. But we already knew this as it is documented by Microsoft, so now lets try an ambiguous value.
+```
+lkd> dd PsPrioritySeparation L1
+fffff802`3a6fc5c4  00000001
 
-    ``0xffff3f91 (4294918033 decimal)``
+lkd> db PspForegroundQuantum L3
+fffff802`3a72e874  0c 18 24
+```
 
-    ```
-    lkd> dd PsPrioritySeparation L1
-    fffff802`3a6fc5c4  00000001
+``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
 
-    lkd> db PspForegroundQuantum L3
-    fffff802`3a72e874  0c 18 24
-    ```
+Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is that the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) and there are no restrictions in place to prevent users to entering an illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values, so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values. The table below consists of all possible values (consistent between client and server editions of Windows as ``00`` or ``11`` were not used in ``AABB`` of ``AABBCC`` in the bitmask which have different meanings on client/server). The time in milliseconds are based on the modern x86/x64 multiprocessor clock interrupt frequency.
 
-    ``0c 18 24`` is equivalent to ``12 24 36`` and PsPrioritySeparation returns ``1`` which corresponds to long, variable, 2:1. Nothing special as it seems, this is equivalent to values less than the maximum documented value as shown in [this csv](https://raw.githubusercontent.com/djdallmann/GamingPCSetup/master/CONTENT/RESEARCH/FINDINGS/win32prisep0to271.csv). I had the same results while testing various other values.
+Although a foreground boost can not be used when using a fixed length interval in terms of the quantum, PsPrioritySeparation still changes, and another thread priority boosting mechanism just happens to use the value of it so in reality, a fixed 3:1 quantum should have a perceivable difference compared to a fixed 1:1 quantum. See the paragraph below from Windows Internals.
 
-    Conclusion: Why does Windows allow us to enter values greater than 0x3F (63 decimal) if any value greater than this is equivalent to values less than the maximum documented value? The reason behind this is that the maximum value for a REG_DWORD is 0xFFFFFFFF (4294967295 decimal) and there are no restrictions in place to prevent users to entering an illogical value, so when the kernel reads the Win32PrioritySeparation registry key, it must account for invalid values, so it only reads a portion of the entered value. The portion it chooses to read is the first 6-bits of the bitmask which means values greater than 63 are recurring values. The table below consists of all possible values (consistent between client and server editions of Windows as ``00`` or ``11`` were not used in ``AABB`` of ``AABBCC`` in the bitmask which have different meanings on client/server). The time in milliseconds are based on the modern x86/x64 multiprocessor clock interrupt frequency.
+> As will be described shortly, whenever a thread in the foreground process completes a wait operation on
+a kernel object, the kernel boosts its current (not base) priority by the current value of
+PsPrioritySeparation. (The windowing system is responsible for determining which process is
+considered to be in the foreground.) As described earlier in this chapter in the section “Controlling the
+quantum,” PsPrioritySeparation reflects the quantum-table index used to select quantums for the
+threads of foreground applications. However, in this case, it is being used as a priority boost value.
 
-    Although a foreground boost can not be used when using a fixed length interval in terms of the quantum, PsPrioritySeparation still changes, and another thread priority boosting mechanism just happens to use the value of it so in reality, a fixed 3:1 quantum should have a perceivable difference compared to a fixed 1:1 quantum. See the paragraph below from Windows Internals.
+|**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**PsPrioSep**|**ForegroundQU**|**BackgroundQU**|**TotalQU**|
+|---|---|---|---|---|---|---|---|---|
+|0x14|20|010100|Long|Variable|0|12 (62.50ms)|12 (62.50ms)|24 (125.00ms)
+|0x15|21|010101|Long|Variable|1|24 (125.00ms)|12 (62.50ms)|36 (187.50ms)
+|0x16|22|010110|Long|Variable|2|36 (187.50ms)|12 (62.50ms)|48 (250.00ms)
+|0x18|24|011000|Long|Fixed|0|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
+|0x19|25|011001|Long|Fixed|1|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
+|0x1A|26|011010|Long|Fixed|2|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
+|0x24|36|100100|Short|Variable|0|6 (31.25ms)|6 (31.25ms)|12 (62.50ms)
+|0x25|37|100101|Short|Variable|1|12 (62.50ms)|6 (31.25ms)|18 (93.75ms)
+|0x26|38|100110|Short|Variable|2|18 (93.75ms)|6 (31.25ms)|24 (125.00ms)
+|0x28|40|101000|Short|Fixed|0|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
+|0x29|41|101001|Short|Fixed|1|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
+|0x2A|42|101010|Short|Fixed|2|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
 
-    > As will be described shortly, whenever a thread in the foreground process completes a wait operation on
-    a kernel object, the kernel boosts its current (not base) priority by the current value of
-    PsPrioritySeparation. (The windowing system is responsible for determining which process is
-    considered to be in the foreground.) As described earlier in this chapter in the section “Controlling the
-    quantum,” PsPrioritySeparation reflects the quantum-table index used to select quantums for the
-    threads of foreground applications. However, in this case, it is being used as a priority boost value.
+### No foreground boost may be superior
 
-    |**Hexadecimal**|**Decimal**|**Binary**|**Interval**|**Length**|**PsPrioSep**|**ForegroundQU**|**BackgroundQU**|**TotalQU**|
-    |---|---|---|---|---|---|---|---|---|
-    |0x14|20|010100|Long|Variable|0|12 (62.50ms)|12 (62.50ms)|24 (125.00ms)
-    |0x15|21|010101|Long|Variable|1|24 (125.00ms)|12 (62.50ms)|36 (187.50ms)
-    |0x16|22|010110|Long|Variable|2|36 (187.50ms)|12 (62.50ms)|48 (250.00ms)
-    |0x18|24|011000|Long|Fixed|0|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
-    |0x19|25|011001|Long|Fixed|1|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
-    |0x1A|26|011010|Long|Fixed|2|36 (187.50ms)|36 (187.50ms)|72 (375.00ms)
-    |0x24|36|100100|Short|Variable|0|6 (31.25ms)|6 (31.25ms)|12 (62.50ms)
-    |0x25|37|100101|Short|Variable|1|12 (62.50ms)|6 (31.25ms)|18 (93.75ms)
-    |0x26|38|100110|Short|Variable|2|18 (93.75ms)|6 (31.25ms)|24 (125.00ms)
-    |0x28|40|101000|Short|Fixed|0|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
-    |0x29|41|101001|Short|Fixed|1|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
-    |0x2A|42|101010|Short|Fixed|2|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
+Out of the box, Windows uses 0x2 (2 decimal) which (in terms of foreground boosting) means that the threads of foreground processes get three times as much processor time than the threads of background processes each time they are scheduled for the processor. While this is theoretically desirable when running your real-time application, we need to pause for a moment and think about the potential damage this may be doing.
 
-    </details>
+We can view the QuantumReset value in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to check what a process's share of the total quantum is.
 
-- ### No foreground boost may be superior
+```
+QuantumReset is the default, full quantum of each thread on the system when it
+is replenished This value is cached into each thread of the process, but the KPROCESS
+structure is easier to look at
+```
 
-    <details>
+A script must be used as a sleep delay is required so that the window can be brought to the front and be made the foreground process. ``!process 0 0`` can be used to list running processes on the system.
 
-    <summary>Read More</summary>
-    <br>
+Script.txt contents
 
-    Out of the box, Windows uses 0x2 (2 decimal) which (in terms of foreground boosting) means that the threads of foreground processes get three times as much processor time than the threads of background processes each time they are scheduled for the processor. While this is theoretically desirable when running your real-time application, we need to pause for a moment and think about the potential damage this may be doing.
-
-    We can view the QuantumReset value in a local kernel debugger such as [WinDbg](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools) in real-time to check what a process's share of the total quantum is.
-
-    ```
-    QuantumReset is the default, full quantum of each thread on the system when it
-    is replenished This value is cached into each thread of the process, but the KPROCESS
-    structure is easier to look at
-    ```
-
-    A script must be used as a sleep delay is required so that the window can be brought to the front and be made the foreground process. ``!process 0 0`` can be used to list running processes on the system.
-
-    Script.txt contents
-
-    ```
-    .sleep 1000
-    dt nt!_KPROCESS <address> QuantumReset
-    ```
-
-    ---
-
-    ``Valorant`` (real-time application)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 18 ''
-    ```
-
-    ``Csrss`` (input processing)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 6 ''
-    ```
-
-    ``System`` (Windows kernel)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 6 ''
-    ```
-
-    ``Audiodg`` (Windows audio)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 6 ''
-    ```
-
-    As you can see above, despite their importance, the real-time application gets three times more CPU times than csrss, kernel and audio threads which can be problematic. If we use no foreground boost, all processes will get as much CPU time as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used
-
-    ``Valorant`` (real-time application)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 6 ''
-    ```
-
-    ``Csrss`` (input processing)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 6 ''
-    ```
-
-    ``System`` (Windows kernel)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 6 ''
-    ```
-
-    ``Audiodg`` (Windows audio)
-
-    ```
-    lkd> $$>a< "script.txt"
-        +0x281 QuantumReset : 6 ''
-    ```
-
-    </details>
+```
+.sleep 1000
+dt nt!_KPROCESS <address> QuantumReset
+```
 
 ---
 
+``Valorant`` (real-time application)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 18 ''
+```
+
+``Csrss`` (input processing)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 6 ''
+```
+
+``System`` (Windows kernel)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 6 ''
+```
+
+``Audiodg`` (Windows audio)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 6 ''
+```
+
+As you can see above, despite their importance, the real-time application gets three times more CPU times than csrss, kernel and audio threads which can be problematic. If we use no foreground boost, all processes will get as much CPU time as each other (see below). The same result can be achieved with a fixed quantum because it automatically implies no foreground boost can be used
+
+``Valorant`` (real-time application)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 6 ''
+```
+
+``Csrss`` (input processing)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 6 ''
+```
+
+``System`` (Windows kernel)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 6 ''
+```
+
+``Audiodg`` (Windows audio)
+
+```
+lkd> $$>a< "script.txt"
+    +0x281 QuantumReset : 6 ''
+```
+
 ## Microsoft USB driver latency penalty
-
-<details>
-
-<summary>Read More</summary>
-<br>
 
 On a stock Win10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers.
 
@@ -278,16 +244,7 @@ On a stock Win10 installation, the Wdf01000.sys driver handles USB connectivity 
 
 Excluding benchmark variation, ISR/DPC count and ISR latency is identical. However, with the vendor drivers, DPC latency was positively impacted and for this reason it would be appropriate to update the USB driver if applicable, but your mileage may vary.
 
-</details>
-
----
-
 ## Fixing timing precision in Windows after "The Great Rule Change"
-
-<details>
-
-<summary>Read More</summary>
-<br>
 
 Starting with 2004, the calling process attempting to raise the clock interrupt frequency no longer functions on a global level and is independent of other processes running on the system. A recent comment on the [Great Rule Change](https://randomascii.wordpress.com/2020/10/04/windows-timer-resolution-the-great-rule-change) article suggested a registry key (see below) which claims to restore the old timer implementation, so I decided to investigate.
 
@@ -420,16 +377,7 @@ Resolution: 0.500000ms, Sleep(1) slept 1.495500ms (delta: 0.495500)
 Resolution: 0.500000ms, Sleep(1) slept 1.494400ms (delta: 0.494400)
 ```
 
-</details>
-
----
-
 ## Micro-adjusting timer resolution for higher precision
-
-<details>
-
-<summary>Read More</summary>
-<br>
 
 Everyone is aware that raising the clock interrupt frequency/timer resolution results in higher precision. On most systems, 0.5ms is the maximum supported resolution, but what advantage does micro-adjusting the resolution bring to the table?
 
@@ -492,16 +440,7 @@ Despite 0.500ms being a higher resolution than 0.507ms, it offers worse precisio
 
 - 0.500ms resolution provided a high resolution for all candidates on Windows 7. There was not a case where 0.500ms resulted in ~0.49ms deltas as shown above
 
-</details>
-
----
-
 ## What is identity scaling and how can you use it?
-
-<details>
-
-<summary>Read More</summary>
-<br>
 
 Identity scaling, sometimes referred to as *real no scaling*, is the operation which [SetDisplayConfig](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setdisplayconfig) uses when the desktop and monitor resolution are identical.
 
@@ -611,16 +550,3 @@ Scaling Mode: 2
     - Different combinations of settings can result in the same outcome
 
     - You can determine whether you are using identity scaling by checking if the resolution listed in the monitor OSD matches the desktop resolution. Otherwise, you are GPU scaling
-
-</details>
-
-<!-- ---
-
-## Title
-
-<details>
-
-<summary>Read More</summary>
-<br>
-
-</details> -->
