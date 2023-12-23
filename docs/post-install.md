@@ -387,8 +387,6 @@ You may have already found a stable overclock for your display in the [Physical 
 
 - Ensure your resolution is configured properly by typing ``rundll32.exe display.dll,ShowAdapterSettings`` in ``Win+R``
 
-- On systems with an NVIDIA GPU, you can enable the ``override the scaling mode set by games and programs`` for consistent scaling behavior across applications and desktops
-
 ## Install Open-Shell (Windows 8+)
 
 - Download and install [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu). Only install the ``Open-Shell Menu``
