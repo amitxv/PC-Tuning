@@ -262,12 +262,6 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
 DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:NetFx3 /All /LimitAccess /Source:"%EXTRACTED_ISO%\sources\sxs"
 ```
 
-## Enable Legacy Components for Older Applications (Windows 8+)
-
-```bat
-DISM /Image:"%MOUNT_DIR%" /Enable-Feature /FeatureName:DirectPlay /All
-```
-
 ## Integrating Required Files
 
 [Clone the repository](https://github.com/amitxv/PC-Tuning/archive/refs/heads/main.zip) and place the ``bin`` folder in the mounted directory. Open the directory with the command below.
