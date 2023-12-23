@@ -44,7 +44,7 @@ Set-ExecutionPolicy Unrestricted
 |Disable Corner Navigation|Intrusive|
 |Prevent Windows Marking File Attachments With Information About Their Zone of Origin|Intrusive as downloaded files are constantly required to be unblocked|
 |Disable Windows Defender|Excessive CPU overhead and [interferes with the CPU operating in C-State 0](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix)|
-|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers. Disabling Windows Update is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device).|
+|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers. Disabling Windows Update is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)|
 |Disable Customer Experience Improvement Program|Telemetry|
 |Disable Automatic Maintenance|Intrusive|
 |Remove 3D Objects from Explorer Pane|Intrusive|
@@ -213,7 +213,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         label C: "OS_NAME"
         ```
 
-    - If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below. Disabling SysMain is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device).
+    - If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below. Disabling SysMain is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)
 
         ```bat
         reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
@@ -1051,7 +1051,7 @@ This step isn't required, but can help to justify unexplained performance issues
 
     - Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted
 
-    - Disabling idle states is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device).
+    - Disabling idle states is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)
 
         ```bat
         powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
