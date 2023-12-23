@@ -44,7 +44,7 @@ Set-ExecutionPolicy Unrestricted
 |Disable Corner Navigation|Intrusive|
 |Prevent Windows Marking File Attachments With Information About Their Zone of Origin|Intrusive as downloaded files are constantly required to be unblocked|
 |Disable Windows Defender|Excessive CPU overhead and [interferes with the CPU operating in C-State 0](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix)|
-|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers|
+|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers. Disabling Windows Update is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device).|
 |Disable Customer Experience Improvement Program|Telemetry|
 |Disable Automatic Maintenance|Intrusive|
 |Remove 3D Objects from Explorer Pane|Intrusive|
@@ -213,7 +213,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         label C: "OS_NAME"
         ```
 
-    - If a HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below
+    - If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below. Disabling SysMain is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device).
 
         ```bat
         reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
@@ -1047,10 +1047,14 @@ This step isn't required, but can help to justify unexplained performance issues
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost).
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost).
 
-    ```bat
-    powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
-    ```
+    - Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted
+
+    - Disabling idle states is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device).
+
+        ```bat
+        powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
+        ```
 
 - If you are using Windows 8.1+, the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) presentation mode with your application, and take responsibility for damage caused to your operating system, you can disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM
