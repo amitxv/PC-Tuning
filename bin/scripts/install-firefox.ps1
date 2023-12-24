@@ -178,7 +178,7 @@ lockPref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", f
 "@
 
     # Convert policies to JSON and write to file
-    $policiesJson | ConvertTo-Json -Depth 5 | Set-Content -Path "$installDir\distribution\policies.json"
+    $policiesJson | ConvertTo-Json -Depth 5 -Compress | Set-Content -Path "$installDir\distribution\policies.json"
     Write-Host "Created: policies.json" -ForegroundColor Green
 
     # Write autoconfig.js
