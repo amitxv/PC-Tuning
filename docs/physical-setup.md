@@ -46,8 +46,6 @@
 
 - Avoid daisy-chaining power cables anywhere in your setup
 
-- Tape the end of loose power cables to reduce the risk of short-circuiting components
-
 - Favor shielded cables and avoid unnecessarily long ones
 
 - Clean dust from components and heat sinks as they have the potential to cause short circuits and reduce airflow
