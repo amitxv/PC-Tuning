@@ -626,7 +626,7 @@ C:\bin\scripts\disable-process-mitigations.bat
     Get-MMAgent
     ```
 
-- If anything is set to ``True``, use the command below as an example to disable a given setting
+- Use the command below as an example to disable a given setting. If you left Superfetch/Prefetch enabled in the [Miscellaneous](#miscellaneous) section, then you likely want the prefetching related features enabled
 
     ```powershell
     Disable-MMAgent -MemoryCompression
