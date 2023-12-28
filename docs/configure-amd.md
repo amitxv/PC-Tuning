@@ -17,6 +17,9 @@
 
 ## Configure AMD Control Panel
 
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
+
 - Configure the following in the ``Graphics`` section:
 
     - Texture Filtering Quality - Performance
@@ -30,5 +33,8 @@
     - HDCP Support - Disable (required for DRM content)
 
 ## Lock GPU Clocks/P-State 0
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
 - Force P-State 0 with [MorePowerTool](https://www.igorslab.de/en/red-bios-editor-and-morepowertool-adjust-and-optimize-your-vbios-and-even-more-stable-overclocking-navi-unlimited), [MoreClockTool](https://www.igorslab.de/en/the-moreclocktool-mct-for-free-download-the-practical-oc-attachment-to-the-morepowertool-replaces-the-wattman) or [OverdriveNTool](https://forums.guru3d.com/threads/overdriventool-tool-for-amd-gpus.416116)

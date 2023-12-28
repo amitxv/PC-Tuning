@@ -634,6 +634,9 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 ## Configure the Network Adapter
 
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
+
 - Open ``Network Connections`` by typing ``ncpa.cpl`` in ``Win+R``
 
 - Disable any unused network adapters then right-click your main one and select ``Properties``
@@ -663,6 +666,9 @@ C:\bin\scripts\disable-process-mitigations.bat
     - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs
 
 ## Configure Services and Drivers
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as general compatibility is restricted.
 
 > [!WARNING]
 > 🔒 Using minimal services may negatively impact security. This is due to security related feature services (e.g. firewall) getting disabled although as mentioned below, this is a temporary state in which these features will only be unavailable for a limited amount of time. Users should assess the security risk involved with modifying the mentioned setting.
@@ -696,6 +702,9 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
 - Something not working after disabling services but works once services are re-enabled? See [docs/debug-services.md](/docs/debug-services.md)
 
 ## Configure Device Manager
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip the steps that involve disabling devices as general compatibility is restricted.
 
 The section is directly related to the [Configure Services and Drivers](#configure-services-and-drivers) section. The methodology below will ensure maximum compatibility while services are enabled because devices with an associated driver will be toggled in the ``Services-Disable.bat`` script which means we do not need to permanently disable them.
 
@@ -736,6 +745,9 @@ Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.ena
 ```
 
 ## Configure Event Trace Sessions
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as general compatibility is restricted.
 
 Create registry files to toggle event trace sessions. Programs that rely on event tracers will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in ``Win+R`` then navigating to ``Data Collector Sets -> Event Trace Sessions``.
 
@@ -796,6 +808,9 @@ Open CMD and enter the commands below.
     - If ``System timer`` and ``High precision event timer`` are sharing IRQ 0, See the [Configure Services and Drivers](#configure-services-and-drivers) section for a solution
 
 ## XHCI Interrupt Moderation (IMOD)
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
 On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. This means that after an interrupt has been generated, the XHCI controller waits for the specified interval for more data to arrive before generating another interrupt which reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same XHCI controller.
 
@@ -880,6 +895,9 @@ Allows Windows to prioritize packets of an application.
 - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
 ## Per-CPU Scheduling
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
 ### Kernel-Mode (Interrupts, DPCs and more)
 
@@ -970,6 +988,9 @@ Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Obje
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
+
 Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. In an ideal world when relying on sleep-related functions to pace events, Sleep(n) should sleep for n milliseconds, not n plus an arbitrary number. If the delta between n and what you expect to sleep for in reality is large, events won't be paced as you would expect which can result in unexpected or undesirable behavior. This is especially apparent in sleep-based framerate limiters. Below is a list of bullet points highlighting key information regarding the topic.
 
 - Applications that require a high resolution already call for 1ms (1kHz) most of the time. In the context of a multimedia application, this means that it can maintain the pace of events within a resolution of 1ms, but we can take advantage of 0.5ms (2kHz) being the maximum resolution supported on most systems
@@ -988,6 +1009,9 @@ Raising the timer resolution helps with precision where constant sleeping or pac
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
 ## Analyze Event Viewer
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
 This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method that was used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
 

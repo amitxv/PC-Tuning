@@ -44,6 +44,9 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 ## Disable HDCP (required for DRM content)
 
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
+
 HDCP can be disabled with the [following registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-are-there-any-configuration-options-that-allow-you-to-disable-hdcp-when-using-nvidia-based-graphics-cards) (reboot required). Ensure to change the driver key to the one that corresponds to the correct NVIDIA GPU.
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
@@ -84,6 +87,9 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Lock GPU Clocks/P-State 0
 
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
+
 Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to the one that corresponds to the correct NVIDIA GPU. To reduce power consumption while your real-time application isn't running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
@@ -93,6 +99,9 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
     ```
 
 ## Configure NVIDIA Inspector
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)
 
