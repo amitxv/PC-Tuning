@@ -1025,7 +1025,7 @@ This step isn't required, but can help to justify unexplained performance issues
 
 ## Cleanup
 
-- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs from launching at startup. Remove all obsolete entries with a yellow label and run with ``C:\bin\NSudo.exe`` if you encounter any permission errors
+- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs from launching at startup
 
 - Some locations you may want to review for residual files
 
