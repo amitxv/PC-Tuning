@@ -1,9 +1,10 @@
+# Table of contents
 
-- [[#Configure the AMD Driver|Configure the AMD Driver]]
-	- [[#Configure the AMD Driver#Strip and Install the Driver|Strip and Install the Driver]]
-	- [[#Configure the AMD Driver#Configure AMD Control Panel|Configure AMD Control Panel]]
-	- [[#Configure the AMD Driver#Lock GPU Clocks/P-State 0|Lock GPU Clocks/P-State 0]]
-
+- [Configure the AMD Driver](#configure-the-amd-driver)
+  - [Strip and Install the Driver](#strip-and-install-the-driver)
+  - [Configure AMD Control Panel](#configure-amd-control-panel)
+  - [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0)
+    
 # Configure the AMD Driver
 
 > [!IMPORTANT]
