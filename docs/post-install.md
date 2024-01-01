@@ -1,61 +1,48 @@
+# Table of contents
 
-- [[#Post-Install Instructions|Post-Install Instructions]]
-	- [[#Post-Install Instructions#OOBE Setup|OOBE Setup]]
-	- [[#Post-Install Instructions#Unrestricted PowerShell Execution Policy|Unrestricted PowerShell Execution Policy]]
-	- [[#Post-Install Instructions#Merge the Registry Files|Merge the Registry Files]]
-	- [[#Post-Install Instructions#Visual Cleanup|Visual Cleanup]]
-	- [[#Post-Install Instructions#Install Drivers|Install Drivers]]
-	- [[#Post-Install Instructions#Time, Language and Region|Time, Language and Region]]
-	- [[#Post-Install Instructions#Activate Windows|Activate Windows]]
-	- [[#Post-Install Instructions#Configure a [Web Browser](https://privacytests.org)|Configure a [Web Browser](https://privacytests.org)]]
-	- [[#Post-Install Instructions#Disable Residual Scheduled Tasks|Disable Residual Scheduled Tasks]]
-	- [[#Post-Install Instructions#Miscellaneous|Miscellaneous]]
-	- [[#Post-Install Instructions#Install Runtimes|Install Runtimes]]
-	- [[#Post-Install Instructions#Disable Features|Disable Features]]
-	- [[#Post-Install Instructions#Manage Appx Packages (Windows 8+)|Manage Appx Packages (Windows 8+)]]
-	- [[#Post-Install Instructions#Handle Bloatware|Handle Bloatware]]
-	- [[#Post-Install Instructions#Install 7-Zip|Install 7-Zip]]
-	- [[#Post-Install Instructions#Configure the Graphics Driver|Configure the Graphics Driver]]
-	- [[#Post-Install Instructions#Configure MSI Afterburner|Configure MSI Afterburner]]
-	- [[#Post-Install Instructions#Display Resolutions and Scaling Modes|Display Resolutions and Scaling Modes]]
-	- [[#Post-Install Instructions#Install Open-Shell (Windows 8+)|Install Open-Shell (Windows 8+)]]
-	- [[#Post-Install Instructions#Spectre, Meltdown and CPU Microcode|Spectre, Meltdown and CPU Microcode]]
-	- [[#Post-Install Instructions#Install a Media Player|Install a Media Player]]
-	- [[#Post-Install Instructions#Configure Power Options|Configure Power Options]]
-	- [[#Post-Install Instructions#Configure the BCD Store|Configure the BCD Store]]
-	- [[#Post-Install Instructions#Replace Task Manager with Process Explorer|Replace Task Manager with Process Explorer]]
-	- [[#Post-Install Instructions#Disable Process Mitigations (Windows 10 1709+)|Disable Process Mitigations (Windows 10 1709+)]]
-	- [[#Post-Install Instructions#Configure Memory Management Settings (Windows 8+)|Configure Memory Management Settings (Windows 8+)]]
-	- [[#Post-Install Instructions#Configure the Network Adapter|Configure the Network Adapter]]
-	- [[#Post-Install Instructions#Configure Audio Devices|Configure Audio Devices]]
-	- [[#Post-Install Instructions#Configure Services and Drivers|Configure Services and Drivers]]
-	- [[#Post-Install Instructions#Configure Device Manager|Configure Device Manager]]
-	- [[#Post-Install Instructions#Disable Driver Power-Saving|Disable Driver Power-Saving]]
-	- [[#Post-Install Instructions#Configure Event Trace Sessions|Configure Event Trace Sessions]]
-	- [[#Post-Install Instructions#Optimize the File System|Optimize the File System]]
-	- [[#Post-Install Instructions#Message Signaled Interrupts|Message Signaled Interrupts]]
-	- [[#Post-Install Instructions#XHCI Interrupt Moderation (IMOD)|XHCI Interrupt Moderation (IMOD)]]
-	- [[#Post-Install Instructions#Configure Control Panel|Configure Control Panel]]
-	- [[#Post-Install Instructions#Configuring Applications|Configuring Applications]]
-		- [[#Configuring Applications#NVIDIA Reflex|NVIDIA Reflex]]
-		- [[#Configuring Applications#Framerate Limit|Framerate Limit]]
-		- [[#Configuring Applications#Presentation Mode|Presentation Mode]]
-		- [[#Configuring Applications#QoS Policies|QoS Policies]]
-	- [[#Post-Install Instructions#Per-CPU Scheduling|Per-CPU Scheduling]]
-		- [[#Per-CPU Scheduling#Kernel-Mode (Interrupts, DPCs and more)|Kernel-Mode (Interrupts, DPCs and more)]]
-			- [[#Kernel-Mode (Interrupts, DPCs and more)#GPU and DirectX Graphics Kernel|GPU and DirectX Graphics Kernel]]
-			- [[#Kernel-Mode (Interrupts, DPCs and more)#XHCI and Audio Controller|XHCI and Audio Controller]]
-			- [[#Kernel-Mode (Interrupts, DPCs and more)#Network Interface Card|Network Interface Card]]
-		- [[#Per-CPU Scheduling#User-Mode (Processes, Threads)|User-Mode (Processes, Threads)]]
-			- [[#User-Mode (Processes, Threads)#Starting a Process with a Specified Affinity Mask|Starting a Process with a Specified Affinity Mask]]
-			- [[#User-Mode (Processes, Threads)#Specifying an Affinity Mask for Running Processes|Specifying an Affinity Mask for Running Processes]]
-		- [[#Per-CPU Scheduling#Reserved CPU Sets (Windows 10+)|Reserved CPU Sets (Windows 10+)]]
-			- [[#Reserved CPU Sets (Windows 10+)#Use Cases|Use Cases]]
-	- [[#Post-Install Instructions#Raise the Clock Interrupt Frequency (Timer Resolution)|Raise the Clock Interrupt Frequency (Timer Resolution)]]
-	- [[#Post-Install Instructions#Analyze Event Viewer|Analyze Event Viewer]]
-	- [[#Post-Install Instructions#Cleanup|Cleanup]]
-	- [[#Post-Install Instructions#Final Thoughts and Tips|Final Thoughts and Tips]]
-
+- [Post-Install Instructions](#post-install-instructions)
+  - [OOBE Setup](#oobe-setup)
+  - [Unrestricted PowerShell Execution Policy](#unrestricted-powershell-execution-policy)
+  - [Merge the Registry Files](#merge-the-registry-files)
+  - [Visual Cleanup](#visual-cleanup)
+  - [Install Drivers](#install-drivers)
+  - [Time, Language and Region](#time-language-and-region)
+  - [Activate Windows](#activate-windows)
+  - [Configure a Web Browser](#configure-a-web-browser)
+  - [Disable Residual Scheduled Tasks](#disable-residual-scheduled-tasks)
+  - [Miscellaneous](#miscellaneous)
+  - [Install Runtimes](#install-runtimes)
+  - [Disable Features](#disable-features)
+  - [Manage Appx Packages (Windows 8+)](#manage-appx-packages-windows-8)
+  - [Handle Bloatware](#handle-bloatware)
+  - [Install 7-Zip](#install-7-zip)
+  - [Configure the Graphics Driver](#configure-the-graphics-driver)
+  - [Configure MSI Afterburner](#configure-msi-afterburner)
+  - [Display Resolutions and Scaling Modes](#display-resolutions-and-scaling-modes)
+  - [Install Open-Shell (Windows 8+)](#install-open-shell-windows-8)
+  - [Spectre, Meltdown and CPU Microcode](#spectre-meltdown-and-cpu-microcode)
+  - [Install a Media Player](#install-a-media-player)
+  - [Configure Power Options](#configure-power-options)
+  - [Configure the BCD Store](#configure-the-bcd-store)
+  - [Replace Task Manager with Process Explorer](#replace-task-manager-with-process-explorer)
+  - [Disable Process Mitigations (Windows 10 1709+)](#disable-process-mitigations-windows-10-1709)
+  - [Configure Memory Management Settings (Windows 8+)](#configure-memory-management-settings-windows-8)
+  - [Configure the Network Adapter](#configure-the-network-adapter)
+  - [Configure Audio Devices](#configure-audio-devices)
+  - [Configure Services and Drivers](#configure-services-and-drivers)
+  - [Configure Device Manager](#configure-device-manager)
+  - [Disable Driver Power-Saving](#disable-driver-power-saving)
+  - [Configure Event Trace Sessions](#configure-event-trace-sessions)
+  - [Optimize the File System](#optimize-the-file-system)
+  - [Message Signaled Interrupts](#message-signaled-interrupts)
+  - [XHCI Interrupt Moderation (IMOD)](#xhci-interrupt-moderation-imod)
+  - [Configure Control Panel](#configure-control-panel)
+  - [Configuring Applications](#configuring-applications)
+  - [Per-CPU Scheduling](#per-cpu-scheduling)
+  - [Raise the Clock Interrupt Frequency (Timer Resolution)](#raise-the-clock-interrupt-frequency-timer-resolution)
+  - [Analyze Event Viewer](#analyze-event-viewer)
+  - [Cleanup](#cleanup)
+  - [Final Thoughts and Tips](#final-thoughts-and-tips)
 # Post-Install Instructions
 
 > [!IMPORTANT]
