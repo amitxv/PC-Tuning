@@ -1,11 +1,12 @@
+# Table of contents
 
-- [[#Configure the NVIDIA Driver|Configure the NVIDIA Driver]]
-	- [[#Configure the NVIDIA Driver#Strip and Install the Driver|Strip and Install the Driver]]
-	- [[#Configure the NVIDIA Driver#Disable HDCP (required for DRM content)|Disable HDCP (required for DRM content)]]
-	- [[#Configure the NVIDIA Driver#Configure NVIDIA Control Panel|Configure NVIDIA Control Panel]]
-	- [[#Configure the NVIDIA Driver#Lock GPU Clocks/P-State 0|Lock GPU Clocks/P-State 0]]
-	- [[#Configure the NVIDIA Driver#Configure NVIDIA Inspector|Configure NVIDIA Inspector]]
-
+- [Configure the NVIDIA Driver](#configure-the-nvidia-driver)
+  - [Strip and Install the Driver](#strip-and-install-the-driver)
+  - [Disable HDCP (required for DRM content)](#disable-hdcp-required-for-drm-content)
+  - [Configure NVIDIA Control Panel](#configure-nvidia-control-panel)
+  - [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0)
+  - [Configure NVIDIA Inspector](#configure-nvidia-inspector)
+  
 # Configure the NVIDIA Driver
 
 ## Strip and Install the Driver
