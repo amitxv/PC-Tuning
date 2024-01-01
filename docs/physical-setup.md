@@ -1,3 +1,14 @@
+
+- [[#Physical Setup|Physical Setup]]
+	- [[#Physical Setup#General|General]]
+	- [[#Physical Setup#Cooling|Cooling]]
+	- [[#Physical Setup#Minimize Interference|Minimize Interference]]
+	- [[#Physical Setup#Configure USB Port Layout|Configure USB Port Layout]]
+	- [[#Physical Setup#Configure Peripherals|Configure Peripherals]]
+	- [[#Physical Setup#BIOS|BIOS]]
+	- [[#Physical Setup#Stability, Hardware Clocking and Thermal Performance|Stability, Hardware Clocking and Thermal Performance]]
+		- [[#Stability, Hardware Clocking and Thermal Performance#Stess-Testing Tools|Stess-Testing Tools]]
+
 # Physical Setup
 
 ## General

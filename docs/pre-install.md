@@ -1,3 +1,25 @@
+
+- [[#Pre-Install Instructions|Pre-Install Instructions]]
+	- [[#Pre-Install Instructions#Configure Partitions|Configure Partitions]]
+	- [[#Pre-Install Instructions#What Version of Windows Should You Use?|What Version of Windows Should You Use?]]
+	- [[#Pre-Install Instructions#Build Requirements|Build Requirements]]
+	- [[#Pre-Install Instructions#Download Stock ISOs|Download Stock ISOs]]
+	- [[#Pre-Install Instructions#Prepare the Build Environment|Prepare the Build Environment]]
+	- [[#Pre-Install Instructions#Remove Non-Essential Editions|Remove Non-Essential Editions]]
+	- [[#Pre-Install Instructions#Mount the ISO|Mount the ISO]]
+	- [[#Pre-Install Instructions#Replace Wallpapers (Optional)|Replace Wallpapers (Optional)]]
+	- [[#Pre-Install Instructions#Integrate and Obtain Drivers (Windows 7)|Integrate and Obtain Drivers (Windows 7)]]
+	- [[#Pre-Install Instructions#Integrate Updates|Integrate Updates]]
+	- [[#Pre-Install Instructions#Enable .NET 3.5 (Windows 8+)|Enable .NET 3.5 (Windows 8+)]]
+	- [[#Pre-Install Instructions#Integrating Required Files|Integrating Required Files]]
+	- [[#Pre-Install Instructions#Unmount and Commit|Unmount and Commit]]
+	- [[#Pre-Install Instructions#Replace Windows 7 Boot Wim (Windows 7)|Replace Windows 7 Boot Wim (Windows 7)]]
+	- [[#Pre-Install Instructions#ISO Compression|ISO Compression]]
+	- [[#Pre-Install Instructions#Convert to ISO|Convert to ISO]]
+	- [[#Pre-Install Instructions#Boot Into the ISO|Boot Into the ISO]]
+		- [[#Boot Into the ISO#Install using a USB storage device|Install using a USB storage device]]
+		- [[#Boot Into the ISO#Install using DISM Apply-Image (without a USB storage device)|Install using DISM Apply-Image (without a USB storage device)]]
+
 # Pre-Install Instructions
 
 ## Configure Partitions
