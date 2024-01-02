@@ -12,7 +12,7 @@
 - [Install Drivers](#install-drivers)
 - [Time, Language and Region](#time-language-and-region)
 - [Activate Windows](#activate-windows)
-- [Configure a [Web Browser](https://privacytests.org)](#configure-a-web-browserhttpsprivacytestsorg)
+- [Configure a Web Browser](#configure-a-web-browser)
 - [Disable Residual Scheduled Tasks](#disable-residual-scheduled-tasks)
 - [Miscellaneous](#miscellaneous)
 - [Install Runtimes](#install-runtimes)
