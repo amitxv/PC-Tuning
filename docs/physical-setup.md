@@ -1,14 +1,14 @@
 # Table of Contents
 
 - [Physical Setup](#physical-setup)
-  - [General](#general)
-  - [Cooling](#cooling)
-  - [Minimize Interference](#minimize-interference)
-  - [Configure USB Port Layout](#configure-usb-port-layout)
-  - [Configure Peripherals](#configure-peripherals)
-  - [BIOS](#bios)
-  - [Stability, Hardware Clocking and Thermal Performance](#stability-hardware-clocking-and-thermal-performance)
-    
+    - [General](#general)
+    - [Cooling](#cooling)
+    - [Minimize Interference](#minimize-interference)
+    - [Configure USB Port Layout](#configure-usb-port-layout)
+    - [Configure Peripherals](#configure-peripherals)
+    - [BIOS](#bios)
+    - [Stability, Hardware Clocking and Thermal Performance](#stability-hardware-clocking-and-thermal-performance)
+
 # Physical Setup
 
 ## General
