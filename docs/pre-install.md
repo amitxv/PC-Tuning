@@ -1,4 +1,4 @@
-# Table of contents
+# Table of Contents
 
 - [Pre-Install Instructions](#pre-install-instructions)
   - [Configure Partitions](#configure-partitions)

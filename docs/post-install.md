@@ -1,4 +1,4 @@
-# Table of contents
+# Table of Contents
 
 - [Post-Install Instructions](#post-install-instructions)
   - [OOBE Setup](#oobe-setup)

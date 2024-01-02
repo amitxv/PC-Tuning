@@ -1,4 +1,4 @@
-# Table of contents
+# Table of Contents
 
 - [Configure the NVIDIA Driver](#configure-the-nvidia-driver)
   - [Strip and Install the Driver](#strip-and-install-the-driver)
