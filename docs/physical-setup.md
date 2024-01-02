@@ -1,5 +1,16 @@
 # Physical Setup
 
+## Table of Contents
+
+- [General](#general)
+- [Cooling](#cooling)
+- [Minimize Interference](#minimize-interference)
+- [Configure USB Port Layout](#configure-usb-port-layout)
+- [Configure Peripherals](#configure-peripherals)
+- [BIOS](#bios)
+- [Stability, Hardware Clocking and Thermal Performance](#stability-hardware-clocking-and-thermal-performance)
+- [Stess-Testing Tools](#stess-testing-tools)
+
 ## General
 
 - Typically, you should re-install Windows after major hardware swaps (e.g. motherboard, CPU, platform, chipsets)

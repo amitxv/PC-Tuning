@@ -1,5 +1,16 @@
 # Research
 
+## Table of Contents
+
+- [How can you verify if a DSCP QoS policy is working?](#how-can-you-verify-if-a-dscp-qos-policy-is-working)
+- [What TscSyncPolicy does Windows use by default?](#what-tscsyncpolicy-does-windows-use-by-default)
+- [How many RSS Queues do you need?](#how-many-rss-queues-do-you-need)
+- [Win32PrioritySeparation](#win32priorityseparation)
+- [Microsoft USB driver latency penalty](#microsoft-usb-driver-latency-penalty)
+- [Fixing timing precision in Windows after "The Great Rule Change"](#fixing-timing-precision-in-windows-after-the-great-rule-change)
+- [Micro-adjusting timer resolution for higher precision](#micro-adjusting-timer-resolution-for-higher-precision)
+- [What is identity scaling and how can you use it?](#what-is-identity-scaling-and-how-can-you-use-it)
+
 ## How can you verify if a DSCP QoS policy is working?
 
 <details>
@@ -268,11 +279,11 @@ Conclusion: During online matches, at most two RSS queues/CPUs are being utilize
 
 On a stock Win10 installation, the Wdf01000.sys driver handles USB connectivity but using it comes with a major latency penalty compared to using vendor USB drivers.
 
-## ``Wdf01000.sys``
+### ``Wdf01000.sys``
 
 <img src="/media/wdf01000-usb-xperf-report.png" width="500">
 
-## ``amdxhc31.sys (vendor USB drivers)``
+### ``amdxhc31.sys (vendor USB drivers)``
 
 <img src="/media/amdxhc31-usb-xperf-report.png" width="500">
 

@@ -1,5 +1,13 @@
 # Configure the NVIDIA Driver
 
+## Table of Contents
+
+- [Strip and Install the Driver](#strip-and-install-the-driver)
+- [Disable HDCP (required for DRM content)](#disable-hdcp-required-for-drm-content)
+- [Configure NVIDIA Control Panel](#configure-nvidia-control-panel)
+- [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0)
+- [Configure NVIDIA Inspector](#configure-nvidia-inspector)
+
 ## Strip and Install the Driver
 
 Download the latest game ready (not security update) driver using the [advanced driver search](https://www.nvidia.com/download/find.aspx) page. DCH drivers are [supported on Windows 10 1803+](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq).

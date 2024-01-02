@@ -3,6 +3,12 @@
 > [!IMPORTANT]
 > Disclaimer: I no longer own an AMD GPU meaning this section may be incomplete/unmaintained. For this reason, you can visit the AMD GPUs section in [Calypto's Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4).
 
+## Table of Contents
+
+- [Strip and Install the Driver](#strip-and-install-the-driver)
+- [Configure AMD Control Panel](#configure-amd-control-panel)
+- [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0)
+
 ## Strip and Install the Driver
 
 - Download and extract the latest recommended driver from the [AMD drivers and support page](https://www.amd.com/en/support)
