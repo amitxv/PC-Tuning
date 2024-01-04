@@ -963,7 +963,7 @@ Windows schedules interrupts and DPCs on CPU 0 for several modules by default. I
 
     - See [CXWorld/MicroBenchX](https://github.com/CXWorld/MicroBenchX)
 
-- Ensure that the [corresponding DPC for an ISR is processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence. This is usually not a problem with MSI-X devices
+- Ensure that the [corresponding DPC for an ISR is processed on the same CPU](/media/isr-dpc-same-core.png). Additional overhead can be introduced if they are processed on different CPUs due to increased inter-processor communication and interfering with cache coherence
 
 - Use [Microsoft Interrupt Affinity Tool](https://www.techpowerup.com/download/microsoft-interrupt-affinity-tool) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy) to configure driver affinities. The device can be identified by cross-checking the ``Location`` in the ``Properties -> General`` section of a device in Device Manager
 
