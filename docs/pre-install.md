@@ -54,7 +54,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
     - See [DirectStorage Compatibility](https://devblogs.microsoft.com/directx/directstorage-developer-preview-now-available)
 
-- Windows 10 2004+ is required for Hardware Accelerated GPU Scheduling
+- Windows 10 2004+ is required for Hardware Accelerated GPU Scheduling (necessary for DLSS Frame Generation and FSR Frame Generation)
 
     - See [Hardware Accelerated GPU Scheduling](https://devblogs.microsoft.com/directx/hardware-accelerated-gpu-scheduling)
 
