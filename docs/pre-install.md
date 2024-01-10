@@ -17,8 +17,8 @@
 - [ISO Compression](#iso-compression)
 - [Convert to ISO](#convert-to-iso)
 - [Boot Into the ISO](#boot-into-the-iso)
-- [Install using a USB storage device](#install-using-a-usb-storage-device)
-- [Install using DISM Apply-Image (without a USB storage device)](#install-using-dism-apply-image-without-a-usb-storage-device)
+    - [Install using a USB storage device](#install-using-a-usb-storage-device)
+    - [Install using DISM Apply-Image (without a USB storage device)](#install-using-dism-apply-image-without-a-usb-storage-device)
 
 # Pre-Install Instructions
 
