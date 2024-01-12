@@ -709,8 +709,6 @@ C:\bin\scripts\disable-process-mitigations.bat
 
     - See [media/audio enhancements-benchmark.png](/media/audio%20enhancements-benchmark.png)
 
-- Disable Exclusive Mode in the Advanced section
-
 - Set the option in the communications tab to Do nothing
 
 - Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to the CPU not being able to keep up under load
