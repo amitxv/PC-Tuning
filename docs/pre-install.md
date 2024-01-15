@@ -123,30 +123,7 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
     - [Fido](https://github.com/pbatard/Fido)
 
-    - UUP dump
-
-        <details>
-        <summary>Instructions</summary>
-
-        - Search for the Windows version you desire and download the latest feature update instance
-
-            <img src="/media/uupdump-search-image.png" width="750">
-
-        - Choose the desired language and click next
-
-            <img src="/media/uupdump-choose-language.png" width="750">
-
-        - Uncheck all editions except the professional edition and click next
-
-            <img src="/media/uupdump-choose-edition.png" width="750">
-
-        - Copy the configuration below, ensure that ``Include updates`` is ticked and click ``Create download package``
-
-            <img src="/media/uupdump-download-options.png" width="750">
-
-        - Extract the downloaded package and run ``uup_download_windows.cmd``. The final ISO file will be created in the same directory as the script
-
-        </details>
+    - [UUP dump](https://uupdump.net)
 
 ## Prepare the Build Environment
 
