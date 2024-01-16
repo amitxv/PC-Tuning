@@ -247,6 +247,8 @@
 
 - Disable XHCI Hand-off
 
+- If applicable, disable software installation options such as ASUS Armoury Crate
+
 - Set the primary graphics to dGPU instead of iGPU if applicable
 
 - Set PCIe link speed to the maximum supported such as ``Gen 3.0``. This may be represented as gigatransfers per second (GT/s)
