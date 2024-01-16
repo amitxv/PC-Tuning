@@ -5,6 +5,9 @@
 - [Strip and Install the Driver](#strip-and-install-the-driver)
 - [Disable HDCP (required for DRM content)](#disable-hdcp-required-for-drm-content)
 - [Configure NVIDIA Control Panel](#configure-nvidia-control-panel)
+    - [Manage 3D Settings](#manage-3d-settings)
+    - [Change Resolution](#change-resolution)
+    - [Adjust Video Color Settings](#adjust-video-color-settings)
 - [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0)
 - [Configure NVIDIA Inspector](#configure-nvidia-inspector)
 
@@ -65,33 +68,36 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 ## Configure NVIDIA Control Panel
 
-- Configure the following in the ``Manage 3D settings`` page:
+### Manage 3D Settings
 
-    - Anisotropic filtering - Off
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
-    - Antialiasing - Gamma correction - Off
+- Anisotropic filtering - Off
 
-    - Low Latency Mode - On/Ultra
+- Antialiasing - Gamma correction - Off
 
-        > [If a game supports the NVIDIA Reflex Low Latency mode, we recommend using that mode over the Ultra Low Latency mode in the driver. However, if you leave both on, the Reflex Low Latency mode will take higher priority automatically for you](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform)
+- Low Latency Mode - On/Ultra
 
-    - Power management mode - Prefer maximum performance
+    > [If a game supports the NVIDIA Reflex Low Latency mode, we recommend using that mode over the Ultra Low Latency mode in the driver. However, if you leave both on, the Reflex Low Latency mode will take higher priority automatically for you](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform)
 
-    - Shader Cache Size - Unlimited
+- Power management mode - Prefer maximum performance
 
-    - Texture filtering - Quality - High performance
+- Shader Cache Size - Unlimited
 
-    - Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
+- Texture filtering - Quality - High performance
 
-    - Ensure that settings aren't being overridden for programs in the ``Program Settings`` tab, such as Image Sharpening for some EAC games
+- Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
 
-- Configure the following in the ``Change resolution`` page:
+- Ensure that settings aren't being overridden for programs in the ``Program Settings`` tab, such as Image Sharpening for some EAC games
 
-    - Output dynamic range - Full
+### Change Resolution
 
-- Configure the following in the ``Adjust video color settings`` page:
+- Output dynamic range - Full
 
-    - Dynamic range - Full
+### Adjust Video Color Settings
+
+- Dynamic range - Full
 
 ## Lock GPU Clocks/P-State 0
 
