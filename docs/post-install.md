@@ -42,20 +42,20 @@
 - [XHCI Interrupt Moderation (IMOD)](#xhci-interrupt-moderation-imod)
 - [Configure Control Panel](#configure-control-panel)
 - [Configuring Applications](#configuring-applications)
-- [NVIDIA Reflex](#nvidia-reflex)
-- [Framerate Limit](#framerate-limit)
-- [Presentation Mode](#presentation-mode)
-- [QoS Policies](#qos-policies)
+    - [NVIDIA Reflex](#nvidia-reflex)
+    - [Framerate Limit](#framerate-limit)
+    - [Presentation Mode](#presentation-mode)
+    - [QoS Policies](#qos-policies)
 - [Per-CPU Scheduling](#per-cpu-scheduling)
-- [Kernel-Mode (Interrupts, DPCs and more)](#kernel-mode-interrupts-dpcs-and-more)
-- [GPU and DirectX Graphics Kernel](#gpu-and-directx-graphics-kernel)
-- [XHCI and Audio Controller](#xhci-and-audio-controller)
-- [Network Interface Card](#network-interface-card)
-- [User-Mode (Processes, Threads)](#user-mode-processes-threads)
-- [Starting a Process with a Specified Affinity Mask](#starting-a-process-with-a-specified-affinity-mask)
-- [Specifying an Affinity Mask for Running Processes](#specifying-an-affinity-mask-for-running-processes)
-- [Reserved CPU Sets (Windows 10+)](#reserved-cpu-sets-windows-10)
-- [Use Cases](#use-cases)
+    - [Kernel-Mode (Interrupts, DPCs and more)](#kernel-mode-interrupts-dpcs-and-more)
+        - [GPU and DirectX Graphics Kernel](#gpu-and-directx-graphics-kernel)
+        - [XHCI and Audio Controller](#xhci-and-audio-controller)
+        - [Network Interface Card](#network-interface-card)
+    - [User-Mode (Processes, Threads)](#user-mode-processes-threads)
+        - [Starting a Process with a Specified Affinity Mask](#starting-a-process-with-a-specified-affinity-mask)
+        - [Specifying an Affinity Mask for Running Processes](#specifying-an-affinity-mask-for-running-processes)
+    - [Reserved CPU Sets (Windows 10+)](#reserved-cpu-sets-windows-10)
+        - [Use Cases](#use-cases)
 - [Raise the Clock Interrupt Frequency (Timer Resolution)](#raise-the-clock-interrupt-frequency-timer-resolution)
 - [Analyze Event Viewer](#analyze-event-viewer)
 - [Cleanup](#cleanup)
@@ -709,8 +709,6 @@ C:\bin\scripts\disable-process-mitigations.bat
 
     - See [media/audio enhancements-benchmark.png](/media/audio%20enhancements-benchmark.png)
 
-- Disable Exclusive Mode in the Advanced section
-
 - Set the option in the communications tab to Do nothing
 
 - Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to the CPU not being able to keep up under load
@@ -870,7 +868,7 @@ For example, a mouse with a 1kHz polling rate will report data every 1ms. While 
 
 - See [How to persistently disable XHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
-- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to load the [RWEverything](http://rweverything.com) driver on Windows 11+
+- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to load the [RWEverything](http://rweverything.com) driver however a handful of in-game anticheats do not adhere to disabling the blocklist (e.g. CS2, THE FINALS)
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f

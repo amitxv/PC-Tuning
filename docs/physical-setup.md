@@ -9,7 +9,7 @@
 - [Configure Peripherals](#configure-peripherals)
 - [BIOS](#bios)
 - [Stability, Hardware Clocking and Thermal Performance](#stability-hardware-clocking-and-thermal-performance)
-- [Stess-Testing Tools](#stess-testing-tools)
+    - [Stess-Testing Tools](#stess-testing-tools)
 
 ## General
 
@@ -219,7 +219,7 @@
 
     - Verify Virtualization/SVM status in Task Manager
 
-- Disable all power-saving features such as [ASPM (Active State Power Management)](https://en.wikipedia.org/wiki/Active_State_Power_Management), [ALPM (Aggressive Link Power Management)](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), Power/Clock Gating and more. You can also look out for options named *power management* or *power saving*. Search the internet if you are unsure whether a given setting is power-saving related
+- Disable all power-saving features such as [ASPM (Active State Power Management)](https://en.wikipedia.org/wiki/Active_State_Power_Management) (e.g. search for *L0*, *L1*), [ALPM (Aggressive Link Power Management)](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), Power/Clock Gating and more. You can also look out for options named *power management* or *power saving*. Search the internet if you are unsure whether a given setting is power-saving related
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you aren't using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
 
@@ -246,6 +246,8 @@
 - Disable Legacy USB Support as [it generates unnecessary SMIs](https://patents.google.com/patent/US6067589). You may need to turn this on to install a new operating system or to access BIOS
 
 - Disable XHCI Hand-off
+
+- If applicable, disable software installation options such as ASUS Armoury Crate
 
 - Set the primary graphics to dGPU instead of iGPU if applicable
 
