@@ -174,9 +174,9 @@ Conclusion: During online matches, at most two RSS queues/CPUs are being utilize
     |0x24|36|100100|Short|Variable|0|6 (31.25ms)|6 (31.25ms)|12 (62.50ms)
     |0x25|37|100101|Short|Variable|1|12 (62.50ms)|6 (31.25ms)|18 (93.75ms)
     |0x26|38|100110|Short|Variable|2|18 (93.75ms)|6 (31.25ms)|24 (125.00ms)
-    |0x28|40|101000|Short|Fixed|0|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
-    |0x29|41|101001|Short|Fixed|1|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
-    |0x2A|42|101010|Short|Fixed|2|18 (93.75ms)|18 (93.75ms)|36 (281.25ms)
+    |0x28|40|101000|Short|Fixed|0|18 (93.75ms)|18 (93.75ms)|36 (187.5ms)
+    |0x29|41|101001|Short|Fixed|1|18 (93.75ms)|18 (93.75ms)|36 (187.5ms)
+    |0x2A|42|101010|Short|Fixed|2|18 (93.75ms)|18 (93.75ms)|36 (187.5ms)
 
     </details>
 
