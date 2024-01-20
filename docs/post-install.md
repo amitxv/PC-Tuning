@@ -349,7 +349,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
     - ``Microsoft.GamingServices``
     - ``Microsoft.XboxGamingOverlay``
 
-- If applicable, Windows still attempts to open the Xbox Game Bar despite removing it. Disabling it in settings resolves this, but there is no option in the UI to do so properly on Windows 11+. Open CMD and enter the command below to disable Game Bar
+- If applicable, Windows still attempts to open the Xbox Game Bar (``ms-gamingoverlay``) despite removing it. Disabling it in settings resolves this, but there is no option in the UI to do so properly on Windows 11+. Open CMD and enter the command below to disable Game Bar
 
     ```bat
     reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
