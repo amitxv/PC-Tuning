@@ -221,7 +221,7 @@
 
 - Disable all power-saving features such as [ASPM (Active State Power Management)](https://en.wikipedia.org/wiki/Active_State_Power_Management) (e.g. search for *L0*, *L1*), [ALPM (Aggressive Link Power Management)](https://en.wikipedia.org/wiki/Aggressive_Link_Power_Management), DRAM Power Down Mode, DRAM Self Refresh (may cause issues with restart/shutdown), Power/Clock Gating and more. You can also look out for options named *power management* or *power saving*. Search the internet if you are unsure whether a given setting is power-saving related
 
-- Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you aren't using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU and RAM slots
+- Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you aren't using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU, SATA and RAM slots
 
 - Disable Trusted Platform Module. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
 
