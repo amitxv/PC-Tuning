@@ -38,7 +38,7 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
     |NVIDIA 40 series|Win10 1803+|
     |AMD|Refer to driver support page|
 
-- NVIDIA DCH drivers are [supported on Windows 10 1803+](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq)
+- NVIDIA DCH drivers are supported on Windows 10 1803+ [[1](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq)]
 
 - During media playback exclusively on Windows 10 1709, the [Multimedia Class Scheduler Service](https://learn.microsoft.com/en-us/windows/win32/procthread/multimedia-class-scheduler-service) raises the timer resolution to 0.5ms. As explained in the article below, this resolution is suboptimal for many people in terms of precision hence it would be appropriate to avoid this Windows version
 
@@ -48,31 +48,21 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
 
 - Microsoft implemented a fixed 10MHz QueryPerformanceFrequency on Windows 10 1809+ which was intended to make developing applications easier, but many users across the internet reported worse performance
 
-- Windows 10 1903+ has an [updated scheduler for multi CCX Ryzen CPUs](https://i.redd.it/y8nxtm08um331.png)
+- Windows 10 1903+ has an updated scheduler for multi CCX Ryzen CPUs [[1](https://i.redd.it/y8nxtm08um331.png)]
 
-- DirectStorage requires Windows 10 1909+ but according to the article below "*games running on Windows 11 benefit further from new storage stack optimizations*"
+- DirectStorage requires Windows 10 1909+ but according to an article, games running on Windows 11 benefit further from new storage stack optimizations [[1](https://devblogs.microsoft.com/directx/directstorage-developer-preview-now-available)]
 
-    - See [DirectStorage Compatibility](https://devblogs.microsoft.com/directx/directstorage-developer-preview-now-available)
-
-- Windows 10 2004+ is required for Hardware Accelerated GPU Scheduling which is [necessary for DLSS Frame Generation](https://developer.nvidia.com/rtx/streamline/get-started)
+- Windows 10 2004+ is required for Hardware Accelerated GPU Scheduling which is necessary for DLSS Frame Generation [[1](https://developer.nvidia.com/rtx/streamline/get-started)]
 
     - See [Hardware Accelerated GPU Scheduling](https://devblogs.microsoft.com/directx/hardware-accelerated-gpu-scheduling)
 
-- Windows 11+ has an updated scheduler for Intel 12th Gen CPUs and above but the behavior can easily be replicated manually on any Windows version. See the [Per-CPU Scheduling](/docs/post-install.md#per-cpu-scheduling) section for more information
+- Windows 11+ has an updated scheduler for Intel 12th Gen CPUs and above but the behavior can easily be replicated manually on any Windows version [[1](https://www.anandtech.com/show/16959/intel-innovation-alder-lake-november-4th/3)]. See the [Per-CPU Scheduling](/docs/post-install.md#per-cpu-scheduling) section for more information
 
-    - See [Thread Director: Windows 11 Does It Best](https://www.anandtech.com/show/16959/intel-innovation-alder-lake-november-4th/3)
+- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+ and was further developed in Windows 11 to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system [[1](/media/windows11-timeapi-changes.png)]. However, the old implementation can be restored in server 2022+ and Windows 11+ with a registry entry [[1](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change)]. For this reason, it would be appropriate to avoid builds starting from Windows 10 2004 which aren't Windows 11+ or Server 2022+
 
-- The implementation of ``Hardware: Independent Flip`` improved in around Windows 10 2004+ (approximation as it is unclear) which can potentially result in better performance compared to ``Hardware: Legacy Flip``
+- As of May 2023, Windows 11 limits the message rate of background raw input listeners [[1](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide)]
 
-    - See the [Configuring Applications](/docs/post-install.md#configuring-applications) section for more information
-
-- The behavior of processes that are affected by a single process raising the clock interrupt frequency significantly changed in Windows 10 2004+, and was [further developed in Windows 11](/media/windows11-timeapi-changes.png), to increase power efficiency but consequently breaks real-time applications and causes incredibly imprecise timing across the operating system. However, the old implementation can be restored in server 2022+ and Windows 11+ [with a registry entry](/docs/research.md#fixing-timing-precision-in-windows-after-the-great-rule-change). For this reason, it would be appropriate to avoid builds starting from Windows 10 2004 which aren't Windows 11+ or Server 2022+
-
-- As of May 2023, Windows 11 limits the message rate of background raw input listeners
-
-    - See [Reduced game stutter with high report rate mice](https://blogs.windows.com/windowsdeveloper/2023/05/26/delivering-delightful-performance-for-more-than-one-billion-users-worldwide)
-
-- [AllowTelemetry](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DataCollection::AllowTelemetry) can be set to 0 on Windows Server editions
+- AllowTelemetry can be set to 0 on Windows Server editions [[1](https://admx.help/?Category=Windows_10_2016&Policy=Microsoft.Policies.DataCollection::AllowTelemetry)]
 
 ## Build Requirements
 
@@ -114,15 +104,10 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 - ISO Sources:
 
     - [os.click](https://os.click)
-
     - [New Download Links](https://docs.google.com/spreadsheets/d/1zTF5uRJKfZ3ziLxAZHh47kF85ja34_OFB5C5bVSPumk)
-
     - [Adguard File List](https://files.rg-adguard.net)
-
     - [Microsoft Software Download Listing](https://massgrave.dev/msdl)
-
     - [Fido](https://github.com/pbatard/Fido)
-
     - [UUP dump](https://uupdump.net)
 
 ## Prepare the Build Environment
