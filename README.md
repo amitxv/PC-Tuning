@@ -46,7 +46,7 @@ Before diving into the main content, it is important to learn and understand how
 
 - [BoringBoredom/PC-Optimization-Hub](https://github.com/BoringBoredom/PC-Optimization-Hub)
 
-- [Calypto's Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4)
+- [Calypto's Latency Guide](https://calypto.us)
 
 - [djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)
 

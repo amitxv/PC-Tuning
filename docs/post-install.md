@@ -825,7 +825,7 @@ Open CMD and enter the commands below.
 
 - Disables the creation of 8.3 character-length file names on FAT- and NTFS-formatted volumes
 
-    - See [Should you disable 8dot3 for performance and security?](https://web.archive.org/web/20200217151754/https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security/)
+    - See [Should you disable 8dot3 for performance and security?](https://web.archive.org/web/20200217151754/https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security)
 
     - See [Windows Short (8.3) Filenames – A Security Nightmare?](https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem)
 
