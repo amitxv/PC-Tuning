@@ -364,6 +364,8 @@ As a reminder, your network interface controller driver may not be packaged with
     bcdboot <windir>
     ```
 
+- The installation process will begin after a system restart
+
 ---
 
 Continue to [docs/post-install.md](/docs/post-install.md).
