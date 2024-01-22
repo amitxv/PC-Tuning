@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)][ValidateSet(7, 8, 10, 11)]
-    [int]$winver,
+    [int]$winver
 )
 
 function Is-Admin() {
