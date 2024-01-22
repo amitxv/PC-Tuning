@@ -1,7 +1,6 @@
 param(
     [Parameter(Mandatory = $true)][ValidateSet(7, 8, 10, 11)]
     [int]$winver,
-    [switch]$ui_cleanup
 )
 
 function Is-Admin() {
@@ -30,16 +29,12 @@ function main() {
 
     Write-Host "info: please wait..."
 
-    foreach ($file in @("7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg", "ui_cleanup.reg")) {
+    foreach ($file in @("7+.reg", "7-8.reg", "8.reg", "8+.reg", "10.reg", "10+.reg", "11+.reg")) {
         $file_name = $file.replace(".reg", "")
         $file = "C:\bin\registry\$($file)"
         $is_successful = 0
 
-        if ($file_name -eq "ui_cleanup") {
-            if ($ui_cleanup) {
-                $is_successful = Apply-Registry -file_path $file
-            }
-        } elseif ($file_name.Contains("+")) {
+        if ($file_name.Contains("+")) {
             if ([int]$file_name.replace("+", "") -le $winver) {
                 $is_successful = Apply-Registry -file_path $file
             }

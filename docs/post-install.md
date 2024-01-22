@@ -130,17 +130,6 @@ Set-ExecutionPolicy Unrestricted
 |Disable Typing Insights|Telemetry|
 |Do Not Let Apps Run In the Background|Disabled via policies as the option is not available in the interface on Windows 11|
 
-Changes made with ``-ui_cleanup``:
-
-- Launch File Explorer To This PC
-- Turn Off Display of Recent Search Entries In the File Explorer Search Box
-- Remove Pin To Quick Access In Context Menu
-- Disable Recent Items and Frequent Places In File Explorer and Quick Access
-- Hide Recent Folders In Quick Access
-- Clear History of Recently Opened Documents On Exit
-- Hide Quick Access from File Explorer
-- Hide Frequent Folders In Quick Access
-
 </details>
 
 - Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
@@ -148,8 +137,6 @@ Changes made with ``-ui_cleanup``:
     ```powershell
     C:\bin\scripts\apply-registry.ps1 -winver <option>
     ```
-
-- Append the ``-ui_cleanup`` argument to clean up the interface further
 
 - If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+). If that doesn't work, reboot then re-execute the command again
 
