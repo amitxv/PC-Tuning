@@ -34,6 +34,7 @@
 - [Configure the Network Adapter](#configure-the-network-adapter)
 - [Configure Audio Devices](#configure-audio-devices)
 - [Configure Services and Drivers](#configure-services-and-drivers)
+    - [Debugging Services](#debugging-services)
 - [Configure Device Manager](#configure-device-manager)
 - [Disable Driver Power-Saving](#disable-driver-power-saving)
 - [Configure Event Trace Sessions](#configure-event-trace-sessions)
@@ -63,9 +64,9 @@
 
 ## OOBE Setup
 
-- Windows Server will force you to enter a complex password which we can remove in a few steps later
+- Windows Server may force you to enter a password which we can be removed in later steps
 
-- If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection as demonstrated in the video examples below.
+- If you are configuring Windows 11, press ``Shift+F10`` to open CMD and execute ``oobe\BypassNRO.cmd``. This will allow us to continue without an internet connection as demonstrated in the video examples below
 
 - See [media/oobe-windows7-example.mp4](https://raw.githubusercontent.com/amitxv/PC-Tuning/main/media/oobe-windows7-example.mp4)
 
@@ -89,20 +90,16 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
-<details open>
-<br>
-<summary>What do the registry files do and modify?</summary>
-
 |Modification|Justification|
 |---|---|
 |Disable Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
 |Disable Sticky Keys|Intrusive in applications that utilize the Shift key for controls|
 |Disable Search The Web or Display Web Results In Search|Telemetry|
-|Disable Transparency|[Wastes resources](/media/transparency-effects-benchmark.png)|
+|Disable Transparency|Wastes resources [[1](/media/transparency-effects-benchmark.png)]|
 |Disable Corner Navigation|Intrusive|
 |Prevent Windows Marking File Attachments With Information About Their Zone of Origin|Intrusive as downloaded files are constantly required to be unblocked|
-|Disable Windows Defender|Excessive CPU overhead and [interferes with the CPU operating in C-State 0](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix)|
-|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers. Disabling Windows Update is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)|
+|Disable Windows Defender|Excessive CPU overhead and interferes with the CPU operating in C-State 0 [[1](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix)]|
+|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers. Disabling Windows Update is in Microsoft's recommendations for configuring devices for real-time performance [[1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)]|
 |Disable Customer Experience Improvement Program|Telemetry|
 |Disable Automatic Maintenance|Intrusive|
 |Remove 3D Objects from Explorer Pane|Intrusive|
@@ -130,9 +127,7 @@ Set-ExecutionPolicy Unrestricted
 |Disable Typing Insights|Telemetry|
 |Do Not Let Apps Run In the Background|Disabled via policies as the option is not available in the interface on Windows 11|
 
-</details>
-
-- Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``.
+- Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``
 
     ```powershell
     C:\bin\scripts\apply-registry.ps1 -winver <option>
@@ -170,7 +165,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - Network Interface Controller
 
-        - If you do not have internet access at this stage, you will need to download your network interface controller drivers from another device or dual-boot as they may not be packaged at all in some versions of Windows
+        - If you do not have internet access at this stage, you will need to download your NIC driver from another device or dual-boot as they may not be packaged at all in some versions of Windows
 
     - [USB](https://winraid.level1techs.com/t/usb-3-0-3-1-drivers-original-and-modded/30871) and [NVMe](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (if you are configuring Windows 7, both may have already been integrated in pre-install)
 
@@ -186,7 +181,7 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - Configure settings in ``Time & Language`` by pressing ``Win+I``
 
-        - If you intend to exclusively use one language and keyboard layout, ensure that is the case in actuality so that you don't need to toggle the language bar hotkeys which can become intrusive otherwise
+        - If you intend to exclusively use one language and keyboard layout, ensure that is the case in actuality so that you don't need to toggle the language bar hotkeys which can become intrusive otherwise as the hotkey can be accidentally pressed
 
 ## Activate Windows
 
@@ -202,7 +197,7 @@ slmgr /ato
 
 ## Configure a [Web Browser](https://privacytests.org)
 
-A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip_hash_check`` to the end of the command. 115.0 is the last version to support Windows 8 and below so ``-version 115.0`` may be required. Using an outdated browser is not recommended.
+A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip_hash_check`` to the end of the command.
 
 ```powershell
 C:\bin\scripts\install-firefox.ps1
@@ -220,7 +215,7 @@ C:\bin\scripts\install-firefox.ps1
 
 ## Disable Residual Scheduled Tasks
 
-Open PowerShell and enter the command below to disable various scheduled tasks. This is useful if you would like finer control as to what runs on your OS in the background. Ignore any errors.
+Open PowerShell and enter the command below to disable various scheduled tasks. This is useful if you would like finer control as to what runs on your OS in the background.
 
 ```powershell
 C:\bin\scripts\disable-scheduled-tasks.ps1
@@ -230,25 +225,25 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 - Open CMD and enter the commands below
 
-    - Set the maximum password age to never expire. This prevents Windows periodically asking to change or enter a password despite removing it (if applicable)
+    - Optionally set the maximum password age to never expire to prevent Windows periodically asking to change or enter a password [[1](https://www.tenforums.com/tutorials/87386-change-maximum-minimum-password-age-local-accounts-windows-10-a.html)]
 
         ```bat
         net accounts /maxpwage:unlimited
         ```
 
-    - Clean the WinSxS folder
+    - Optionally clean the WinSxS folder to reduce the size of it [[1](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder?view=windows-11)]. Note that this can be a lengthy process
 
         ```bat
         DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
         ```
 
-    - Disable [reserved storage](https://support.microsoft.com/en-us/windows/how-reserved-storage-works-in-windows-5bc98443-0711-8038-4621-6a18ddc904f2) (Windows 10 1903+)
+    - Optionally disable [reserved storage](https://www.tenforums.com/tutorials/124858-enable-disable-reserved-storage-windows-10-a.html) (Windows 10 1903+)
 
         ```bat
         DISM /Online /Set-ReservedStorageState /State:Disabled
         ```
 
-    - Configure the operating system name, it is recommended to set it to whatever Windows version you are using such as ``Windows 10 1803`` for clarity when dual-booting. The partition label can also be renamed similarly for clarity
+    - Configure the operating system name, it is recommended to set it to something meaningful or unique such has ``Windows 10 1803 Work`` or ``Windows 10 1803 Gaming`` for clarity when dual-booting. The partition label can also be renamed similarly for clarity
 
         ```bat
         bcdedit /set {current} description "OS_NAME"
@@ -258,7 +253,7 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
         label C: "OS_NAME"
         ```
 
-    - If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below. Disabling SysMain is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)
+    - If an HDD isn't present in the system then Superfetch/Prefetch can be disabled with the command below. Disabling SysMain is in Microsoft's recommendations for configuring devices for real-time performance [[1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)]
 
         ```bat
         reg add "HKLM\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t REG_DWORD /d "4" /f
@@ -266,21 +261,13 @@ C:\bin\scripts\disable-scheduled-tasks.ps1
 
 - Configure the following by typing ``sysdm.cpl`` in ``Win+R``:
 
-    - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance``. If you have enough RAM for your applications, consider disabling the paging file for all drives to avoid unnecessary I/O
+    - ``Advanced -> Performance -> Settings`` - configure ``Adjust for best performance``. If you have enough RAM for your applications, consider disabling the paging file for all drives to avoid unnecessary I/O and longer access times
 
-    - ``System Protection`` - disable and delete system restore points. It has been proven to be very unreliable for our use case
-
-- Allow users full control of the ``C:\`` directory to resolve errors when writing to a file in the drive
-
-    - See [media/full-control-example.png](/media/full-control-example.png), continue and ignore errors
+    - ``System Protection`` - disable and delete system restore points. It has been proven to be unreliable [[1](https://askleo.com/why_i_dont_like_system_restore)]
 
 - Windows 8+ Only:
 
-    - Disable the following by pressing ``Win+I``:
-
-        - Everything in ``System -> Notifications and actions``
-
-        - All permissions in ``Privacy``. Allow microphone access if desired
+    - Disable all unnecessary permissions in the ``Privacy`` section by pressing ``Win+I``
 
 - Windows Server+ Only:
 
@@ -354,7 +341,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
     - The browser should be disabled instead of uninstalled to retain the WebView runtime
 
-    - Download [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) and navigate to the ``Everything`` section then search for *"edge"*. Disable everything that shows up
+    - Download [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) and navigate to the ``Everything`` section then search for *"edge"*. Disable every item that appears in the filtered results
 
     - Updating the browser will revert some changes made in the previous step. You can ensure that it does not update if it is opened accidentally with the command below. Ensure that there aren't any hidden Microsoft Edge process running in Task Manager
 
@@ -453,7 +440,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
 - Disable Spectre and Meltdown with [InSpectre](https://www.grc.com/inspectre.htm)
 
-    - AMD is unaffected by Meltdown and apparently [performs better with Spectre enabled](https://www.phoronix.com/review/amd-zen4-spectrev2)
+    - AMD is unaffected by Meltdown and apparently performs better with Spectre enabled [[1](https://www.phoronix.com/review/amd-zen4-spectrev2)]
 
     - A minority of anti-cheats (FACEIT) require Meltdown to be enabled
 
@@ -517,7 +504,7 @@ Open CMD and enter the commands below.
 
 - Processor performance core parking min cores - 100
 
-    - According to Microsoft's documentation, [CPU parking is disabled by default in the High Performance power scheme](https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/hardware/power/power-performance-tuning#using-power-plans-in-windows-server) but on Windows 11+ with modern CPUs, parking is overridden and enabled. Apart from parking intended to be a power saving feature, videos such as [this](https://www.youtube.com/watch?v=2yOYfT_r0xI) and [this](https://www.youtube.com/watch?v=gyg7Gm7aN2A) explain that it is the desired behavior for correct thread scheduling which is probably fine for the average user, but they do not account for the latency penalty of unparking cores (as with C-State transitions) along with kernel-mode activity (interrupts, DPCs). In terms of per-CPU scheduling, you can easily achieve the same outcome by managing per-CPU load manually (e.g. pin the real-time application to a [single CCX/CCD](https://hwbusters.com/cpu/amd-ryzen-9-7950x3d-cpu-review-performance-thermals-power-analysis/2) or P-Cores) by configuring affinities with the advantage being no overhead from chipset drivers and Xbox processes constantly running in the background forcing unnecessary context switches. See the [Per-CPU Scheduling](#per-cpu-scheduling) section for more information
+    - CPU parking is disabled by default in the High Performance power scheme [[1](https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/hardware/power/power-performance-tuning#using-power-plans-in-windows-server)]. However on Windows 11+ with modern CPUs, parking is overridden and enabled. Apart from parking intended to be a power saving feature, videos such as [this](https://www.youtube.com/watch?v=2yOYfT_r0xI) and [this](https://www.youtube.com/watch?v=gyg7Gm7aN2A) explain that it is the desired behavior for correct thread scheduling which is probably fine for the average user, but they do not account for the latency penalty of unparking cores (as with C-State transitions) along with kernel-mode activity (interrupts, DPCs). In terms of per-CPU scheduling, you can easily achieve the same outcome by managing per-CPU load manually (e.g. pin the real-time application to a [single CCX/CCD](https://hwbusters.com/cpu/amd-ryzen-9-7950x3d-cpu-review-performance-thermals-power-analysis/2) or P-Cores) by configuring affinities with the advantage being no overhead from chipset drivers and Xbox processes constantly running in the background forcing unnecessary context switches. See the [Per-CPU Scheduling](#per-cpu-scheduling) section for more information
 
         ```bat
         powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 0cc5b647-c1df-4637-891a-dec35c318583 100
@@ -595,34 +582,31 @@ Open CMD and enter the commands below.
 
 - Windows 8+ Only
 
-    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as [it allows CPUs to sleep for an extended duration](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2). ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency-sensitive tasks and reducing jitter
+    - A [tickless kernel](https://en.wikipedia.org/wiki/Tickless_kernel) is beneficial for battery-powered systems as it allows CPUs to sleep for an extended duration [[1](https://arstechnica.com/information-technology/2012/10/better-on-the-inside-under-the-hood-of-windows-8/2)]. ``disabledynamictick`` can be used to enable regular timer tick interrupts (polling) however many articles have conflicting information and opinions regarding whether doing so is beneficial for latency-sensitive tasks and reducing jitter
 
     - See [Reducing timer tick interrupts | Erik Rigtorp](https://rigtorp.se/low-latency-guide)
 
-    - See [(Nearly) full tickless operation](https://lwn.net/Articles/549580)
+    - See [(Nearly) full tickless operation | Jonathan Corbet](https://lwn.net/Articles/549580)
 
-    - See [Low Latency Performance Tuning for
-Red Hat Enterprise Linux 7](https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf)
+    - See [Low Latency Performance Tuning | Red Hat](https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf)
 
         ```bat
         bcdedit /set disabledynamictick yes
         ```
 
+- The command below can be used to revert to the Windows default if necessary
+
+    ```bat
+    bcdedit /deletevalue <option>
+    ```
+
 ## Replace Task Manager with Process Explorer
 
-<details>
-
-<summary>Reasons not to use Task Manager</summary>
-
-- Does not display the process tree
-
-- On Windows 8+, [Task Manager reports CPU utility in %](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43) which provides misleading CPU utilization details, on the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why the ``disable idle`` power setting results in 100% CPU utilization on Windows 8+
-
-</details>
+Task Manager lacks useful metrics compared to a tool such as Process Explorer. On Windows 8+, Task Manager reports CPU utility in % which provides misleading CPU utilization details [[1](https://aaron-margosis.medium.com/task-managers-cpu-numbers-are-all-but-meaningless-2d165b421e43)]. On the other hand, Windows 7's Task Manager and Process Explorer report time-based busy utilization. This also explains why disabling idle states within the OS results in 100% CPU utilization in Task Manager.
 
 - Download and extract [Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer)
 
-- Copy ``procexp64.exe`` into ``C:\Windows`` and open it
+- Copy ``procexp64.exe`` into a safe directory such as ``C:\Windows`` and open it
 
 - Navigate to ``Options`` and select ``Replace Task Manager``. Optionally configure the following:
 
@@ -680,11 +664,11 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Disable any unused network adapters then right-click your main one and select ``Properties``
 
-- Disable all items except ``QoS Packet Scheduler`` and ``Internet Protocol Version 4 (TCP/IPv4)``
+- Disable all items you don't require which typically is everything except ``QoS Packet Scheduler`` and ``Internet Protocol Version 4 (TCP/IPv4)`` for most consumers
 
-- [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). This is required as we will be disabling the network services that waste resources
+- [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). This is required as we will be disabling the network services that waste resources which DHCP relies on
 
-- Disable ``NetBIOS over TCP/IP`` in ``Internet Protocol Version 4 (TCP/IPv4) -> Properties -> General -> Advanced -> WINS`` to [prevent unnecessary system listening](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md) for all network adapters
+- Disable ``NetBIOS over TCP/IP`` for all network adapters in ``Internet Protocol Version 4 (TCP/IPv4) -> Properties -> General -> Advanced -> WINS`` to prevent unnecessary system listening [[1](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md)]
 
 ## Configure Audio Devices
 
@@ -692,15 +676,13 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Disable unused Playback and Recording devices
 
-- Disable audio enhancements as they waste resources
+- Disable audio enhancements as they waste resources [[1](/media/audio%20enhancements-benchmark.png)]
 
-    - See [media/audio enhancements-benchmark.png](/media/audio%20enhancements-benchmark.png)
-
-- Set the option in the communications tab to Do nothing
+- Optionally set the option in the communications tab to ``Do nothing`` to prevent automatic adjustment of audio levels between audio sources as this is an annoyance for the majority of users [[1](https://multimedia.easeus.com/ai-article/windows-audio-ducking.html)] [[2](https://superuser.com/questions/1147371/how-can-i-disable-automatic-windows-7-8-10-audio-ducking)]
 
 - Minimize the size of the audio buffer with [REAL](https://github.com/miniant-git/REAL)/[LowAudioLatency](https://github.com/spddl/LowAudioLatency) or on your DAC. Beware of audio dropouts due to the CPU not being able to keep up under load
 
-    - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs
+    - Be warned regarding CPUs being reserved or underutilized with the usage of the mentioned programs [[1](https://github.com/miniant-git/REAL/issues/9)]
 
 ## Configure Services and Drivers
 
@@ -716,7 +698,7 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
 
 - The ``High precision event timer`` device in Device Manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
 
-- Use the command below to prevent the [Software Protection service attempting to register a restart every 30s](/media/software-protection-error.png) while services are disabled. I'm not sure what the problematic service is, but online sources point to Task Scheduler
+- Use the command below to prevent the Software Protection service attempting to register a restart every 30s while services are disabled [[1](/media/software-protection-error.png)]. I'm not sure what the problematic service is, but online sources point to Task Scheduler [[1](https://learn.microsoft.com/en-us/troubleshoot/windows-server/deployment/failed-schedule-software-protection)] [[2](https://superuser.com/questions/1501559/failed-to-schedule-software-protection-service-for-re-start-at-2119-10-19t1807)]
 
     ```bat
     reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
@@ -736,7 +718,13 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
 
 - If desired, you can use [ServiWin](https://www.nirsoft.net/utils/serviwin.html) to check for residual drivers after disabling services then possibly create an issue on the repository so that it can be reviewed
 
-- Something not working after disabling services but works once services are re-enabled? See [docs/debug-services.md](/docs/debug-services.md)
+### Debugging Services
+
+For future reference, if something doesn't work after disabling services but works once services are re-enabled:
+
+- **Short-term/Temporary Solution**: Run ``Services-Enable.bat``, do whatever you are trying to do, then run ``Services-Disable.bat`` again (that's the idea of having toggle scripts!). If the functionality is still broken after enabling services then the problem is not related to services
+
+- **Long-term/Permanent Solution**: If you absolutely need some functionality while services are disabled, then see [docs/debug-services.md](/docs/debug-services.md) to determine what services are required for it. Note that this is only an option if that functionality works while services are enabled but breaks with services disabled
 
 ## Configure Device Manager
 
@@ -786,7 +774,7 @@ Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.ena
 > [!WARNING]
 > 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as general compatibility is restricted.
 
-Create registry files to toggle event trace sessions. Programs that rely on event tracers will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in ``Win+R`` then navigating to ``Data Collector Sets -> Event Trace Sessions``.
+Create registry files to toggle [event trace sessions](https://learn.microsoft.com/en-us/windows/win32/etw/event-tracing-sessions). Programs that rely on event tracers will not be able to log data until the required sessions are restored which is the purpose of creating two registry files to toggle between them (identical concept to the service scripts). Open CMD and enter the commands below to build the registry files in the ``C:\`` directory. As with the services scripts these registry files must be run with NSudo. The sessions can be viewed by typing ``perfmon`` in ``Win+R`` then navigating to ``Data Collector Sets -> Event Trace Sessions``.
 
 - ets-enable
 
@@ -812,15 +800,15 @@ Open CMD and enter the commands below.
 
 - Disables the creation of 8.3 character-length file names on FAT- and NTFS-formatted volumes
 
-    - See [Should you disable 8dot3 for performance and security?](https://web.archive.org/web/20200217151754/https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security)
+    - See [Should you disable 8dot3 for performance and security? | TCAT Shelbyville](https://web.archive.org/web/20200217151754/https://ttcshelbyville.wordpress.com/2018/12/02/should-you-disable-8dot3-for-performance-and-security)
 
-    - See [Windows Short (8.3) Filenames – A Security Nightmare?](https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem)
+    - See [Windows Short (8.3) Filenames – A Security Nightmare? | Bogdan Calin](https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem)
 
         ```bat
         fsutil behavior set disable8dot3 1
         ```
 
-- Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume. [Disabling the Last Access Time feature improves the speed of file and directory access](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior#remarks).
+- Disable updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume. Disabling the Last Access Time feature improves the speed of file and directory access [[1](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior#remarks)]
 
     ```bat
     fsutil behavior set disablelastaccess 1
@@ -828,7 +816,7 @@ Open CMD and enter the commands below.
 
 ## Message Signaled Interrupts
 
-[Message signaled interrupts are faster than traditional line-based interrupts and may also resolve the issue of shared interrupts which are often the cause of high interrupt latency and stability](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf).
+Message signaled interrupts are faster than traditional line-based interrupts and may also resolve the issue of shared interrupts which are often the cause of high interrupt latency and stability [[1](https://repo.zenk-security.com/Linux%20et%20systemes%20d.exploitations/Windows%20Internals%20Part%201_6th%20Edition.pdf)].
 
 - Download and open [MSI Utility](https://forums.guru3d.com/threads/windows-line-based-vs-message-signaled-based-interrupts-msi-tool.378044) or [GoInterruptPolicy](https://github.com/spddl/GoInterruptPolicy)
 
@@ -851,9 +839,11 @@ Open CMD and enter the commands below.
 
 On most systems, Windows 7 uses an IMOD interval of 1ms whereas recent versions of Windows use 0.05ms (50us) unless specified by the installed USB driver. This means that after an interrupt has been generated, the XHCI controller waits for the specified interval for more data to arrive before generating another interrupt which reduces CPU utilization but potentially results in data from a given device being supplied at an inconsistent rate in the event of expecting data from other devices within the waiting period that are connected to the same XHCI controller.
 
-For example, a mouse with a 1kHz polling rate will report data every 1ms. While only moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen. A 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a [major bottleneck](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466).
+For example, a mouse with a 1kHz polling rate will report data every 1ms. While only moving the mouse with an IMOD interval of 1ms, interrupt moderation will not be taking place because interrupts are being generated at a rate less than or equal to the specified interval. Realistically while playing a fast-paced game, you will easily surpass 1000 interrupts/s with keyboard and audio interaction while moving the mouse hence there will be a loss of information because you will be expecting data within the waiting period from either devices. Although this is unlikely with an IMOD interval of 0.05ms (50us), it can still happen.
 
-- See [How to persistently disable XHCI Interrupt Moderation](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
+As an example, 1ms IMOD interval with an 8kHz mouse is already problematic because you are expecting data every 0.125ms which is significantly greater than the specified interval and of course, results in a major bottleneck [[1](https://www.overclock.net/threads/usb-polling-precision.1550666/page-61#post-28576466)].
+
+- See [How to persistently disable XHCI Interrupt Moderation | BoringBoredom](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
 - Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to load the [RWEverything](http://rweverything.com) driver however a handful of in-game anticheats do not adhere to disabling the blocklist (e.g. CS2, THE FINALS)
 
@@ -891,9 +881,9 @@ Consider using [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-
 
 - Choose a value that is close to the minimum fps threshold for increased smoothness
 
-- Ensure that the GPU isn't maxed out as [lower GPU utilization reduces system latency](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)
+- Ensure that the GPU isn't maxed out as lower GPU utilization reduces system latency [[1](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s)]
 
-- Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience as it utilizes [busy-wait](https://en.wikipedia.org/wiki/Busy_waiting) which offers higher precision than 100% passive-waiting but at the cost of [noticeably higher latency](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk) and potentially greater CPU overhead. Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` from running which wastes resources
+- Capping your framerate with [RTSS](https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html) instead of the in-game limiter will result in consistent frame pacing and a smoother experience as it utilizes busy-wait which offers higher precision than 100% passive-waiting but at the cost of noticeably higher latency and potentially greater CPU overhead [[1](https://www.youtube.com/watch?t=377&v=T2ENf9cigSk)] [[2](https://en.wikipedia.org/wiki/Busy_waiting)]. Disabling the ``Enable dedicated encoder server service`` setting prevents ``EncoderServer.exe`` from running
 
 ### Presentation Mode
 
@@ -901,7 +891,7 @@ Consider using [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-
 
 - You can experiment and benchmark different presentation modes to assess which you prefer
 
-    - See [Presentation Model](https://wiki.special-k.info/en/Presentation_Model)
+    - See [Presentation Model | Special K Wiki](https://wiki.special-k.info/en/Presentation_Model)
 
 - If you want to use the ``Hardware: Legacy Flip`` presentation mode, tick the ``Disable fullscreen optimizations`` checkbox. If that doesn't work, try running the commands below in CMD and reboot. These registry keys are typically accessed by the game and Windows upon launch
 
@@ -925,9 +915,9 @@ Allows Windows to prioritize packets of an application.
 
 - See [media/dscp-46-qos-policy.png](/media/dscp-46-qos-policy.png)
 
-    - See [DSCP and Precedence Values](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus1000/sw/4_0/qos/configuration/guide/nexus1000v_qos/qos_6dscp_val.pdf)
+    - See [DSCP and Precedence Values | Cisco](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus1000/sw/4_0/qos/configuration/guide/nexus1000v_qos/qos_6dscp_val.pdf)
 
-    - See [The QoS Expedited Forwarding (EF) Model](https://www.networkworld.com/article/761413/the-qos-expedited-forwarding-ef-model.html)
+    - See [The QoS Expedited Forwarding (EF) Model | Network World](https://www.networkworld.com/article/761413/the-qos-expedited-forwarding-ef-model.html)
 
 - See [How can you verify if a DSCP QoS policy is working?](research.md#how-can-you-verify-if-a-dscp-policy-is-working)
 
@@ -962,9 +952,9 @@ The XHCI and audio controller related modules generate a substantial amount of i
 
 #### Network Interface Card
 
-[The network interface controller must support MSI-X for RSS to function properly](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and). In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the network interface controller driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
+The NIC must support MSI-X for Receive Side Scaling to function properly [[1](https://www.reddit.com/r/intel/comments/9uc03d/the_i219v_nic_on_your_new_z390_motherboard_and)]. In most cases, RSS base CPU is enough to migrate DPCs and ISRs for the NIC driver which eliminates the need for an interrupt affinity policy. However, if you are having trouble migrating either to other CPUs, try configuring both simultaneously.
 
-The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct network interface controller. Keep in mind that the amount of RSS queues determines the amount of consecutive CPUs that the network driver is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
+The command below can be used to configure RSS base CPU. Ensure to change the driver key to the one that corresponds to the correct NIC. Keep in mind that the amount of RSS queues determines the amount of consecutive CPUs that the network driver is scheduled on. For example, the driver will be scheduled on CPU 2/3/4/5 (2/4/6/8 with HT/SMT enabled) if RSS base CPU is set to 2 along with 4 RSS queues configured.
 
 - See [How many RSS Queues do you need?](research.md#how-many-rss-queues-do-you-need)
 
@@ -1012,7 +1002,7 @@ Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Obje
 
 - As mentioned in the [User-Mode (Processes, Threads)](#user-mode-processes-threads) step, you should determine how well or poorly your application's performance scales with core count to give you a rough idea as to how many cores you can afford to reserve
 
-- As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs.
+- As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs
 
 - Ensure that you have enough cores to run your real-time application on and aren't reserving too many CPUs to the point where isolating modules does not yield real-time performance
 
@@ -1025,7 +1015,7 @@ Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Obje
 
 - Hinting to the OS to schedule tasks on a group of CPUs. An example of this with modern platforms could be reserving E-Cores (efficiency cores) or either CCX/CCDs so that tasks are scheduled on P-Cores (performance cores) or other CCX/CCDs by default. With this approach, you can explicitly enforce background and unimportant tasks to be scheduled on the reserved CPUs. Note that this is purely an example and the logic can be flipped, but some latency-sensitive processes and modules are protected so affinity policies may fail which is a major limitation. See the [User-Mode (Processes, Threads)](#user-mode-processes-threads) section for more information. There are several possibilities and trade-offs to consider
 
-- Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on [improved frame pacing](/media/isolate-heavy-modules-core.png)
+- Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on improved frame pacing [[1](/media/isolate-heavy-modules-core.png)]
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
 
@@ -1045,7 +1035,7 @@ Raising the timer resolution helps with precision where constant sleeping or pac
 
 - Even if you do not want to raise the timer resolution beyond 1ms, it is useful to call for it nonetheless as old applications do not raise the resolution which results in unexpected behavior
 
-- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load as idle benchmarks may be misleading. The [micro-adjust-benchmark.ps1](https://github.com/amitxv/TimerResolution/blob/main/micro-adjust-benchmark.ps1) script can be used to automate the process.
+- Higher resolution results in higher precision, but in some cases 0.5ms provides less precision than something slightly lower such as 0.507ms. You should benchmark what calling resolution provides the highest precision (the lowest deltas) in the [MeasureSleep](https://github.com/amitxv/TimerResolution) program while requesting different resolutions with the [SetTimerResolution](https://github.com/amitxv/TimerResolution) program. This should be carried out under load as idle benchmarks may be misleading. The [micro-adjust-benchmark.ps1](https://github.com/amitxv/TimerResolution/blob/main/micro-adjust-benchmark.ps1) script can be used to automate the process
 
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
@@ -1112,11 +1102,11 @@ This step isn't required, but can help to justify unexplained performance issues
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost).
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost)
 
     - Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted
 
-    - Disabling idle states is in [Microsoft's recommendations for configuring devices for real-time performance](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)
+    - Disabling idle states is in Microsoft's recommendations for configuring devices for real-time performance [[1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)]
 
         ```bat
         powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
