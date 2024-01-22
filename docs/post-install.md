@@ -711,7 +711,7 @@ I'm not responsible if anything goes wrong or you BSOD. The idea is to disable s
 - Use the command below to build the scripts in the ``build`` folder. Move the build folder somewhere safe such as ``C:\`` and do not share it with other people as it is specific to your system. Note that NSudo with the ``Enable All Privileges`` option is required to run the batch scripts
 
     ```bat
-    service-list-builder.exe C:\bin\minimal-services.ini
+    service-list-builder.exe --config C:\bin\minimal-services.ini
     ```
 
     - If you would like to rebuild the scripts, ensure to run the generated ``Services-Enable.bat`` script beforehand as the tool relies on the current state of services for building future scripts
