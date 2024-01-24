@@ -440,7 +440,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
 - Disable Spectre and Meltdown with [InSpectre](https://www.grc.com/inspectre.htm)
 
-    - AMD is unaffected by Meltdown and apparently performs better with Spectre enabled [[1](https://www.phoronix.com/review/amd-zen4-spectrev2)]
+    - AMD is unaffected by Meltdown. In some cases, it also performs better with Spectre enabled [[1](https://www.phoronix.com/review/amd-zen4-spectrev2)]
 
     - A minority of anti-cheats (FACEIT) require Meltdown to be enabled
 
