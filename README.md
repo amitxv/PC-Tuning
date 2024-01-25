@@ -6,7 +6,7 @@
 
 ## Rationale
 
-Windows is notorious for its ever-growing bloatware, third-party telemetry, excessive context switching, interrupts and I/O. This repository was created in hope of standardizing systems for latency-sensitive tasks and minimizing unwanted outgoing traffic. Note that the OS-related sections aren't indented to be followed on existing Windows installations. On the contrary, the mentioned sections will guide you to customize an official Windows ISO using DISM then reinstall Windows which is necessary to eliminate apparent inconsistencies between systems. Users are expected to follow the guidance in the order listed below, starting with [Physical Setup](#1-physical-setup) through to [Post-Install Instructions](#3-post-install-instructions).
+Windows is notorious for its ever-growing bloatware, third-party telemetry, excessive context switching, interrupts and I/O ([1](https://www.youtube.com/watch?v=yVNkMNVv4Y4), [2](https://www.youtube.com/watch?v=hwNAa_OdP1w)). This repository was created in hope of standardizing systems for latency-sensitive tasks and minimizing unwanted outgoing traffic. Note that the OS-related sections aren't indented to be followed on existing Windows installations. On the contrary, the mentioned sections will guide you to customize an official Windows ISO using DISM then reinstall Windows which is necessary to eliminate apparent inconsistencies between systems. Users are expected to follow the guidance in the order listed below, starting with [Physical Setup](#1-physical-setup) through to [Post-Install Instructions](#3-post-install-instructions).
 
 ## Staying Informed
 
