@@ -79,7 +79,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 - Low Latency Mode - On/Ultra
 
-    > If a game supports the NVIDIA Reflex Low Latency mode, we recommend using that mode over the Ultra Low Latency mode in the driver. However, if you leave both on, the Reflex Low Latency mode will take higher priority automatically for you [[1](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform)]
+    > If a game supports the NVIDIA Reflex Low Latency mode, we recommend using that mode over the Ultra Low Latency mode in the driver. However, if you leave both on, the Reflex Low Latency mode will take higher priority automatically for you ([1](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform))
 
 - Power management mode - Prefer maximum performance
 
