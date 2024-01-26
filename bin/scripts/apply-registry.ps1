@@ -25,7 +25,7 @@ function main() {
         return 1
     }
 
-    $hasErrors = $false
+    $has_errors = $false
 
     Write-Host "info: please wait..."
 
@@ -49,13 +49,13 @@ function main() {
 
         if ($is_successful -ne 0) {
             Write-Host "error: failed merging $($file)"
-            $hasErrors = $true
+            $has_errors = $true
         }
     }
 
-    Write-Host "$(if ($hasErrors) {"error: failed"} else {"info: succeeded"}) merging registry settings for windows $($winver)"
+    Write-Host "$(if ($has_errors) {"error: failed"} else {"info: succeeded"}) merging registry settings for windows $($winver)"
 
-    return [int]$hasErrors
+    return [int]$has_errors
 }
 
 exit main
