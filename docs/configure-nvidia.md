@@ -87,7 +87,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 - Texture filtering - Quality - High performance
 
-- Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
+- Threaded Optimization - offloads GPU-related processing tasks on the CPU ([1](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html)). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
 
 - Ensure that settings aren't being overridden for programs in the ``Program Settings`` tab, such as Image Sharpening for some EAC games
 
@@ -119,9 +119,9 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)
 
-- Disable ``Enable Ansel`` as [it is injected in all games by the display drivers, regardless if the game supports Ansel or not](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel) which may cause conflicts with third-party tools or injectors
+- Disable ``Enable Ansel`` as it is injected in all games by the display drivers, regardless if the game supports Ansel or not which may cause conflicts with third-party tools or injectors ([1](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel))
 
-- If applicable, you can experiment with forcing Resizable BAR on unsupported games for a [potential performance improvement](https://www.youtube.com/watch?v=ZTOtqWTFSK8) by toggling the options below
+- If applicable, you can experiment with forcing Resizable BAR on unsupported games for a potential performance improvement by toggling the options below ([1](https://www.youtube.com/watch?v=ZTOtqWTFSK8))
 
     - rBAR - Feature
 
@@ -129,6 +129,4 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
     - rBAR - Size Limit
 
-- Disable ``CUDA - Force P2 State`` to prevent the memory clock frequency from downclocking during CUDA workloads as it enters P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps
-
-    - See [media/CUDA-force-p2-state-analysis](/media/cuda-force-p2-state-analysis.png)
+- Disable ``CUDA - Force P2 State`` to prevent the memory clock frequency from downclocking during CUDA workloads as it enters P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps ([1](/media/cuda-force-p2-state-analysis.png))
