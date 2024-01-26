@@ -666,8 +666,6 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 - Disable all items you don't require which typically is everything except ``QoS Packet Scheduler`` and ``Internet Protocol Version 4 (TCP/IPv4)`` for most consumers
 
-- [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). This is required as we will be disabling the network services that waste resources which DHCP relies on
-
 - Disable ``NetBIOS over TCP/IP`` for all network adapters in ``Internet Protocol Version 4 (TCP/IPv4) -> Properties -> General -> Advanced -> WINS`` to prevent unnecessary system listening ([1](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/DOCS/NETWORK/README.md))
 
 ## Configure Audio Devices
@@ -695,6 +693,8 @@ C:\bin\scripts\disable-process-mitigations.bat
 I'm not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
 
 - If you plan on editing ``minimal-services.ini``, then learn the [syntax of the config file](https://github.com/amitxv/service-list-builder#usage-and-program-logic)
+
+- [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). This is required as we will be disabling the services that waste resources which DHCP relies on
 
 - The ``High precision event timer`` device in Device Manager uses IRQ 0 on the majority of AMD systems and consequently conflicts with the ``System timer`` device which also uses IRQ 0. The only way that I'm aware of to resolve this conflict is to disable the parent device of the ``System timer`` device which is ``PCI standard ISA bridge`` by disabling the ``msisadrv`` driver (edit the config)
 
