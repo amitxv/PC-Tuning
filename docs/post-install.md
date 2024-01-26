@@ -687,9 +687,9 @@ C:\bin\scripts\disable-process-mitigations.bat
 > [!WARNING]
 > 🔒 Using minimal services may negatively impact security. This is due to security related feature services (e.g. firewall) getting disabled although as mentioned below, this is a temporary state in which these features will only be unavailable for a limited amount of time. Users should assess the security risk involved with modifying the mentioned setting.
 
-I'm not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else. The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file you can read to check if you need a given service. As an example, a user with Ethernet does not need the Wi-Fi services enabled.
+I'm not responsible if anything goes wrong or you BSOD. The idea is to disable services while using your real-time application and revert to default services for everything else.
 
-- If you plan on editing ``minimal-services.ini``, then learn the [syntax of the config file](https://github.com/amitxv/service-list-builder#usage-and-program-logic)
+- The list can be customized by editing ``C:\bin\minimal-services.ini`` in a text editor. There are several comments in the config file that you can read to check whether you need a given service or not. As an example, a user with Ethernet does not need the Wi-Fi services enabled. If you plan on editing ``minimal-services.ini``, then learn the [syntax of the config file](https://github.com/amitxv/service-list-builder#usage-and-program-logic)
 
 - [Configure a Static IP address](https://www.youtube.com/watch?t=36&v=5iRp1Nug0PU). This is required as we will be disabling the services that waste resources which DHCP relies on
 
