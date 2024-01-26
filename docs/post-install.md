@@ -109,7 +109,7 @@ Set-ExecutionPolicy Unrestricted
 |Disable Suggestions In The Search Box and In Search Home|Telemetry and intrusive|
 |Disable Powershell Telemetry|Telemetry|
 |Restore Old Context Menu|Intrusive|
-|Disable Fault Tolerant Heap|Prevents Windows autonomously applying mitigations to prevent future crashes on a per-application basis|
+|Disable Fault Tolerant Heap|Prevents Windows autonomously applying mitigations to prevent future crashes on a per-application basis ([1](https://learn.microsoft.com/en-us/windows/win32/win7appqual/fault-tolerant-heap))|
 |Disable GameBarPresenceWriter|Runs constantly and wastes resources despite disabling Game Bar|
 |Disable Telemetry|Telemetry|
 |Disable Notifications Network Usage|Polls constantly and wastes resources|
