@@ -657,9 +657,6 @@ C:\bin\scripts\disable-process-mitigations.bat
 
 ## Configure the Network Adapter
 
-> [!WARNING]
-> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
-
 - Open ``Network Connections`` by typing ``ncpa.cpl`` in ``Win+R``
 
 - Disable any unused network adapters then right-click your main one and select ``Properties``
@@ -1018,9 +1015,6 @@ Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Obje
 - Reserving CPUs that have specific modules assigned to be scheduled on them. For example, isolating the CPU that the GPU and XHCI driver is serviced on improved frame pacing ([1](/media/isolate-heavy-modules-core.png))
 
 ## Raise the Clock Interrupt Frequency (Timer Resolution)
-
-> [!WARNING]
-> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
 Raising the timer resolution helps with precision where constant sleeping or pacing is required such as multimedia applications, framerate limiters and more. In an ideal world when relying on sleep-related functions to pace events, Sleep(n) should sleep for n milliseconds, not n plus an arbitrary number. If the delta between n and what you expect to sleep for in reality is large, events won't be paced as you would expect which can result in unexpected or undesirable behavior. This is especially apparent in sleep-based framerate limiters. Below is a list of bullet points highlighting key information regarding the topic.
 
