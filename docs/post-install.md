@@ -1107,4 +1107,48 @@ This step isn't required, but can help to justify unexplained performance issues
         powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
         ```
 
-- If you are using Windows 8.1+, the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) presentation mode with your application, and take responsibility for damage caused to your operating system, it is possible to disable DWM using the scripts in ``C:\bin\scripts\dwm-scripts`` as the process wastes resources despite there being no composition although, it is not recommended. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM
+- If you are using Windows 8.1+, the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) presentation mode with your application, and take responsibility for damage caused to your operating system, it is possible (but not necessarily recommended)to disable DWM using the batch scripts below as the process wastes resources despite there being no composition. To clarify, this is more of a note that it is possible to disable DWM rather than a recommendation. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM
+
+    - ``enable-dwm.bat``
+
+        ```bat
+        @echo off
+
+        DISM > nul 2>&1 || echo error: administrator privileges required && exit /b 1
+
+        echo info: enabling dwm
+        reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /f
+
+        for %%a in ("UIRibbon" "UIRibbonRes" "Windows.UI.Logon" "DWMInit" "WSClient") do (
+            if exist "%windir%\System32\%%~a.dlll" (
+                takeown /F "%windir%\System32\%%~a.dlll" /A
+                icacls "%windir%\System32\%%~a.dlll" /grant Administrators:F
+                ren "%windir%\System32\%%~a.dlll" "%%~a.dll"
+            )
+        )
+
+        shutdown /r /f /t 0
+        exit /b 0
+        ```
+
+    - ``disable-dwm.bat``
+
+        ```bat
+        @echo off
+
+        DISM > nul 2>&1 || echo error: administrator privileges required && exit /b 1
+
+        echo info: disabling dwm
+        reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe" /v "Debugger" /t REG_SZ /d "\"C:\Windows\System32\rundll32.exe\"" /f > nul 2>&1
+
+        for %%a in ("UIRibbon" "UIRibbonRes" "Windows.UI.Logon" "DWMInit" "WSClient") do (
+            if exist "%windir%\System32\%%~a.dll" (
+                takeown /F "%windir%\System32\%%~a.dll" /A
+                icacls "%windir%\System32\%%~a.dll" /grant Administrators:F
+                ren "%windir%\System32\%%~a.dll" "%%~a.dlll"
+            )
+        )
+
+        shutdown /r /f /t 0
+        exit /b 0
+        ```
