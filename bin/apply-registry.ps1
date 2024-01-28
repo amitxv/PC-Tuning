@@ -824,7 +824,7 @@ function Apply-Registry($file_path) {
     }
 
     $user_merge_result = (Start-Process "reg.exe" -ArgumentList "import $($file_path)" -PassThru -Wait -WindowStyle Hidden).ExitCode
-    $trustedinstaller_merge_result = [int](MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $($file_path) > nul 2>&1 && echo 0 || echo 1")
+    $trustedinstaller_merge_result = [int](.\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $($file_path) > nul 2>&1 && echo 0 || echo 1")
 
     return $user_merge_result -band $trustedinstaller_merge_result
 }
@@ -834,6 +834,8 @@ function main() {
         Write-Host "error: administrator privileges required"
         return 1
     }
+
+    Set-Location $PSScriptRoot
 
     if (-not (Test-Path "reg-config.json")) {
         Write-Host "error: reg-config.json not found"
