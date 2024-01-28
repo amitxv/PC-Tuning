@@ -7,7 +7,7 @@ function Toggle-Task($task, $enable) {
     $toggle = if ($enable) { "/enable" } else { "/disable" }
 
     $user_task_result = (Start-Process "schtasks.exe" -ArgumentList "/change $($toggle) /tn `"$($task)`"" -PassThru -Wait -WindowStyle Hidden).ExitCode
-    $trustedinstaller_task_result = [int](C:\bin\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "schtasks.exe /change $($toggle) /tn `"$($task)`" > nul 2>&1 && echo 0 || echo 1")
+    $trustedinstaller_task_result = [int](MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "schtasks.exe /change $($toggle) /tn `"$($task)`" > nul 2>&1 && echo 0 || echo 1")
 
     return $user_task_result -band $trustedinstaller_task_result
 }

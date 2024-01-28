@@ -201,7 +201,7 @@ slmgr /ato
 A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip_hash_check`` to the end of the command.
 
 ```powershell
-C:\bin\scripts\install-firefox.ps1
+C:\bin\install-firefox.ps1
 ```
 
 - Install [language dictionaries](https://addons.mozilla.org/en-GB/firefox/language-tools) for spell-checking
@@ -219,7 +219,7 @@ C:\bin\scripts\install-firefox.ps1
 Open PowerShell and enter the command below to disable various scheduled tasks. This is useful if you would like finer control as to what runs on your OS in the background.
 
 ```powershell
-C:\bin\scripts\disable-scheduled-tasks.ps1
+C:\bin\disable-scheduled-tasks.ps1
 ```
 
 ## Miscellaneous
@@ -639,7 +639,7 @@ Task Manager lacks useful metrics compared to a tool such as Process Explorer. O
 Open CMD and enter the command below to disable [process mitigations](https://docs.microsoft.com/en-us/powershell/module/processmitigations/set-processmitigation?view=windowsserver2019-ps). Effects can be viewed with ``Get-ProcessMitigation -System`` in PowerShell.
 
 ```bat
-C:\bin\scripts\disable-process-mitigations.bat
+C:\bin\disable-process-mitigations.bat
 ```
 
 ## Configure Memory Management Settings (Windows 8+)
