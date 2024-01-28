@@ -372,7 +372,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
         - Uninstall bloatware in ``Apps -> Installed apps`` by pressing ``Win+I``
 
-        - In the ``Apps -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
+        - In the ``System -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
 
 - ``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD with ``C:\bin\NSudo.exe`` and enter the command below to remove the binary
 
