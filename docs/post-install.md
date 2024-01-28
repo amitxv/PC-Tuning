@@ -90,47 +90,48 @@ Set-ExecutionPolicy Unrestricted
 
 ## Merge the Registry Files
 
-|Modification|Justification|
-|---|---|
-|Disable Retrieval of Online Tips and Help In The Immersive Control Panel|Telemetry|
-|Disable Sticky Keys|Intrusive in applications that utilize the Shift key for controls|
-|Disable Search The Web or Display Web Results In Search|Telemetry|
-|Disable Transparency|Wastes resources ([1](/media/transparency-effects-benchmark.png))|
-|Disable Corner Navigation|Intrusive|
-|Prevent Windows Marking File Attachments With Information About Their Zone of Origin|Intrusive as downloaded files are constantly required to be unblocked|
-|Disable Windows Defender|Excessive CPU overhead and interferes with the CPU operating in C-State 0 ([1](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix))|
-|Disable Windows Update|Telemetry, intrusive and installs unwanted security updates along with potentially vulnerable and outdated drivers. Disabling Windows Update is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device))|
-|Disable Customer Experience Improvement Program|Telemetry|
-|Disable Automatic Maintenance|Intrusive|
-|Remove 3D Objects from Explorer Pane|Intrusive|
-|Disable UAC|Eliminates intrusive UAC prompt but reduces security as all processes are run with Administrator privileges by default|
-|Disable Fast Startup|Interferes with shutting down|
-|Disable Sign-In and Lock Last Interactive User After a Restart|Intrusive|
-|Disable Suggestions In The Search Box and In Search Home|Telemetry and intrusive|
-|Disable Powershell Telemetry|Telemetry|
-|Restore Old Context Menu|Intrusive|
-|Disable Fault Tolerant Heap|Prevents Windows autonomously applying mitigations to prevent future crashes on a per-application basis ([1](https://learn.microsoft.com/en-us/windows/win32/win7appqual/fault-tolerant-heap))|
-|Disable GameBarPresenceWriter|Runs constantly and wastes resources despite disabling Game Bar|
-|Disable Telemetry|Telemetry|
-|Disable Notifications Network Usage|Polls constantly and wastes resources|
-|Reserve 10% of CPU Resources for Low-Priority Tasks Instead of The Default 20%|On an optimized system with few background tasks, it is desirable to allocate most of the CPU time to the foreground process|
-|Disable Your *PC Is Out of Support* Message|Intrusive|
-|Disable Search Indexing|Runs constantly and wastes resources|
-|Enable The Legacy Photo Viewer|Alternative option for viewing photos as the Windows Photos app is removed in the Appx removal step|
-|Disable Hibernation|Eliminates the need for a hibernation file. It is recommended to shut down instead|
-|Disable Remote Assistance|Security risk|
-|Show File Extensions|Security risk|
-|Allocate Processor Resources Primarily To Programs|On client editions of Windows, this has no effect but is changed to ensure consistency between all editions including Windows Server|
-|Disable Program Compatibility Assistant|Prevent Windows applying changes anonymously after running troubleshooters|
-|Disable Pointer Acceleration|Ensures one-to-one mouse response for games that do not subscribe to raw input events|
-|Disable Windows Error Reporting|Telemetry|
-|Disable Typing Insights|Telemetry|
-|Do Not Let Apps Run In the Background|Disabled via policies as the option is not available in the interface on Windows 11|
+> [!WARNING]
+> 🔒 Some changes outlined in the table below may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
+
+|Option|Notes|Default Value|
+|---|---|---|
+|``disable windows update``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Telemetry, intrusive, prevents CPU overhead and prevents installation of unwanted updates. Disabling Windows Update is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device))|``true``|
+|``disable user account control``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Eliminates [this](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/how-it-works#uac-elevation-prompts) intrusive UAC elevation prompt and is required for running the PowerShell scripts outlined in this repository with Administrator privileges with ``shell:startup``. The only other method that I'm aware of to do so is with Task Scheduler however, its service gets disabled to mitigate CPU overhead as outlined in the [Configure Services and Drivers](#configure-services-and-drivers) section. Please note that it is recommended to skip thee [Configure Services and Drivers](#configure-services-and-drivers) section when configuring a system for general-purpose use, so if this applies to you then this option can be set to ``false`` as you can use Task Scheduler since its service will not be disabled. Disabling UAC may negatively impact security as all processes are run with Administrator privileges by default ([1](https://www.howtogeek.com/124754/htg-explains-why-you-shouldnt-disable-uac/), [2](https://raptor.solutions/the-risks-of-disabling-uac-in-windows-10/))|``true``|
+|``disable windows marking file attachments with information about their zone of origin``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Prevents [this](https://www.tenforums.com/tutorials/85418-how-disable-downloaded-files-being-blocked-windows.html) intrusive security warning as downloaded files are constantly required to be unblocked however this may negatively impact security as the user will not be notified of blocked files as a security warning ([1](https://www.tenforums.com/tutorials/85418-how-disable-downloaded-files-being-blocked-windows.html))|``true``|
+|``disable windows defender``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Prevents CPU overhead and interferes with the CPU operating in C-State 0 ([1](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix))|``true``|
+|``disable PC is out of support message``|Disables [this](https://support.microsoft.com/en-us/topic/you-received-a-notification-your-windows-7-pc-is-out-of-support-3278599f-9613-5cc1-e0ee-4f81f623adcf) intrusive message|``true``|
+|``disable driver installation via windows update``|Prevents outdated, vulnerable and bloated drivers from being installed via Windows Update. It is recommended to manually only install ones that you require along with the latest version directly from the manufacture's website as outlined in the [Install Drivers](#install-drivers) section. This option is overridden if ``disable windows update`` is set to ``true``|``true``|
+|``disable automatic maintenance``|Intrusive|``true``|
+|``disable search indexing``|Prevents CPU overhead as files are indexed constantly in the background|``true``|
+|``disable program compatibility assistant``|Prevent Windows applying changes anonymously after running troubleshooters|``true``|
+|``disable customer experience improvement program``|Telemetry ([1](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj618322(v=ws.11)))|``true``|
+|``disable fault tolerant heap``|Prevents Windows autonomously applying mitigations to prevent future crashes on a per-application basis ([1](https://learn.microsoft.com/en-us/windows/win32/win7appqual/fault-tolerant-heap))|``true``|
+|``disable sticky keys``|Disables the *Do you want to turn on Sticky Keys?* promt when the hotkey is pressed a certain number of times. This is severely intrusive in applications that utilize the ``Shift`` key for controls such as games|``true``|
+|``disable pointer acceleration``|Ensures one-to-one mouse response for games that do not subscribe to raw input events and on Desktop|``true``|
+|``disable fast startup``|Interferes with shutting down|``true``|
+|``disable hibernation``|Eliminates the need for a hibernation file. It is recommended to shut down instead. This option is overridden if ``disable fast startup`` is set to ``true``|``true``|
+|``disable windows error reporting``|Telemetry|``true``|
+|``reserve 10% of CPU resources for low-priority tasks instead of the default 20%``|On an optimized system with few background tasks, it is desirable to allocate most of the CPU time to the foreground process ([1](https://learn.microsoft.com/en-us/windows/win32/procthread/multimedia-class-scheduler-service))|``true``|
+|``disable remote assistance``|Security risk|``true``|
+|``show file extensions``|Security risk|``true``|
+|``disable corner navigation``|Disables [corner navigation](https://edu.gcfglobal.org/en/windows8/getting-started-with-windows-8/1) which may become intrusive|``true``|
+|``disable search the web or display web results in search``|Telemetry|``true``|
+|``disable notifications network usage``|Telemetry, polls constantly prevents CPU overhead ([1](https://learn.microsoft.com/en-gb/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#10-live-tiles))|``true``|
+|``disable sign-in and lock last interactive user after a restart``|Intrusive|``true``|
+|``disable gamebarpresencewriter``|Prevents CPU overhead as the process runs constantly in the background even if the user disables Game Bar in settings|``true``|
+|``disable telemetry``|Telemetry|``true``|
+|``disable retrieval of online tips and help in the immersive control panel``|Telemetry|``true``|
+|``enable the legacy photo viewer``|Alternative option to the Windows Photos app|``true``|
+|``disable typing insights``|Telemetry|``true``|
+|``disable transparency``|Prevents CPU overhead ([1](/media/transparency-effects-benchmark.png))|``true``|
+|``disable background apps``|Disabled via policies as the option is not available in the interface on Windows 11|``true``|
+|``disable suggestions in the search box and in search home``|Telemetry and intrusive|``true``|
+|``allocate processor resources primarily to programs``|On client editions of Windows, this has no effect from the default behavior but is changed to ensure consistency between all editions including Windows Server|``true``|
 
 - Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``
 
     ```powershell
-    C:\bin\scripts\apply-registry.ps1 -winver <option>
+    C:\bin\apply-registry.ps1 -winver <option>
     ```
 
 - If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+). If that doesn't work, reboot then re-execute the command again
