@@ -93,6 +93,13 @@ Set-ExecutionPolicy Unrestricted
 > [!WARNING]
 > 🔒 Some changes outlined in the table below may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
 
+The registry settings are merged with the ``apply-registry.ps1`` script. As for which options get applied as outlined in the table below, this can be customized by editing ``C:\bin\reg-config.json`` in a text editor and setting properties to either ``true`` or ``false``. You can safely backup the config file so that you don't need to modify it each time
+
+> [!IMPORTANT]
+> The script does not revert options if re-run. For example, if the script was run with an option set to ``true``, then running the script with a given option set to ``false`` will not revert the changed made as the script is unaware of the previous state of the registry keys associated with the option.
+
+Editing the config and re-running the script will not revert changes made from previously running it because the script does not store the previous state
+
 |Option|Notes|Default Value|
 |---|---|---|
 |``disable windows update``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Telemetry, intrusive, prevents CPU overhead and prevents installation of unwanted updates. Disabling Windows Update is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device))|``true``|
