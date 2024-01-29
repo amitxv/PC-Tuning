@@ -65,7 +65,10 @@ $entries = @{
         "NoAutoUpdate" = @{
             "value"    = 1
             "type"     = "REG_DWORD"
-            "apply_if" = @("disable windows update")
+            "apply_if" = @(
+                "disable windows update"
+                "disable automatic windows updates"
+            )
         }
         "UseWUServer"  = @{
             "value"    = 1
