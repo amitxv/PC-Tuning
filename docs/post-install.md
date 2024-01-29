@@ -380,7 +380,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
         - In the ``System -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
 
-- ``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD with ``C:\bin\NSudo.exe`` and enter the command below to remove the binary
+- ``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD as TrustedInstaller with ``C:\bin\MinSudo.exe --TrustedInstaller --Privileged`` and enter the command below to remove the binary
 
     ```bat
     taskkill /f /im smartscreen.exe > nul 2>&1 & ren C:\Windows\System32\smartscreen.exe smartscreen.exee
@@ -451,7 +451,7 @@ You may have already found a stable overclock for your display in the [Physical 
 
     - A minority of anti-cheats (FACEIT) require Meltdown to be enabled
 
-- Open CMD with ``C:\bin\NSudo.exe`` and enter the commands below to remove the CPU microcode updates
+- Open CMD as TrustedInstaller with ``C:\bin\MinSudo.exe --TrustedInstaller --Privileged`` and enter the commands below to remove the CPU microcode updates
 
     ```bat
     ren C:\Windows\System32\mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.dlll
