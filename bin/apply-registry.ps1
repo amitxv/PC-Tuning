@@ -72,11 +72,6 @@ $entries = @{
             "type"     = "REG_DWORD"
             "apply_if" = @("disable windows update")
         }
-        "AUOptions"    = @{
-            "value"    = 2
-            "type"     = "REG_DWORD"
-            "apply_if" = @("disable windows update")
-        }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv"                                                                         = @{
         "Start" = @{
