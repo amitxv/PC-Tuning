@@ -6,7 +6,6 @@ param(
 $entries = @{
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify"                                                                 = @{
         "DiscontinueEOS" = @{
-            "min_version" = 7
             "max_version" = 8
             "value"       = 1
             "type"        = "REG_DWORD"
@@ -15,28 +14,24 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"                                                                  = @{
         "WUServer"                                     = @{
-            "min_version" = 7
-            "value"       = " "
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable windows update")
+            "value"    = " "
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable windows update")
         }
         "WUStatusServer"                               = @{
-            "min_version" = 7
-            "value"       = " "
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable windows update")
+            "value"    = " "
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable windows update")
         }
         "UpdateServiceUrlAlternate"                    = @{
-            "min_version" = 7
-            "value"       = " "
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable windows update")
+            "value"    = " "
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable windows update")
         }
         "DisableWindowsUpdateAccess"                   = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows update")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows update")
         }
         "DoNotConnectToWindowsUpdateInternetLocations" = @{
             "min_version" = 8
@@ -68,56 +63,48 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"                                                               = @{
         "NoAutoUpdate" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows update")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows update")
         }
         "UseWUServer"  = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows update")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows update")
         }
         "AUOptions"    = @{
-            "min_version" = 7
-            "value"       = 2
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows update")
+            "value"    = 2
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows update")
         }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv"                                                                         = @{
         "Start" = @{
-            "min_version" = 7
-            "value"       = 4
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows update")
+            "value"    = 4
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows update")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update"                                                = @{
         "IncludeRecommendedUpdates"  = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows update")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows update")
         }
         "SetupWizardLaunchTime"      = @{
-            "min_version" = 7
-            "type"        = "REG_DELETE"
-            "apply_if"    = @("disable windows update")
+            "type"     = "REG_DELETE"
+            "apply_if" = @("disable windows update")
         }
         "AcceleratedInstallRequired" = @{
-            "min_version" = 7
-            "type"        = "REG_DELETE"
-            "apply_if"    = @("disable windows update")
+            "type"     = "REG_DELETE"
+            "apply_if" = @("disable windows update")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching"                                                          = @{
         "SearchOrderConfig" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "disable windows update"
                 "disable driver installation via windows update"
             )
@@ -125,10 +112,9 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata"                                                          = @{
         "PreventDeviceMetadataFromNetwork" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "disable windows update"
                 "disable driver installation via windows update"
             )
@@ -136,19 +122,17 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"                                                                = @{
         "SearchOrderConfig"       = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "disable windows update"
                 "disable driver installation via windows update"
             )
         }
         "DontSearchWindowsUpdate" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "disable windows update"
                 "disable driver installation via windows update"
             )
@@ -156,10 +140,9 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings"                                                                       = @{
         "ExcludeWUDriversInQualityUpdate" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "disable windows update"
                 "disable driver installation via windows update"
             )
@@ -167,10 +150,9 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"                                                          = @{
         "EnableLUA"                     = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable user account control")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable user account control")
         }
         "DisableAutomaticRestartSignOn" = @{
             "min_version" = 10
@@ -181,106 +163,93 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance"                                                  = @{
         "MaintenanceDisabled" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable automatic maintenance")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable automatic maintenance")
         }
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments"                                                      = @{
         "SaveZoneInformation" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "disable windows marking file attachments with information about their zone of origin"
             )
         }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch"                                                                          = @{
         "Start" = @{
-            "min_version" = 7
-            "value"       = 4
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable search indexing")
+            "value"    = 4
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable search indexing")
         }
     }
     "HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat"                                                                       = @{
         "DisablePCA" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable program compatibility assistant")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable program compatibility assistant")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\Windows"                                                                               = @{
         "CEIPEnable" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable customer experience improvement program")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable customer experience improvement program")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows"                                                                      = @{
         "CEIPEnable" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable customer experience improvement program")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable customer experience improvement program")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VSCommon\15.0\SQM"                                                                   = @{
         "OptIn" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable customer experience improvement program")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable customer experience improvement program")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH"                                                                                             = @{
         "Enabled" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable fault tolerant heap")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable fault tolerant heap")
         }
     }
     "HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys"                                                                              = @{
         "Flags" = @{
-            "min_version" = 7
-            "value"       = "506"
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable sticky keys")
+            "value"    = "506"
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable sticky keys")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender"                                                                       = @{
         "DisableAntiSpyware" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows defender")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows defender")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Microsoft Antimalware\Real-Time Protection"                                             = @{
         "DisableScanOnRealtimeEnable" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows defender")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows defender")
         }
         "DisableOnAccessProtection"   = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows defender")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows defender")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"                                                  = @{
         "DisableScanOnRealtimeEnable" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows defender")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows defender")
         }
         "DisableBehaviorMonitoring"   = @{
             "min_version" = 8
@@ -291,54 +260,47 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend"                                                                        = @{
         "Start" = @{
-            "min_version" = 7
-            "value"       = 4
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows defender")
+            "value"    = 4
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows defender")
         }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc"                                                                           = @{
         "Start" = @{
-            "min_version" = 7
-            "value"       = 4
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows defender")
+            "value"    = 4
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows defender")
         }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"                                                       = @{
         "POWERSHELL_TELEMETRY_OPTOUT" = @{
-            "min_version" = 7
-            "value"       = "1"
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable telemetry")
+            "value"    = "1"
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable telemetry")
         }
     }
     "HKEY_CURRENT_USER\Control Panel\Mouse"                                                                                                 = @{
         "MouseSpeed"      = @{
-            "min_version" = 7
-            "value"       = "0"
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable pointer acceleration")
+            "value"    = "0"
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable pointer acceleration")
         }
         "MouseThreshold1" = @{
-            "min_version" = 7
-            "value"       = "0"
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable pointer acceleration")
+            "value"    = "0"
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable pointer acceleration")
         }
         "MouseThreshold2" = @{
-            "min_version" = 7
-            "value"       = "0"
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable pointer acceleration")
+            "value"    = "0"
+            "type"     = "REG_SZ"
+            "apply_if" = @("disable pointer acceleration")
         }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power"                                                                             = @{
         "HibernateEnabled" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "disable hibernation"
                 "disable fast startup"
             )
@@ -346,52 +308,46 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power"                                                             = @{
         "HiberbootEnabled" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable fast startup")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable fast startup")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting"                                                                = @{
         "DoReport" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows error reporting")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows error reporting")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting"                                                        = @{
         "Disabled" = @{
-            "min_version" = 7
-            "value"       = 1
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable windows error reporting")
+            "value"    = 1
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable windows error reporting")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"                                              = @{
         "SystemResponsiveness" = @{
-            "min_version" = 7
-            "value"       = 10
-            "type"        = "REG_DWORD"
-            "apply_if"    = @(
+            "value"    = 10
+            "type"     = "REG_DWORD"
+            "apply_if" = @(
                 "reserve 10% of CPU resources for low-priority tasks instead of the default 20%"
             )
         }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance"                                                                 = @{
         "fAllowToGetHelp" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("disable remote assistance")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("disable remote assistance")
         }
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"                                                         = @{
         "HideFileExt" = @{
-            "min_version" = 7
-            "value"       = 0
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("show file extensions")
+            "value"    = 0
+            "type"     = "REG_DWORD"
+            "apply_if" = @("show file extensions")
         }
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell\EdgeUi"                                                     = @{
@@ -804,11 +760,9 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl"                                                                   = @{
         "Win32PrioritySeparation" = @{
-            "min_version" = 7
-
-            "value"       = 38
-            "type"        = "REG_DWORD"
-            "apply_if"    = @("allocate processor resources primarily to programs")
+            "value"    = 38
+            "type"     = "REG_DWORD"
+            "apply_if" = @("allocate processor resources primarily to programs")
         }
     }
 }
@@ -886,9 +840,9 @@ function main() {
                 }
             }
 
-            $min_version = $key["min_version"]
-            # unspecified max_version implies unlimited
-            $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $winver + 1 }
+            # unspecified versions implies that they key should be applied to all versions
+            $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $winver }
+            $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $winver }
 
             # skip if key doesn't meet the version criteria
 
