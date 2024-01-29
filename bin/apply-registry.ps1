@@ -808,9 +808,7 @@ function main() {
 
     # track seen options to find unrecognized options in registry-options.json
     $seen_options = New-Object System.Collections.Generic.HashSet[string]
-    $missing_options = New-Object System.Collections.Generic.HashSet[string]
-
-    $config_errors = 0
+    $undefined_options = New-Object System.Collections.Generic.HashSet[string]
 
     Write-Host "info: parsing config"
 
@@ -824,19 +822,12 @@ function main() {
                 # add option to set in order to keep track of what options have been seen so far
                 $seen_options.Add($apply_if_option)
 
-                $option_exists_in_config = $config.options.PSObject.Properties.Match($apply_if_option).Count -gt 0
+                $is_option_defined = $config.options.PSObject.Properties.Match($apply_if_option).Count -gt 0
 
-                if (-not $option_exists_in_config) {
-                    # prevents duplicate error messages
-                    if (-not $missing_options.Contains($apply_if_option)) {
-                        Write-Host "error: `"$($apply_if_option)`" option missing in config"
-                        $config_errors++
-                        $missing_options.Add($apply_if_option)
-                    }
+                if (-not $is_option_defined) {
+                    $undefined_options.Add($apply_if_option)
                 } else {
-                    if ($config.options.$apply_if_option) {
-                        $apply_key = $true
-                    }
+                    $apply_key = $config.options.$apply_if_option
                 }
             }
 
@@ -844,9 +835,10 @@ function main() {
             $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $winver }
             $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $winver }
 
-            # skip if key doesn't meet the version criteria
+            # check if key meets the version criteria
+            $apply_key = $apply_key -and ($winver -ge $min_version -and $winver -le $max_version)
 
-            if ($apply_key -and ($winver -ge $min_version -and $winver -le $max_version)) {
+            if ($apply_key) {
                 if (-not $filtered_entries.Contains($path)) {
                     $filtered_entries.Add($path, @{ $key_name = $key })
                 } else {
@@ -854,6 +846,13 @@ function main() {
                 }
             }
         }
+    }
+
+    $config_errors = 0
+
+    foreach ($option in $undefined_options) {
+        Write-Host "error: `"$($option)`" option missing in config"
+        $config_errors++
     }
 
     foreach ($option in $config.options.PSObject.Properties) {
