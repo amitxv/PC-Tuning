@@ -917,12 +917,13 @@ function main() {
     Write-Host "info: creating registry file"
 
     $has_error = $false
+    $registry_file = "$($env:temp)\tmp.reg"
 
     # registry file header and clear previous contents
-    Set-Content -Path "$($env:temp)\tmp.reg" -Value "Windows Registry Editor Version 5.00`n"
+    Set-Content -Path $registry_file -Value "Windows Registry Editor Version 5.00`n"
 
     foreach ($path in $filtered_entries.Keys) {
-        Add-Content -Path "$($env:temp)\tmp.reg" -Value "[$($path)]"
+        Add-Content -Path $registry_file -Value "[$($path)]"
 
         foreach ($key_name in $filtered_entries[$path].Keys) {
             $key = $filtered_entries[$path][$key_name]
@@ -946,18 +947,18 @@ function main() {
                 }
             }
 
-            Add-Content -Path "$($env:temp)\tmp.reg" -Value $line
+            Add-Content -Path $registry_file -Value $line
         }
 
         # new line between paths
-        Add-Content -Path "$($env:temp)\tmp.reg" -Value ""
+        Add-Content -Path $registry_file -Value ""
     }
 
     if ($has_error) {
         return 1
     }
 
-    $merge_result = Apply-Registry -file_path "$($env:temp)\tmp.reg"
+    $merge_result = Apply-Registry -file_path $registry_file
 
     Write-Host "$(if ($merge_result) {"error: failed"} else {"info: succeeded"}) merging registry settings for windows $($winver)"
     return $merge_result
