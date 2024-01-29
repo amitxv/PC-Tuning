@@ -314,7 +314,7 @@ Disable everything except for the following by typing ``OptionalFeatures`` in ``
 
 ## Manage Appx Packages (Windows 8+)
 
-- Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you don't need (which may be everything)
+- Download and open [AppxPackagesManager](https://github.com/amitxv/AppxPackagesManager) then remove everything that you don't need (which may be everything). It is usually fine to keep packages installed provided that they don't run in the background continually
 
 - Required packages for Microsoft Store. It may be a suitable idea to keep this as you can download applications in the future if desired although, you can download ``.appx`` packages directly and install them manually without the store, but this may become tedious. See [here](https://superuser.com/questions/1721755/is-there-a-way-to-install-microsoft-store-exclusive-apps-without-store) for more information
 
