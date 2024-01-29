@@ -1,12 +1,7 @@
-param(
-    [Parameter(Mandatory = $true)][ValidateSet(7, 8, 10, 11)]
-    [int]$winver
-)
-
 $entries = @{
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify"                                                                 = @{
         "DiscontinueEOS" = @{
-            "max_version" = 8
+            "max_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable PC is out of support message")
@@ -34,25 +29,25 @@ $entries = @{
             "apply_if" = @("disable windows update")
         }
         "DoNotConnectToWindowsUpdateInternetLocations" = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
         }
         "DisableOSUpgrade"                             = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
         }
         "SetDisableUXWUAccess"                         = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
         }
         "ExcludeWUDriversInQualityUpdate"              = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @(
@@ -153,7 +148,7 @@ $entries = @{
             "apply_if" = @("disable user account control")
         }
         "DisableAutomaticRestartSignOn" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable sign-in and lock last interactive user after a restart")
@@ -250,7 +245,7 @@ $entries = @{
             "apply_if" = @("disable windows defender")
         }
         "DisableBehaviorMonitoring"   = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -350,15 +345,15 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell\EdgeUi"                                                     = @{
         "DisableTLCorner" = @{
-            "min_version" = 8
-            "max_version" = 8
+            "min_version" = 9200
+            "max_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable corner navigation")
         }
         "DisableTRCorner" = @{
-            "min_version" = 8
-            "max_version" = 8
+            "min_version" = 9200
+            "max_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable corner navigation")
@@ -366,7 +361,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdFilter"                                                                         = @{
         "Start" = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -374,7 +369,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdBoot"                                                                           = @{
         "Start" = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -382,7 +377,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisSvc"                                                                         = @{
         "Start" = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -390,7 +385,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisDrv"                                                                         = @{
         "Start" = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -398,7 +393,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search"                                                                 = @{
         "ConnectedSearchUseWeb" = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable search the web or display web results in search")
@@ -406,7 +401,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications"                                               = @{
         "NoCloudApplicationNotification" = @{
-            "min_version" = 8
+            "min_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable notifications network usage")
@@ -414,7 +409,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc"                                                                     = @{
         "Start" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
@@ -422,7 +417,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UsoSvc"                                                                           = @{
         "Start" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
@@ -430,7 +425,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService"                                                            = @{
         "Start" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -438,7 +433,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Sense"                                                                            = @{
         "Start" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -446,19 +441,19 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"                                                                      = @{
         "SecurityHealth"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "type"        = "REG_DELETE"
             "apply_if"    = @("disable windows defender")
         }
         "WindowsDefender" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "type"        = "REG_DELETE"
             "apply_if"    = @("disable windows defender")
         }
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity"                             = @{
         "Enabled" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -466,13 +461,13 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Spynet"                                                                         = @{
         "SpyNetReporting"      = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
         }
         "SubmitSamplesConsent" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -480,7 +475,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer"                                                                 = @{
         "SmartScreenEnabled" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "Off"
             "type"        = "REG_SZ"
             "apply_if"    = @("disable windows defender")
@@ -488,7 +483,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost"                                                                   = @{
         "EnableWebContentEvaluation" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -496,7 +491,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Edge\SmartScreenEnabled"                                                                          = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -504,7 +499,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter" = @{
         "ActivationType" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable gamebarpresencewriter")
@@ -512,7 +507,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack"                                                                        = @{
         "Start" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 4
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable telemetry")
@@ -520,7 +515,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection"                                                                 = @{
         "AllowTelemetry" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable telemetry")
@@ -528,7 +523,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer"                                                        = @{
         "AllowOnlineTips" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @(
@@ -538,67 +533,67 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations"                                              = @{
         ".tif"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".tiff" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".bmp"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".dib"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".gif"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".jfif" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".jpe"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".jpeg" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".jpg"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".jxr"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
         }
         ".png"  = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -606,7 +601,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.jpg"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -614,7 +609,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.jpeg"                                                                                              = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -622,7 +617,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.gif"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -630,7 +625,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.png"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -638,7 +633,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.bmp"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -646,7 +641,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.tiff"                                                                                              = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -654,7 +649,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.ico"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -662,7 +657,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.tif"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -670,7 +665,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.wdp"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -678,7 +673,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.jfif"                                                                                              = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -686,7 +681,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.dib"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -694,7 +689,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.jpe"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -702,7 +697,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Classes\.jxr"                                                                                               = @{
         "@" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = "PhotoViewer.FileAssoc.Tiff"
             "type"        = "REG_SZ"
             "apply_if"    = @("enable the legacy photo viewer")
@@ -710,7 +705,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\input\Settings"                                                                                   = @{
         "InsightsEnabled" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable typing insights")
@@ -718,7 +713,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"                                                        = @{
         "EnableTransparency" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable transparency")
@@ -726,7 +721,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy"                                                                     = @{
         "LetAppsRunInBackground" = @{
-            "min_version" = 10
+            "min_version" = 10240
             "value"       = 2
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable background apps")
@@ -734,7 +729,7 @@ $entries = @{
     }
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings"                                                            = @{
         "IsDynamicSearchBoxEnabled" = @{
-            "min_version" = 11
+            "min_version" = 22000
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable suggestions in the search box and in search home")
@@ -742,7 +737,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components"                                                          = @{
         "ServiceEnabled" = @{
-            "min_version" = 11
+            "min_version" = 22000
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -750,7 +745,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy"                                                                         = @{
         "VerifiedAndReputablePolicyState" = @{
-            "min_version" = 11
+            "min_version" = 22000
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows defender")
@@ -799,6 +794,19 @@ function main() {
         return 1
     }
 
+    $windows_build = [System.Environment]::OSVersion.Version.Build
+
+    switch ($windows_build) {
+        { $_ -ge 22000 } { $major_build = 11; break }
+        { $_ -ge 10240 } { $major_build = 10; break }
+        { $_ -ge 9600 } { $major_build = 8.1; break }
+        { $_ -ge 9200 } { $major_build = 8; break }
+        { $_ -ge 7600 } { $major_build = 7; break }
+        default {
+            Write-Host "error: unrecognized windows build $($windows_build)"
+        }
+    }
+
     # contains keys to apply after all version filtering and config validation
     $filtered_entries = @{}
 
@@ -830,11 +838,11 @@ function main() {
             }
 
             # unspecified versions implies that they key should be applied to all versions
-            $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $winver }
-            $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $winver }
+            $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $windows_build }
+            $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
 
             # check if key meets the version criteria
-            $apply_key = $apply_key -and ($winver -ge $min_version -and $winver -le $max_version)
+            $apply_key = $apply_key -and ($windows_build -ge $min_version -and $windows_build -le $max_version)
 
             if ($apply_key) {
                 if (-not $filtered_entries.Contains($path)) {
@@ -911,7 +919,7 @@ function main() {
 
     $merge_result = Apply-Registry -file_path $registry_file
 
-    Write-Host "$(if ($merge_result) {"error: failed"} else {"info: succeeded"}) merging registry settings for windows $($winver)"
+    Write-Host "$(if ($merge_result) {"error: failed"} else {"info: succeeded"}) merging registry settings for windows $($major_build)"
     return $merge_result
 }
 

@@ -134,10 +134,10 @@ The registry settings are merged with the ``apply-registry.ps1`` script. As for 
 |``disable suggestions in the search box and in search home``|Telemetry and intrusive|``true``|
 |``allocate processor resources primarily to programs``|On client editions of Windows, this has no effect from the default behavior but is changed to ensure consistency between all editions including Windows Server|``true``|
 
-- Open PowerShell as administrator and enter the command below. Replace ``<option>`` with the Windows version you are configuring such as ``7``, ``8``, ``10`` or ``11``
+- Open PowerShell as administrator and enter the command below
 
     ```powershell
-    C:\bin\apply-registry.ps1 -winver <option>
+    C:\bin\apply-registry.ps1
     ```
 
 - If the command fails, try to disable tamper protection in Windows Defender (Windows 10 1909+). If that doesn't work, reboot then re-execute the command again
