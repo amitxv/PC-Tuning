@@ -837,8 +837,8 @@ function main() {
 
     Set-Location $PSScriptRoot
 
-    if (-not (Test-Path "reg-config.json")) {
-        Write-Host "error: reg-config.json not found"
+    if (-not (Test-Path "registry-options.json")) {
+        Write-Host "error: registry-options.json not found"
         return 1
     }
 
@@ -850,9 +850,9 @@ function main() {
     # contains keys to apply after all version filtering and config validation
     $filtered_entries = @{}
 
-    $config = Get-Content -Path "reg-config.json" -Raw | ConvertFrom-Json
+    $config = Get-Content -Path "registry-options.json" -Raw | ConvertFrom-Json
 
-    # track seen options to find unrecognized options in reg-config.json
+    # track seen options to find unrecognized options in registry-options.json
     $seen_options = New-Object System.Collections.Generic.HashSet[string]
     $missing_options = New-Object System.Collections.Generic.HashSet[string]
 
