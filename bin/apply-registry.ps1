@@ -29,7 +29,7 @@ $entries = @{
             "apply_if" = @("disable windows update")
         }
         "DoNotConnectToWindowsUpdateInternetLocations" = @{
-            "min_version" = 9200
+            "min_version" = 9600
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
@@ -148,7 +148,7 @@ $entries = @{
             "apply_if" = @("disable user account control")
         }
         "DisableAutomaticRestartSignOn" = @{
-            "min_version" = 10240
+            "min_version" = 18362
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable sign-in and lock last interactive user after a restart")
@@ -393,7 +393,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search"                                                                 = @{
         "ConnectedSearchUseWeb" = @{
-            "min_version" = 9200
+            "min_version" = 9600
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable search the web or display web results in search")
@@ -523,7 +523,7 @@ $entries = @{
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer"                                                        = @{
         "AllowOnlineTips" = @{
-            "min_version" = 10240
+            "min_version" = 16299
             "value"       = 0
             "type"        = "REG_DWORD"
             "apply_if"    = @(
