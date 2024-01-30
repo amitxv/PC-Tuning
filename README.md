@@ -24,7 +24,7 @@ Before diving into the main content, it is important to learn and understand how
 - **[Mouse Tester](https://github.com/amitxv/MouseTester)** - Polling interval, X/Y counts and more plots against time
 - **[NVIDIA Reflex Analyzer](https://www.nvidia.com/en-gb/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors)** - End-to-end latency
 - **[Frame-Time-Analysis](https://github.com/BoringBoredom/Frame-Time-Analysis)** - Analyze CSV data logged by the programs mentioned above including 1%, 0.1% lows metrics
-- **[Reflex Latency Analyzer Grapher](https://boringboredom.github.io/tools/#/RLA)** - Analyze latency results from RLA and FrameView
+- **[Reflex Latency Analyzer Grapher](https://boringboredom.github.io/tools/nvidialatencygrapher)** - Analyze latency results from RLA and FrameView
 
 ## 1. Physical Setup
 

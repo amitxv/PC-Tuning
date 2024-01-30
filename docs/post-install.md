@@ -881,7 +881,7 @@ Consider using [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-
 
 - Cap your framerate at a multiple of your monitor refresh rate to prevent [frame mistiming](https://www.youtube.com/watch?v=_73gFgNrYVQ)
 
-    - See [FPS Cap Calculator](https://boringboredom.github.io/tools/#/FPSCap)
+    - See [FPS Cap Calculator](https://boringboredom.github.io/tools/fpscapcalculator)
 
 - Choose a value that is close to the minimum fps threshold for increased smoothness
 
