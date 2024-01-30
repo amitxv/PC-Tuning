@@ -46,10 +46,6 @@ Download the latest game ready (not security update) driver using the [advanced 
 - Open CMD and enter the commands below to disable telemetry
 
     ```bat
-    reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d "0" /f
-    ```
-
-    ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup\SendTelemetryData" /t REG_DWORD /d "0" /f
     ```
 
