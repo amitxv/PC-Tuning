@@ -1,3 +1,7 @@
+param(
+    [string]$get_option_keys
+)
+
 $entries = @{
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify"                                                                 = @{
         "DiscontinueEOS" = @{
@@ -777,6 +781,43 @@ function Apply-Registry($file_path) {
 }
 
 function main() {
+    $windows_build = [System.Environment]::OSVersion.Version.Build
+
+    switch ($windows_build) {
+        { $_ -ge 22000 } { $major_build = 11; break }
+        { $_ -ge 10240 } { $major_build = 10; break }
+        { $_ -ge 9600 } { $major_build = 8.1; break }
+        { $_ -ge 9200 } { $major_build = 8; break }
+        { $_ -ge 7600 } { $major_build = 7; break }
+        default {
+            Write-Host "error: unrecognized windows build $($windows_build)"
+        }
+    }
+
+    if ($get_option_keys) {
+        Write-Host "info: showing entries associated with option `"$($get_option_keys)`" on windows $($major_build)`n"
+
+        foreach ($path in $entries.Keys) {
+            foreach ($key_name in $entries[$path].Keys) {
+                $key = $entries[$path][$key_name]
+
+                # unspecified versions implies that they key should be applied to all versions
+                $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $windows_build }
+                $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
+
+                if (-not ($windows_build -ge $min_version -and $windows_build -le $max_version)) { continue }
+
+                if ($key["apply_if"].Contains($get_option_keys)) {
+                    $formatted_path = $path.Replace("HKEY_LOCAL_MACHINE", "HKLM").Replace("HKEY_CURRENT_USER", "HKCU")
+
+                    Write-Host "`"$($formatted_path)`" `"$($key_name)`" $($key["type"]) $($key["value"])"
+                }
+            }
+        }
+
+        return 0
+    }
+
     if (-not (Is-Admin)) {
         Write-Host "error: administrator privileges required"
         return 1
@@ -794,18 +835,7 @@ function main() {
         return 1
     }
 
-    $windows_build = [System.Environment]::OSVersion.Version.Build
 
-    switch ($windows_build) {
-        { $_ -ge 22000 } { $major_build = 11; break }
-        { $_ -ge 10240 } { $major_build = 10; break }
-        { $_ -ge 9600 } { $major_build = 8.1; break }
-        { $_ -ge 9200 } { $major_build = 8; break }
-        { $_ -ge 7600 } { $major_build = 7; break }
-        default {
-            Write-Host "error: unrecognized windows build $($windows_build)"
-        }
-    }
 
     # contains keys to apply after all version filtering and config validation
     $filtered_entries = @{}
