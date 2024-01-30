@@ -180,6 +180,8 @@ Disable features on the taskbar, unpin shortcuts and tiles from the taskbar and 
 
     - [SATA](https://winraid.level1techs.com/t/recommended-ahci-raid-and-nvme-drivers/28310) (required on Windows 7 as enabling MSI on the stock SATA driver will result in a BSOD)
 
+- Other required drivers can be installed with [Snappy Driver Installer Origin](https://www.snappy-driver-installer.org)
+
 ## Time, Language and Region
 
 - Configure settings by typing ``intl.cpl`` and ``timedate.cpl`` in ``Win+R``
