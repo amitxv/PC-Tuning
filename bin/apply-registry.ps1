@@ -808,9 +808,7 @@ function main() {
                 if (-not ($windows_build -ge $min_version -and $windows_build -le $max_version)) { continue }
 
                 if ($key["apply_if"].Contains($get_option_keys)) {
-                    $formatted_path = $path.Replace("HKEY_LOCAL_MACHINE", "HKLM").Replace("HKEY_CURRENT_USER", "HKCU")
-
-                    Write-Host "`"$($formatted_path)`" `"$($key_name)`" $($key["type"]) $($key["value"])"
+                    Write-Host "`"$($path)`" `"$($key_name)`" $($key["type"]) $($key["value"])"
                 }
             }
         }
