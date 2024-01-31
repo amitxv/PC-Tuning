@@ -363,13 +363,13 @@ These are runtimes that are dependencies of applications worldwide.
 
         - Uninstall bloatware in ``Apps -> Apps and Features`` by pressing ``Win+I``
 
-        - In the ``Optional features`` section, uninstall everything apart from ``Microsoft Paint``, ``Notepad`` and ``WordPad`` if applicable (these do not exist in earlier Windows 10 versions)
+        - In the ``Optional features`` section, uninstall everything that you don't need
 
     - Windows 11 Only:
 
         - Uninstall bloatware in ``Apps -> Installed apps`` by pressing ``Win+I``
 
-        - In the ``System -> Optional features`` section, uninstall everything apart from ``WMIC``, ``Notepad (system)`` and ``WordPad``
+        - In the ``System -> Optional features`` section, uninstall everything that you don't need
 
 - If Windows Defender was disabled in the [Merge the Registry Files](#merge-the-registry-files) step,``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD as TrustedInstaller with ``C:\bin\MinSudo.exe --TrustedInstaller --Privileged`` and enter the command below to remove the binary
 
