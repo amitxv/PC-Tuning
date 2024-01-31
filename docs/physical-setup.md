@@ -15,6 +15,8 @@
 
 - A new installation of Windows is recommended after major hardware changes including but not limited to motherboards, CPUs, platforms and chipsets
 
+- See [Higher Airflow Cases | Calypto](https://docs.google.com/spreadsheets/d/14Kt2cAn8a7j2sGXiPGt4GcxpR3RXVcDAx9R5c2M8680/edit#gid=0)
+
 - Avoid multi-CCX Ryzen CPUs due to latency penalty incurred from inter-CCX communication ([1](https://calypto.us), [2](https://www.anandtech.com/show/17585/amd-zen-4-ryzen-9-7950x-and-ryzen-5-7600x-review-retaking-the-high-end/10))
 
 - See [Low Latency Hardware | Calypto](https://calypto.us)
