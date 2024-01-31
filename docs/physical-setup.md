@@ -140,7 +140,7 @@
 
     - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
 
-- Favor the first few accessible ports on the desired XHCI controller. Avoid companion ports which is indicated in the right section of the program and [internal headers](/media/xhci-internal-headers.png) due to potential overhead as data must travel through hubs
+- Favor the first few accessible ports on the desired XHCI controller. Avoid companion ports which is indicated in the right section of the program and [internal headers](/media/xhci-internal-headers.png)
 
 - If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller as they have the potential to interfere with polling consistency ([1](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)). Another controller may be made available by using ports connected to the USB 3.0 front panel header. Always verify with [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)
 
