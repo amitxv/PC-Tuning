@@ -16,7 +16,6 @@
 - [Disable Residual Scheduled Tasks](#disable-residual-scheduled-tasks)
 - [Miscellaneous](#miscellaneous)
 - [Install Runtimes](#install-runtimes)
-- [Disable Features](#disable-features)
 - [Manage Appx Packages (Windows 8+)](#manage-appx-packages-windows-8)
 - [Handle Bloatware](#handle-bloatware)
 - [Install 7-Zip](#install-7-zip)
@@ -303,16 +302,6 @@ These are runtimes that are dependencies of applications worldwide.
 - [WebView](https://developer.microsoft.com/en-us/microsoft-edge/webview2)
 
 - [DirectX](https://www.microsoft.com/en-gb/download/details.aspx?id=8109)
-
-## Disable Features
-
-Disable everything except for the following by typing ``OptionalFeatures`` in ``Win+R``. On Windows Server, this can be accessed via the Server Manager dashboard by navigating to ``Manage -> Remove Roles and Features``.
-
-- See [media/windows7-features-example.png](/media/windows7-features-example.png)
-
-- See [media/windows8+-features-example.png](/media/windows8+-features-example.png)
-
-- See [media/windows-server-features-example.png](/media/windows-server-features-example.png)
 
 ## Manage Appx Packages (Windows 8+)
 
