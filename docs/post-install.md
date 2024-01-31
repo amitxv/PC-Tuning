@@ -519,6 +519,10 @@ Open CMD and enter the commands below.
         powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 0cc5b647-c1df-4637-891a-dec35c318583 100
         ```
 
+        ```bat
+        powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 0cc5b647-c1df-4637-891a-dec35c318584 100
+        ```
+
 - Processor performance time check interval - 5000
 
     - There are a handful of ntoskrnl power management DPCs that are scheduled at a periodic interval to re-evaluate P-States and parked cores. With a static CPU frequency and core parking disabled, these checks become obsolete thus unnecessary DPCs get scheduled. The ``Processor performance time check interval`` setting controls how often these checks are taken place so increasing the setting's value can reduce CPU overhead as significantly fewer DPCs are scheduled. For reference and at the time of checking, the Power Saver, Balanced, High performance power schemes have a default value of 200, 15 and 15 respectively. 5000 is the maximum accepted value. Of course, if a dynamic CPU frequency is used (e.g. Precision Boost Overdrive, Turbo Boost) and parking is enabled, the effects of increasing this value should be evaluated as cores may not be able to boost their frequency in response to workloads as the OS is evaluating the current scenario less often
