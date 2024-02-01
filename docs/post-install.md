@@ -311,6 +311,10 @@ These are runtimes that are dependencies of applications worldwide.
 
     - ``Microsoft.WindowsStore``
 
+- Required packages for Xbox Game Bar. It is highly recommended keeping this package to access the ``Remember this is a game`` in Game Bar to resolve game detection issues
+
+    - ``Microsoft.XboxGamingOverlay``
+
 - Required packages for Xbox Game Pass
 
     - ``Microsoft.XboxIdentityProvider``
@@ -320,12 +324,6 @@ These are runtimes that are dependencies of applications worldwide.
     - ``Microsoft.WindowsStore``
     - ``Microsoft.GamingServices``
     - ``Microsoft.XboxGamingOverlay``
-
-- If applicable, Windows still attempts to open the Xbox Game Bar (``ms-gamingoverlay``) despite removing it. Disabling it in settings resolves this, but there is no option in the UI to do so properly on Windows 11+. Open CMD and enter the command below to disable Game Bar
-
-    ```bat
-    reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
-    ```
 
 ## Handle Bloatware
 
@@ -356,6 +354,16 @@ These are runtimes that are dependencies of applications worldwide.
 - Uninstall any bloatware that exists by typing ``appwiz.cpl`` in ``Win+R``
 
 - Windows 10+ Only:
+
+    - Disable Xbox Game Bar in settings or with the registry keys below to prevent ``GameBar.exe`` from running
+
+        ```bat
+        reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
+        ```
+
+        ```bat
+        reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f
+        ```
 
     - In the start menu, *uninstall* the residual links for applications. Keep in mind that these applications aren't actually installed, they get installed only if the user clicks on them so do not accidentally click on them
 
@@ -893,6 +901,8 @@ Consider using [NVIDIA Reflex](https://www.nvidia.com/en-us/geforce/news/reflex-
 - You can experiment and benchmark different presentation modes to assess which you prefer
 
     - See [Presentation Model | Special K Wiki](https://wiki.special-k.info/en/Presentation_Model)
+
+- If there are no results after searching for the application's binary name in ``HKCU\SYSTEM\GameConfigStore`` within registry, you may need to temporarily enable Xbox Game Bar in settings then tick the ``Remember this is a game`` option. Check whether the entry has been created under the aforementioned registry key
 
 - If you want to use the ``Hardware: Legacy Flip`` presentation mode, tick the ``Disable fullscreen optimizations`` checkbox. If that doesn't work, try running the commands below in CMD and reboot. These registry keys are typically accessed by the game and Windows upon launch
 
