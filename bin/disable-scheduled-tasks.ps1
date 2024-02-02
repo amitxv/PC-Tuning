@@ -35,7 +35,6 @@ function main() {
         "upnp",
         "windows filtering platform",
         "tpm",
-        "systemrestore",
         "speech",
         "spaceport",
         "power efficiency",
