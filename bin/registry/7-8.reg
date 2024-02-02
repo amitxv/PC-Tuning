@@ -1,6 +1,0 @@
-Windows Registry Editor Version 5.00
-
-; disable your pc is out of support message
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify]
-"DiscontinueEOS"=dword:00000001

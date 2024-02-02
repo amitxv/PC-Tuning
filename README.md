@@ -6,7 +6,7 @@
 
 ## Rationale
 
-Windows is notorious for its ever-growing bloatware, third-party telemetry, excessive context switching, interrupts and I/O. This repository was created in hope of standardizing systems for latency-sensitive tasks and minimizing unwanted outgoing traffic. Note that the OS-related sections aren't indented to be followed on existing Windows installations. On the contrary, the mentioned sections will guide you to customize an official Windows ISO using DISM then reinstall Windows which is necessary to eliminate apparent inconsistencies between systems. Users are expected to follow the guidance in the order listed below, starting with [Physical Setup](#1-physical-setup) through to [Post-Install Instructions](#3-post-install-instructions).
+Windows is notorious for its ever-growing bloatware, third-party telemetry, excessive context switching, interrupts and I/O ([1](https://www.youtube.com/watch?v=yVNkMNVv4Y4), [2](https://www.youtube.com/watch?v=hwNAa_OdP1w)). This repository was created in hope of standardizing systems for latency-sensitive tasks and minimizing unwanted outgoing traffic. Note that the OS-related sections aren't indented to be followed on existing Windows installations. On the contrary, the mentioned sections will guide you to customize an official Windows ISO using DISM then reinstall Windows which is necessary to eliminate apparent inconsistencies between systems. Users are expected to follow the guidance in the order listed below, starting with [Physical Setup](#1-physical-setup) through to [Post-Install Instructions](#3-post-install-instructions).
 
 ## Staying Informed
 
@@ -24,7 +24,7 @@ Before diving into the main content, it is important to learn and understand how
 - **[Mouse Tester](https://github.com/amitxv/MouseTester)** - Polling interval, X/Y counts and more plots against time
 - **[NVIDIA Reflex Analyzer](https://www.nvidia.com/en-gb/geforce/news/reflex-latency-analyzer-360hz-g-sync-monitors)** - End-to-end latency
 - **[Frame-Time-Analysis](https://github.com/BoringBoredom/Frame-Time-Analysis)** - Analyze CSV data logged by the programs mentioned above including 1%, 0.1% lows metrics
-- **[Reflex Latency Analyzer Grapher](https://boringboredom.github.io/tools/#/RLA)** - Analyze latency results from RLA and FrameView
+- **[Reflex Latency Analyzer Grapher](https://boringboredom.github.io/tools/nvidialatencygrapher)** - Analyze latency results from RLA and FrameView
 
 ## 1. Physical Setup
 
@@ -46,7 +46,7 @@ Before diving into the main content, it is important to learn and understand how
 
 - [BoringBoredom/PC-Optimization-Hub](https://github.com/BoringBoredom/PC-Optimization-Hub)
 
-- [Calypto's Latency Guide](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4)
+- [Calypto's Latency Guide](https://calypto.us)
 
 - [djdallmann/GamingPCSetup](https://github.com/djdallmann/GamingPCSetup)
 

@@ -13,7 +13,7 @@
 
 ## Strip and Install the Driver
 
-Download the latest game ready (not security update) driver using the [advanced driver search](https://www.nvidia.com/download/find.aspx) page. DCH drivers are [supported on Windows 10 1803+](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq).
+Download the latest game ready (not security update) driver using the [advanced driver search](https://www.nvidia.com/download/find.aspx) page. DCH drivers are supported on Windows 10 1803+ ([1](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq)).
 
 - Extract the driver executable package with 7-Zip and remove all files and folders except the following:
 
@@ -46,10 +46,6 @@ Download the latest game ready (not security update) driver using the [advanced 
 - Open CMD and enter the commands below to disable telemetry
 
     ```bat
-    reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d "0" /f
-    ```
-
-    ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup\SendTelemetryData" /t REG_DWORD /d "0" /f
     ```
 
@@ -79,7 +75,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 - Low Latency Mode - On/Ultra
 
-    > [If a game supports the NVIDIA Reflex Low Latency mode, we recommend using that mode over the Ultra Low Latency mode in the driver. However, if you leave both on, the Reflex Low Latency mode will take higher priority automatically for you](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform)
+    > If a game supports the NVIDIA Reflex Low Latency mode, we recommend using that mode over the Ultra Low Latency mode in the driver. However, if you leave both on, the Reflex Low Latency mode will take higher priority automatically for you ([1](https://www.nvidia.com/en-gb/geforce/news/reflex-low-latency-platform))
 
 - Power management mode - Prefer maximum performance
 
@@ -87,7 +83,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 
 - Texture filtering - Quality - High performance
 
-- Threaded Optimization - [offloads GPU-related processing tasks on the CPU](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
+- Threaded Optimization - offloads GPU-related processing tasks on the CPU ([1](https://tweakguides.pcgamingwiki.com/NVFORCE_8.html)). It usually hurts frame pacing as it takes CPU time away from your real-time application. You should also determine whether you are already CPU bottlenecked if you do choose to enable the setting
 
 - Ensure that settings aren't being overridden for programs in the ``Program Settings`` tab, such as Image Sharpening for some EAC games
 
@@ -119,9 +115,9 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
 - Download and extract [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)
 
-- Disable ``Enable Ansel`` as [it is injected in all games by the display drivers, regardless if the game supports Ansel or not](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel) which may cause conflicts with third-party tools or injectors
+- Disable ``Enable Ansel`` as it is injected in all games by the display drivers, regardless if the game supports Ansel or not which may cause conflicts with third-party tools or injectors ([1](https://www.pcgamingwiki.com/wiki/Nvidia#Ansel))
 
-- If applicable, you can experiment with forcing Resizable BAR on unsupported games for a [potential performance improvement](https://www.youtube.com/watch?v=ZTOtqWTFSK8) by toggling the options below
+- If applicable, you can experiment with forcing Resizable BAR on unsupported games for a potential performance improvement by toggling the options below ([1](https://www.youtube.com/watch?v=ZTOtqWTFSK8))
 
     - rBAR - Feature
 
@@ -129,6 +125,4 @@ Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSe
 
     - rBAR - Size Limit
 
-- Disable ``CUDA - Force P2 State`` to prevent the memory clock frequency from downclocking during CUDA workloads as it enters P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps
-
-    - See [media/CUDA-force-p2-state-analysis](/media/cuda-force-p2-state-analysis.png)
+- Disable ``CUDA - Force P2 State`` to prevent the memory clock frequency from downclocking during CUDA workloads as it enters P-State 2 despite following the [Lock GPU Clocks/P-State 0](#lock-gpu-clocksp-state-0) steps ([1](/media/cuda-force-p2-state-analysis.png))

@@ -81,7 +81,7 @@ function main() {
     }
 
     $firefox = $serializer.DeserializeObject($response)
-    $setup_file = "$($Env:temp)\FirefoxSetup.exe"
+    $setup_file = "$($env:temp)\FirefoxSetup.exe"
 
     $remote_version = if ($version) { $version } else { $firefox["LATEST_FIREFOX_VERSION"] }
     $download_url = "https://releases.mozilla.org/pub/firefox/releases/$($remote_version)/win64/$($lang)/Firefox%20Setup%20$($remote_version).exe"

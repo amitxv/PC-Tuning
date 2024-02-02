@@ -2,6 +2,11 @@
 
 The software listed below is included in the ``bin`` folder.
 
-- [NSudo](https://github.com/M2Team/NSudo) | [LICENSE](https://github.com/M2Team/NSudo/blob/master/License.md)
+## [NanaRun](https://github.com/M2Team/NanaRun)
 
-- [NanaRun](https://github.com/M2Team/NanaRun) | [LICENSE](https://github.com/M2Team/NanaRun/blob/main/License.md)
+- Version: 1.0 Preview 2
+- Purpose: Elevate processes with TrustedInstaller privileges
+- License: <https://github.com/M2Team/NanaRun/blob/main/License.md>
+- SHA256: ``5809182e27bc4145e890a6dbd998a29a24f3b8e161bf7d35cac23160101d81e6``
+- Source: <https://github.com/M2Team/NanaRun/releases/download/1.0.18.0/NanaRun_1.0_Preview2_1.0.18.0.zip>
+- Last Verified: 31/04/2024
