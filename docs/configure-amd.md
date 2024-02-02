@@ -26,14 +26,6 @@
 > [!WARNING]
 > 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
-- Configure the following in the ``Graphics`` section:
-
-    - Texture Filtering Quality - Performance
-
-    - Tessellation Mode - Override application settings
-
-    - Maximum Tessellation Level - Off
-
 - Configure the following in the `Display` section:
 
     - HDCP Support - Disable (required for DRM content)
