@@ -293,6 +293,14 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
     - See [Why Vdroop is good for overclocking and taking a look at Gigabyte's Override Vcore mode | Actually Hardcore Overclocking](https://www.youtube.com/watch?v=zqvNkh4TVw8)
 
+- Overclock your GPU. You may be required to flash a BIOS with a higher power limit
+
+    - Ensure to disable ``CUDA - Force P2 State`` with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress-testing
+
+    - See [A slightly better way to overclock and tweak your Nvidia GPU | Cancerogeno](https://docs.google.com/document/d/14ma-_Os3rNzio85yBemD-YSpF_1z75mZJz1UdzmW8GE/edit)
+
+    - See [LunarPSD/NvidiaOverclocking](https://github.com/LunarPSD/NvidiaOverclocking/blob/main/Nvidia%20Overclocking.md)
+
 - Configure RAM frequency and timings manually for a significant performance improvement ([1](https://kingfaris.co.uk/blog/intel-ram-oc-impact)). XMP does not tune many timings nor does it guarantee stability
 
     - See [Eden’s DDR4 guide](https://cdn.discordapp.com/attachments/328891236918493184/1172922515962724444/DDR4_Guide_V1.2.1.pdf)
@@ -308,14 +316,6 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 - Tune and optionally overclock your display with [Custom Resolution Utility](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU) and test for [frame skipping](https://www.testufo.com/frameskipping)
 
     - Aim for an ``actual`` integer refresh rate such as 60.00/240.00, not 59.94/239.76. Using the exact timing can help achieve this
-
-- Overclock your GPU. You may be required to flash a BIOS with a higher power limit
-
-    - Ensure to disable ``CUDA - Force P2 State`` with [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector) to prevent memory downclocking while stress-testing
-
-    - See [A slightly better way to overclock and tweak your Nvidia GPU | Cancerogeno](https://docs.google.com/document/d/14ma-_Os3rNzio85yBemD-YSpF_1z75mZJz1UdzmW8GE/edit)
-
-    - See [LunarPSD/NvidiaOverclocking](https://github.com/LunarPSD/NvidiaOverclocking/blob/main/Nvidia%20Overclocking.md)
 
 ### Stess-Testing Tools
 
