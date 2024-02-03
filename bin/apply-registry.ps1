@@ -83,10 +83,12 @@ $entries = @{
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update"                                                = @{
-        "IncludeRecommendedUpdates"  = @{
-            "value"    = 0
-            "type"     = "REG_DWORD"
-            "apply_if" = @("disable windows update")
+        # not the same as "Configure Automatic Updates" policy. this key seems to be exclusive to Windows 7
+        "AUOptions"                  = @{
+            "max_version" = 7600
+            "value"       = 1
+            "type"        = "REG_DWORD"
+            "apply_if"    = @("disable windows update")
         }
         "SetupWizardLaunchTime"      = @{
             "type"     = "REG_DELETE"
