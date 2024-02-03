@@ -83,9 +83,9 @@ $entries = @{
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update"                                                = @{
-        # not the same as "Configure Automatic Updates" policy. this key seems to be exclusive to Windows 7
+        # not the same as "Configure Automatic Updates" policy. this key seems to be exclusive to Windows 7/8
         "AUOptions"                  = @{
-            "max_version" = 7600
+            "max_version" = 9200
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
