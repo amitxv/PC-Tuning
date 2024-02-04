@@ -91,12 +91,14 @@ $entries = @{
             "apply_if"    = @("disable windows update")
         }
         "SetupWizardLaunchTime"      = @{
-            "type"     = "REG_DELETE"
-            "apply_if" = @("disable windows update")
+            "max_version" = 9600
+            "type"        = "REG_DELETE"
+            "apply_if"    = @("disable windows update")
         }
         "AcceleratedInstallRequired" = @{
-            "type"     = "REG_DELETE"
-            "apply_if" = @("disable windows update")
+            "max_version" = 9600
+            "type"        = "REG_DELETE"
+            "apply_if"    = @("disable windows update")
         }
     }
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching"                                                          = @{
