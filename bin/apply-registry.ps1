@@ -5,7 +5,7 @@ param(
 $entries = @{
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify"                                                                 = @{
         "DiscontinueEOS" = @{
-            "max_version" = 9200
+            "max_version" = 9600
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable PC is out of support message")
@@ -85,7 +85,7 @@ $entries = @{
     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update"                                                = @{
         # not the same as "Configure Automatic Updates" policy. this key seems to be exclusive to Windows 7/8
         "AUOptions"                  = @{
-            "max_version" = 9200
+            "max_version" = 9600
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable windows update")
@@ -354,14 +354,14 @@ $entries = @{
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell\EdgeUi"                                                     = @{
         "DisableTLCorner" = @{
             "min_version" = 9200
-            "max_version" = 9200
+            "max_version" = 9600
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable corner navigation")
         }
         "DisableTRCorner" = @{
             "min_version" = 9200
-            "max_version" = 9200
+            "max_version" = 9600
             "value"       = 1
             "type"        = "REG_DWORD"
             "apply_if"    = @("disable corner navigation")
