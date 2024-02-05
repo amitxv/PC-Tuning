@@ -5,6 +5,7 @@
 
 ## Table of Contents
 
+- [Preliminary Notes](#preliminary-notes)
 - [OOBE Setup](#oobe-setup)
 - [Unrestricted PowerShell Execution Policy](#unrestricted-powershell-execution-policy)
 - [Merge the Registry Files](#merge-the-registry-files)
@@ -60,6 +61,12 @@
 - [Analyze Event Viewer](#analyze-event-viewer)
 - [Cleanup](#cleanup)
 - [Final Thoughts and Tips](#final-thoughts-and-tips)
+
+## Preliminary Notes
+
+- Avoid applying or using random, unknown or undocumented changes and programs on your system without a comprehensive understanding of what they are changing and what impact they have on security, privacy and performance. Large all-in-one projects and closed-sourced software usually obfuscate changes being made which make it difficult to understand what goes on under the hood
+
+- Try to favor free, open source and reputable software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
 
 ## OOBE Setup
 
@@ -1098,17 +1105,13 @@ This step isn't required, but can help to justify unexplained performance issues
 
 ## Final Thoughts and Tips
 
-- Avoid applying random changes and tweaks, using all-in-one solution programs or fall for the "fps boost" marketing nonsense. If you have a question about a specific option or setting, just ask
-
-- Try to favor free and open source software. Stay away from proprietary software where you can and ensure to scan files with [VirusTotal](https://www.virustotal.com/gui/home/upload) before running them
-
 - Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files
 
 - Kill processes that waste resources such as clients, ``explorer.exe`` and more
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
 
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition. Beware of higher temperatures and power consumption, the CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost)
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition at the expense of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost)
 
     - Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted
 
