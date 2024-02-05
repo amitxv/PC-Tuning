@@ -955,4 +955,6 @@ function main() {
     return $merge_result
 }
 
-exit main
+$_exit_code = main
+Write-Host # new line
+exit $_exit_code
