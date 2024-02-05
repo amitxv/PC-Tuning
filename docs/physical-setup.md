@@ -81,9 +81,21 @@
 
 ## Cooling
 
-- Remove the side panels from your case as they tend to trap heat or consider an open-bench setup (beware of dust)
+- If you plan on overclocking, consider the points below to maximize temperature headroom and overclocking potential. It is important to note that lower temperatures can affect other variables even if you are not overclocking such as CPU boosting behavior as the boost algorithm is affected by temperature
 
-- Delid your CPU and use liquid metal for a significant thermal improvement ([1](https://www.youtube.com/watch?v=rUy3WcDlBXE)). Direct die and lapping are also worth considering however users should assess the risk with carrying out these procedures
+    - Remove the side panels from your case as they tend to trap heat or consider an open-bench setup (beware of dust)
+
+    - Delid your CPU and use liquid metal for a significant thermal improvement ([1](https://www.youtube.com/watch?v=rUy3WcDlBXE)). Direct die and lapping are also worth considering however users should assess the risk with carrying out these procedures
+
+    - Avoid tower and air coolers due to limited cooling potential and lack of space for fans to cool other components such as RAM and VRMs ([1](https://www.youtube.com/watch?v=Vex9_84VpYs))
+
+    - Remove the heat sink from your RAM as they tend to trap heat due to them being attached to the PCB with foam or glue. Get creative with mounting a fan (140mm recommended) over it using cable ties ([1](https://i.imgur.com/7KvbxTv.jpg))
+
+    - Mount a fan over VRMs, CPU backplate, PCH and other hot spots
+
+    - Replace thermal pads with higher-quality ones if the stock pads are inadequate
+
+    - Repaste GPU due to factory application of thermal paste often being inadequate and optionally replace the stock fans with higher quality ones
 
 - Consider contact frames and offset mounts if applicable
 
@@ -91,13 +103,11 @@
 
     - See [Noctua Releases Offset Mounting for Improved Cooling Performance on AMD AM5 CPUs | Noctua](https://noctua.at/en/noctua-releases-offset-mounting-for-improved-cooling-performance-on-amd-am5-processors)
 
-- Assess contact patches on the IHS/Die and cold plate
-
 - Use high-quality thermal interface material and an adequate amount upon application
 
     - See [Best Thermal Paste for CPUs | Tom's Hardware](https://www.tomshardware.com/best-picks/best-thermal-paste)
 
-- Avoid tower and air coolers due to limited cooling potential and lack of space for fans to cool other components such as RAM and VRMs ([1](https://www.youtube.com/watch?v=Vex9_84VpYs))
+- Assess contact patches on the IHS/Die and cold plate
 
 - Mount your AIO cooler properly
 
@@ -109,15 +119,7 @@
 
 - Ensure not to overload the motherboard fan header, especially if you are using splitters
 
-- Remove the heat sink from your RAM and get creative with mounting a fan (140mm recommended) over it using cable ties
-
-- Use an M.2/NVMe heat sink
-
-- Optionally mount a fan over VRMs, CPU backplate, storage devices, PCH and other hot spots
-
-- Replace thermal pads with higher-quality ones if the stock pads are inadequate
-
-- Repaste GPU due to factory application of thermal paste often being inadequate and optionally replace the stock fans with higher quality ones
+- Use an M.2/NVMe heat sink and optionally mount a fan over it
 
 ## Minimize Interference
 
