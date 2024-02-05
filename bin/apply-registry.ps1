@@ -774,7 +774,7 @@ function Is-Admin() {
 }
 
 function Apply-Registry($file_path) {
-    if (!(Test-Path $file_path)) {
+    if (-not (Test-Path $file_path)) {
         return 1
     }
 
