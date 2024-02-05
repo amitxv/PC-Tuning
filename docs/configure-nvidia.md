@@ -43,7 +43,7 @@ Download the latest game ready (not security update) driver using the [advanced 
 
 - Run ``setup.exe`` to install the driver
 
-- Open CMD and enter the commands below to disable telemetry
+- Open CMD and enter the command below to disable telemetry
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup\SendTelemetryData" /t REG_DWORD /d "0" /f
