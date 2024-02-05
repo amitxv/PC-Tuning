@@ -210,23 +210,13 @@ slmgr /ipk <license key>
 slmgr /ato
 ```
 
-## Configure a [Web Browser](https://privacytests.org)
+## Configure a Web Browser
 
-A standard Firefox installation is recommended. Open PowerShell and enter the command below. If you are having problems with the hash check, append ``-skip_hash_check`` to the end of the command.
+Configure a browser of your choice.
 
-```powershell
-C:\bin\install-firefox.ps1
-```
+- See [privacytests.org](https://privacytests.org)
 
-- Install [language dictionaries](https://addons.mozilla.org/en-GB/firefox/language-tools) for spell-checking
-
-- Optionally configure and clean up the interface further in ``Menu Settings -> More tools -> Customize toolbar`` then skim through ``about:preferences``. The [Arkenfox user.js](https://github.com/arkenfox/user.js) can also be imported, see the [wiki](https://github.com/arkenfox/user.js/wiki)
-
-- A less privacy-focused alternative for the Arkenfox user.js, [Betterfox](https://github.com/yokoffing/Betterfox) is also available for users who don't wish to spend time debugging potential issues with Arkenfox
-
-- Ensure to configure file extensions and the default browser in Windows settings
-
-- As updates are disabled, auto-update capabilities are not available. You can create a shortcut to the script by typing ``shell:startup`` in ``Win+R`` to check for updates when Windows starts. Set the window style of the shortcut to minimized
+- See [amitxv/firefox](https://github.com/amitxv/PC-Tuning) for a minimal Firefox installation script
 
 ## Disable Residual Scheduled Tasks
 
