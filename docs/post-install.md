@@ -1152,15 +1152,15 @@ If you take responsibility for damage caused to your operating system, the Power
         foreach ($filePath in $renameFiles) {
             $lastChar = $filePath[-1]
             $renamedFile = "$($filePath)$($lastChar)"
-            $originalFileExists = Test-Path $filePath
-            $renamedFileExists = Test-Path $renamedFile
+            $isOriginalFileExists = Test-Path $filePath
+            $isRenamedFileExists = Test-Path $renamedFile
 
-            if (-not ($renamedFileExists -or $originalFileExists)) {
+            if (-not ($isRenamedFileExists -or $isOriginalFileExists)) {
                 # if neither exist then the binary never existed in the first place
                 continue
             }
 
-            if ($renamedFileExists) {
+            if ($isRenamedFileExists) {
                 Rename-Item $renamedFile $filePath -Force
             } else {
                 Write-Host "info: renaming $($filePath)"
