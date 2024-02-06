@@ -60,6 +60,7 @@
 - [Raise the Clock Interrupt Frequency (Timer Resolution)](#raise-the-clock-interrupt-frequency-timer-resolution)
 - [Analyze Event Viewer](#analyze-event-viewer)
 - [Cleanup](#cleanup)
+- [Disable Desktop Composition (DWM)](#disable-desktop-composition-dwm)
 - [Final Thoughts and Tips](#final-thoughts-and-tips)
 
 ## Preliminary Notes
@@ -1093,25 +1094,19 @@ This step isn't required, but can help to justify unexplained performance issues
     defrag -c -h -o -$
     ```
 
-## Final Thoughts and Tips
+## Disable Desktop Composition (DWM)
 
-- Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as general compatibility is restricted.
 
-- Kill processes that waste resources such as clients, ``explorer.exe`` and more
+Windows 7 had the ability to disable DWM natively within the operating system through the ``Advanced -> Performance -> Settings`` menu by typing ``sysdm.cpl`` in ``Win+R`` but the option was removed in Windows 8 and later. Although it is not necessarily recommended doing so anymore, it can still be achieved.
 
-    - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
+If you take responsibility for damage caused to your operating system, the PowerShell script below can be used to toggle DWM. Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). To clarify, this is more of a note that it is possible to disable DWM in modern editions of Windows rather than a recommendation.
 
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition at the expense of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost)
+<details>
 
-    - Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted
+<summary>toggle-dwm.ps1</summary>
 
-    - Disabling idle states is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device))
-
-        ```bat
-        powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
-        ```
-
-- If you are using Windows 8.1+, the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) presentation mode with your application, and take responsibility for damage caused to your operating system, it is possible (but not necessarily recommended) to disable DWM using the PowerShell script below as the process wastes resources despite there being no composition. To clarify, this is more of a note that it is possible to disable DWM rather than a recommendation. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM
+- Save the source code below to a file named ``toggle-dwm.ps1`` in a text editor
 
     ```powershell
     function Take-Ownership($filePath) {
@@ -1186,3 +1181,23 @@ This step isn't required, but can help to justify unexplained performance issues
     Write-Host # new line
     exit $_exit_code
     ```
+
+</details>
+
+## Final Thoughts and Tips
+
+- Favor tools such as [Bulk-Crap-Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) to uninstall programs as the regular control panel does not remove residual files
+
+- Kill processes that waste resources such as clients, ``explorer.exe`` and more
+
+    - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
+
+- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition at the expense of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost)
+
+    - Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted
+
+    - Disabling idle states is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device))
+
+        ```bat
+        powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
+        ```
