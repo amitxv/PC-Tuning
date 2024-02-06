@@ -1110,3 +1110,79 @@ This step isn't required, but can help to justify unexplained performance issues
         ```bat
         powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
         ```
+
+- If you are using Windows 8.1+, the [Hardware: Legacy Flip](https://github.com/GameTechDev/PresentMon#csv-columns) presentation mode with your application, and take responsibility for damage caused to your operating system, it is possible (but not necessarily recommended) to disable DWM using the PowerShell script below as the process wastes resources despite there being no composition. To clarify, this is more of a note that it is possible to disable DWM rather than a recommendation. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM
+
+    ```powershell
+    function Take-Ownership($filePath) {
+        $takeown_res = (Start-Process "takeown.exe" -ArgumentList "/F $($filePath) /A" -PassThru -WindowStyle Hidden).ExitCode
+        $icacls_res = (Start-Process "icacls.exe" -ArgumentList "$($filePath) /grant Administrators:F" -PassThru -Wait -WindowStyle Hidden).ExitCode -ne 0
+
+        return $takeown_res -bor $icacls_res
+    }
+
+    function main() {
+        $current_principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        $isAdmin = $current_principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+        if (-not $isAdmin) {
+            Write-Host "error: administrator privileges required"
+            return 1
+        }
+
+        $renameFiles = @(
+            "C:\Windows\System32\UIRibbon.dll"
+            "C:\Windows\System32\UIRibbonRes.dll"
+            "C:\Windows\System32\Windows.UI.Logon.dll"
+            "C:\Windows\System32\DWMInit.dll"
+            "C:\Windows\System32\WSClient.dll"
+            "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe"
+        )
+
+        $dwmIfeoPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe"
+        $isDwmDisabled = $null -ne (Get-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -ErrorAction SilentlyContinue)
+
+        if ($isDwmDisabled) {
+            Write-Host "info: enabling dwm"
+            Remove-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -Force
+        } else {
+            Write-Host "info: disabling dwm"
+            New-Item -Path $dwmIfeoPath -Force > $null
+            Set-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -Type String -Value "\`"C:\Windows\System32\rundll32.exe\`"" -Force
+        }
+
+        $error_count = 0
+
+        foreach ($filePath in $renameFiles) {
+            $lastChar = $filePath[-1]
+            $renamedFile = "$($filePath)$($lastChar)"
+            $originalFileExists = Test-Path $filePath
+            $renamedFileExists = Test-Path $renamedFile
+
+            if (-not ($renamedFileExists -or $originalFileExists)) {
+                # if neither exist then the binary never existed in the first place
+                continue
+            }
+
+            if ($renamedFileExists) {
+                Rename-Item $renamedFile $filePath -Force
+            } else {
+                Write-Host "info: renaming $($filePath)"
+                $res = Take-Ownership -filePath $filePath
+
+                if ($res -ne 0) {
+                    Write-Host "error: failed to take ownership of $($filePath)"
+                    $error_count++
+                }
+
+                Rename-Item $filePath $renamedFile -Force
+            }
+        }
+
+        if ($error_count -eq 0) { Restart-Computer -Force }
+    }
+
+    $_exit_code = main
+    Write-Host # new line
+    exit $_exit_code
+    ```
