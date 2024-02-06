@@ -58,9 +58,9 @@
     - [Reserved CPU Sets (Windows 10+)](#reserved-cpu-sets-windows-10)
         - [Use Cases](#use-cases)
 - [Raise the Clock Interrupt Frequency (Timer Resolution)](#raise-the-clock-interrupt-frequency-timer-resolution)
+- [Disable Desktop Composition (DWM)](#disable-desktop-composition-dwm)
 - [Analyze Event Viewer](#analyze-event-viewer)
 - [Cleanup](#cleanup)
-- [Disable Desktop Composition (DWM)](#disable-desktop-composition-dwm)
 - [Final Thoughts and Tips](#final-thoughts-and-tips)
 
 ## Preliminary Notes
@@ -1043,57 +1043,6 @@ Raising the timer resolution helps with precision where constant sleeping or pac
 
     - See [Micro-adjusting timer resolution for higher precision](/docs/research.md#micro-adjusting-timer-resolution-for-higher-precision) for a detailed explanation
 
-## Analyze Event Viewer
-
-> [!WARNING]
-> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
-
-This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method that was used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
-
-- Depending on your configuration, the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section may have disabled logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to their default values which can be found in the ``Services-Enable.bat`` script. Make a note of what the values currently are so that you can restore them later
-
-- Merge the ``ets-enable.reg`` file that was generated in the [Configure Event Trace Sessions](#configure-event-trace-sessions) section as it is required for event logging
-
-- After running the script, use your PC normally for a while then open event viewer by typing ``eventvwr.msc`` in ``Win+R``. Inspect each section for errors and investigate how they can be solved
-
-- Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to their previous value in the ``Services-Disable.bat`` script
-
-## Cleanup
-
-- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs from launching at startup
-
-- Some locations you may want to review for residual files
-
-    - ``"C:\"``
-
-    - ``"C:\Windows\Prefetch"``
-
-    - ``"C:\Windows\Temp"``
-
-    - ``"%userprofile%\AppData\Local\Temp"``
-
-    - ``"%userprofile%\Downloads"``
-
-- Configure Disk Cleanup
-
-    - Open CMD and enter the command below, tick all the boxes except ``DirectX Shader Cache``, press ``OK``
-
-        ```bat
-        cleanmgr /sageset:0
-        ```
-
-    - Run Disk Cleanup
-
-        ```bat
-        cleanmgr /sagerun:0
-        ```
-
-- For reference, the ``ScheduledDefrag`` task that was disabled in the [Disable Residual Scheduled Tasks](#disable-residual-scheduled-tasks) section executes the command below
-
-    ```bat
-    defrag -c -h -o -$
-    ```
-
 ## Disable Desktop Composition (DWM)
 
 > [!WARNING]
@@ -1192,6 +1141,57 @@ If you take responsibility for damage caused to your operating system, the Power
     ```
 
 </details>
+
+## Analyze Event Viewer
+
+> [!WARNING]
+> 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
+
+This step isn't required, but can help to justify unexplained performance issues. From a developer's perspective, we have certainly broken the operating system as we are running minimal services, debloated Windows and more. Code that naturally depends on something that is disabled or removed will throw errors or get stuck in an error loop. We can use event viewer to inspect whether everything is running as it should be. This is the method that was used to identify that the [Software Protection service was attempting to register a restart every 30s](/media/software-protection-error.png) as explained in the [Configure Services and Drivers](#configure-services-and-drivers) section along with a Google search that lead me to the solution.
+
+- Depending on your configuration, the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section may have disabled logging, so the start values for ``Wecsvc`` and ``EventLog`` must be changed to their default values which can be found in the ``Services-Enable.bat`` script. Make a note of what the values currently are so that you can restore them later
+
+- Merge the ``ets-enable.reg`` file that was generated in the [Configure Event Trace Sessions](#configure-event-trace-sessions) section as it is required for event logging
+
+- After running the script, use your PC normally for a while then open event viewer by typing ``eventvwr.msc`` in ``Win+R``. Inspect each section for errors and investigate how they can be solved
+
+- Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to their previous value in the ``Services-Disable.bat`` script
+
+## Cleanup
+
+- Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs from launching at startup
+
+- Some locations you may want to review for residual files
+
+    - ``"C:\"``
+
+    - ``"C:\Windows\Prefetch"``
+
+    - ``"C:\Windows\Temp"``
+
+    - ``"%userprofile%\AppData\Local\Temp"``
+
+    - ``"%userprofile%\Downloads"``
+
+- Configure Disk Cleanup
+
+    - Open CMD and enter the command below, tick all the boxes except ``DirectX Shader Cache``, press ``OK``
+
+        ```bat
+        cleanmgr /sageset:0
+        ```
+
+    - Run Disk Cleanup
+
+        ```bat
+        cleanmgr /sagerun:0
+        ```
+
+- For reference, the ``ScheduledDefrag`` task that was disabled in the [Disable Residual Scheduled Tasks](#disable-residual-scheduled-tasks) section executes the command below
+
+    ```bat
+    defrag -c -h -o -$
+    ```
 
 ## Final Thoughts and Tips
 
