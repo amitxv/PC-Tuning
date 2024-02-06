@@ -1171,6 +1171,14 @@ If you take responsibility for damage caused to your operating system, the Power
                     $error_count++
                 }
 
+                $fileExtension = [System.IO.Path]::GetExtension($filePath)
+
+                if ($fileExtension -eq ".exe") {
+                    $fileNameWithoutExtension = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
+
+                    Get-Process -Name $fileNameWithoutExtension -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+                }
+
                 Rename-Item $filePath $renamedFile -Force
             }
         }
