@@ -1096,6 +1096,7 @@ This step isn't required, but can help to justify unexplained performance issues
 
 ## Disable Desktop Composition (DWM)
 
+> [!WARNING]
 > 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as general compatibility is restricted.
 
 Windows 7 had the ability to disable DWM natively within the operating system through the ``Advanced -> Performance -> Settings`` menu by typing ``sysdm.cpl`` in ``Win+R`` but the option was removed in Windows 8 and later. Although it is not necessarily recommended doing so anymore, it can still be achieved.
