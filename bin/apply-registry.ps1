@@ -2,6 +2,8 @@ param(
     [string]$get_option_keys
 )
 
+$windowsBuild = [System.Environment]::OSVersion.Version.Build
+
 $entries = @{
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify"                                                                 = @{
         "DiscontinueEOS" = @{
@@ -769,60 +771,60 @@ $entries = @{
 }
 
 function Is-Admin() {
-    $current_principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-    return $current_principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    return $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-function Apply-Registry($file_path) {
-    if (-not (Test-Path $file_path)) {
+function Apply-Registry($filePath) {
+    if (-not (Test-Path $filePath)) {
         return 1
     }
 
-    $user_merge_result = (Start-Process "reg.exe" -ArgumentList "import $($file_path)" -PassThru -Wait -WindowStyle Hidden).ExitCode
-    $trustedinstaller_merge_result = [int](.\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $($file_path) > nul 2>&1 && echo 0 || echo 1")
+    $userMergeResult = (Start-Process "reg.exe" -ArgumentList "import $($filePath)" -PassThru -Wait -WindowStyle Hidden).ExitCode
+    $trustedinstallerMergeResult = [int](.\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $($filePath) > nul 2>&1 && echo 0 || echo 1")
 
-    return $user_merge_result -band $trustedinstaller_merge_result
+    return $userMergeResult -band $trustedinstallerMergeResult
 }
 
-function Get-Option-Keys($option_name) {
+function Get-Option-Keys($optionName) {
     foreach ($path in $entries.Keys) {
-        foreach ($key_name in $entries[$path].Keys) {
-            $key = $entries[$path][$key_name]
+        foreach ($keyName in $entries[$path].Keys) {
+            $key = $entries[$path][$keyName]
 
             # unspecified versions implies that they key should be applied to all versions
-            $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $windows_build }
-            $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
+            $minVersion = if ($key.Contains("min_version")) { $key["min_version"] } else { $windowsBuild }
+            $maxVersion = if ($key.Contains("max_version")) { $key["max_version"] } else { $windowsBuild }
 
             # check if key meets the version criteria
-            $is_winver_supported = $windows_build -ge $min_version -and $windows_build -le $max_version
+            $isWinverSupported = $windowsBuild -ge $minVersion -and $windowsBuild -le $maxVersion
 
             # check if registry key is associated with option
-            $is_key_associated = $key["apply_if"].Contains($option_name)
+            $isKeyAssociated = $key["apply_if"].Contains($optionName)
 
-            if ($is_winver_supported -and $is_key_associated) {
-                Write-Host "$($path)`n    $($key_name) $($key["type"]) $($key["value"])`n"
+            if ($isWinverSupported -and $isKeyAssociated) {
+                Write-Host "$($path)`n    $($keyName) $($key["type"]) $($key["value"])`n"
             }
         }
     }
 }
 
 function main() {
-    $windows_build = [System.Environment]::OSVersion.Version.Build
 
     # manually get windows build based on build version
-    switch ($windows_build) {
-        { $_ -ge 22000 } { $major_build = 11; break }
-        { $_ -ge 10240 } { $major_build = 10; break }
-        { $_ -ge 9600 } { $major_build = 8.1; break }
-        { $_ -ge 9200 } { $major_build = 8; break }
-        { $_ -ge 7600 } { $major_build = 7; break }
+    switch ($windowsBuild) {
+        { $_ -ge 22000 } { $majorBuild = 11; break }
+        { $_ -ge 10240 } { $majorBuild = 10; break }
+        { $_ -ge 9600 } { $majorBuild = 8.1; break }
+        { $_ -ge 9200 } { $majorBuild = 8; break }
+        { $_ -ge 7600 } { $majorBuild = 7; break }
         default {
-            Write-Host "error: unrecognized windows build $($windows_build)"
+            Write-Host "error: unrecognized windows build $($windowsBuild)"
+            return 1
         }
     }
 
     if ($get_option_keys) {
-        Write-Host "info: showing entries associated with option `"$($option_name)`" on windows $($major_build)`n"
+        Write-Host "info: showing entries associated with option `"$($get_option_keys)`" on windows $($majorBuild)`n"
 
         Get-Option-Keys -option_name $get_option_keys
         return 0
@@ -846,95 +848,95 @@ function main() {
     }
 
     # contains keys to apply after all version filtering and config validation
-    $filtered_entries = @{}
+    $filteredEntries = @{}
 
     $config = Get-Content -Path "registry-options.json" -Raw | ConvertFrom-Json
 
     # track seen options to find unrecognized options in registry-options.json
-    $seen_options = New-Object System.Collections.Generic.HashSet[string]
-    $undefined_options = New-Object System.Collections.Generic.HashSet[string]
+    $seenOptions = New-Object System.Collections.Generic.HashSet[string]
+    $undefinedOptions = New-Object System.Collections.Generic.HashSet[string]
 
     Write-Host "info: parsing config"
 
     foreach ($path in $entries.Keys) {
-        foreach ($key_name in $entries[$path].Keys) {
-            $key = $entries[$path][$key_name]
+        foreach ($keyName in $entries[$path].Keys) {
+            $key = $entries[$path][$keyName]
 
-            $is_user_apply_key = $false
+            $isUserApplyKey = $false
 
-            foreach ($apply_if_option in $key["apply_if"]) {
+            foreach ($applyIfOption in $key["apply_if"]) {
                 # add option to set in order to keep track of what options have been seen so far
-                $seen_options.Add($apply_if_option)
+                $seenOptions.Add($applyIfOption)
 
                 # check if option is in registry-options.json
-                $is_option_in_config = $config.options.PSObject.Properties.Match($apply_if_option).Count -gt 0
+                $isOptionInConfig = $config.options.PSObject.Properties.Match($applyIfOption).Count -gt 0
 
-                if ($is_option_in_config) {
-                    if ($config.options.$apply_if_option) {
-                        $is_user_apply_key = $true
+                if ($isOptionInConfig) {
+                    if ($config.options.$applyIfOption) {
+                        $isUserApplyKey = $true
                     }
                 } else {
-                    $undefined_options.Add($apply_if_option)
+                    $undefinedOptions.Add($applyIfOption)
                 }
             }
 
             # unspecified versions implies that they key should be applied to all versions
-            $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $windows_build }
-            $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
+            $minVersion = if ($key.Contains("min_version")) { $key["min_version"] } else { $windowsBuild }
+            $maxVersion = if ($key.Contains("max_version")) { $key["max_version"] } else { $windowsBuild }
 
             # check if key meets the version criteria
-            $is_winver_supported = $windows_build -ge $min_version -and $windows_build -le $max_version
+            $isWinverSupported = $windowsBuild -ge $minVersion -and $windowsBuild -le $maxVersion
 
-            if ($is_user_apply_key -and $is_winver_supported) {
+            if ($isUserApplyKey -and $isWinverSupported) {
                 # initialize path if it doesn't exist
-                if (-not $filtered_entries.Contains($path)) {
-                    $filtered_entries.Add($path, @{})
+                if (-not $filteredEntries.Contains($path)) {
+                    $filteredEntries.Add($path, @{})
                 }
 
-                $filtered_entries[$path].Add($key_name, $key)
+                $filteredEntries[$path].Add($keyName, $key)
             }
         }
     }
 
-    $config_errors = 0
+    $configErrors = 0
 
-    foreach ($option in $undefined_options) {
+    foreach ($option in $undefinedOptions) {
         Write-Host "error: `"$($option)`" option missing in config"
-        $config_errors++
+        $configErrors++
     }
 
     foreach ($option in $config.options.PSObject.Properties) {
-        if (-not ($seen_options.Contains($option.Name))) {
+        if (-not ($seenOptions.Contains($option.Name))) {
             Write-Host "error: `"$($option.Name)`" unrecognized in config"
-            $config_errors++
+            $configErrors++
         }
     }
 
-    if ($config_errors -gt 0) {
-        Write-Host "error: resolve $($config_errors) errors in config"
+    if ($configErrors -gt 0) {
+        Write-Host "error: resolve $($configErrors) errors in config"
         return 1
     }
 
     Write-Host "info: creating registry file"
 
-    $has_error = $false
-    $registry_file = "$($env:temp)\tmp.reg"
+    $hasError = $false
+    $registryFile = "$($env:temp)\tmp.reg"
 
     # registry file header and clear previous contents
-    Set-Content -Path $registry_file -Value "Windows Registry Editor Version 5.00`n"
+    Set-Content -Path $registryFile -Value "Windows Registry Editor Version 5.00`n"
 
-    foreach ($path in $filtered_entries.Keys) {
-        Add-Content -Path $registry_file -Value "[$($path)]"
+    foreach ($path in $filteredEntries.Keys) {
+        Add-Content -Path $registryFile -Value "[$($path)]"
 
-        foreach ($key_name in $filtered_entries[$path].Keys) {
-            $key = $filtered_entries[$path][$key_name]
+        foreach ($keyName in $filteredEntries[$path].Keys) {
+            $key = $filteredEntries[$path][$keyName]
 
-            $line = "`"$($key_name)`""
+            $line = "`"$($keyName)`""
 
             switch ($key["type"]) {
                 "REG_DWORD" {
-                    $hex_value = "{0:X8}" -f $key["value"]
-                    $line += "=dword:$($hex_value)"
+                    $hexValue = "{0:X8}" -f $key["value"]
+                    $line += "=dword:$($hexValue)"
                 }
                 "REG_SZ" {
                     $line += "=`"$($key["value"])`""
@@ -943,28 +945,28 @@ function main() {
                     $line += "-"
                 }
                 default {
-                    Write-Host "error: unrecognized type $($key["type"]) for key $($key_name)"
-                    $has_error = $true
+                    Write-Host "error: unrecognized type $($key["type"]) for key $($keyName)"
+                    $hasError = $true
                 }
             }
 
-            Add-Content -Path $registry_file -Value $line
+            Add-Content -Path $registryFile -Value $line
         }
 
         # new line between paths
-        Add-Content -Path $registry_file -Value ""
+        Add-Content -Path $registryFile -Value ""
     }
 
-    if ($has_error) {
+    if ($hasError) {
         return 1
     }
 
-    $merge_result = Apply-Registry -file_path $registry_file
+    $mergeResult = Apply-Registry -filePath $registryFile
 
-    Write-Host "$(if ($merge_result -ne 0) { "error: failed" } else { "info: succeeded" }) merging registry settings for windows $($major_build)"
-    return $merge_result
+    Write-Host "$(if ($mergeResult -ne 0) { "error: failed" } else { "info: succeeded" }) merging registry settings for windows $($majorBuild)"
+    return $mergeResult
 }
 
-$_exit_code = main
+$_exitCode = main
 Write-Host # new line
-exit $_exit_code
+exit $_exitCode
