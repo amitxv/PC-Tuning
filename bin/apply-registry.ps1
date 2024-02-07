@@ -872,9 +872,9 @@ function main() {
             $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
 
             # check if key meets the version criteria
-            $apply_key = $apply_key -and ($windows_build -ge $min_version -and $windows_build -le $max_version)
+            $supported_winver = $windows_build -ge $min_version -and $windows_build -le $max_version
 
-            if ($apply_key) {
+            if ($apply_key -and $supported_winver) {
                 if (-not $filtered_entries.Contains($path)) {
                     $filtered_entries.Add($path, @{ $key_name = $key })
                 } else {
