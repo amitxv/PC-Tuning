@@ -1095,8 +1095,13 @@ If you take responsibility for damage caused to your operating system, the Power
             Remove-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -Force
         } else {
             Write-Host "info: disabling dwm"
-            New-Item -Path $dwmIfeoPath -Force > $null
+            New-Item -Path $dwmIfeoPath -Force 2>&1 > $null
             Set-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -Type String -Value "\`"C:\Windows\System32\rundll32.exe\`"" -Force
+        }
+
+        if (-not $?) {
+            Write-Host "error: failed to handle Debugger key"
+            return 1
         }
 
         $error_count = 0
