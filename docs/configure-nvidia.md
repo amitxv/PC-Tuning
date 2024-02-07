@@ -100,7 +100,7 @@ HDCP can be disabled with the [following registry key](https://github.com/djdall
 > [!WARNING]
 > 💻 If you are configuring a system for general-purpose use such as for work or school, then skip this step as it is not required.
 
-Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to the one that corresponds to the correct NVIDIA GPU. To reduce power consumption while your real-time application isn't running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate).
+Force P-State 0 with the [registry key](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINDRIVERS/README.md#q-is-there-a-registry-setting-that-can-force-your-display-adapter-to-remain-at-its-highest-performance-state-pstate-p0) below (reboot required). Ensure to change the driver key to the one that corresponds to the correct NVIDIA GPU. To reduce power consumption while your real-time application isn't running, use [limit-nvpstate](https://github.com/amitxv/limit-nvpstate). This mitigates the undesirable delay to execute new instructions when the unit enters a deeper power-saving state at the expense of higher idle temperatures and power consumption
 
 - See [media/find-driver-key-example.png](/media/find-driver-key-example.png) to obtain the correct driver key in Device Manager
 
