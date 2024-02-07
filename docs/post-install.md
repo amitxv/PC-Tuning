@@ -220,7 +220,7 @@ Configure a browser of your choice.
 
 - See [privacytests.org](https://privacytests.org)
 
-- See [amitxv/firefox](https://github.com/amitxv/PC-Tuning) for a minimal Firefox installation script
+- See [amitxv/firefox](https://github.com/amitxv/firefox) for a minimal Firefox installation script
 
 ## Disable Residual Scheduled Tasks
 
