@@ -60,6 +60,9 @@
 - [Raise the Clock Interrupt Frequency (Timer Resolution)](#raise-the-clock-interrupt-frequency-timer-resolution)
 - [Disable Desktop Composition (DWM)](#disable-desktop-composition-dwm)
 - [Analyze Event Viewer](#analyze-event-viewer)
+- [CPU Idle States/C-State 0](#cpu-idle-statesc-state-0)
+    - [Disable Idle States](#disable-idle-states)
+    - [Enable Idle States (default)](#enable-idle-states-default)
 - [Cleanup](#cleanup)
 - [Final Thoughts and Tips](#final-thoughts-and-tips)
 
@@ -1157,6 +1160,22 @@ This step isn't required, but can help to justify unexplained performance issues
 
 - Once finished, set the ``Wecsvc`` and ``EventLog`` start values back to their previous value in the ``Services-Disable.bat`` script
 
+## CPU Idle States/C-State 0
+
+Disabling idle states force C-State 0, which can be seen in [HWiNFO](https://www.hwinfo.com), and is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)). Forcing C-State 0 mitigates the undesirable delay to execute new instructions on a CPU that has entered a deeper power-saving state at the expense of higher idle temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already assessed that in [docs/physical-setup.md](/docs/physical-setup.md). If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost). Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted. The commands below can be used to toggle idle states.
+
+### Disable Idle States
+
+```bat
+powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
+```
+
+### Enable Idle States (default)
+
+```bat
+powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 0 && powercfg /setactive scheme_current
+```
+
 ## Cleanup
 
 - Use [Autoruns](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns) to remove any unwanted programs from launching at startup
@@ -1200,13 +1219,3 @@ This step isn't required, but can help to justify unexplained performance issues
 - Kill processes that waste resources such as clients, ``explorer.exe`` and more
 
     - Use ``Ctrl+Shift+Esc`` to open process explorer then use ``File -> Run`` to start the ``explorer.exe`` shell again
-
-- Consider disabling idle states to force C-State 0 with the commands below before using your real-time application then enable idle after closing it. Forcing C-State 0 will mitigate jitter due to the process of state transition at the expense of higher temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already dealt with that in [docs/physical-setup.md](/docs/physical-setup.md). A value of 0 corresponds to idle enabled, 1 corresponds to idle disabled. If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost)
-
-    - Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted
-
-    - Disabling idle states is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device))
-
-        ```bat
-        powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
-        ```
