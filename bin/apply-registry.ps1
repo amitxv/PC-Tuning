@@ -837,8 +837,6 @@ function main() {
         return 1
     }
 
-
-
     # contains keys to apply after all version filtering and config validation
     $filtered_entries = @{}
 
