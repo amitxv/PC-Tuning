@@ -784,9 +784,32 @@ function Apply-Registry($file_path) {
     return $user_merge_result -band $trustedinstaller_merge_result
 }
 
+function Get-Option-Keys($option_name) {
+    foreach ($path in $entries.Keys) {
+        foreach ($key_name in $entries[$path].Keys) {
+            $key = $entries[$path][$key_name]
+
+            # unspecified versions implies that they key should be applied to all versions
+            $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $windows_build }
+            $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
+
+            # check if key meets the version criteria
+            $is_winver_supported = $windows_build -ge $min_version -and $windows_build -le $max_version
+
+            # check if registry key is associated with option
+            $is_key_associated = $key["apply_if"].Contains($option_name)
+
+            if ($is_winver_supported -and $is_key_associated) {
+                Write-Host "$($path)`n    $($key_name) $($key["type"]) $($key["value"])`n"
+            }
+        }
+    }
+}
+
 function main() {
     $windows_build = [System.Environment]::OSVersion.Version.Build
 
+    # manually get windows build based on build version
     switch ($windows_build) {
         { $_ -ge 22000 } { $major_build = 11; break }
         { $_ -ge 10240 } { $major_build = 10; break }
@@ -799,24 +822,9 @@ function main() {
     }
 
     if ($get_option_keys) {
-        Write-Host "info: showing entries associated with option `"$($get_option_keys)`" on windows $($major_build)`n"
+        Write-Host "info: showing entries associated with option `"$($option_name)`" on windows $($major_build)`n"
 
-        foreach ($path in $entries.Keys) {
-            foreach ($key_name in $entries[$path].Keys) {
-                $key = $entries[$path][$key_name]
-
-                # unspecified versions implies that they key should be applied to all versions
-                $min_version = if ($key.Contains("min_version")) { $key["min_version"] } else { $windows_build }
-                $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
-
-                if (-not ($windows_build -ge $min_version -and $windows_build -le $max_version)) { continue }
-
-                if ($key["apply_if"].Contains($get_option_keys)) {
-                    Write-Host "`"$($path)`" `"$($key_name)`" $($key["type"]) $($key["value"])"
-                }
-            }
-        }
-
+        Get-Option-Keys -option_name $get_option_keys
         return 0
     }
 
@@ -852,18 +860,21 @@ function main() {
         foreach ($key_name in $entries[$path].Keys) {
             $key = $entries[$path][$key_name]
 
-            $apply_key = $false
+            $is_user_apply_key = $false
 
             foreach ($apply_if_option in $key["apply_if"]) {
                 # add option to set in order to keep track of what options have been seen so far
                 $seen_options.Add($apply_if_option)
 
-                $is_option_defined = $config.options.PSObject.Properties.Match($apply_if_option).Count -gt 0
+                # check if option is in registry-options.json
+                $is_option_in_config = $config.options.PSObject.Properties.Match($apply_if_option).Count -gt 0
 
-                if (-not $is_option_defined) {
-                    $undefined_options.Add($apply_if_option)
+                if ($is_option_in_config) {
+                    if ($config.options.$apply_if_option) {
+                        $is_user_apply_key = $true
+                    }
                 } else {
-                    $apply_key = $config.options.$apply_if_option
+                    $undefined_options.Add($apply_if_option)
                 }
             }
 
@@ -872,14 +883,15 @@ function main() {
             $max_version = if ($key.Contains("max_version")) { $key["max_version"] } else { $windows_build }
 
             # check if key meets the version criteria
-            $supported_winver = $windows_build -ge $min_version -and $windows_build -le $max_version
+            $is_winver_supported = $windows_build -ge $min_version -and $windows_build -le $max_version
 
-            if ($apply_key -and $supported_winver) {
+            if ($is_user_apply_key -and $is_winver_supported) {
+                # initialize path if it doesn't exist
                 if (-not $filtered_entries.Contains($path)) {
-                    $filtered_entries.Add($path, @{ $key_name = $key })
-                } else {
-                    $filtered_entries[$path].Add($key_name, $key)
+                    $filtered_entries.Add($path, @{})
                 }
+
+                $filtered_entries[$path].Add($key_name, $key)
             }
         }
     }
@@ -949,7 +961,7 @@ function main() {
 
     $merge_result = Apply-Registry -file_path $registry_file
 
-    Write-Host "$(if ($merge_result) {"error: failed"} else {"info: succeeded"}) merging registry settings for windows $($major_build)"
+    Write-Host "$(if ($merge_result -ne 0) { "error: failed" } else { "info: succeeded" }) merging registry settings for windows $($major_build)"
     return $merge_result
 }
 
