@@ -306,13 +306,13 @@ As a reminder, your NIC driver may not be packaged with Windows so either downlo
 
 ### Install using a USB storage device
 
-- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support if it isn't enabled in BIOS, then select your USB storage and click install
+- Download [Ventoy](https://github.com/ventoy/Ventoy/releases) and launch ``Ventoy2Disk.exe``. Navigate to the option menu and select the correct partition style and disable secure boot support, then select your USB storage and click install
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
 
 - Move your Windows ISO into the USB storage in File Explorer
 
-- Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual. You may need to enroll a key if secure boot is enabled ([1](https://www.ventoy.net/en/doc_secure.html))
+- If Secure Boot is enabled, temporarily disable it for the installation process. Boot into Ventoy on your USB in BIOS and select your Windows ISO. Continue with setup as per usual. Once setup has finished, Secure Boot can be re-enabled if you temporarily disabled it
 
 - When installing Windows 8 with a USB, you may be required to enter a key. Use the generic key ``GCRJD-8NW9H-F2CDX-CCM8D-9D6T9`` to bypass this step (this does not activate Windows)
 

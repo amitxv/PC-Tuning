@@ -227,7 +227,7 @@
 
     - Windows 7 GPT/UEFI requires CSM and OpROMs unless you are using [uefiseven](https://github.com/manatails/uefiseven)
 
-- Disable Secure Boot. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
+- Disable Secure Boot. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled. If something fails due to Secure Boot being enabled such as bootable tools, it is recommended to temporarily disable it rather than resorting to alternative solutions such as enrolling a key as they can lead to issues
 
     - Verify Secure Boot status by typing ``msinfo32`` in ``Win+R``
 
