@@ -132,7 +132,7 @@ The registry settings are merged with the ``apply-registry.ps1`` script. As for 
 |``show file extensions``|Security risk|``true``|
 |``disable corner navigation``|Disables [corner navigation](https://edu.gcfglobal.org/en/windows8/getting-started-with-windows-8/1) which may become intrusive|``true``|
 |``disable search the web or display web results in search``|Telemetry|``true``|
-|``disable notifications network usage``|Telemetry, polls constantly prevents CPU overhead ([1](https://learn.microsoft.com/en-gb/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#10-live-tiles))|``true``|
+|``disable notifications network usage``|Telemetry, prevents CPU overhead due to polling ([1](https://learn.microsoft.com/en-gb/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#10-live-tiles))|``true``|
 |``disable sign-in and lock last interactive user after a restart``|Intrusive|``true``|
 |``disable gamebarpresencewriter``|Prevents CPU overhead as the process runs constantly in the background even if the user disables Game Bar in settings|``true``|
 |``disable telemetry``|Telemetry|``true``|
