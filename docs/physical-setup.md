@@ -138,13 +138,11 @@
 
 - Familiarize yourself with which USB ports correspond to given XHCI controllers as some ports shown in [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) may not be physically accessible. It is recommended to plug a device into every accessible port on your system including but not limited to the motherboard I/O ports then take note of which controller and port they appear in USB Device Tree Viewer
 
-- Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com) ([1](https://hexus.net/tech/features/mainboard/131789-amd-ryzen-3000-supporting-x570-chipset-examined)). It is usually the XHCI controller that is connected to an ``Internal PCIe Bridge to bus`` which is also labeled with the CPU architecture
+- Firstly, decide which XHCI controllers you would like to plug devices into. As for which XHCI controllers should be used, that is up to you. If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller as they have the potential to interfere with polling consistency ([1](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)). Another controller may be made available by using ports connected to the USB 3.0 front panel header. Always verify with [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html). Consider populating ones that are closest to the root of the tree first
 
-    - See [media/ryzen-xhci-controller.png](/media/ryzen-xhci-controller.png)
+    - Ryzen systems have an XHCI controller that is directly connected to the CPU which can be identified under the ``PCIe Bus`` category in [HWiNFO](https://www.hwinfo.com) ([1](https://hexus.net/tech/features/mainboard/131789-amd-ryzen-3000-supporting-x570-chipset-examined)). It is usually the XHCI controller that is connected to an ``Internal PCIe Bridge to bus`` which is also labeled with the CPU architecture ([see this for an example](/media/ryzen-xhci-controller.png))
 
-- Favor the first few accessible ports on the desired XHCI controller. Avoid companion ports which is indicated in the right section of the program and [internal headers](/media/xhci-internal-headers.png)
-
-- If you have more than one XHCI controller, you can isolate devices such as your mouse, keyboard and audio devices (if any) onto another controller as they have the potential to interfere with polling consistency ([1](https://forums.blurbusters.com/viewtopic.php?f=10&t=7618#p58449)). Another controller may be made available by using ports connected to the USB 3.0 front panel header. Always verify with [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)
+- Now that you have determined which XHCI controllers to plug devices into, decide which ports on the XHCI controller will be used to plug the device into. Typically favor the first few accessible ports on the desired XHCI controller and avoid companion ports which is indicated in the right section of the program along with [internal headers](/media/xhci-internal-headers.png)
 
 ## Configure Peripherals
 
