@@ -106,7 +106,7 @@ Set-ExecutionPolicy Unrestricted
 The registry settings are merged with the ``apply-registry.ps1`` script. As for which options get applied as outlined in the table below, this can be customized by editing ``C:\bin\registry-options.json`` in a text editor and setting properties to either ``true`` or ``false``. You can safely backup the config file so that you don't need to modify it each time.
 
 > [!IMPORTANT]
-> The script does not revert options if re-run. For example, if the script was run with an option set to ``true``, then running the script with a given option set to ``false`` will not revert the changed made as the script is unaware of the previous state of the registry keys associated with the option.
+> The script does not revert options if re-run. For example, if the script was run with an option set to ``true``, then running the script with a given option set to ``false`` will not revert the changed made as the script is unaware of the previous state of the registry keys associated with the option. This functionality may be implemented in the future but for now, use the ``-get_option_keys <option>`` argument with the script to get all relevant keys for a given option so that you can be reverted manually
 
 |Option|Notes|Default Value|
 |---|---|---|
