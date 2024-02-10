@@ -66,7 +66,7 @@ Determine what services are dependencies of the functionality that is broken, th
 12. The service's dependencies must also be enabled if there are any. [service-list-builder](https://github.com/amitxv/service-list-builder) can be used to get the entire dependency tree for a given service with the command below
 
     ```bat
-    service-list-builder.exe --get_dependency <service> --kernel_mode
+    service-list-builder.exe --get_dependencies <service> --kernel_mode
     ```
 
 13. Get the default start value for each service that you noted down from the ``Services-Enable.bat`` script, then edit the start value in the ``Services-Disable.bat`` script for the corresponding service. Run the ``Services-Disable.bat`` script with NSudo to check whether the functionality is working. If it is not working, return to step 1 and repeat the entire process with the newly edited/latest ``Services-Disable.bat`` script. This is because a service that is required for the functionality might not have any service dependencies
