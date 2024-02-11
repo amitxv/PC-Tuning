@@ -1063,15 +1063,15 @@ If you take responsibility for damage caused to your operating system, the Power
 
     ```powershell
     function Take-Ownership($filePath) {
-        $takeown_res = (Start-Process "takeown.exe" -ArgumentList "/F $($filePath) /A" -PassThru -WindowStyle Hidden).ExitCode
-        $icacls_res = (Start-Process "icacls.exe" -ArgumentList "$($filePath) /grant Administrators:F" -PassThru -Wait -WindowStyle Hidden).ExitCode -ne 0
+        $takeownResult = (Start-Process "takeown.exe" -ArgumentList "/F $($filePath) /A" -PassThru -WindowStyle Hidden).ExitCode
+        $icaclsResult = (Start-Process "icacls.exe" -ArgumentList "$($filePath) /grant Administrators:F" -PassThru -Wait -WindowStyle Hidden).ExitCode -ne 0
 
-        return $takeown_res -bor $icacls_res
+        return $takeownResult -bor $icaclsResult
     }
 
     function main() {
-        $current_principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-        $isAdmin = $current_principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+        $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
         if (-not $isAdmin) {
             Write-Host "error: administrator privileges required"
@@ -1104,7 +1104,7 @@ If you take responsibility for damage caused to your operating system, the Power
             return 1
         }
 
-        $error_count = 0
+        $errorCount = 0
 
         foreach ($filePath in $renameFiles) {
             $lastChar = $filePath[-1]
@@ -1125,7 +1125,7 @@ If you take responsibility for damage caused to your operating system, the Power
 
                 if ($res -ne 0) {
                     Write-Host "error: failed to take ownership of $($filePath)"
-                    $error_count++
+                    $errorCount++
                 }
 
                 $fileExtension = [System.IO.Path]::GetExtension($filePath)
@@ -1140,12 +1140,12 @@ If you take responsibility for damage caused to your operating system, the Power
             }
         }
 
-        if ($error_count -eq 0) { Restart-Computer -Force }
+        if ($errorCount -eq 0) { Restart-Computer -Force }
     }
 
-    $_exit_code = main
+    $_exitCode = main
     Write-Host # new line
-    exit $_exit_code
+    exit $_exitCode
     ```
 
 </details>
