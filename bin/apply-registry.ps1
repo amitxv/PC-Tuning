@@ -826,7 +826,7 @@ function main() {
     if ($get_option_keys) {
         Write-Host "info: showing entries associated with option `"$($get_option_keys)`" on windows $($majorBuild)`n"
 
-        Get-Option-Keys -option_name $get_option_keys
+        Get-Option-Keys -optionName $get_option_keys
         return 0
     }
 
