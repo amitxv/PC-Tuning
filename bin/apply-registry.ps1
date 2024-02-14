@@ -920,7 +920,7 @@ function main() {
     Write-Host "info: creating registry file"
 
     $hasError = $false
-    $registryFile = "$($env:temp)\tmp.reg"
+    $registryFile = "$($env:TEMP)\tmp.reg"
 
     # registry file header and clear previous contents
     Set-Content -Path $registryFile -Value "Windows Registry Editor Version 5.00`n"
