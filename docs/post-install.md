@@ -1003,7 +1003,7 @@ start /affinity 0x6 notepad.exe
 Sometimes, the processes that you would like to set an affinity mask to are already running, so the previous command is not applicable here. As a random example, the command below sets the affinity mask of the ``svchost.exe`` and ``audiodg.exe`` processes to CPU 3. Use this example to create a PowerShell script then have it run at startup by placing a shortcut in ``shell:startup`` by typing ``shell:startup`` in ``Win+R``. Set the window style of the shortcut to minimized.
 
 ```powershell
-Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Object {$_.ProcessorAffinity=0x8}
+Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Object { $_.ProcessorAffinity=0x8 }
 ```
 
 ### Reserved CPU Sets (Windows 10+)
