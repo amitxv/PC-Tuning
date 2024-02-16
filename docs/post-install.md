@@ -380,12 +380,6 @@ These are runtimes that are dependencies of applications worldwide.
 
         - In the ``System -> Optional features`` section, uninstall everything that you don't need
 
-- If Windows Defender was disabled in the [Merge the Registry Files](#merge-the-registry-files) step,``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD as TrustedInstaller with ``C:\bin\MinSudo.exe --TrustedInstaller --Privileged`` and enter the command below to remove the binary
-
-    ```bat
-    taskkill /f /im smartscreen.exe > nul 2>&1 & ren C:\Windows\System32\smartscreen.exe smartscreen.exee
-    ```
-
 - You can use Task Manager to check for residual bloatware that is running in the background and possibly create an issue on the repository so that it can be reviewed
 
 ## Install 7-Zip
