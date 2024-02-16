@@ -942,7 +942,7 @@ function main() {
                     $line += "=`"$($key["value"])`""
                 }
                 "REG_DELETE" {
-                    $line += "-"
+                    $line += "=-"
                 }
                 default {
                     Write-Host "error: unrecognized type $($key["type"]) for key $($keyName)"
