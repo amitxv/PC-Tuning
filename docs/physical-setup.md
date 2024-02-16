@@ -319,30 +319,14 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 
 ### Stess-Testing Tools
 
+- [StresKit](https://github.com/amitxv/StresKit)
+
 - Linpack
-
+    - [StresKit](https://github.com/amitxv/StresKit)'s Linpack
     - [Linpack-Extended](https://github.com/BoringBoredom/Linpack-Extended)
-
-    - [PorteusLinpack Bootable by SlovenianSlobodan#9859](https://drive.google.com/file/d/1MgHcZIoLth-i50o8pYF8XPR1kG1pw0y3/view?usp=sharing)
-
-        - Login is root, password is toor
-
-        - The default config is 100 trials of 10 GB problem size. To customize the config, type ``vi lininput_xeon64``. See [this video](https://www.youtube.com/watch?v=vo2FXvPkcEA) for a basic overview of the vi editor
-
-        - Use the [sample config](https://raw.githubusercontent.com/BoringBoredom/Linpack-Extended/master/dependencies/linpack/misc/lininput_xeon64) as an example to chain multiple tests
-
-        - To run the test, type ``./runme_xeon64``
-
-        - To access sensors while the test is running, press ``Ctrl+Alt+F2`` to switch to TTY 2 then type ``./sensors``. Use ``Ctrl+Alt+F1`` to switch back to TTY 1 to view the output of the test
-
-        - ``lin_xeon64.txt`` is overwritten with the results. Use ``vi lin_xeon64.txt`` to open it in the vi editor so that you can freely scroll through the trials
-
-    - [Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme) - Outdated binaries
-
-    - Use a range of [problem sizes](https://github.com/BoringBoredom/Linpack-Extended/blob/master/leading%20dimensions.html)
-
+    - [Linpack Xtreme Bootable](https://www.techpowerup.com/download/linpack-xtreme)
+    - Use a range of memory sizes
     - Residuals should match, otherwise, it is a sign of instability
-
     - GFLOP variation should be minimal
 
 - [Prime95](https://www.mersenne.org/download)
@@ -354,9 +338,7 @@ Ensure that all of your hardware is stable before configuring a new operating sy
 - [Memory Testing Software](https://github.com/integralfx/MemTestHelper/blob/oc-guide/DDR4%20OC%20Guide.md#memory-testing-software)
 
     - [HCI](https://hcidesign.com/memtest)
-
     - [MemTest86](https://www.memtest86.com) (bootable)
-
     - [MemTest86+](https://memtest.org) (bootable)
 
 - [UNIGINE Superposition](https://benchmark.unigine.com/superposition)
