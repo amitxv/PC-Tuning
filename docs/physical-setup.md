@@ -89,7 +89,7 @@
 
     - Avoid tower and air coolers due to limited cooling potential and lack of space for fans to cool other components such as RAM and VRMs ([1](https://www.youtube.com/watch?v=Vex9_84VpYs))
 
-    - Remove the heat sink from your RAM as they tend to trap heat due to them being attached to the PCB with foam or glue. Get creative with mounting a fan (140mm recommended) over it using cable ties ([1](https://i.imgur.com/7KvbxTv.jpg))
+    - Remove the heat sink from your RAM as they tend to trap heat due to them being attached to the PCB with foam or glue ([1](https://i.imgur.com/7KvbxTv.jpg)). Replace them with higher quality heat sinks and pads as hotspots can incur with naked RAM. Get creative with mounting a fan (140mm recommended) over them using cable ties
 
     - Mount a fan over VRMs, CPU backplate, PCH and other hot spots
 
