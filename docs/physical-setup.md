@@ -233,7 +233,7 @@
 
 - Disable Spread Spectrum and ensure BCLK frequency is close to the desired value as possible (e.g. 100.00MHz not 99.97MHz) in [HWiNFO](https://www.hwinfo.com)/[CPU-Z](https://www.cpuid.com/softwares/cpu-z.html)
 
-- Disable Legacy USB Support as it generates unnecessary SMIs ([1](https://patents.google.com/patent/US6067589)). You may need to turn this on to install a new operating system or to access BIOS
+- Disable Legacy USB Support as it generates unnecessary SMIs ([1](https://patents.google.com/patent/US6067589), [2](https://www.kernel.org/doc/Documentation/x86/usb-legacy-support.txt)). You may need to turn this on to install a new operating system or to access BIOS
 
 - Disable XHCI Hand-off
 
