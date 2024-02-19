@@ -768,14 +768,6 @@ $entries = @{
             "apply_if" = @("allocate processor resources primarily to programs")
         }
     }
-    "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\smartscreen.exe"                          = @{
-        "Debugger" = @{
-            "min_version" = 14393
-            "value"       = "\`"\`""
-            "type"        = "REG_SZ"
-            "apply_if"    = @("disable windows defender")
-        }
-    }
 }
 
 function Is-Admin() {
