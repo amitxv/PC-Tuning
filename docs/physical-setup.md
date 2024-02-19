@@ -213,7 +213,7 @@
 
 - Disable unnecessary devices such as WLAN, Bluetooth, High Definition Audio (if you aren't using motherboard audio) controllers and unused USB ports (refer to [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html)), PCIe slots, iGPU, SATA and RAM slots
 
-- Disable Trusted Platform Module. On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
+- Disable Trusted Platform Module as it may cause the system to enter SMM via SMI ([1](https://youtu.be/X72LgcMpM9k?si=A5Kl5NmU5f1WzZP4&t=2060)). On Windows 11, a minority of anti-cheats (Vanguard, FACEIT) require it to be enabled
 
     - Verify TPM status by typing ``tpm.msc`` in ``Win+R``
 
