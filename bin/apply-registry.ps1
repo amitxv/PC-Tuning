@@ -802,7 +802,7 @@ function Get-Option-Keys($optionName) {
             $isKeyAssociated = $key["apply_if"].Contains($optionName)
 
             if ($isWinverSupported -and $isKeyAssociated) {
-                Write-Host "$($path)`n    $($keyName) $($key["type"]) $($key["value"])`n"
+                Write-Host "$($path)`n    $(if ($keyName -eq "@") { "Default" } else { $keyName } ) $($key["type"]) $($key["value"])`n"
             }
         }
     }
