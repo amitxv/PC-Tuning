@@ -931,7 +931,12 @@ function main() {
         foreach ($keyName in $filteredEntries[$path].Keys) {
             $key = $filteredEntries[$path][$keyName]
 
-            $line = "`"$($keyName)`""
+            # default key does not have quotes
+            if ($keyName -eq "@") {
+                $line = "@"
+            } else {
+                $line = "`"$($keyName)`""
+            }
 
             switch ($key["type"]) {
                 "REG_DWORD" {
