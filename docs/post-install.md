@@ -853,7 +853,7 @@ As an example, 1ms IMOD interval with an 8kHz mouse is already problematic becau
 
 - See [How to persistently disable XHCI Interrupt Moderation | BoringBoredom](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/xhci%20imod/xhci%20imod.md)
 
-- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to load the [RWEverything](http://rweverything.com) driver however a handful of in-game anticheats do not adhere to disabling the blocklist (e.g. CS2, THE FINALS)
+- Microsoft Vulnerable Driver Blocklist may need to be disabled with the command below in order to load the [RWEverything](http://rweverything.com) driver however a handful of in-game anti-cheats do not adhere to disabling the blocklist (e.g. CS2, THE FINALS)
 
     ```bat
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f
@@ -984,7 +984,7 @@ There are several methods to set affinities for processes. One of which is Task 
 
 - In some cases, process can be protected so specifying the affinity may fail. To work around this, you can try specifying the affinity for the parent processes which will cause the child process to inherit the affinity when spawned. As an example, a game launcher is usually the parent process of a game. [Process Explorer's](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer) process tree can be used to identify parent and child processes
 
-    - [Process Hacker](https://processhacker.sourceforge.io) and [WindowsD](https://github.com/katlogic/WindowsD) can bypass several process-level protections through exploits but is not advised as they interfere with anticheats
+    - [Process Hacker](https://processhacker.sourceforge.io) and [WindowsD](https://github.com/katlogic/WindowsD) can bypass several process-level protections through exploits but is not advised as they interfere with anti-cheats
 
 - For modern Intel and AMD (3D V-Cache) systems, this step is especially required so read carefully. The points regarding manually managing per-CPU load in the [Install Drivers](#install-drivers) and [Configure Power Options](#configure-power-options) sections will be discussed in the current and next section. [ReservedCpuSets](#use-cases) will be used as a technique to manually accomplish what the chipset drivers and default power options try to do out of the box. The advantages of manual management have already been discussed in the mentioned sections (minimizing overhead)
 

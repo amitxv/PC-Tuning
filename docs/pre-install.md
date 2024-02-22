@@ -38,6 +38,8 @@ Configure a [dual-boot](https://en.wikipedia.org/wiki/Multi-booting) to separate
     |NVIDIA 40 series|Win10 1803+|
     |AMD|Refer to driver support page|
 
+- Windows Server lacks support for a lot of consumer NICs. Workaround tends such as [this](https://github.com/loopback-kr/Intel-I219-V-for-Windows-Server) tend to interfere with anti-cheats
+
 - NVIDIA DCH drivers are supported on Windows 10 1803+ ([1](https://nvidia.custhelp.com/app/answers/detail/a_id/4777/~/nvidia-dch%2Fstandard-display-drivers-for-windows-10-faq))
 
 - During media playback exclusively on Windows 10 1709, the [Multimedia Class Scheduler Service](https://learn.microsoft.com/en-us/windows/win32/procthread/multimedia-class-scheduler-service) raises the timer resolution to 0.5ms. As explained in the article below, this resolution is suboptimal for many people in terms of precision hence it would be appropriate to avoid this Windows version
