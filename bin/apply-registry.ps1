@@ -1,8 +1,9 @@
 param(
-    [string]$get_option_keys
+    [string]$get_option_keys,
+    [int]$windows_build
 )
 
-$windowsBuild = [System.Environment]::OSVersion.Version.Build
+$windowsBuild = if ($windows_build) { $windows_build } else { [System.Environment]::OSVersion.Version.Build }
 
 $entries = @{
     "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify"                                                                 = @{
@@ -809,7 +810,6 @@ function Get-Option-Keys($optionName) {
 }
 
 function main() {
-
     # manually get windows build based on build version
     switch ($windowsBuild) {
         { $_ -ge 22000 } { $majorBuild = 11; break }
