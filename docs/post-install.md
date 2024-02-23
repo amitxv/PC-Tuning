@@ -732,7 +732,7 @@ For future reference, if something doesn't work after disabling services but wor
 
 - **Short-term/Temporary Solution**: Run ``Services-Enable.bat``, do whatever you are trying to do, then run ``Services-Disable.bat`` again (that's the idea of having toggle scripts!). If the functionality is still broken after enabling services then the problem is not related to services
 
-- **Long-term/Permanent Solution**: If you absolutely need some functionality while services are disabled, then see [docs/debug-services.md](/docs/debug-services.md) to determine what services are required for it. Note that this is only an option if that functionality works while services are enabled but breaks with services disabled
+- **Long-term/Permanent Solution**: If you absolutely need some functionality while services are disabled, then see the [Debugging Services](https://github.com/amitxv/service-list-builder#debugging-services) section in the documentation to determine what services are required for it. Note that this is only an option if that functionality works while services are enabled but breaks with services disabled. Once you have found what services are required for some functionality, you can contribute by posting an [issue](https://github.com/amitxv/PC-Tuning/issues) describing what functionality was fixed so that the services can be added to the config for the future
 
 ## Configure Device Manager
 
