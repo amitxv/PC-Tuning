@@ -1107,13 +1107,12 @@ If you take responsibility for damage caused to your operating system, the Power
             $softwareHive = "SOFTWARE"
         }
 
-        $dwmIfeoPath = "HKLM:\$($softwareHive)\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe"
-
-        if (-not (Test-Path $dwmIfeoPath)) {
+        if (-not (Test-Path "HKLM:\$($softwareHive)")) {
             Write-Host "error: hive not exists or is unloaded"
             return 1
         }
 
+        $dwmIfeoPath = "HKLM:\$($softwareHive)\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe"
         $isDwmDisabled = $null -ne (Get-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -ErrorAction SilentlyContinue)
 
         if ($isDwmDisabled) {
