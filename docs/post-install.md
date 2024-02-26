@@ -1126,7 +1126,9 @@ If you take responsibility for damage caused to your operating system, the Power
 
         # attempt to unload hive
         # does not really matter if this fails as it gets unloaded when restarting
-        reg unload "HKLM\$($softwareHive)" > $null
+        if ($softwareHive -ne "SOFTWARE") {
+            reg unload "HKLM\$($softwareHive)" > $null
+        }
 
         $errorCount = 0
 
