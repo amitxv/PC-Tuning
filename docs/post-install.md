@@ -1055,6 +1055,9 @@ Windows 7 had the ability to disable DWM natively within the operating system th
 
 If you take responsibility for damage caused to your operating system, the PowerShell script below can be used to toggle DWM. Ensure that there aren't any UWP processes running and preferably run the ``Services-Disable.bat`` script that was generated in the [Configure Services and Drivers](#configure-services-and-drivers) section before disabling DWM. Beware of the UI breaking and some games/programs will not be able to launch (you may need to disable hardware acceleration). To clarify, this is more of a note that it is possible to disable DWM in modern editions of Windows rather than a recommendation.
 
+> [!IMPORTANT]
+> If you are unable to boot or something goes wrong after running the script, simply use a dual-boot or WinRE with the ``$driveLetter`` variable set to whichever partition the problematic operating system is installed on then run the script (be careful not to use the wrong drive letter if multiple dual-boots are configured). It will revert changes on the specified partition's Windows installation.
+
 <details>
 
 <summary>toggle-dwm.ps1</summary>
@@ -1070,6 +1073,8 @@ If you take responsibility for damage caused to your operating system, the Power
     }
 
     function main() {
+        $driveLetter = "C"
+
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
         $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
@@ -1079,15 +1084,30 @@ If you take responsibility for damage caused to your operating system, the Power
         }
 
         $renameFiles = @(
-            "C:\Windows\System32\UIRibbon.dll"
-            "C:\Windows\System32\UIRibbonRes.dll"
-            "C:\Windows\System32\Windows.UI.Logon.dll"
-            "C:\Windows\System32\DWMInit.dll"
-            "C:\Windows\System32\WSClient.dll"
-            "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe"
+            "Windows\System32\UIRibbon.dll"
+            "Windows\System32\UIRibbonRes.dll"
+            "Windows\System32\Windows.UI.Logon.dll"
+            "Windows\System32\DWMInit.dll"
+            "Windows\System32\WSClient.dll"
+            "Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe"
         )
 
-        $dwmIfeoPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe"
+        if ($driveLetter -ne "C") {
+            $softwareHive = "tempSOFTWARE"
+
+            # load hive
+            reg load "HKLM\$($softwareHive)" "$($driveLetter):\Windows\System32\config\SOFTWARE"
+
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host "error: failed load SOFTWARE hive"
+                return 1
+            }
+        } else {
+            # loaded by default on C drive
+            $softwareHive = "SOFTWARE"
+        }
+
+        $dwmIfeoPath = "HKLM:\$($softwareHive)\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dwm.exe"
         $isDwmDisabled = $null -ne (Get-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -ErrorAction SilentlyContinue)
 
         if ($isDwmDisabled) {
@@ -1095,7 +1115,7 @@ If you take responsibility for damage caused to your operating system, the Power
             Remove-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -Force
         } else {
             Write-Host "info: disabling dwm"
-            New-Item -Path $dwmIfeoPath -Force 2>&1 > $null
+            New-Item -Path $dwmIfeoPath -Force > $null
             Set-ItemProperty -Path $dwmIfeoPath -Name "Debugger" -Type String -Value "\`"C:\Windows\System32\rundll32.exe\`"" -Force
         }
 
@@ -1104,9 +1124,16 @@ If you take responsibility for damage caused to your operating system, the Power
             return 1
         }
 
+        # attempt to unload hive
+        # does not really matter if this fails as it gets unloaded when restarting
+        reg unload "HKLM\$($softwareHive)" > $null
+
         $errorCount = 0
 
         foreach ($filePath in $renameFiles) {
+            # add drive letter to file path
+            $filePath = "$($driveLetter):\$($filePath)"
+
             $lastChar = $filePath[-1]
             $renamedFile = "$($filePath)$($lastChar)"
             $isOriginalFileExists = Test-Path $filePath
