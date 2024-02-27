@@ -1012,6 +1012,8 @@ Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Obje
 
 - As mentioned in the [User-Mode (Processes, Threads)](#user-mode-processes-threads) step, you should determine how well or poorly your application's performance scales with core count to give you a rough idea as to how many cores you can afford to reserve
 
+    - See [Limiting CPU Threads for Better Game Performance](https://developer.nvidia.com/blog/limiting-cpu-threads-for-better-game-performance)
+
 - As interrupt affinity policies, process and thread affinities have higher precedence, you can use this hand in hand with user-defined affinities to go a step further and ensure that nothing except what you assigned to specific CPUs will be scheduled on those CPUs
 
 - Ensure that you have enough cores to run your real-time application on and aren't reserving too many CPUs to the point where isolating modules does not yield real-time performance
