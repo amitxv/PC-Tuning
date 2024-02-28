@@ -8,7 +8,7 @@
 - [Preliminary Notes](#preliminary-notes)
 - [OOBE Setup](#oobe-setup)
 - [Unrestricted PowerShell Execution Policy](#unrestricted-powershell-execution-policy)
-- [Merge the Registry Files](#merge-the-registry-files)
+- [Merge the Registry Options](#merge-the-registry-options)
 - [Visual Cleanup](#visual-cleanup)
 - [Install Drivers](#install-drivers)
 - [Time, Language and Region](#time-language-and-region)
@@ -98,7 +98,7 @@ Set-ExecutionPolicy Unrestricted
 
 <!-- NOTE TO SELF: Check Windows Defender UI for new options before merging registry files as the UI will become inaccessible -->
 
-## Merge the Registry Files
+## Merge the Registry Options
 
 > [!WARNING]
 > 🔒 Some changes outlined in the table below may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting.
@@ -380,7 +380,7 @@ These are runtimes that are dependencies of applications worldwide.
 
         - In the ``System -> Optional features`` section, uninstall everything that you don't need
 
-- If Windows Defender was disabled in the [Merge the Registry Files](#merge-the-registry-files) step,``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD as TrustedInstaller with ``C:\bin\MinSudo.exe --TrustedInstaller --Privileged`` and enter the command below to remove the binary
+- If Windows Defender was disabled in the [Merge the Registry Options](#merge-the-registry-options) step,``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD as TrustedInstaller with ``C:\bin\MinSudo.exe --TrustedInstaller --Privileged`` and enter the command below to remove the binary
 
     ```bat
     taskkill /f /im smartscreen.exe > nul 2>&1 & ren C:\Windows\System32\smartscreen.exe smartscreen.exee
