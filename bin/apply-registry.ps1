@@ -931,7 +931,7 @@ function main() {
         foreach ($keyName in $filteredEntries[$path].Keys) {
             $key = $filteredEntries[$path][$keyName]
 
-            # default key does not have quotes
+            # default key does not have extra quotes
             if ($keyName -eq "@") {
                 $line = "@"
             } else {
