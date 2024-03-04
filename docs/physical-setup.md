@@ -21,7 +21,7 @@
 
 - See [Low Latency Hardware | Calypto](https://calypto.us)
 
-- Favor wired over cordless (e.g. peripherals, Wi-Fi) due to the degraded performance and inconsistency associated with wireless devices, aggressive power-saving features for a longer battery life where applicable along with the downside of being negatively affected by interference and transmission overhead ([1](https://www.meetion.com/a-the-impact-of-lift-off-distance-on-battery-life-with-wireless-vs-wired-gaming-mice.html), [2](https://en.wikipedia.org/wiki/2.4_GHz_radio_use), [3](https://raw.githubusercontent.com/BoringBoredom/PC-Optimization-Hub/main/content/peripherals/wireless%20overhead.png), [4](https://www.logitechg.com/en-gb/innovation/hero.html), [5](https://www.youtube.com/watch?v=Zn7WjyIvAWA))
+- Favor wired over cordless (e.g. peripherals, Ethernet) due to the degraded performance and inconsistency associated with wireless devices, aggressive power-saving features for a longer battery life where applicable along with the downside of being negatively affected by interference and transmission overhead ([1](https://www.meetion.com/a-the-impact-of-lift-off-distance-on-battery-life-with-wireless-vs-wired-gaming-mice.html), [2](https://en.wikipedia.org/wiki/2.4_GHz_radio_use), [3](https://raw.githubusercontent.com/BoringBoredom/PC-Optimization-Hub/main/content/peripherals/wireless%20overhead.png), [4](https://www.logitechg.com/en-gb/innovation/hero.html), [5](https://www.youtube.com/watch?v=Zn7WjyIvAWA))
 
 - An SSD or NVMe is strongly recommended due to the degraded performance and excessive interference of HDDs ([1](https://unihost.com/help/nvme-vs-ssd-vs-hdd-overview-and-comparison)). Ensure that there is always a sufficient amount of free space as SSDs slow down as they are filled up although most drives are overprovisioned from factory ([1](https://www.howtogeek.com/165542/why-solid-state-drives-slow-down-as-you-fill-them-up), [2](https://download.semiconductor.samsung.com/resources/white-paper/S190311-SAMSUNG-Memory-Over-Provisioning-White-paper.pdf))
 
@@ -67,7 +67,7 @@
 
 - Don't make the mistake of plugging in the display cable in to the motherboard port in the event of a dGPU being present
 
-- If you aren't already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The official method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup ([1](https://learn.microsoft.com/en-us/windows-server/storage/disk-management/change-an-mbr-disk-into-a-gpt-disk)). GPT/UEFI is recommended for most systems ([1](https://www.diskpart.com/gpt-mbr/mbr-vs-gpt-1004.html))
+- If you aren't already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The recommended method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup ([1](https://learn.microsoft.com/en-us/windows-server/storage/disk-management/change-an-mbr-disk-into-a-gpt-disk)). GPT/UEFI is recommended for most systems ([1](https://www.diskpart.com/gpt-mbr/mbr-vs-gpt-1004.html))
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
 
