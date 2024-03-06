@@ -13,9 +13,11 @@ function main() {
     git clone $urls["NanaRun"] ".\tmp\NanaRun"
     Push-Location ".\tmp\NanaRun\"
 
+    # build MinSudo
     git submodule update --init --recursive
     MSBuild.exe ".\NanaRun.sln" /t:Restore /p:Configuration=Release /p:Platform=x86 /p:PreferredToolArchitecture=x64
     MSBuild.exe ".\NanaRun.sln" -p:Configuration=Release -p:Platform=x64
+
     Pop-Location
 
     Copy-Item ".\tmp\NanaRun\Output\Binaries\Release\x64\MinSudo.exe" ".\bin\"
