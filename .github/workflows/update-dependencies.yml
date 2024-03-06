@@ -1,0 +1,28 @@
+name: Update dependencies
+run-name: Update dependencies
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up MSVC environment
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build
+        run: .\get-dependencies.ps1
+
+      - name: Update dependencies
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update dependencies
+          file_pattern: bin/MinSudo.exe
