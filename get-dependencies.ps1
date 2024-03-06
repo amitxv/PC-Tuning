@@ -10,7 +10,7 @@ function main() {
     # =============
     # Setup MinSudo
     # =============
-    git clone $urls["NanaRun"] ".\tmp\NanaRun"
+    git clone $urls["NanaRun"] ".\tmp\NanaRun\"
     Push-Location ".\tmp\NanaRun\"
 
     # build MinSudo
