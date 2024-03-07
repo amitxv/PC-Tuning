@@ -1,6 +1,6 @@
 function main() {
     if (Test-Path ".\tmp\") {
-        Remove-Item -Path ".\tmp\" -Recurse
+        Remove-Item -Path ".\tmp\" -Recurse -Force
     }
 
     $urls = @{
