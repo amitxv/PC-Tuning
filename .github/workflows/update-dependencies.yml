@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  get_dependencies:
     runs-on: windows-latest
 
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up MSVC environment
         uses: microsoft/setup-msbuild@v2
 
-      - name: Build
+      - name: Get dependencies
         run: .\get-dependencies.ps1
 
       - name: Update dependencies
