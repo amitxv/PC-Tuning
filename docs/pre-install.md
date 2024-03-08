@@ -220,6 +220,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
     KB3087873 - NVMe Support and Language Pack Hotfix
     KB2864202 - KMDF Update (required for USB 3/XHCI driver stack)
     KB4534314 - Easy Anti-Cheat Support
+    KB3191566 - WMF 5.1 (https://www.microsoft.com/en-us/download/details.aspx?id=54616)
     ```
 
 - Windows 8 recommended updates:
