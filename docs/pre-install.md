@@ -229,6 +229,7 @@ DISM /Image:"%MOUNT_DIR%" /Add-Driver /Driver:"C:\drivers" /Recurse /ForceUnsign
     KB2919442 - Servicing Stack Update
     KB2999226 - Universal C Runtime
     KB2919355 - Cumulative Update
+    KB3191566 - WMF 5.1 (https://www.microsoft.com/en-us/download/details.aspx?id=54616)
     ```
 
 - Windows 10+ recommended updates:
