@@ -781,10 +781,16 @@ function Apply-Registry($filePath) {
         return 1
     }
 
+    # unused for now
     $userMergeResult = (Start-Process "reg.exe" -ArgumentList "import $($filePath)" -PassThru -Wait -WindowStyle Hidden).ExitCode
     $trustedinstallerMergeResult = [int](.\MinSudo.exe --NoLogo --TrustedInstaller --Privileged cmd /c "reg import $($filePath) > nul 2>&1 && echo 0 || echo 1")
 
-    return $userMergeResult -band $trustedinstallerMergeResult
+    # we only need to check whether TI merge fails as user merge is an attempt to merge user keys
+    if ($trustedinstallerMergeResult -ne 0) {
+        return 1
+    }
+
+    return 0
 }
 
 function Get-Option-Keys($optionName) {
