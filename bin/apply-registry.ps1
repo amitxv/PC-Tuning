@@ -830,6 +830,9 @@ function main() {
     }
 
     if ($get_option_keys) {
+        # all option names are in lower case
+        $get_option_keys = $get_option_keys.ToLower()
+
         Write-Host "info: showing entries associated with option `"$($get_option_keys)`" on windows $($majorBuild)`n"
 
         Get-Option-Keys -optionName $get_option_keys
