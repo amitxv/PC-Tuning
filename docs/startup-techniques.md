@@ -31,6 +31,8 @@ This document outlines a technique to start applications at startup that is comp
 
     - As a random example, appending ``start C:\Windows\notepad.exe`` to this script will start notepad each time the system starts
 
+    - For PowerShell commands and scripts, use ``PowerShell "<command>"`` or ``PowerShell "<script_path>"``
+
 4. Verify whether the applications start at startup after restarting the system in case of unexpected behavior
 
 ## Why a Script?
