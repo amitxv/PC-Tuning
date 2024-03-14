@@ -113,7 +113,7 @@ The registry settings are merged with the ``apply-registry.ps1`` script. As for 
 |``disable windows update``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Telemetry, intrusive, prevents CPU overhead and prevents installation of unwanted updates. Disabling Windows Update is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device))|``true``|
 |``disable automatic windows updates``|Prevents automatic download and installation of Windows updates as the process can be intrusive compared to disabling Windows Update completely. This option is overridden if ``disable windows update`` is set to ``true``|``true``|
 |``disable driver installation via windows update``|Prevents outdated, vulnerable and bloated drivers from being installed via Windows Update. It is recommended to manually only install ones that you require along with the latest version directly from the manufacture's website as outlined in the [Install Drivers](#install-drivers) section. This option is overridden if ``disable windows update`` is set to ``true``|``true``|
-|``disable user account control``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Eliminates [this](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/how-it-works#uac-elevation-prompts) intrusive UAC elevation prompt and is required for running the PowerShell scripts outlined in this repository with Administrator privileges with ``shell:startup``. The only other method that I'm aware of to do so is with Task Scheduler however, its service gets disabled to mitigate CPU overhead as outlined in the [Configure Services and Drivers](#configure-services-and-drivers) section. Please note that it is recommended to skip the [Configure Services and Drivers](#configure-services-and-drivers) section when configuring a system for general-purpose use, so if this applies to you then this option can be set to ``false`` as you can use Task Scheduler since its service will not be disabled. Disabling UAC may negatively impact security as all processes are run with Administrator privileges by default ([1](https://www.howtogeek.com/124754/htg-explains-why-you-shouldnt-disable-uac/), [2](https://raptor.solutions/the-risks-of-disabling-uac-in-windows-10/))|``true``|
+|``disable user account control``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Eliminates [this](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/how-it-works#uac-elevation-prompts) intrusive UAC elevation prompt. Disabling UAC may negatively impact security as all processes are run with Administrator privileges by default ([1](https://www.howtogeek.com/124754/htg-explains-why-you-shouldnt-disable-uac/), [2](https://raptor.solutions/the-risks-of-disabling-uac-in-windows-10/))|``false``|
 |``disable windows marking file attachments with information about their zone of origin``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Prevents [this](https://www.tenforums.com/tutorials/85418-how-disable-downloaded-files-being-blocked-windows.html) intrusive security warning as downloaded files are constantly required to be unblocked however this may negatively impact security as the user will not be notified of blocked files as a security warning ([1](https://www.tenforums.com/tutorials/85418-how-disable-downloaded-files-being-blocked-windows.html))|``true``|
 |``disable windows defender``|🔒 A value of ``true`` may negatively impact security. Users should assess the security risk involved with modifying the mentioned setting<br><br>Prevents CPU overhead and interferes with the CPU operating in C-State 0 ([1](https://www.techpowerup.com/295877/windows-defender-can-significantly-impact-intel-cpu-performance-we-have-the-fix))|``true``|
 |``disable PC is out of support message``|Disables [this](https://support.microsoft.com/en-us/topic/you-received-a-notification-your-windows-7-pc-is-out-of-support-3278599f-9613-5cc1-e0ee-4f81f623adcf) intrusive message|``true``|
@@ -404,7 +404,11 @@ If you use [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-ca
 
 - It is recommended to configure a static fan speed as using the fan curve feature requires the program to run continually
 
-- To automatically load profile 1 (as an example) and exit, type ``shell:startup`` in ``Win+R`` then create a shortcut with a target of ``"C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q``
+- To automatically load profile 1 (as an example) at startup, the command below can be used at startup. See [docs/startup-techniques.md](/docs/startup-techniques.md)
+
+    ```bat
+    "C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" /Profile1 /Q
+    ```
 
 ## Display Resolutions and Scaling Modes
 
@@ -775,7 +779,9 @@ The section is directly related to the [Configure Services and Drivers](#configu
 
 ## Disable Driver Power-Saving
 
-Open PowerShell and enter the command below to disable the ``Allow the computer to turn off this device to save power`` option for all applicable devices in Device Manager. Re-plugging devices may cause this option to re-enable so either avoid doing so, run this command again or create a script to execute the command each time at startup by creating a shortcut in ``shell:startup`` as a precautionary measure.
+Open PowerShell and enter the command below to disable the ``Allow the computer to turn off this device to save power`` option for all applicable devices in Device Manager.
+
+Re-plugging devices may cause this option to re-enable so either avoid doing so, run this command again or create a script to execute the command each time at startup as a precautionary measure. See [docs/startup-techniques.md](/docs/startup-techniques.md).
 
 ```powershell
 Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }
@@ -863,7 +869,7 @@ As an example, 1ms IMOD interval with an 8kHz mouse is already problematic becau
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f
     ```
 
-- In some cases, the interrupter index can change after a reboot meaning the address will become invalid if it is hard-coded. To work around this, you can simply disable IMOD for all interrupters by placing the [XHCI-IMOD-Interval.ps1](https://gist.github.com/amitxv/4fe34e139f0aec681a6122f39757d86e) script somewhere safe and creating a shortcut in ``shell:startup`` with the target below. Set the window style of the shortcut to minimized
+- In some cases, the interrupter index can change after a reboot meaning the address will become invalid if it is hard-coded. To work around this, you can simply disable IMOD for all interrupters by placing the [XHCI-IMOD-Interval.ps1](https://gist.github.com/amitxv/4fe34e139f0aec681a6122f39757d86e) script somewhere safe and launching it at startup. See [docs/startup-techniques.md](/docs/startup-techniques.md)
 
     ```
     PowerShell C:\XHCI-IMOD-Interval.ps1
@@ -1004,7 +1010,7 @@ start /affinity 0x6 notepad.exe
 
 #### Specifying an Affinity Mask for Running Processes
 
-Sometimes, the processes that you would like to set an affinity mask to are already running, so the previous command is not applicable here. As a random example, the command below sets the affinity mask of the ``svchost.exe`` and ``audiodg.exe`` processes to CPU 3. Use this example to create a PowerShell script then have it run at startup by placing a shortcut in ``shell:startup`` by typing ``shell:startup`` in ``Win+R``. Set the window style of the shortcut to minimized.
+Sometimes, the processes that you would like to set an affinity mask to are already running, so the previous command is not applicable here. As a random example, the command below sets the affinity mask of the ``svchost.exe`` and ``audiodg.exe`` processes to CPU 3. Use this example to create a PowerShell script then have it run at startup. See [docs/startup-techniques.md](/docs/startup-techniques.md).
 
 ```powershell
 Get-Process @("svchost", "audiodg") -ErrorAction SilentlyContinue | ForEach-Object { $_.ProcessorAffinity=0x8 }
