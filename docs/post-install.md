@@ -356,7 +356,7 @@ These are runtimes that are dependencies of applications worldwide.
 
 - Windows 10+ Only:
 
-    - Disable Xbox Game Bar in settings or with the registry keys below to prevent ``GameBar.exe`` from running
+    - If you would like to prevent ``GameBar.exe`` from running, disable Xbox Game Bar in settings or with the registry keys below
 
         ```bat
         reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
