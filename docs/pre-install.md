@@ -118,6 +118,8 @@ Ensure to cross-check the hashes for the ISO to verify that it is genuine and no
 
 - If Windows Defender is enabled, then consider disabling real-time protection as it can slow the mounting and unmounting process or cause issues in some cases
 
+- On the host machine, is highly recommended using a servicing stack greater than or equal to the servicing stack version of the ISO that you are servicing. Windows Update should handle this for you
+
 - Open CMD as administrator and do not close the window as we will be setting temporary environment variables which will be unbound when the session is ended
 
 - Run the command below. If an error occurs, re-open CMD with administrator privileges however if nothing is shown in the output, continue as normal
