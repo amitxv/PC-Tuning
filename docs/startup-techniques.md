@@ -27,9 +27,11 @@ This document outlines a technique to start applications at startup that is comp
 
 2. Type ``shell:startup`` in ``Win+R`` and create a shortcut to the script. Optionally set the ``Run`` property on the shortcut to ``Minimized``
 
-3. Under the *start applications* comment, use the [start](https://ss64.com/nt/start.html) command to start applications. For future reference, keep appending to this script to start applications at startup
+3. Under the *start applications* comment, use the [start](https://ss64.com/nt/start.html) command to start applications. For future reference, keep appending to this script to start applications at startup.
 
     - As a random example, appending ``start C:\Windows\notepad.exe`` to this script will start notepad each time the system starts
+
+    - If the path contains white spaces, ensure to surround it with quotes
 
     - For PowerShell commands and scripts, use ``PowerShell "<command>"`` or ``PowerShell "<script_path>"``
 
