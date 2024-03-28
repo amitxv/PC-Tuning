@@ -67,6 +67,8 @@
 
 - Don't make the mistake of plugging in the display cable in to the motherboard port in the event of a dGPU being present
 
+- Minimize GPU sag with an anti-sag bracket or similar
+
 - If you aren't already using the partition style you would like to be using, you should switch now because some settings listed in the [BIOS](#bios) section depend on the partition style (search for *"GPT/UEFI"*). The recommended method to convert the partition style is to wipe and convert the disk using diskpart within Windows setup ([1](https://learn.microsoft.com/en-us/windows-server/storage/disk-management/change-an-mbr-disk-into-a-gpt-disk)). GPT/UEFI is recommended for most systems ([1](https://www.diskpart.com/gpt-mbr/mbr-vs-gpt-1004.html))
 
     - See [media/identify-bios-mode.png](/media/identify-bios-mode.png)
